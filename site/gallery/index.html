@@ -160,12 +160,54 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 				.lg-thumb-item.active {
 					opacity: 1;
 				}
-	         </style>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />	<link rel="stylesheet" id="serk-theme-css" href="/wp-content/themes/royal-elementor-kit/serk-theme.css">
+	         </style>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />	<link rel="stylesheet" id="serk-theme-css" href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-02">
 </head>
 
 <body class="wp-singular page-template-default page page-id-1892 wp-custom-logo wp-embed-responsive wp-theme-royal-elementor-kit elementor-default elementor-template-canvas elementor-kit-11 elementor-page elementor-page-1892">
 			<!-- SERK Structured 2-Row Global Header -->
 <header class="serk-header" id="serk-global-header">
+  <style id="serk-critical-header-css">
+    .serk-header { position: sticky; top: 0; left: 0; width: 100%; z-index: 9999; background: #FFFFFF; box-shadow: 0 1px 3px rgba(16,21,19,0.06); font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .serk-header * { box-sizing: border-box; }
+    .serk-header-container { max-width: 1240px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .serk-top-bar { height: 36px; background-color: #F4F7F5; border-bottom: 1px solid #DEE6E0; font-size: 12.5px; color: #5B6761; line-height: 36px; }
+    .serk-top-bar-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .serk-top-bar-left, .serk-top-bar-right { display: flex; align-items: center; gap: 12px; }
+    .serk-top-bar a { color: #5B6761; text-decoration: none; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; }
+    .serk-top-bar a:hover { color: #0D4634; }
+    .serk-sep { color: #DEE6E0; font-size: 13px; user-select: none; }
+    .serk-main-nav { height: 68px; background-color: #FFFFFF; border-bottom: 1px solid #DEE6E0; }
+    .serk-main-nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .serk-brand-link { display: flex; align-items: center; text-decoration: none; }
+    .serk-header-logo { height: 38px; max-height: 38px; width: auto; max-width: 240px; display: block; object-fit: contain; }
+    .serk-nav-desktop { display: flex; align-items: center; }
+    .serk-menu { display: flex; align-items: center; list-style: none !important; margin: 0 !important; padding: 0 !important; gap: 28px; }
+    .serk-menu li { list-style: none !important; margin: 0 !important; padding: 0 !important; display: inline-block; }
+    .serk-nav-link { font-size: 14.5px; font-weight: 600; color: #101513; text-decoration: none !important; padding: 8px 0; position: relative; transition: color 0.2s; }
+    .serk-nav-link:hover, .serk-nav-link.active { color: #0D4634; }
+    .serk-nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #0D4634; border-radius: 2px; }
+    .serk-header-cta-wrap { display: flex; align-items: center; gap: 16px; }
+    .serk-btn-primary { background-color: #0D4634 !important; color: #FFFFFF !important; font-size: 13.5px; font-weight: 600; padding: 10px 20px; border-radius: 6px; text-decoration: none !important; display: inline-flex; align-items: center; border: 1px solid #0D4634; transition: all 0.2s; }
+    .serk-btn-primary:hover { background-color: #2D735A !important; border-color: #2D735A; color: #FFFFFF !important; }
+    .serk-mobile-menu-toggle { display: none; background: none; border: 1px solid #DEE6E0; border-radius: 6px; padding: 8px 10px; cursor: pointer; flex-direction: column; gap: 4px; }
+    .serk-hamburger-bar { width: 18px; height: 2px; background-color: #101513; border-radius: 2px; display: block; }
+    .serk-mobile-drawer { display: none; }
+    @media (max-width: 900px) {
+      .serk-top-bar { display: none !important; }
+      .serk-nav-desktop { display: none !important; }
+      .serk-header-cta-wrap .serk-btn-primary { display: none !important; }
+      .serk-mobile-menu-toggle { display: flex !important; }
+      .serk-mobile-drawer { background-color: #FFFFFF; border-bottom: 1px solid #DEE6E0; padding: 16px 20px 24px; }
+      .serk-mobile-drawer.open { display: block !important; }
+      .serk-mobile-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5B6761; margin-bottom: 12px; }
+      .serk-mobile-list { list-style: none !important; margin: 0 0 16px !important; padding: 0 !important; }
+      .serk-mobile-list li { margin: 0 0 10px !important; padding: 0 !important; list-style: none !important; }
+      .serk-mobile-list a { color: #101513; text-decoration: none !important; font-size: 15px; font-weight: 500; display: block; padding: 4px 0; }
+      .serk-mobile-contact { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; font-size: 13px; color: #5B6761; }
+      .serk-mobile-contact a { color: #5B6761; text-decoration: none !important; }
+      .serk-btn-mobile { display: block !important; width: 100%; text-align: center; justify-content: center; margin-top: 12px; }
+    }
+  </style>
   <!-- Row 1: Top Utility Bar (36px, #F4F7F5, 1px solid #DEE6E0) -->
   <div class="serk-top-bar">
     <div class="serk-header-container serk-top-bar-inner">
@@ -197,7 +239,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   <div class="serk-main-nav">
     <div class="serk-header-container serk-main-nav-inner">
       <a href="/" class="serk-brand-link" aria-label="SERK Technologies Group Home">
-        <img src="/wp-content/uploads/serk/serk-logo-wide.png" alt="SERK Technologies Group" class="serk-header-logo">
+        <img src="/wp-content/uploads/serk/serk-logo.svg" alt="SERK Technologies Group" class="serk-header-logo" width="210" height="38" style="height:38px;max-height:38px;width:auto;max-width:240px;display:block;">
       </a>
       <nav class="serk-nav-desktop" aria-label="Main Navigation">
         <ul class="serk-menu">
@@ -210,7 +252,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       </nav>
       <div class="serk-header-cta-wrap">
         <a href="/contact_us/" class="serk-btn-primary">Discuss Your Project</a>
-        <button class="serk-mobile-menu-toggle" id="serkMobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false" onclick="var d=document.getElementById('serkMobileDrawer');if(d){d.classList.toggle('open');}">
+        <button class="serk-mobile-menu-toggle" id="serkMobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false" onclick="var d=document.getElementById('serkMobileDrawer');if(d){var isBlock=window.getComputedStyle(d).display==='block';d.style.display=isBlock?'none':'block';d.classList.toggle('open');}">
           <span class="serk-hamburger-bar"></span>
           <span class="serk-hamburger-bar"></span>
           <span class="serk-hamburger-bar"></span>
@@ -219,7 +261,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     </div>
   </div>
   <!-- Mobile Drawer: Collapses cleanly into a single accordion drawer containing both tiers -->
-  <div class="serk-mobile-drawer" id="serkMobileDrawer">
+  <div class="serk-mobile-drawer" id="serkMobileDrawer" style="display:none;">
     <div class="serk-mobile-section">
       <div class="serk-mobile-title">Core Navigation</div>
       <ul class="serk-mobile-list">
@@ -398,89 +440,82 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     </main>
 </div>
 <!-- SERK Enterprise Dark Forest/Ink Footer (#082E22) -->
-<footer class="serk-global-footer" id="serk-global-footer">
-  <div class="serk-footer-container">
-    <div class="serk-footer-grid">
-      <!-- Col 1: Brand & Contact -->
-      <div class="serk-footer-col serk-footer-brand-col">
+<!-- SERK Enterprise Global Footer (#082E22) -->
+<footer class="serk-global-footer" id="serk-global-footer" style="background-color: #082E22; color: #FFFFFF; font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; padding: 64px 0 32px; border-top: 1px solid #144636;">
+  <div class="serk-footer-container" style="max-width: 1240px; margin: 0 auto; padding: 0 24px;">
+    <div class="serk-footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 48px;">
+      
+      <!-- Col 1: Brand & Dossier -->
+      <div class="serk-footer-col">
         <a href="/" class="serk-footer-logo-link" aria-label="SERK Technologies Group">
-          <img src="/wp-content/uploads/serk/serk-logo-wide.png" alt="SERK Technologies Group" class="serk-footer-logo" style="filter: brightness(0) invert(1); max-height: 38px;">
+          <img src="/wp-content/uploads/serk/serk-logo-light.svg" alt="SERK Technologies Group" class="serk-footer-logo" width="210" height="38" style="height: 38px; max-height: 38px; width: auto; max-width: 240px; display: block; margin-bottom: 16px;">
         </a>
-        <p class="serk-footer-tagline">Innovation with Integrity</p>
-        <p class="serk-footer-desc">
-          Engineering software, intelligent business systems, and digital platforms built for real-world reliability from Ethiopia for a wider world.
+        <p style="color: #9EB5AB; font-size: 13.5px; line-height: 1.65; margin: 0 0 16px;">
+          <strong>SERK Technologies Group</strong> ("Innovation with Integrity") engineers enterprise software, intelligent operating platforms, and practical applied AI for construction, healthcare, finance, and commerce across Ethiopia and the region.
         </p>
-        <div class="serk-footer-contact-info">
-          <div class="serk-footer-contact-item">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Mekelle, Tigray, Ethiopia</span>
-          </div>
-          <div class="serk-footer-contact-item">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <a href="mailto:serktechgroup@gmail.com">serktechgroup@gmail.com</a>
-          </div>
-          <div class="serk-footer-contact-item">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+251999911192">+251 999 911 192</a>
-          </div>
+        <div style="font-size: 12.5px; color: #7A968B;">
+          Registered in Mekelle, Tigray, Ethiopia
         </div>
       </div>
 
-      <!-- Col 2: Core Platforms -->
+      <!-- Col 2: Products -->
       <div class="serk-footer-col">
-        <h4 class="serk-footer-heading">Software Platforms</h4>
-        <ul class="serk-footer-links">
-          <li><a href="/products/#construction">Construction Intelligence OS</a></li>
-          <li><a href="/products/#estimator">SERK AI Estimator (BOQ)</a></li>
-          <li><a href="/products/#hms">Health OS &amp; Hospital Management</a></li>
-          <li><a href="/products/#finance">SERK Connected Finance</a></li>
-          <li><a href="/products/#pos">Retail &amp; Hospitality POS</a></li>
-          <li><a href="/products/#office">SERK Office OS</a></li>
+        <h4 style="color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 18px;">Products</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; line-height: 2;">
+          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Construction OS</a></li>
+          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Hospital Management</a></li>
+          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Finance &amp; Audit Engine</a></li>
+          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Smart Retail &amp; POS</a></li>
+          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Platform Architecture</a></li>
         </ul>
       </div>
 
-      <!-- Col 3: Navigation & Company -->
+      <!-- Col 3: Industries & Services -->
       <div class="serk-footer-col">
-        <h4 class="serk-footer-heading">Navigation</h4>
-        <ul class="serk-footer-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/products/">Products Overview</a></li>
-          <li><a href="/industries/">Industries Served</a></li>
-          <li><a href="/services/">Custom Services</a></li>
-          <li><a href="/ventures/">Ventures &amp; Innovation</a></li>
-          <li><a href="/about_us/">About Us</a></li>
-          <li><a href="/partners/">Partners &amp; Clients</a></li>
-          <li><a href="/gallery/">Media Gallery</a></li>
-          <li><a href="/insight/">Insights &amp; Articles</a></li>
+        <h4 style="color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 18px;">Solutions</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; line-height: 2;">
+          <li><a href="/industries/" style="color: #C0D3CA; text-decoration: none;">Construction &amp; Real Estate</a></li>
+          <li><a href="/industries/" style="color: #C0D3CA; text-decoration: none;">Healthcare Delivery</a></li>
+          <li><a href="/industries/" style="color: #C0D3CA; text-decoration: none;">Banking &amp; Financial Services</a></li>
+          <li><a href="/services/" style="color: #C0D3CA; text-decoration: none;">System Architecture</a></li>
+          <li><a href="/services/" style="color: #C0D3CA; text-decoration: none;">Cloud &amp; Security Engineering</a></li>
         </ul>
       </div>
 
-      <!-- Col 4: Action & Legal -->
+      <!-- Col 4: Corporate -->
       <div class="serk-footer-col">
-        <h4 class="serk-footer-heading">Start a Conversation</h4>
-        <p class="serk-footer-cta-text">
-          Planning a modernization project, new platform, or enterprise deployment?
-        </p>
-        <a href="/contact_us/" class="serk-btn-primary serk-footer-btn">Discuss Your Project</a>
-        <div class="serk-footer-social">
-          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="serk-social-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.77v8.37H6.46v-8.37M7.84 6.2a1.62 1.62 0 1 0 1.62 1.62 1.62 1.62 0 0 0-1.62-1.62Z"/></svg>
-          </a>
+        <h4 style="color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 18px;">Company</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; line-height: 2;">
+          <li><a href="/about_us/" style="color: #C0D3CA; text-decoration: none;">About Us</a></li>
+          <li><a href="/ventures/" style="color: #C0D3CA; text-decoration: none;">Ventures &amp; Family</a></li>
+          <li><a href="/partners/" style="color: #C0D3CA; text-decoration: none;">Partners</a></li>
+          <li><a href="/insight/" style="color: #C0D3CA; text-decoration: none;">Insights &amp; Articles</a></li>
+          <li><a href="/gallery/" style="color: #C0D3CA; text-decoration: none;">Corporate Gallery</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Contact & Location -->
+      <div class="serk-footer-col">
+        <h4 style="color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 18px;">Contact &amp; HQ</h4>
+        <div style="font-size: 13px; color: #C0D3CA; line-height: 1.8; margin-bottom: 16px;">
+          <div><strong>Headquarters:</strong> Mekelle, Tigray, Ethiopia</div>
+          <div><strong>Email:</strong> <a href="mailto:serktechgroup@gmail.com" style="color: #5DF2B5; text-decoration: none;">serktechgroup@gmail.com</a></div>
+          <div><strong>Phone:</strong> <a href="tel:+251999911192" style="color: #5DF2B5; text-decoration: none;">+251 999 911 192</a></div>
         </div>
+        <a href="/contact_us/" style="display: inline-block; background-color: #0D4634; border: 1px solid #2D735A; color: #FFFFFF; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 12.5px; font-weight: 600;">Contact Engineering Team &rarr;</a>
       </div>
+
     </div>
 
-    <!-- Bottom Legal Bar -->
-    <div class="serk-footer-bottom">
-      <div class="serk-footer-bottom-inner">
-        <p class="serk-copyright">Copyright &copy; 2026 SERK Technologies Group. All rights reserved.</p>
-        <div class="serk-footer-legal-links">
-          <a href="/privacy/">Privacy Policy</a>
-          <span class="serk-sep">·</span>
-          <a href="/terms/">Terms of Service</a>
-          <span class="serk-sep">·</span>
-          <a href="/contact_us/">Contact Us</a>
-        </div>
+    <!-- Bottom Bar: Legal & Copyright -->
+    <div class="serk-footer-bottom" style="border-top: 1px solid #144636; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #7A968B; flex-wrap: wrap; gap: 12px;">
+      <div>
+        Copyright &copy; 2026 SERK Technologies Group. All rights reserved. &bull; <em>"Innovation with Integrity"</em>
+      </div>
+      <div style="display: flex; gap: 20px;">
+        <a href="/privacy/" style="color: #9EB5AB; text-decoration: none;">Privacy Policy</a>
+        <a href="/terms/" style="color: #9EB5AB; text-decoration: none;">Terms of Service</a>
+        <a href="/contact_us/" style="color: #9EB5AB; text-decoration: none;">Security &amp; Compliance</a>
       </div>
     </div>
   </div>

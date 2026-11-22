@@ -155,8 +155,11 @@ p, .elementor-widget-text-editor, .elementor-icon-box-description, .wpr-grid-ite
 
 .serk-header-logo {
   height: 38px;
+  max-height: 38px;
   width: auto;
+  max-width: 240px;
   display: block;
+  object-fit: contain;
 }
 
 .serk-nav-desktop {
