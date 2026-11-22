@@ -94,7 +94,7 @@ def get_header_html(active_page="home"):
   <div class="serk-main-nav">
     <div class="serk-header-container serk-main-nav-inner">
       <a href="/" class="serk-brand-link" aria-label="SERK Technologies Group Home">
-        <img src="/wp-content/uploads/serk/serk-logo.svg" alt="SERK Technologies Group" class="serk-header-logo" width="210" height="38" style="height:38px;max-height:38px;width:auto;max-width:240px;display:block;">
+        <img src="/wp-content/uploads/serk/serk-logo-wide.png" alt="SERK Technologies Group" class="serk-header-logo" width="220" height="38" style="height:38px;max-height:38px;width:auto;max-width:240px;display:block;object-fit:contain;">
       </a>
       <nav class="serk-nav-desktop" aria-label="Main Navigation">
         <ul class="serk-menu">
@@ -155,7 +155,7 @@ def get_footer_html():
       <!-- Col 1: Brand & Dossier -->
       <div class="serk-footer-col">
         <a href="/" class="serk-footer-logo-link" aria-label="SERK Technologies Group">
-          <img src="/wp-content/uploads/serk/serk-logo-light.svg" alt="SERK Technologies Group" class="serk-footer-logo" width="210" height="38" style="height: 38px; max-height: 38px; width: auto; max-width: 240px; display: block; margin-bottom: 16px;">
+          <img src="/wp-content/uploads/serk/serk-logo-wide-light.png" alt="SERK Technologies Group" class="serk-footer-logo" width="220" height="38" style="height: 38px; max-height: 38px; width: auto; max-width: 240px; display: block; object-fit: contain; margin-bottom: 16px;">
         </a>
         <p style="color: #9EB5AB; font-size: 13.5px; line-height: 1.65; margin: 0 0 16px;">
           <strong>SERK Technologies Group</strong> ("Innovation with Integrity") engineers enterprise software, intelligent operating platforms, and practical applied AI for construction, healthcare, finance, and commerce across Ethiopia and the region.
