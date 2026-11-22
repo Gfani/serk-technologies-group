@@ -1,0 +1,140 @@
+import os
+import sys
+import json
+
+sys.path.append('.')
+os.makedirs('data', exist_ok=True)
+
+# 1. Initialize data/projects.json from parsed projects
+from tools.parse_projects import projects
+
+# Ensure each project has id
+projects_with_id = []
+for i, p in enumerate(projects):
+    p_copy = dict(p)
+    p_copy['id'] = f"proj-{i+1:02d}"
+    p_copy['isPublished'] = True
+    p_copy['sortOrder'] = i + 1
+    projects_with_id.append(p_copy)
+
+with open('data/projects.json', 'w', encoding='utf-8') as fp:
+    json.dump(projects_with_id, fp, indent=2)
+
+print(f"Created data/projects.json with {len(projects_with_id)} projects.")
+
+# 2. Initialize comprehensive data/site-content.json
+site_content = {
+    "siteInfo": {
+        "name": "SERK Technologies Group",
+        "tagline": "Innovation with Integrity",
+        "email": "serktechgroup@gmail.com",
+        "phone": "+251 999 911 192",
+        "address": "Mekelle, Tigray, Ethiopia",
+        "jurisdiction": "Sovereign Digital Systems",
+        "workingHours": "Mon - Sat: 8:30 AM - 6:00 PM (EAT)",
+        "linkedinUrl": "https://linkedin.com",
+        "telegramUrl": "https://t.me/serktech"
+    },
+    "header": {
+        "tagline": "Deep Tech & Sovereign Systems",
+        "ctaLabel": "Discuss Your Project",
+        "ctaUrl": "/contact_us/"
+    },
+    "footer": {
+        "visitUsHeading": "VISIT US",
+        "addressLine1": "Mekelle, Tigray, Ethiopia",
+        "addressLine2": "Sovereign Digital Systems",
+        "copyrightText": "Copyright © 2026 SERK Technologies Group. All rights reserved.",
+        "tagline": "Innovation with Integrity"
+    },
+    "categories": {
+        "sector-intelligence": {
+            "title": "Sector Intelligence",
+            "subtitle": "Specialized vertical platforms engineering decisions and workflows for construction and healthcare.",
+            "description": "Domain-specific enterprise platforms designed around the unique regulatory and operational realities of African industry.",
+            "badge": "Active Pilots"
+        },
+        "ai-security": {
+            "title": "AI & Security Research",
+            "subtitle": "Engineering foundations for governed multi-model intelligence, cybersecurity, and quantitative estimating.",
+            "description": "Rigorous security architecture reviews, automated vulnerability discovery, and transparent multi-agent reasoning.",
+            "badge": "Applied Research"
+        },
+        "enterprise-operations": {
+            "title": "Enterprise & Operations",
+            "subtitle": "Connected software environments that streamline core administrative, financial, sales, and supply chain operations.",
+            "description": "High-velocity sales checkout, dual-calendar Gregorian/Ethiopian attendance, and multi-branch inventory tracking.",
+            "badge": "Production Available"
+        },
+        "solutions": {
+            "title": "Core Solutions & Integrations",
+            "subtitle": "Purpose-built operational automation, workflow copilots, and financial infrastructure linking legacy systems.",
+            "description": "Event-driven approval workflows, invoice optical data extraction, and Ethiopian banking gateway integrations.",
+            "badge": "Engineered Solutions"
+        },
+        "ventures": {
+            "title": "Digital Ventures",
+            "subtitle": "Autonomous digital platforms exploring urban mobility, connected delivery, transparent commerce, and heritage tourism.",
+            "description": "Mission-driven technology startups tackling everyday urban transport, regional logistics, and cultural preservation.",
+            "badge": "Venture Studio"
+        },
+        "affiliated": {
+            "title": "Affiliated & Associated Businesses",
+            "subtitle": "Frontline enterprise proving grounds and leadership-associated companies providing real-world operational testing.",
+            "description": "Real physical enterprises testing software under daily retail and jobsite conditions before broad commercial release.",
+            "badge": "Operational Proving Grounds"
+        },
+        "future-innovation": {
+            "title": "Future Innovation & Sovereign Tech",
+            "subtitle": "Long-term industrial research, vehicle assembly concepts, clean energy accessories, and African developer talent development.",
+            "description": "Building sustainable African manufacturing capability, sovereign compute infrastructure, and youth engineering apprenticeships.",
+            "badge": "Long-Term Horizons"
+        }
+    },
+    "pages": {
+        "home": {
+            "heroTitle": "We Engineer the Systems Behind Better Business.",
+            "heroSubtitle": "From your first website to intelligent enterprise operations, SERK Technologies Group designs and develops practical digital solutions for organizations ready to work smarter. We combine software engineering, thoughtful design, responsible AI and deep attention to real-world workflows — starting in Ethiopia, built for a wider world.",
+            "heroCtaLabel": "Discuss Your Project",
+            "heroCtaUrl": "/contact_us/",
+            "whySerkHeading": "Why Choose Serk Group?",
+            "whySerkSubtitle": "At Serk, we pair real industry know-how with practical AI. The result is software that feels made for you, because it is.",
+            "statsOneValue": "23+",
+            "statsOneLabel": "Software Systems & Platforms",
+            "statsTwoValue": "4",
+            "statsTwoLabel": "Key Industry Sectors",
+            "statsThreeValue": "100%",
+            "statsThreeLabel": "Sovereign Engineering Ownership"
+        },
+        "about": {
+            "title": "Engineering Sovereign Technology for Heavy Enterprise",
+            "subtitle": "SERK Technologies Group pairs real African industry know-how with practical software engineering, cloud architecture, and responsible AI.",
+            "mission": "To engineer trustworthy, high-performing software systems that elevate African industry and empower organizations to operate autonomously.",
+            "vision": "A self-reliant technological ecosystem where Ethiopian and African enterprises run on software built for their exact workflows."
+        },
+        "products": {
+            "title": "SERK Products & Platforms",
+            "subtitle": "SERK develops connected software platforms shaped around the demands of real industries, paired with honest maturity disclosures and practical engineering."
+        },
+        "services": {
+            "title": "Solutions & Systems Architecture",
+            "subtitle": "Custom enterprise software engineering, AI automation copilots, and cloud architecture built around the realities of your business."
+        },
+        "ventures": {
+            "title": "Turning Technology Into Possibilities",
+            "subtitle": "Through separate platforms and venture initiatives, our teams explore better mobility, connected delivery, digital tourism, and future industrial technology."
+        },
+        "contact": {
+            "title": "Let's Build Something That Works",
+            "subtitle": "Tell us about your organization's goals, existing bottlenecks, or platform needs. Our engineering leadership responds within 24 business hours.",
+            "officeAddress": "Mekelle, Tigray, Ethiopia",
+            "email": "serktechgroup@gmail.com",
+            "phone": "+251 999 911 192"
+        }
+    }
+}
+
+with open('data/site-content.json', 'w', encoding='utf-8') as fp:
+    json.dump(site_content, fp, indent=2)
+
+print("Created data/site-content.json with full site categories and pages content.")

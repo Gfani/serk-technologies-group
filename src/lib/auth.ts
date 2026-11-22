@@ -25,7 +25,7 @@ export async function createSession(payload: { email: string; name: string; role
 
   cookies().set(COOKIE_NAME, jwt, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
+    secure: process.env.NODE_ENV === 'production' && (process.env.RENDER === 'true' || process.env.VERCEL === '1' || process.env.COOKIE_SECURE === 'true'),
     sameSite: 'lax',
     path: '/',
     maxAge: 60 * 60 * 24 * 7, // 7 days

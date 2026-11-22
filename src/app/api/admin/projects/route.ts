@@ -1,18 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth';
-import { prisma } from '@/lib/prisma';
-import { ALL_PROJECTS } from '@/lib/constants';
+import { getStoredProjects, saveStoredProject, deleteStoredProject } from '@/lib/contentStore';
 
 export async function GET() {
-  try {
-    const projects = await prisma.project.findMany({
-      orderBy: { sortOrder: 'asc' },
-    });
-    if (projects.length > 0) return NextResponse.json(projects);
-  } catch (err) {
-    // fallback
-  }
-  return NextResponse.json(ALL_PROJECTS.map((p, i) => ({ ...p, id: `proj-${i}` })));
+  const projects = await getStoredProjects();
+  return NextResponse.json(projects);
 }
 
 export async function POST(req: NextRequest) {
@@ -21,25 +13,8 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const project = await prisma.project.create({
-      data: {
-        slug: body.slug,
-        name: body.name,
-        category: body.category,
-        maturity: body.maturity,
-        summary: body.summary,
-        description: body.description || null,
-        audience: body.audience || null,
-        capabilities: body.capabilities || null,
-        plannedCapabilities: body.plannedCapabilities || null,
-        imageUrl: body.imageUrl || null,
-        publicCta: body.publicCta || 'Request Platform Demo',
-        ctaUrl: body.ctaUrl || '/contact',
-        isPublished: body.isPublished ?? true,
-        sortOrder: body.sortOrder ?? 0,
-      },
-    });
-    return NextResponse.json({ success: true, project }, { status: 201 });
+    const saved = await saveStoredProject(body);
+    return NextResponse.json({ success: true, project: saved }, { status: 201 });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
@@ -51,12 +26,8 @@ export async function PUT(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { id, ...data } = body;
-    const updated = await prisma.project.update({
-      where: { id },
-      data,
-    });
-    return NextResponse.json({ success: true, project: updated });
+    const saved = await saveStoredProject(body);
+    return NextResponse.json({ success: true, project: saved });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
@@ -71,8 +42,8 @@ export async function DELETE(req: NextRequest) {
     const id = searchParams.get('id');
     if (!id) return NextResponse.json({ error: 'ID required' }, { status: 400 });
 
-    await prisma.project.delete({ where: { id } });
-    return NextResponse.json({ success: true });
+    const ok = await deleteStoredProject(id);
+    return NextResponse.json({ success: ok });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
