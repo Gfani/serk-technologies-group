@@ -25,7 +25,7 @@ export default function Footer() {
             <p className="text-[13px] text-[#9AB4A9] leading-relaxed mb-4">
               Mekelle, Tigray, Ethiopia
               <br />
-              Sovereign Digital Systems
+              Enterprise Technology &amp; Systems
             </p>
             <a
               href="https://linkedin.com"

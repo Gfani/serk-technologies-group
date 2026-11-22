@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://serktechgroup.com'),
   title: 'SERK Technologies Group | Innovation with Integrity',
   description:
-    'Sovereign digital systems, intelligent platforms, and enterprise engineering built for Ethiopia and a wider world.',
+    'Enterprise digital systems, intelligent platforms, and practical engineering built for Ethiopia and a wider world.',
   keywords: [
     'SERK Technologies Group',
     'Software Engineering Ethiopia',

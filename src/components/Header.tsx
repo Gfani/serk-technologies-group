@@ -81,7 +81,7 @@ export default function Header({ theme }: { theme?: ThemeConfig }) {
                 SERK GROUP
               </span>
               <span className="text-[10px] font-semibold text-[#5B6761] tracking-wider uppercase mt-1">
-                Deep Tech &amp; Sovereign Systems
+                Deep Tech &amp; Enterprise Systems
               </span>
             </div>
           </Link>
@@ -149,7 +149,7 @@ export default function Header({ theme }: { theme?: ThemeConfig }) {
                   href="/products#future-innovation"
                   className="block px-4 py-2 text-xs font-medium text-[#101513] hover:bg-[#F4F7F5] hover:text-[#E3AB72]"
                 >
-                  Future Innovation &amp; Sovereign Tech (3)
+                  Future Innovation &amp; Enterprise Tech (3)
                 </Link>
               </div>
             </div>

@@ -764,14 +764,29 @@ html, body {
 
 /* Tablet Responsive (769px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
+  .elementor-1158 .elementor-element.elementor-element-5c127ac:not(.elementor-motion-effects-element-type-background),
+  .elementor-1158 .elementor-element.elementor-element-5c127ac > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+  .elementor-1158 .elementor-element.elementor-element-5c127ac,
   .elementor-element-5c127ac {
-    background-position: calc(100% + 60px) center !important;
+    background-position: calc(100% + 80px) center !important;
     background-size: cover !important;
     padding: 60px 24px !important;
     min-height: auto !important;
+    height: auto !important;
+  }
+  .elementor-section.elementor-section-height-full {
+    height: auto !important;
+    min-height: auto !important;
+  }
+  .elementor-element-5c127ac .elementor-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
   .elementor-element-6f91806 {
     max-width: 48% !important;
+    width: 48% !important;
   }
   .elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
   .elementor-element-9d25fef .elementor-heading-title {
@@ -782,6 +797,9 @@ html, body {
     font-size: 14.5px !important;
     line-height: 1.55 !important;
     max-width: 100% !important;
+  }
+  .elementor-element-efd0305 {
+    display: none !important;
   }
   .elementor-element-291bfca .elementor-widget-wrap {
     padding: 20px 16px !important;
@@ -796,57 +814,133 @@ html, body {
 
 /* Mobile Responsive (<= 768px) */
 @media (max-width: 768px) {
+  /* 1. Stop Elementor 100vh lock from causing vertical overflow into next section */
+  .elementor-section.elementor-section-height-full,
+  .elementor-section.elementor-section-height-default {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* 2. Completely eliminate the background graphic from behind the text */
+  .elementor-1158 .elementor-element.elementor-element-5c127ac:not(.elementor-motion-effects-element-type-background),
+  .elementor-1158 .elementor-element.elementor-element-5c127ac > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+  .elementor-1158 .elementor-element.elementor-element-5c127ac,
   .elementor-element-5c127ac {
     background-image: none !important;
     background-color: #FFFFFF !important;
     padding: 36px 16px 24px !important;
     min-height: auto !important;
     height: auto !important;
+    position: relative !important;
   }
-  .elementor-element-6f91806 {
-    max-width: 100% !important;
+
+  /* Hide motion effects layer container completely on mobile so it can NEVER overlap */
+  .elementor-element-5c127ac > .elementor-motion-effects-container {
+    display: none !important;
+  }
+
+  /* 3. Hero container MUST be a 1-column vertical stack */
+  .elementor-element-5c127ac .elementor-container {
+    display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
+    padding: 0 !important;
+    gap: 20px !important;
   }
+
+  /* Column 1: Text takes 100% width on top */
+  .elementor-element-5c127ac .elementor-column.elementor-element-6f91806,
+  .elementor-element-6f91806 {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* Title: Normal readable size, wraps into 2-3 clean lines */
   .elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
   .elementor-element-9d25fef .elementor-heading-title {
-    font-size: 32px !important;
-    line-height: 1.2 !important;
+    font-size: 30px !important;
+    line-height: 1.22 !important;
+    letter-spacing: -0.01em !important;
     text-shadow: none !important;
-    margin: 0 0 16px 0 !important;
+    margin: 0 0 14px 0 !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
   }
+
+  /* Subtitle paragraph */
+  .elementor-1158 .elementor-element.elementor-element-c154a22,
   .elementor-element-c154a22 {
     font-size: 15px !important;
     line-height: 1.6 !important;
     max-width: 100% !important;
-    margin: 0 0 20px 0 !important;
+    margin: 0 0 16px 0 !important;
     color: #5B6761 !important;
   }
+
   .elementor-element-c154a22 > .elementor-widget-container {
     margin: 0 !important;
     padding: 0 !important;
   }
+
+  /* Column 2: Displays the capsules illustration neatly BELOW the text in a clean card */
+  .elementor-element-5c127ac .elementor-column.elementor-element-efd0305,
   .elementor-element-efd0305 {
     display: block !important;
     width: 100% !important;
     max-width: 440px !important;
-    height: 350px !important;
-    margin: 16px auto 0 !important;
+    height: 300px !important;
+    margin: 10px auto 0 !important;
     background-image: url("/wp-content/uploads/serk/serk-hero.svg") !important;
     background-position: right center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     border-radius: 16px !important;
     overflow: hidden !important;
-    box-shadow: 0 10px 25px -5px rgba(16, 21, 19, 0.08) !important;
+    box-shadow: 0 8px 24px -4px rgba(16, 21, 19, 0.08) !important;
     border: 1px solid #DEE6E0 !important;
   }
+
+  /* 4. Fix About Us section overlap on mobile */
+  .elementor-1158 .elementor-element.elementor-element-ae74e37,
+  .elementor-element-ae74e37 {
+    margin-top: 30px !important;
+    margin-bottom: 0 !important;
+    clear: both !important;
+  }
+
+  .elementor-1158 .elementor-element.elementor-element-182920c {
+    flex-direction: column !important;
+    margin-top: 20px !important;
+    margin-bottom: 30px !important;
+    gap: 20px !important;
+  }
+
+  .elementor-1158 .elementor-element.elementor-element-621bf37 {
+    margin-top: 16px !important; /* Overrides the broken -134px negative margin */
+  }
+
+  .elementor-1158 .elementor-element.elementor-element-6701cf1 {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .elementor-1158 .elementor-element.elementor-element-a5aa277 img,
+  .elementor-1158 .elementor-element.elementor-element-de4ee63 img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
   .elementor-element-291bfca .elementor-widget-wrap {
     padding: 16px 12px !important;
   }
+
   .serk-why-img-frame {
     max-width: 100% !important;
-    height: 300px !important;
-    min-height: 260px !important;
+    height: 280px !important;
+    min-height: 240px !important;
     margin-top: 20px !important;
   }
 }
