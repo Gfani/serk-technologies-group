@@ -16,9 +16,9 @@ export default function Header({ theme, content }: { theme?: ThemeConfig; conten
 
   return (
     <header className="sticky top-0 z-50 w-full font-sans shadow-sm">
-      {/* ROW 1 (Utility bar) - Visible when two-row header is active */}
+      {/* ROW 1 (Utility bar) - Visible on tablet/desktop when two-row header is active */}
       {isTwoRow && (
-        <div className="bg-[#F4F7F5] border-b border-[#DEE6E0] h-[36px] text-[12.5px] text-[#5B6761] transition-all">
+        <div className="hidden md:block bg-[#F4F7F5] border-b border-[#DEE6E0] h-[36px] text-[12.5px] text-[#5B6761] transition-all">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
             {/* Left Nav */}
             <div className="hidden md:flex items-center space-x-6 font-medium">
@@ -85,7 +85,7 @@ export default function Header({ theme, content }: { theme?: ThemeConfig; conten
                 SERK GROUP
               </span>
               <span className="text-[10px] font-semibold text-[#5B6761] tracking-wider uppercase mt-1">
-                Deep Tech &amp; Sovereign Systems
+                {content?.header?.tagline || 'Deep Tech & Enterprise Systems'}
               </span>
             </div>
           </Link>
