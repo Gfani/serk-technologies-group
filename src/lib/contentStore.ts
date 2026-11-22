@@ -267,3 +267,4 @@ export async function deleteStoredProject(id: string): Promise<boolean> {
   }
   return true;
 }
+

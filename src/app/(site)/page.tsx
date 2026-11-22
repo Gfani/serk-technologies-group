@@ -18,6 +18,10 @@ export default async function HomePage() {
       <section className="relative w-full min-h-[85vh] serk-hero-bg flex items-center border-b border-[#DEE6E0] overflow-hidden">
         <div className="max-w-[1240px] w-full mx-auto px-6 sm:px-8 py-16 lg:py-24">
           <div className="max-w-2xl lg:max-w-xl space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(227,171,114,0.12)] border border-[#E3AB72]/40 text-xs font-semibold tracking-wider uppercase text-[#E3AB72]">
+              <span>Sovereign Digital Systems</span>
+              <span className="animate-pulse">|</span>
+            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-[#101513] font-serif leading-[1.14] tracking-tight">
               We Engineer the Systems Behind Better Business.
             </h1>

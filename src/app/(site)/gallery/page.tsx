@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { getGalleryMedia } from '@/lib/db';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
   title: 'Media Gallery | SERK Technologies Group',
@@ -14,8 +15,9 @@ export default async function GalleryPage() {
   const items = await getGalleryMedia();
 
   return (
-    <div className="w-full bg-[#F4F7F5] min-h-screen py-16 lg:py-20">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-[#F4F7F5] min-h-screen">
+      <AnimatedHeaderBanner title="Media Gallery" />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <div className="max-w-3xl mb-12">
           <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
             Visual Documentation

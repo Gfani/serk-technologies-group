@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Handshake, Building2, Stethoscope, Briefcase, CheckCircle2 } from 'lucide-react';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
   title: 'Partners & Clients Ecosystem | SERK Technologies Group',
@@ -35,8 +36,9 @@ export default function PartnersPage() {
   ];
 
   return (
-    <div className="w-full bg-[#F4F7F5] min-h-screen py-16 lg:py-20">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-[#F4F7F5] min-h-screen">
+      <AnimatedHeaderBanner title="Partners & Clients" />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <div className="max-w-3xl mb-12">
           <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
             Collaborative Ecosystem

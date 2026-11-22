@@ -47,27 +47,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-[13.5px] text-[#CDE5DC]">
               <li>
-                <Link href="/" className="hover:text-white transition-colors">
+                <Link href="/" className="hover:text-[#E3AB72] transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="hover:text-white transition-colors">
+                <Link href="/products" className="hover:text-[#E3AB72] transition-colors">
                   Products
                 </Link>
               </li>
               <li>
-                <Link href="/industries" className="hover:text-white transition-colors">
+                <Link href="/industries" className="hover:text-[#E3AB72] transition-colors">
                   Industries
                 </Link>
               </li>
               <li>
-                <Link href="/solutions" className="hover:text-white transition-colors">
+                <Link href="/solutions" className="hover:text-[#E3AB72] transition-colors">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/ventures" className="hover:text-white transition-colors">
+                <Link href="/ventures" className="hover:text-[#E3AB72] transition-colors">
                   Ventures
                 </Link>
               </li>
@@ -81,27 +81,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-[13.5px] text-[#CDE5DC]">
               <li>
-                <Link href="/about" className="hover:text-white transition-colors">
+                <Link href="/about" className="hover:text-[#E3AB72] transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/partners" className="hover:text-white transition-colors">
+                <Link href="/partners" className="hover:text-[#E3AB72] transition-colors">
                   Partners &amp; Clients
                 </Link>
               </li>
               <li>
-                <Link href="/gallery" className="hover:text-white transition-colors">
+                <Link href="/gallery" className="hover:text-[#E3AB72] transition-colors">
                   Media Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/insights" className="hover:text-white transition-colors">
+                <Link href="/insights" className="hover:text-[#E3AB72] transition-colors">
                   Insights
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
+                <Link href="/contact" className="hover:text-[#E3AB72] transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -117,28 +117,28 @@ export default function Footer() {
               <li>
                 <Link
                   href="/products/construction-intelligence-os"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#E3AB72] transition-colors"
                 >
                   Construction &amp; AI Estimator
                 </Link>
               </li>
               <li>
-                <Link href="/products/health-os" className="hover:text-white transition-colors">
+                <Link href="/products/health-os" className="hover:text-[#E3AB72] transition-colors">
                   Hospital Management System
                 </Link>
               </li>
               <li>
-                <Link href="/products/finance" className="hover:text-white transition-colors">
+                <Link href="/products/finance" className="hover:text-[#E3AB72] transition-colors">
                   Finance &amp; Audit Engine
                 </Link>
               </li>
               <li>
-                <Link href="/products/pos-hospitality" className="hover:text-white transition-colors">
+                <Link href="/products/pos-hospitality" className="hover:text-[#E3AB72] transition-colors">
                   Smart Retail &amp; POS
                 </Link>
               </li>
               <li>
-                <Link href="/solutions" className="hover:text-white transition-colors">
+                <Link href="/solutions" className="hover:text-[#E3AB72] transition-colors">
                   Systems Architecture
                 </Link>
               </li>

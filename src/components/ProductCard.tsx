@@ -11,7 +11,7 @@ export default function ProductCard({ project }: { project: ProjectItem }) {
     : [];
 
   return (
-    <div className="bg-white border border-[#DEE6E0] rounded-[8px] overflow-hidden flex flex-col hover:border-[#0D4634]/40 hover:shadow-md transition-all duration-200">
+    <div className="bg-white border border-[#DEE6E0] rounded-[8px] overflow-hidden flex flex-col hover:border-[#E3AB72] hover:shadow-lg transition-all duration-200">
       {/* Visual Header / Screenshot Frame */}
       {project.imageUrl && (
         <div className="w-full h-[200px] relative bg-[#F4F7F5] overflow-hidden border-b border-[#DEE6E0]">
@@ -50,7 +50,7 @@ export default function ProductCard({ project }: { project: ProjectItem }) {
             <div className="space-y-1.5 mb-5 pt-3 border-t border-[#DEE6E0]/60">
               {capabilitiesList.map((cap, i) => (
                 <div key={i} className="flex items-start text-[12.5px] text-[#101513]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0D4634] mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#E3AB72] mr-2 flex-shrink-0 mt-0.5" />
                   <span>{cap}</span>
                 </div>
               ))}
@@ -62,15 +62,15 @@ export default function ProductCard({ project }: { project: ProjectItem }) {
         <div className="pt-4 border-t border-[#DEE6E0] flex items-center justify-between">
           <Link
             href={`/products/${project.slug}`}
-            className="text-[13px] font-semibold text-[#0D4634] hover:text-[#2D735A] inline-flex items-center group"
+            className="text-[13px] font-semibold text-[#101513] hover:text-[#E3AB72] inline-flex items-center group transition-colors"
           >
             <span>Learn More &amp; Architecture</span>
-            <ArrowRight className="w-3.5 h-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform text-[#E3AB72]" />
           </Link>
           {project.publicCta && (
             <Link
               href={project.ctaUrl || '/contact'}
-              className="text-xs bg-[#F4F7F5] hover:bg-[#DEE6E0] text-[#101513] px-3 py-1.5 rounded font-medium transition-colors"
+              className="text-xs bg-[#F4F7F5] hover:bg-[rgba(227,171,114,0.15)] hover:text-[#101513] hover:border-[#E3AB72] border border-transparent text-[#101513] px-3 py-1.5 rounded font-medium transition-colors"
             >
               {project.publicCta}
             </Link>

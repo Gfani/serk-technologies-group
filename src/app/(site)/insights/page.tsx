@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import { ArrowRight, Calendar, User } from 'lucide-react';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
   title: 'Engineering Insights & Articles | SERK Technologies Group',
@@ -58,8 +59,9 @@ export default async function InsightsPage() {
   }
 
   return (
-    <div className="w-full bg-[#F4F7F5] min-h-screen py-16 lg:py-20">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-[#F4F7F5] min-h-screen">
+      <AnimatedHeaderBanner title="Insights & Perspectives" />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <div className="max-w-3xl mb-12">
           <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
             Thought Leadership & Architecture

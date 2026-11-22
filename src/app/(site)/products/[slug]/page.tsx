@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getProjectBySlug, getAllProjects } from '@/lib/db';
 import MaturityBadge from '@/components/MaturityBadge';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck, Cpu, ArrowUpRight } from 'lucide-react';
 
 export const revalidate = 60;
@@ -37,8 +38,9 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
     : [];
 
   return (
-    <div className="w-full bg-[#F4F7F5] min-h-screen py-16 lg:py-20">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-[#F4F7F5] min-h-screen">
+      <AnimatedHeaderBanner title={project.name} />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         {/* Breadcrumb */}
         <div className="mb-8">
           <Link

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
   title: 'Privacy Policy | SERK Technologies Group',
@@ -8,8 +9,9 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="w-full bg-white py-16 lg:py-24">
-      <div className="max-w-[840px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-white">
+      <AnimatedHeaderBanner title="Privacy Policy" />
+      <div className="max-w-[840px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
           Legal & Governance
         </span>

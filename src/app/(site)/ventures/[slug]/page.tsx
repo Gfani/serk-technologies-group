@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { venturesData } from '@/lib/venturesData';
 import MaturityBadge from '@/components/MaturityBadge';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export function generateStaticParams() {
   return venturesData.map((v) => ({ slug: v.slug }));
@@ -23,8 +24,9 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
   if (!v) notFound();
 
   return (
-    <div className="w-full bg-[#F4F7F5] min-h-screen py-16 lg:py-20">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-[#F4F7F5] min-h-screen">
+      <AnimatedHeaderBanner title={v.name} />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <div className="mb-8">
           <Link
             href="/ventures"

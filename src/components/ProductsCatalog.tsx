@@ -63,7 +63,7 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search platforms by name, capability, or industry (e.g., BOQ, Clinic, Tax)..."
-              className="w-full pl-10 pr-4 py-2.5 border border-[#DEE6E0] rounded text-sm text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#0D4634] focus:border-[#0D4634]"
+              className="w-full pl-10 pr-4 py-2.5 border border-[#DEE6E0] rounded text-sm text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#E3AB72] focus:border-[#E3AB72]"
             />
           </div>
 
@@ -72,7 +72,7 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
             <select
               value={selectedMaturity}
               onChange={(e) => setSelectedMaturity(e.target.value)}
-              className="w-full px-3.5 py-2.5 border border-[#DEE6E0] rounded text-sm text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#0D4634] focus:border-[#0D4634]"
+              className="w-full px-3.5 py-2.5 border border-[#DEE6E0] rounded text-sm text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#E3AB72] focus:border-[#E3AB72]"
             >
               {maturityOptions.map((opt) => (
                 <option key={opt.value} value={opt.value}>
@@ -86,16 +86,16 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
         {/* Category Pills */}
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#DEE6E0]">
           <span className="text-xs font-semibold text-[#5B6761] mr-1 flex items-center gap-1">
-            <Filter className="w-3 h-3" /> Sector:
+            <Filter className="w-3 h-3 text-[#E3AB72]" /> Sector:
           </span>
           {categories.map((cat) => (
             <button
               key={cat.value}
               onClick={() => setSelectedCategory(cat.value)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors border ${
                 selectedCategory === cat.value
-                  ? 'bg-[#0D4634] text-white'
-                  : 'bg-[#F4F7F5] text-[#5B6761] hover:bg-[#DEE6E0]'
+                  ? 'bg-[rgba(227,171,114,0.15)] text-[#101513] border-[#E3AB72] font-semibold shadow-xs'
+                  : 'bg-[#F4F7F5] text-[#5B6761] border-transparent hover:border-[#E3AB72] hover:text-[#101513]'
               }`}
             >
               {cat.label}

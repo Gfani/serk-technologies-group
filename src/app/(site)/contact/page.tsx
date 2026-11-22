@@ -1,6 +1,7 @@
 import React from 'react';
 import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
   title: 'Contact Us & Request a Demo | SERK Technologies Group',
@@ -11,6 +12,7 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <div className="w-full">
+      <AnimatedHeaderBanner title="Contact Us" />
       {/* 1. HERO */}
       <section className="bg-white border-b border-[#DEE6E0] py-16 lg:py-20">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">

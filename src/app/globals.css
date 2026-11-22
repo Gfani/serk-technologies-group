@@ -63,3 +63,42 @@ h1, h2, h3, h4 {
 .badge-clean {
   border-radius: var(--border-radius);
 }
+
+/* Orange Brand Accents & Animated Header */
+.text-brand-orange {
+  color: #E3AB72 !important;
+}
+
+.border-brand-orange {
+  border-color: #E3AB72 !important;
+}
+
+.bg-brand-orange {
+  background-color: #E3AB72 !important;
+}
+
+.bg-brand-orange-light {
+  background-color: rgba(227, 171, 114, 0.12) !important;
+}
+
+.wpr-anim-text,
+.wpr-anim-text b,
+.serk-page-header-banner .wpr-anim-text b {
+  color: #E3AB72 !important;
+  font-family: var(--font-heading) !important;
+  font-size: 52px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  display: inline-block !important;
+}
+
+.wpr-anim-text-cursor {
+  color: #E3AB72 !important;
+  font-size: 52px !important;
+  animation: serkCursorPulse 0.8s infinite !important;
+}
+
+@keyframes serkCursorPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

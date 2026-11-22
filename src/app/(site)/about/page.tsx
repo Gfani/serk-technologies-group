@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, Shield, HeartHandshake, Compass, Users } from 'lucide-react';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
   title: 'About Us | SERK Technologies Group',
@@ -12,6 +13,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div className="w-full">
+      <AnimatedHeaderBanner title="About Us" />
       {/* 1. HERO */}
       <section className="bg-white border-b border-[#DEE6E0] py-16 lg:py-24">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">

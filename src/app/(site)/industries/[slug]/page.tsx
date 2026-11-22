@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { industriesData } from '@/lib/industriesData';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export function generateStaticParams() {
   return industriesData.map((ind) => ({ slug: ind.slug }));
@@ -24,8 +25,9 @@ export default function IndustryDetailPage({ params }: { params: { slug: string 
   const Icon = ind.icon;
 
   return (
-    <div className="w-full bg-[#F4F7F5] min-h-screen py-16 lg:py-20">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-[#F4F7F5] min-h-screen">
+      <AnimatedHeaderBanner title={ind.name} />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <div className="mb-8">
           <Link
             href="/industries"

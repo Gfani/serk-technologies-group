@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
   title: 'Terms of Service | SERK Technologies Group',
@@ -8,8 +9,9 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="w-full bg-white py-16 lg:py-24">
-      <div className="max-w-[840px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-white">
+      <AnimatedHeaderBanner title="Terms of Service" />
+      <div className="max-w-[840px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
           Legal & Governance
         </span>

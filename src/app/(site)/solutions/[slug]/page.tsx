@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { solutionsData } from '@/lib/solutionsData';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export function generateStaticParams() {
   return solutionsData.map((s) => ({ slug: s.slug }));
@@ -24,8 +25,9 @@ export default function SolutionDetailPage({ params }: { params: { slug: string 
   const Icon = sol.icon;
 
   return (
-    <div className="w-full bg-[#F4F7F5] min-h-screen py-16 lg:py-20">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-[#F4F7F5] min-h-screen">
+      <AnimatedHeaderBanner title={sol.title} />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <div className="mb-8">
           <Link
             href="/solutions"

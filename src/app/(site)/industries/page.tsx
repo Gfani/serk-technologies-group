@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { industriesData } from '@/lib/industriesData';
+import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
   title: 'Industry Verticals | SERK Technologies Group',
@@ -11,8 +12,9 @@ export const metadata = {
 
 export default function IndustriesPage() {
   return (
-    <div className="w-full bg-[#F4F7F5] min-h-screen py-16 lg:py-20">
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+    <div className="w-full bg-[#F4F7F5] min-h-screen">
+      <AnimatedHeaderBanner title="Industry Sectors" />
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <div className="max-w-3xl mb-12">
           <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
             Specialized Verticals
