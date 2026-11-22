@@ -11,13 +11,14 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const categories = [
-    'All',
-    'Healthcare & Clinical',
-    'Construction & Engineering',
-    'Finance & Audit',
-    'Retail & Commerce',
-    'Enterprise Software & AI',
-    'Digital Ventures',
+    { label: 'All (23)', value: 'All' },
+    { label: 'Sector Intelligence', value: 'sector-intelligence' },
+    { label: 'AI & Security', value: 'ai-security' },
+    { label: 'Enterprise & Operations', value: 'enterprise-operations' },
+    { label: 'Core Solutions', value: 'solutions' },
+    { label: 'Digital Ventures', value: 'ventures' },
+    { label: 'Affiliated Businesses', value: 'affiliated' },
+    { label: 'Future Innovation', value: 'future-innovation' },
   ];
 
   const maturityOptions: { label: string; value: string }[] = [
@@ -41,18 +42,7 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
     // Category
     const matchesCategory =
       selectedCategory === 'All' ||
-      (selectedCategory === 'Healthcare & Clinical' &&
-        (p.category.includes('Healthcare') || p.category.includes('Clinic') || p.category.includes('Hospital'))) ||
-      (selectedCategory === 'Construction & Engineering' &&
-        (p.category.includes('Construction') || p.category.includes('BOQ') || p.category.includes('Engineering'))) ||
-      (selectedCategory === 'Finance & Audit' &&
-        (p.category.includes('Finance') || p.category.includes('Audit') || p.category.includes('Tax'))) ||
-      (selectedCategory === 'Retail & Commerce' &&
-        (p.category.includes('Retail') || p.category.includes('POS') || p.category.includes('Commerce'))) ||
-      (selectedCategory === 'Enterprise Software & AI' &&
-        (p.category.includes('Enterprise') || p.category.includes('AI') || p.category.includes('Architecture'))) ||
-      (selectedCategory === 'Digital Ventures' &&
-        (p.category.includes('Venture') || p.maturity === 'OPERATING_VENTURE'));
+      p.category.toLowerCase() === selectedCategory.toLowerCase();
 
     // Maturity
     const matchesMaturity = selectedMaturity === 'All' || p.maturity === selectedMaturity;
@@ -100,15 +90,15 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
           </span>
           {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              key={cat.value}
+              onClick={() => setSelectedCategory(cat.value)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                selectedCategory === cat
+                selectedCategory === cat.value
                   ? 'bg-[#0D4634] text-white'
                   : 'bg-[#F4F7F5] text-[#5B6761] hover:bg-[#DEE6E0]'
               }`}
             >
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>

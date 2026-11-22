@@ -244,7 +244,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       <nav class="serk-nav-desktop" aria-label="Main Navigation">
         <ul class="serk-menu">
           <li><a href="/" class="serk-nav-link active">Home</a></li>
-          <li><a href="/products/" class="serk-nav-link ">Products</a></li>
+          <li class="serk-menu-item-has-children">
+            <a href="/products/" class="serk-nav-link ">Products <svg style="display:inline-block;vertical-align:middle;margin-left:3px;" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></a>
+            <ul class="serk-sub-menu">
+              <li><a href="/products/#sector-intelligence">Sector Intelligence (3)</a></li>
+              <li><a href="/products/#ai-security">AI &amp; Security (3)</a></li>
+              <li><a href="/products/#enterprise-operations">Enterprise &amp; Operations (4)</a></li>
+              <li><a href="/products/#solutions">Core Solutions (2)</a></li>
+              <li><a href="/products/#ventures">Digital Ventures (4)</a></li>
+              <li><a href="/products/#affiliated">Affiliated Businesses (4)</a></li>
+              <li><a href="/products/#future-innovation">Future Innovation (3)</a></li>
+            </ul>
+          </li>
           <li><a href="/industries/" class="serk-nav-link ">Industries</a></li>
           <li><a href="/services/" class="serk-nav-link ">Services</a></li>
           <li><a href="/ventures/" class="serk-nav-link ">Ventures</a></li>
@@ -266,7 +277,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       <div class="serk-mobile-title">Core Navigation</div>
       <ul class="serk-mobile-list">
         <li><a href="/" style="color:#101513;font-weight:700;">Home</a></li>
-        <li><a href="/products/" style="">Products</a></li>
+        <li class="serk-mobile-item-has-children">
+        <a href="/products/" style="color:#101513;font-weight:700;">Products</a>
+        <ul style="list-style:none;margin:4px 0 10px 12px;padding:0;border-left:2px solid #DEE6E0;">
+          <li><a href="/products/#sector-intelligence" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Sector Intelligence</a></li>
+          <li><a href="/products/#ai-security" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">AI &amp; Security</a></li>
+          <li><a href="/products/#enterprise-operations" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Enterprise &amp; Operations</a></li>
+          <li><a href="/products/#solutions" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Core Solutions</a></li>
+          <li><a href="/products/#ventures" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Digital Ventures</a></li>
+          <li><a href="/products/#affiliated" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Affiliated Businesses</a></li>
+          <li><a href="/products/#future-innovation" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Future Innovation</a></li>
+        </ul>
+      </li>
         <li><a href="/industries/" style="">Industries</a></li>
         <li><a href="/services/" style="">Services</a></li>
         <li><a href="/ventures/" style="">Ventures</a></li>

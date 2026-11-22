@@ -75,6 +75,25 @@ const nextConfig = {
       fallback: [],
     };
   },
+  async redirects() {
+    return [
+      { source: '/affiliated', destination: '/products#affiliated', permanent: false },
+      { source: '/affiliated/', destination: '/products#affiliated', permanent: false },
+      { source: '/category/affiliated', destination: '/products#affiliated', permanent: false },
+      { source: '/future-innovation', destination: '/products#future-innovation', permanent: false },
+      { source: '/future-innovation/', destination: '/products#future-innovation', permanent: false },
+      { source: '/category/future-innovation', destination: '/products#future-innovation', permanent: false },
+      { source: '/ai-security', destination: '/products#ai-security', permanent: false },
+      { source: '/ai-security/', destination: '/products#ai-security', permanent: false },
+      { source: '/category/ai-security', destination: '/products#ai-security', permanent: false },
+      { source: '/sector-intelligence', destination: '/products#sector-intelligence', permanent: false },
+      { source: '/sector-intelligence/', destination: '/products#sector-intelligence', permanent: false },
+      { source: '/category/sector-intelligence', destination: '/products#sector-intelligence', permanent: false },
+      { source: '/enterprise-operations', destination: '/products#enterprise-operations', permanent: false },
+      { source: '/enterprise-operations/', destination: '/products#enterprise-operations', permanent: false },
+      { source: '/category/enterprise-operations', destination: '/products#enterprise-operations', permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;

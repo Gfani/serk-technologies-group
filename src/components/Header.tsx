@@ -91,9 +91,68 @@ export default function Header({ theme }: { theme?: ThemeConfig }) {
             <Link href="/" className="hover:text-[#0D4634] transition-colors">
               Home
             </Link>
-            <Link href="/products" className="hover:text-[#0D4634] transition-colors">
-              Products
-            </Link>
+            {/* Products with Categories Dropdown */}
+            <div className="relative group py-2">
+              <Link
+                href="/products"
+                className="hover:text-[#0D4634] transition-colors flex items-center gap-1"
+              >
+                <span>Products</span>
+                <svg
+                  className="w-3 h-3 text-[#5B6761] group-hover:text-[#0D4634] transition-colors"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </Link>
+              <div className="absolute top-full left-0 w-64 bg-white border border-[#DEE6E0] rounded-lg shadow-xl py-2 hidden group-hover:block transition-all z-50">
+                <Link
+                  href="/products#sector-intelligence"
+                  className="block px-4 py-2 text-xs font-medium text-[#101513] hover:bg-[#F4F7F5] hover:text-[#0D4634]"
+                >
+                  Sector Intelligence (3)
+                </Link>
+                <Link
+                  href="/products#ai-security"
+                  className="block px-4 py-2 text-xs font-medium text-[#101513] hover:bg-[#F4F7F5] hover:text-[#0D4634]"
+                >
+                  AI &amp; Security Research (3)
+                </Link>
+                <Link
+                  href="/products#enterprise-operations"
+                  className="block px-4 py-2 text-xs font-medium text-[#101513] hover:bg-[#F4F7F5] hover:text-[#0D4634]"
+                >
+                  Enterprise &amp; Operations (4)
+                </Link>
+                <Link
+                  href="/products#solutions"
+                  className="block px-4 py-2 text-xs font-medium text-[#101513] hover:bg-[#F4F7F5] hover:text-[#0D4634]"
+                >
+                  Core Solutions &amp; Integrations (2)
+                </Link>
+                <Link
+                  href="/products#ventures"
+                  className="block px-4 py-2 text-xs font-medium text-[#101513] hover:bg-[#F4F7F5] hover:text-[#0D4634]"
+                >
+                  Digital Ventures (4)
+                </Link>
+                <Link
+                  href="/products#affiliated"
+                  className="block px-4 py-2 text-xs font-medium text-[#101513] hover:bg-[#F4F7F5] hover:text-[#0D4634]"
+                >
+                  Affiliated Businesses (4)
+                </Link>
+                <Link
+                  href="/products#future-innovation"
+                  className="block px-4 py-2 text-xs font-medium text-[#101513] hover:bg-[#F4F7F5] hover:text-[#0D4634]"
+                >
+                  Future Innovation &amp; Sovereign Tech (3)
+                </Link>
+              </div>
+            </div>
             <Link href="/industries" className="hover:text-[#0D4634] transition-colors">
               Industries
             </Link>
@@ -140,13 +199,24 @@ export default function Header({ theme }: { theme?: ThemeConfig }) {
             >
               Home
             </Link>
-            <Link
-              href="/products"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-[#0D4634]"
-            >
-              Products &amp; Platforms
-            </Link>
+            <div>
+              <Link
+                href="/products"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-1 hover:text-[#0D4634] font-semibold flex items-center justify-between"
+              >
+                <span>Products &amp; Platforms (23)</span>
+              </Link>
+              <div className="pl-3 py-1 space-y-1 border-l-2 border-[#DEE6E0] ml-1 mt-1 text-xs text-[#5B6761]">
+                <Link href="/products#sector-intelligence" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#0D4634]">Sector Intelligence</Link>
+                <Link href="/products#ai-security" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#0D4634]">AI &amp; Security Research</Link>
+                <Link href="/products#enterprise-operations" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#0D4634]">Enterprise &amp; Operations</Link>
+                <Link href="/products#solutions" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#0D4634]">Core Solutions</Link>
+                <Link href="/products#ventures" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#0D4634]">Digital Ventures</Link>
+                <Link href="/products#affiliated" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#0D4634]">Affiliated Businesses</Link>
+                <Link href="/products#future-innovation" onClick={() => setMobileMenuOpen(false)} className="block py-1 hover:text-[#0D4634]">Future Innovation</Link>
+              </div>
+            </div>
             <Link
               href="/industries"
               onClick={() => setMobileMenuOpen(false)}

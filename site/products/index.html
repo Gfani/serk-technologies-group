@@ -244,7 +244,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       <nav class="serk-nav-desktop" aria-label="Main Navigation">
         <ul class="serk-menu">
           <li><a href="/" class="serk-nav-link ">Home</a></li>
-          <li><a href="/products/" class="serk-nav-link active">Products</a></li>
+          <li class="serk-menu-item-has-children">
+            <a href="/products/" class="serk-nav-link active">Products <svg style="display:inline-block;vertical-align:middle;margin-left:3px;" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></a>
+            <ul class="serk-sub-menu">
+              <li><a href="/products/#sector-intelligence">Sector Intelligence (3)</a></li>
+              <li><a href="/products/#ai-security">AI &amp; Security (3)</a></li>
+              <li><a href="/products/#enterprise-operations">Enterprise &amp; Operations (4)</a></li>
+              <li><a href="/products/#solutions">Core Solutions (2)</a></li>
+              <li><a href="/products/#ventures">Digital Ventures (4)</a></li>
+              <li><a href="/products/#affiliated">Affiliated Businesses (4)</a></li>
+              <li><a href="/products/#future-innovation">Future Innovation (3)</a></li>
+            </ul>
+          </li>
           <li><a href="/industries/" class="serk-nav-link ">Industries</a></li>
           <li><a href="/services/" class="serk-nav-link ">Services</a></li>
           <li><a href="/ventures/" class="serk-nav-link ">Ventures</a></li>
@@ -266,7 +277,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       <div class="serk-mobile-title">Core Navigation</div>
       <ul class="serk-mobile-list">
         <li><a href="/" style="">Home</a></li>
-        <li><a href="/products/" style="color:#101513;font-weight:700;">Products</a></li>
+        <li class="serk-mobile-item-has-children">
+        <a href="/products/" style="color:#101513;font-weight:700;">Products</a>
+        <ul style="list-style:none;margin:4px 0 10px 12px;padding:0;border-left:2px solid #DEE6E0;">
+          <li><a href="/products/#sector-intelligence" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Sector Intelligence</a></li>
+          <li><a href="/products/#ai-security" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">AI &amp; Security</a></li>
+          <li><a href="/products/#enterprise-operations" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Enterprise &amp; Operations</a></li>
+          <li><a href="/products/#solutions" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Core Solutions</a></li>
+          <li><a href="/products/#ventures" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Digital Ventures</a></li>
+          <li><a href="/products/#affiliated" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Affiliated Businesses</a></li>
+          <li><a href="/products/#future-innovation" style="font-size:13px;color:#5B6761;padding:2px 0 2px 10px;">Future Innovation</a></li>
+        </ul>
+      </li>
         <li><a href="/industries/" style="">Industries</a></li>
         <li><a href="/services/" style="">Services</a></li>
         <li><a href="/ventures/" style="">Ventures</a></li>
@@ -303,159 +325,430 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main style="padding: 60px 20px 100px 20px; background: #FCFCFE;">
+        <!-- Main Content -->
+    <main style="padding: 40px 20px 100px 20px; background: #FCFCFE;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            
-<!-- Group 1: Enterprise & Operations -->
-<div style="margin-bottom: 60px;">
-    <div style="border-bottom: 2px solid #101513; padding-bottom: 12px; margin-bottom: 30px;">
-        <h2 style="font-size: 1.8rem; font-weight: 700; color: #101513; margin: 0;">Enterprise &amp; Operations</h2>
-        <p style="color: #5B6761; margin: 4px 0 0 0;">Connected systems that streamline daily operations, records, sales, and supplies.</p>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px;">
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px;">
-                    <img src="/wp-content/uploads/serk/serk-photo-lobby.jpg" alt="SERK Workplace OS" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <span class="serk-badge serk-badge-alpha"><span>Internal Alpha / Development</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">SERK Office OS</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Unified workplace operating system connecting attendance, Gregorian &amp; Ethiopian calendars, payroll, asset registers, and project task boards.</p>
-            </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=office" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Discuss Workplace OS</a>
-            </div>
+
+            <!-- Sticky Category Jump Navigation Bar -->
+            <nav class="serk-category-nav" style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 14px 18px; margin-bottom: 48px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; position: sticky; top: 76px; z-index: 40; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+                <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #5B6761; letter-spacing: 0.06em; margin-right: 6px;">Categories:</span>
+  <a href="#sector-intelligence" class="serk-cat-pill">Sector Intelligence <span style="opacity:0.65;font-size:11px;">(3)</span></a>
+  <a href="#ai-security" class="serk-cat-pill">AI & Security Research <span style="opacity:0.65;font-size:11px;">(3)</span></a>
+  <a href="#enterprise-operations" class="serk-cat-pill">Enterprise & Operations <span style="opacity:0.65;font-size:11px;">(4)</span></a>
+  <a href="#solutions" class="serk-cat-pill">Core Solutions & Integrations <span style="opacity:0.65;font-size:11px;">(2)</span></a>
+  <a href="#ventures" class="serk-cat-pill">Digital Ventures <span style="opacity:0.65;font-size:11px;">(4)</span></a>
+  <a href="#affiliated" class="serk-cat-pill">Affiliated & Associated Businesses <span style="opacity:0.65;font-size:11px;">(4)</span></a>
+  <a href="#future-innovation" class="serk-cat-pill">Future Innovation & Sovereign Tech <span style="opacity:0.65;font-size:11px;">(3)</span></a>
+            </nav>
+
+<!-- Category Section: Sector Intelligence (sector-intelligence) -->
+<div id="sector-intelligence" style="margin-bottom: 70px; scroll-margin-top: 160px;">
+    <div style="border-bottom: 2px solid #101513; padding-bottom: 14px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h2 style="font-size: 1.75rem; font-weight: 700; color: #101513; margin: 0;">Sector Intelligence</h2>
+            <span style="font-size: 0.85rem; font-weight: 600; color: #5B6761; background: #F4F7F5; padding: 3px 10px; border-radius: 20px; border: 1px solid #DEE6E0;">3 Platforms</span>
         </div>
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+        <p style="color: #5B6761; margin: 0; font-size: 0.98rem; line-height: 1.5;">Specialized vertical platforms engineering decisions and workflows for construction and healthcare.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
             <div>
                 <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
-                    <img src="/wp-content/uploads/serk/serk-svc-business.svg" alt="SERK Connected Finance Ledgers" style="max-height: 130px; width: auto;">
+                    <img src="/images/serk-photo-construction.jpg" alt="SERK Construction Intelligence OS" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">SERK Finance</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Connected ledgers, automated transaction matching, and anomaly cues with transparent verification for calm, accurate month-end closes.</p>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Construction Intelligence OS</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">A unified digital construction environment connecting tenders, BOQ takeoff, procurement requisitions, site measurement, interim payment certificates (IPC), and cost-to-complete forecasting.</p>
             </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=finance" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Plan Finance Digitization</a>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/construction-intelligence-os/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Request an Engineering Demo</a>
+                <a href="/contact_us/?interest=construction-intelligence-os" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
             </div>
         </div>
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
             <div>
-                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px;">
-                    <img src="/wp-content/uploads/serk/serk-photo-pos.jpg" alt="SERK POS in Retail &amp; Hospitality" style="width: 100%; height: 100%; object-fit: cover;">
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/serk-photo-health.jpg" alt="SERK Health OS / Hospital Management" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Health OS / Hospital Management</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Secure clinical and hospital operating environment connecting patient registration, OPD/IPD queues, clinician encounter notes, laboratory orders, pharmacy stock, and billing.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/health-os/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Discuss Healthcare Digitization</a>
+                <a href="/contact_us/?interest=health-os" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/pill_health.jpg" alt="SERK Clinic OS (Dental & Multi-specialty)" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Clinic OS (Dental & Multi-specialty)</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Calm, complete clinical management tailored for dental and outpatient specialty clinics—appointments, specialized charting, procedure plans, billing, and patient recalls.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/clinic-os/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Book a Clinic Demo</a>
+                <a href="/contact_us/?interest=clinic-os" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Category Section: AI & Security Research (ai-security) -->
+<div id="ai-security" style="margin-bottom: 70px; scroll-margin-top: 160px;">
+    <div style="border-bottom: 2px solid #101513; padding-bottom: 14px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h2 style="font-size: 1.75rem; font-weight: 700; color: #101513; margin: 0;">AI & Security Research</h2>
+            <span style="font-size: 0.85rem; font-weight: 600; color: #5B6761; background: #F4F7F5; padding: 3px 10px; border-radius: 20px; border: 1px solid #DEE6E0;">3 Platforms</span>
+        </div>
+        <p style="color: #5B6761; margin: 0; font-size: 0.98rem; line-height: 1.5;">Engineering foundations for governed multi-model intelligence, cybersecurity, and quantitative estimating.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/pill_eng.jpg" alt="SERK 5D Engineering Lab & AI Estimator" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Research & Prototype</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK 5D Engineering Lab & AI Estimator</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Advanced engineering R&D turning 2D design drawings and 3D BIM models into reviewable takeoff quantities, auditable cost histories, and structured BOQ rate build-ups.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/5d-engineering-lab/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">See Estimating Research</a>
+                <a href="/contact_us/?interest=5d-engineering-lab" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/serk-photo-engineering.jpg" alt="SERK QUORUM — Multi-AI Engineering Framework" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Research & Prototype</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK QUORUM — Multi-AI Engineering Framework</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Governed multi-model orchestration framework exploring collaborative AI workflows with strict human approval gates, audit trails, and source provenance.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/quorum/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore the QUORUM Initiative</a>
+                <a href="/contact_us/?interest=quorum" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/pill_market.jpg" alt="SERK Sentinel AI / Cyber Labs" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Research & Prototype</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Sentinel AI / Cyber Labs</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Security engineering and defensive cyber systems combining secure architecture review, authorized penetration testing, and AI-era infrastructure defense.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/sentinel-ai/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Discuss Security Readiness</a>
+                <a href="/contact_us/?interest=sentinel-ai" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Category Section: Enterprise & Operations (enterprise-operations) -->
+<div id="enterprise-operations" style="margin-bottom: 70px; scroll-margin-top: 160px;">
+    <div style="border-bottom: 2px solid #101513; padding-bottom: 14px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h2 style="font-size: 1.75rem; font-weight: 700; color: #101513; margin: 0;">Enterprise & Operations</h2>
+            <span style="font-size: 0.85rem; font-weight: 600; color: #5B6761; background: #F4F7F5; padding: 3px 10px; border-radius: 20px; border: 1px solid #DEE6E0;">4 Platforms</span>
+        </div>
+        <p style="color: #5B6761; margin: 0; font-size: 0.98rem; line-height: 1.5;">Connected software environments that streamline core administrative, financial, sales, and supply chain operations.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/wp-content/uploads/serk/serk-photo-lobby.jpg" alt="SERK Office OS" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Internal Alpha / Development</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Office OS</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">All-in-one workplace and administrative operations system linking staff records, attendance, payroll, spending approvals, asset registers, and task boards.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/office-os/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore Workplace Automation</a>
+                <a href="/contact_us/?interest=office-os" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/pill_market.jpg" alt="SERK Finance / Accounting Intelligence" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Research & Prototype</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Finance / Accounting Intelligence</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Traceable financial ledger and accounting workflow system connecting transaction records, bank reconciliations, expense approvals, and multi-location management reports.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/finance/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Plan Your Finance Digitization</a>
+                <a href="/contact_us/?interest=finance" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/serk-photo-pos.jpg" alt="SERK POS, Hospitality & Retail ERP" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <span class="serk-badge serk-badge-production"><span>Production Available</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">SERK POS &amp; Retail</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Fast, reliable checkout for counters, live inventory depletion, recipe cost intelligence, and multi-branch management for shops and restaurants.</p>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK POS, Hospitality & Retail ERP</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">High-speed sales counter, kitchen ticket dispatch, inventory deduction, multi-branch price lists, and end-of-day revenue closeouts for restaurants, cafes, and retail stores.</p>
             </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=pos" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Request a POS Walkthrough</a>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/pos-hospitality/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Request a POS Walkthrough</a>
+                <a href="/contact_us/?interest=pos-hospitality" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
             </div>
         </div>
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
             <div>
                 <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
-                    <img src="/wp-content/uploads/serk/serk-platforms.svg" alt="SERK Materials Supply Chain" style="max-height: 130px; width: auto;">
+                    <img src="/wp-content/uploads/serk/serk-platforms.svg" alt="SERK Materials / Building Materials Platform" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
-                <span class="serk-badge serk-badge-alpha"><span>Internal Alpha / Development</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">SERK Materials</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Supply-chain and building material operations: unit/grade catalogues, supplier RFQs, multi-branch stock, and contractor credit limits.</p>
+                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Materials / Building Materials Platform</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Sector-specific materials inventory and commercial supply platform managing product units, warehouse branches, supplier price histories, and site deliveries.</p>
             </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=materials" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Modernize Materials Supply</a>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/materials/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Modernize Materials Supply</a>
+                <a href="/contact_us/?interest=materials" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Group 2: Sector Intelligence -->
-<div style="margin-bottom: 60px;">
-    <div style="border-bottom: 2px solid #101513; padding-bottom: 12px; margin-bottom: 30px;">
-        <h2 style="font-size: 1.8rem; font-weight: 700; color: #101513; margin: 0;">Sector Intelligence</h2>
-        <p style="color: #5B6761; margin: 4px 0 0 0;">Domain-specific platforms engineering decisions for healthcare and construction.</p>
+<!-- Category Section: Core Solutions & Integrations (solutions) -->
+<div id="solutions" style="margin-bottom: 70px; scroll-margin-top: 160px;">
+    <div style="border-bottom: 2px solid #101513; padding-bottom: 14px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h2 style="font-size: 1.75rem; font-weight: 700; color: #101513; margin: 0;">Core Solutions & Integrations</h2>
+            <span style="font-size: 0.85rem; font-weight: 600; color: #5B6761; background: #F4F7F5; padding: 3px 10px; border-radius: 20px; border: 1px solid #DEE6E0;">2 Platforms</span>
+        </div>
+        <p style="color: #5B6761; margin: 0; font-size: 0.98rem; line-height: 1.5;">Purpose-built operational automation, workflow copilots, and financial infrastructure linking legacy systems.</p>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px;">
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px;">
-                    <img src="/wp-content/uploads/serk/serk-photo-construction.jpg" alt="Construction Intelligence on Active Sites" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">Construction Intelligence OS</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Unified construction management connecting drawing takeoff, priced BOQs, site progress, subcontractor procurement, and payment certificates.</p>
-            </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=construction" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Explore Construction OS</a>
-            </div>
-        </div>
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px;">
-                    <img src="/wp-content/uploads/serk/serk-photo-engineering.jpg" alt="5D Engineering R&amp;D Studio" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <span class="serk-badge serk-badge-alpha"><span>Research &amp; Innovation</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">5D Engineering Lab</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Specialist estimating R&amp;D exploring model-assisted takeoff, IFC/BIM quantity mapping, and auditable rate analysis libraries.</p>
-            </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=construction" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">See Estimating Research</a>
-            </div>
-        </div>
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px;">
-                    <img src="/wp-content/uploads/serk/serk-photo-health.jpg" alt="Healthcare Management &amp; Patient Encounters" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">SERK Health OS</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Comprehensive hospital management coordinating patient registration, clinical encounters, lab sample workflows, pharmacy, and billing.</p>
-            </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=health" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Discuss Health OS</a>
-            </div>
-        </div>
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
             <div>
                 <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
-                    <img src="/wp-content/uploads/serk/serk-svc-hospital.svg" alt="SERK Modular Clinic Software" style="max-height: 130px; width: auto;">
+                    <img src="/images/serk-photo-engineering.jpg" alt="SERK Automation & Workflow Copilots" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
-                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">SERK Clinic OS</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Modular practice management designed for dental and multi-specialty clinics: tooth charting, procedure plans, clinical images, and recall prompts.</p>
+                <span class="serk-badge serk-badge-production"><span>Production Available</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Automation & Workflow Copilots</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Custom operational automations replacing repetitive manual spreadsheet entry, approval bottlenecks, and disconnected messaging with event-driven pipelines.</p>
             </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=health" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Book Clinic Demo</a>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/ai-automation/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Show Us Your Repetitive Process</a>
+                <a href="/contact_us/?interest=ai-automation" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/client-hibret-bank.png" alt="SERK Pay / Financial Integrations" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Concept / Feasibility</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Pay / Financial Integrations</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Transaction enablement and payment gateway integration architecture connecting e-commerce checkouts and ERPs with authorized Ethiopian banking providers.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/serk-pay/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Discuss Payments Integration</a>
+                <a href="/contact_us/?interest=serk-pay" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Group 3: AI & Security Research -->
-<div>
-    <div style="border-bottom: 2px solid #101513; padding-bottom: 12px; margin-bottom: 30px;">
-        <h2 style="font-size: 1.8rem; font-weight: 700; color: #101513; margin: 0;">AI &amp; Security Research</h2>
-        <p style="color: #5B6761; margin: 4px 0 0 0;">Engineering foundations for multi-model governance, cybersecurity, and controlled automation.</p>
+<!-- Category Section: Digital Ventures (ventures) -->
+<div id="ventures" style="margin-bottom: 70px; scroll-margin-top: 160px;">
+    <div style="border-bottom: 2px solid #101513; padding-bottom: 14px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h2 style="font-size: 1.75rem; font-weight: 700; color: #101513; margin: 0;">Digital Ventures</h2>
+            <span style="font-size: 0.85rem; font-weight: 600; color: #5B6761; background: #F4F7F5; padding: 3px 10px; border-radius: 20px; border: 1px solid #DEE6E0;">4 Platforms</span>
+        </div>
+        <p style="color: #5B6761; margin: 0; font-size: 0.98rem; line-height: 1.5;">Autonomous digital platforms exploring urban mobility, connected delivery, transparent commerce, and heritage tourism.</p>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px;">
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
             <div>
-                <span class="serk-badge serk-badge-alpha"><span>Research &amp; Innovation</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">SERK QUORUM</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Multi-AI engineering and orchestration framework: model routing, citation provenance, and structured decision records with humans in the loop.</p>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/serk-photo-lobby.jpg" alt="Segar Ride — Urban Mobility" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">Segar Ride — Urban Mobility</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Accountable urban mobility platform connecting riders with vetted drivers through transparent pricing, verified routes, and dedicated fleet operator tools.</p>
             </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=ai" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Explore QUORUM</a>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/segar-ride/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Discover Segar Mobility</a>
+                <a href="/contact_us/?interest=segar-ride" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
             </div>
         </div>
-        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
             <div>
-                <span class="serk-badge serk-badge-alpha"><span>Research &amp; Innovation</span></span>
-                <h3 style="font-size: 1.35rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0;">SERK Sentinel AI &amp; Cyber Labs</h3>
-                <p style="font-size: 0.95rem; color: #5B6761; line-height: 1.6;">Security architecture review, API hardening, threat modeling, and defensive observability for cloud systems and AI application boundaries.</p>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/wp-content/uploads/serk/serk-why-choose.jpg" alt="Segar Delivery & Express" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Concept / Feasibility</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">Segar Delivery & Express</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Urban logistics and last-mile merchant courier platform offering live dispatch, parcel proof of delivery, and business logistics accounts.</p>
             </div>
-            <div style="margin-top: 20px;">
-                <a href="/contact_us/?interest=ai" class="elementor-button" style="padding: 10px 18px; font-size: 0.9rem; text-decoration: none; display: inline-block;">Discuss Security Readiness</a>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/segar-delivery/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore Delivery Partnerships</a>
+                <a href="/contact_us/?interest=segar-delivery" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/client-innobiz.png" alt="LO Africa — Digital Commerce Platform" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Concept / Feasibility</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">LO Africa — Digital Commerce Platform</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Consumer-facing lowest-unique-bid digital marketplace concept based on transparent algorithmic rules, verifiable accounts, and fair prize fulfillment.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/lo-africa/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Learn About the Platform</a>
+                <a href="/contact_us/?interest=lo-africa" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/pill_tower.jpg" alt="Visit Tigray — Digital Tourism & Heritage" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Research & Prototype</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">Visit Tigray — Digital Tourism & Heritage</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Region-focused tourism technology program connecting ancient rock-hewn heritage, verified local guides, and responsible cultural storytelling.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/visit-tigray/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore the Initiative</a>
+                <a href="/contact_us/?interest=visit-tigray" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Category Section: Affiliated & Associated Businesses (affiliated) -->
+<div id="affiliated" style="margin-bottom: 70px; scroll-margin-top: 160px;">
+    <div style="border-bottom: 2px solid #101513; padding-bottom: 14px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h2 style="font-size: 1.75rem; font-weight: 700; color: #101513; margin: 0;">Affiliated & Associated Businesses</h2>
+            <span style="font-size: 0.85rem; font-weight: 600; color: #5B6761; background: #F4F7F5; padding: 3px 10px; border-radius: 20px; border: 1px solid #DEE6E0;">4 Platforms</span>
+        </div>
+        <p style="color: #5B6761; margin: 0; font-size: 0.98rem; line-height: 1.5;">Frontline enterprise proving grounds and leadership-associated companies providing real-world operational testing.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/wp-content/uploads/serk/serk-photo-pos.jpg" alt="KaBUN Coffee — Hospitality Systems" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-production"><span>Operating Venture</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">KaBUN Coffee — Hospitality Systems</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Real-world specialty café operations informing the frontline design of high-speed order counters, beverage recipes, coffee bean sourcing, and daily closeouts.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/kabun-coffee/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">See Café Solutions</a>
+                <a href="/contact_us/?interest=kabun-coffee" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/wp-content/uploads/serk/serk-why-choose.jpg" alt="Yummy Café & Bakery — Multi-site Production" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-production"><span>Operating Venture</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">Yummy Café & Bakery — Multi-site Production</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Multi-location bakery production and retail coordination tracking central production kitchens, bulk ingredient stores, and retail shop replenishment.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/yummy-bakery/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore Bakery ERP</a>
+                <a href="/contact_us/?interest=yummy-bakery" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/pill_tower.jpg" alt="Vision Real Estate — Property Systems" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">Vision Real Estate — Property Systems</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Property portfolio management tracking unit inventory, buyer installment payment milestones, construction progress updates, and lease agreements.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/vision-real-estate/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore Real Estate Systems</a>
+                <a href="/contact_us/?interest=vision-real-estate" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/wp-content/uploads/serk/serk-photo-construction.jpg" alt="Senselet Construction PLC — Operational Context" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-pilot"><span>Pilot / Private Beta</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">Senselet Construction PLC — Operational Context</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Real civil infrastructure and commercial construction field workflows informing the engineering of SERK Construction OS and digital project controls.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/senselet-construction/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore Construction Solutions</a>
+                <a href="/contact_us/?interest=senselet-construction" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Category Section: Future Innovation & Sovereign Tech (future-innovation) -->
+<div id="future-innovation" style="margin-bottom: 70px; scroll-margin-top: 160px;">
+    <div style="border-bottom: 2px solid #101513; padding-bottom: 14px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 4px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h2 style="font-size: 1.75rem; font-weight: 700; color: #101513; margin: 0;">Future Innovation & Sovereign Tech</h2>
+            <span style="font-size: 0.85rem; font-weight: 600; color: #5B6761; background: #F4F7F5; padding: 3px 10px; border-radius: 20px; border: 1px solid #DEE6E0;">3 Platforms</span>
+        </div>
+        <p style="color: #5B6761; margin: 0; font-size: 0.98rem; line-height: 1.5;">Long-term industrial research, vehicle assembly concepts, clean energy accessories, and African developer talent development.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/wp-content/uploads/serk/serk-why-choose.jpg" alt="Senselet Motors — Vehicle Assembly Concept" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Concept / Feasibility</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">Senselet Motors — Vehicle Assembly Concept</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Long-term industrial research exploring electric mobility manufacturing pathways, vehicle assembly capabilities, and technical knowledge transfer.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/senselet-motors/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Industrial Partnership Inquiries</a>
+                <a href="/contact_us/?interest=senselet-motors" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/client-zoscales.png" alt="SERK Hardware / Energy & Compute Research" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-alpha"><span>Concept / Feasibility</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Hardware / Energy & Compute Research</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Future hardware and energy division exploring practical power accessories, battery management, and long-term sovereign AI compute architectures.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/serk-hardware/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore Hardware Research</a>
+                <a href="/contact_us/?interest=serk-hardware" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
+            </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+            <div>
+                <div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">
+                    <img src="/images/pill_team.jpg" alt="SERK Academy & Community Programs" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <span class="serk-badge serk-badge-production"><span>Operating Venture</span></span>
+                <h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">SERK Academy & Community Programs</h3>
+                <p style="font-size: 0.92rem; color: #5B6761; line-height: 1.6; margin: 0 0 16px 0;">Youth developer competitions, engineering apprenticeships, cybersecurity workshops, and practical AI training developing future African technology talent.</p>
+            </div>
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <a href="/products/academy-community/" class="elementor-button" style="padding: 9px 16px; font-size: 0.88rem; text-decoration: none; display: inline-block;">Explore Careers & Community</a>
+                <a href="/contact_us/?interest=academy-community" style="color: #0D4634; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">Inquire &rarr;</a>
             </div>
         </div>
     </div>

@@ -54,8 +54,16 @@ export default function AdminPagesEditor() {
           >
             <option value="home">Home Page (/)</option>
             <option value="about">About Us (/about)</option>
-            <option value="solutions">Solutions (/solutions)</option>
+            <option value="products">Products &amp; Platforms (/products)</option>
+            <option value="solutions">Solutions &amp; Services (/solutions)</option>
+            <option value="industries">Industries (/industries)</option>
+            <option value="ventures">Ventures (/ventures)</option>
+            <option value="partners">Partners &amp; Clients (/partners)</option>
+            <option value="gallery">Media Gallery (/gallery)</option>
+            <option value="insights">Insights &amp; Articles (/insights)</option>
             <option value="contact">Contact (/contact)</option>
+            <option value="privacy">Privacy Policy (/privacy)</option>
+            <option value="terms">Terms of Service (/terms)</option>
           </select>
         </div>
 

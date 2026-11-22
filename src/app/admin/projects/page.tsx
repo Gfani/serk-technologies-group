@@ -10,6 +10,7 @@ export default function AdminProjectsPage() {
   const [projects, setProjects] = useState<ProjectItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('ALL');
   const [editingProject, setEditingProject] = useState<ProjectItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -91,12 +92,16 @@ export default function AdminProjectsPage() {
     }
   };
 
-  const filtered = projects.filter(
-    (p) =>
+  const filtered = projects.filter((p) => {
+    const matchesSearch =
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.summary.toLowerCase().includes(search.toLowerCase()) ||
-      p.category.toLowerCase().includes(search.toLowerCase())
-  );
+      p.category.toLowerCase().includes(search.toLowerCase());
+    const matchesCategory =
+      categoryFilter === 'ALL' ||
+      p.category.toLowerCase() === categoryFilter.toLowerCase();
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="space-y-6 max-w-6xl">
@@ -116,16 +121,43 @@ export default function AdminProjectsPage() {
         </button>
       </div>
 
-      {/* Search Bar */}
-      <div className="bg-white p-3 rounded-lg border border-[#DEE6E0] flex items-center gap-2">
-        <Search className="w-4 h-4 text-[#5B6761]" />
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Filter platforms by name or sector..."
-          className="w-full text-xs text-[#101513] focus:outline-none"
-        />
+      {/* Search & Category Filter Bar */}
+      <div className="bg-white p-4 rounded-xl border border-[#DEE6E0] space-y-3">
+        <div className="flex items-center gap-2">
+          <Search className="w-4 h-4 text-[#5B6761]" />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search platforms by name, sector or capability..."
+            className="w-full text-xs text-[#101513] focus:outline-none"
+          />
+        </div>
+        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#DEE6E0]">
+          <span className="text-[11px] font-semibold text-[#5B6761] mr-1">Filter Sector:</span>
+          {[
+            { label: 'All (23)', value: 'ALL' },
+            { label: 'Sector Intelligence', value: 'sector-intelligence' },
+            { label: 'AI & Security', value: 'ai-security' },
+            { label: 'Enterprise & Operations', value: 'enterprise-operations' },
+            { label: 'Solutions', value: 'solutions' },
+            { label: 'Ventures', value: 'ventures' },
+            { label: 'Affiliated', value: 'affiliated' },
+            { label: 'Future Innovation', value: 'future-innovation' },
+          ].map((cat) => (
+            <button
+              key={cat.value}
+              onClick={() => setCategoryFilter(cat.value)}
+              className={`px-2.5 py-1 rounded text-[11px] font-medium transition-colors ${
+                categoryFilter === cat.value
+                  ? 'bg-[#0D4634] text-white'
+                  : 'bg-[#F4F7F5] text-[#5B6761] hover:bg-[#DEE6E0]'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Projects Table */}
@@ -231,15 +263,22 @@ export default function AdminProjectsPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-[#101513] mb-1">Category</label>
-                  <input
-                    type="text"
+                  <select
                     required
                     value={editingProject.category}
                     onChange={(e) =>
                       setEditingProject({ ...editingProject, category: e.target.value })
                     }
-                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
-                  />
+                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs bg-white text-[#101513]"
+                  >
+                    <option value="sector-intelligence">Sector Intelligence</option>
+                    <option value="ai-security">AI &amp; Security Research</option>
+                    <option value="enterprise-operations">Enterprise &amp; Operations</option>
+                    <option value="solutions">Core Solutions &amp; Integrations</option>
+                    <option value="ventures">Digital Ventures</option>
+                    <option value="affiliated">Affiliated Businesses</option>
+                    <option value="future-innovation">Future Innovation &amp; Sovereign Tech</option>
+                  </select>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-[#101513] mb-1">
