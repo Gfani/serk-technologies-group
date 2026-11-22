@@ -671,3 +671,93 @@ html, body {
     gap: 10px !important;
   }
 }
+
+/* ==========================================================================
+   Hero Layout & Photo Cylinder Styling (Prevent Overlap & Fix Visual Balance)
+   ========================================================================== */
+.elementor-1158 .elementor-element.elementor-element-5c127ac:not(.elementor-motion-effects-element-type-background),
+.elementor-1158 .elementor-element.elementor-element-5c127ac > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+.elementor-element-5c127ac {
+  background-image: url("/wp-content/uploads/serk/serk-hero.svg?v=20261122-herofix01") !important;
+  background-position: right center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  position: relative !important;
+}
+
+.elementor-element-6f91806 {
+  max-width: 580px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.elementor-element-9d25fef .elementor-heading-title {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.elementor-element-c154a22 {
+  position: relative !important;
+  z-index: 2 !important;
+  max-width: 560px !important;
+}
+
+/* ==========================================================================
+   Why Choose SERK Section: Real Photograph Container (Strictly Bounded)
+   ========================================================================== */
+.elementor-1158 .elementor-element.elementor-element-291bfca:not(.elementor-motion-effects-element-type-background) > .elementor-widget-wrap,
+.elementor-1158 .elementor-element.elementor-element-291bfca > .elementor-widget-wrap,
+.elementor-element.elementor-element-291bfca > .elementor-widget-wrap,
+.elementor-element-291bfca .elementor-widget-wrap {
+  background-image: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.elementor-element.elementor-element-291bfca {
+  overflow: hidden !important;
+  border-radius: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.serk-why-img-frame {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 480px !important;
+  max-height: 560px !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+.serk-why-img-frame img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 20px !important;
+}
+
+@media (max-width: 1024px) {
+  .elementor-element-5c127ac {
+    background-position: 85% center !important;
+  }
+  .serk-why-img-frame {
+    min-height: 380px !important;
+    margin-top: 32px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .elementor-element-5c127ac {
+    background-position: right center !important;
+  }
+  .elementor-element-6f91806 {
+    max-width: 100% !important;
+  }
+}
