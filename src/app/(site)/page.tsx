@@ -1,221 +1,313 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ShieldCheck, Cpu, Layers, Sliders, CheckCircle2 } from 'lucide-react';
-import ProductCard from '@/components/ProductCard';
+import { ArrowRight, CheckCircle2, ChevronRight, Check } from 'lucide-react';
+import MaturityBadge from '@/components/MaturityBadge';
 import { getAllProjects } from '@/lib/db';
 
 export const revalidate = 60;
 
 export default async function HomePage() {
   const allProjects = await getAllProjects();
-  // Filter 6 highlight projects for the homepage
-  const highlightSlugs = [
-    'construction-estimator',
-    'hospital-management-system',
-    'finance-audit-engine',
-    'smart-retail-pos',
-    'segar-venture',
-    'visit-tigray',
-  ];
-  const featured = allProjects.filter((p) => highlightSlugs.includes(p.slug));
-  const displayProjects = featured.length >= 4 ? featured : allProjects.slice(0, 6);
 
   return (
-    <div className="w-full">
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-white border-b border-[#DEE6E0] pt-12 pb-20 lg:pt-20 lg:pb-28">
+    <div className="w-full font-sans bg-white text-[#101513]">
+      {/* ========================================================
+          1. HERO SECTION (Exact port 8000 design with SVG capsules)
+          ======================================================== */}
+      <section className="relative w-full min-h-[85vh] serk-hero-bg flex items-center border-b border-[#DEE6E0] overflow-hidden">
+        <div className="max-w-[1240px] w-full mx-auto px-6 sm:px-8 py-16 lg:py-24">
+          <div className="max-w-2xl lg:max-w-xl space-y-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-[#101513] font-serif leading-[1.14] tracking-tight">
+              We Engineer the Systems Behind Better Business.
+            </h1>
+
+            <p className="text-base sm:text-[16.5px] text-[#5B6761] font-normal leading-relaxed">
+              From your first website to intelligent enterprise operations, SERK Technologies
+              Group designs and develops practical digital solutions for organizations ready to
+              work smarter. We combine software engineering, thoughtful design, responsible AI and
+              deep attention to real-world workflows — starting in Ethiopia, built for a wider world.
+            </p>
+
+            <div className="pt-2 flex flex-wrap gap-4 items-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors shadow-sm"
+              >
+                <span>Discuss Your Project</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-[#101513] bg-[#F4F7F5] hover:bg-[#DEE6E0] border border-[#DEE6E0] transition-colors"
+              >
+                <span>Explore Platforms</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Fallback preview for smaller screens where SVG background shifts */}
+        <div className="lg:hidden w-full px-6 pb-12">
+          <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#DEE6E0] shadow-lg">
+            <Image
+              src="/images/serk-hero.svg"
+              alt="SERK Enterprise Architecture and Platforms"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          2. ABOUT US SECTION
+          ======================================================== */}
+      <section className="py-20 bg-white border-b border-[#DEE6E0]">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F4F7F5] border border-[#DEE6E0] text-xs font-semibold text-[#0D4634]">
-                <span className="w-2 h-2 rounded-full bg-[#0D4634] animate-pulse"></span>
-                <span>Sovereign Enterprise Engineering · Ethiopia</span>
-              </div>
+          <div className="max-w-3xl mb-16">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
+              About Us
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-[#101513] mt-2 mb-4">
+              We Build Software That Thinks Ahead
+            </h2>
+            <p className="text-base text-[#5B6761] leading-relaxed">
+              Serk Group is a software company with one simple belief: every organisation deserves
+              systems as smart as the people who run them. Starting in Ethiopia and building for a
+              wider world, we design and deploy digital platforms, intelligent operations and custom
+              software that solve real problems for real businesses.
+            </p>
+          </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#101513] leading-[1.12] tracking-tight">
-                We Engineer the Systems <br className="hidden sm:inline" />
-                <span className="text-[#0D4634]">Behind Better Business.</span>
-              </h1>
-
-              <p className="text-base sm:text-lg text-[#5B6761] leading-relaxed max-w-2xl">
-                From your first digital system to intelligent enterprise operations, SERK
-                Technologies Group designs and develops practical digital solutions for organizations
-                ready to work smarter. We combine software engineering, thoughtful design, responsible
-                AI, and deep attention to real-world workflows — starting in Ethiopia, built for a
-                wider world.
-              </p>
-
-              <div className="pt-2 flex flex-wrap gap-4 items-center">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-all shadow-sm"
-                >
-                  <span>Discuss Your Project</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/products"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-[#101513] bg-[#F4F7F5] hover:bg-[#DEE6E0] border border-[#DEE6E0] transition-all"
-                >
-                  <span>Explore Platforms (23)</span>
-                </Link>
-              </div>
-
-              {/* Trust Badges */}
-              <div className="pt-6 border-t border-[#DEE6E0] grid grid-cols-3 gap-4 text-left">
-                <div>
-                  <div className="text-2xl font-bold text-[#101513]">23+</div>
-                  <div className="text-xs text-[#5B6761]">Products & Ventures</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-[#F4F7F5] p-8 rounded-xl border border-[#DEE6E0] flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#DEE6E0] flex items-center justify-center font-serif font-bold text-[#0D4634] mb-4">
+                  01
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-[#101513]">4</div>
-                  <div className="text-xs text-[#5B6761]">Core Industries</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-[#0D4634]">100%</div>
-                  <div className="text-xs text-[#5B6761]">Sovereign Engineering</div>
-                </div>
+                <h3 className="text-lg font-bold font-serif text-[#101513] mb-2">
+                  Real-World Engineering
+                </h3>
+                <p className="text-sm text-[#5B6761] leading-relaxed">
+                  Software designed from site offices, clinics and retail counters — built for
+                  real Ethiopian connectivity and heavy enterprise workflows.
+                </p>
               </div>
             </div>
 
-            {/* Right Visual: Real Photo & Interface Composition */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-[460px] rounded-2xl overflow-hidden border border-[#DEE6E0] bg-[#F4F7F5] shadow-xl p-4 sm:p-6">
-                <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden mb-4 border border-[#DEE6E0]">
-                  <Image
-                    src="/images/serk-photo-engineering.jpg"
-                    alt="SERK Technologies Engineering Studio"
-                    fill
-                    priority
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-4">
-                    <span className="text-xs font-medium text-white/90">
-                      Engineering Hub · Mekelle, Tigray
-                    </span>
-                  </div>
+            <div className="bg-[#F4F7F5] p-8 rounded-xl border border-[#DEE6E0] flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#DEE6E0] flex items-center justify-center font-serif font-bold text-[#0D4634] mb-4">
+                  02
                 </div>
+                <h3 className="text-lg font-bold font-serif text-[#101513] mb-2">
+                  Responsible AI
+                </h3>
+                <p className="text-sm text-[#5B6761] leading-relaxed">
+                  Machine intelligence that explains its answers, audits its outputs and respects
+                  human clinical and engineering judgment.
+                </p>
+              </div>
+            </div>
 
-                {/* Micro-preview overlay cards */}
-                <div className="space-y-3">
-                  <div className="bg-white p-3.5 rounded-lg border border-[#DEE6E0] flex items-center justify-between shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded bg-emerald-50 text-[#0D4634] flex items-center justify-center font-bold text-xs">
-                        BOQ
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-[#101513]">Construction Takeoff OS</div>
-                        <div className="text-[11px] text-[#5B6761]">Bill of Quantities in ETB</div>
-                      </div>
-                    </div>
-                    <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                      Verified
-                    </span>
-                  </div>
-
-                  <div className="bg-white p-3.5 rounded-lg border border-[#DEE6E0] flex items-center justify-between shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-xs">
-                        HMS
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold text-[#101513]">Clinical Health Engine</div>
-                        <div className="text-[11px] text-[#5B6761]">ICD-11 Encrypted Registry</div>
-                      </div>
-                    </div>
-                    <span className="text-[11px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                      Private Beta
-                    </span>
-                  </div>
+            <div className="bg-[#F4F7F5] p-8 rounded-xl border border-[#DEE6E0] flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#DEE6E0] flex items-center justify-center font-serif font-bold text-[#0D4634] mb-4">
+                  03
                 </div>
+                <h3 className="text-lg font-bold font-serif text-[#101513] mb-2">
+                  One Connected Future
+                </h3>
+                <p className="text-sm text-[#5B6761] leading-relaxed">
+                  Systems built on shared database standards so every tool, POS terminal, and
+                  accounting ledger synchronizes automatically.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. VALUE PROPOSITION / WHY CHOOSE SERK GROUP */}
+      {/* ========================================================
+          3. OUR SOLUTIONS & SMART INDUSTRY PLATFORMS
+          ======================================================== */}
       <section className="py-20 bg-[#F4F7F5] border-b border-[#DEE6E0]">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#101513] mb-4">
-              Why Choose <span className="text-[#0D4634]">SERK Group?</span>
+          <div className="max-w-3xl mb-14">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
+              Our Solutions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-[#101513] mt-2 mb-4">
+              Smart Industry Platforms
             </h2>
-            <p className="text-sm sm:text-base text-[#5B6761]">
-              At SERK, we pair real industry know-how with practical AI. The result is software that
-              feels made for you, because it is. Here is why enterprise teams choose us:
+            <p className="text-base text-[#5B6761] leading-relaxed">
+              Serk Construction with its AI Estimator and the AI-assisted Serk Hospital Management
+              System run your core operations from first click to audit.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            {/* Platform 1: Construction & Estimator */}
+            <div className="bg-white rounded-2xl border border-[#DEE6E0] p-8 sm:p-10 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634] bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">
+                    Construction Technology
+                  </span>
+                  <MaturityBadge stage="PRODUCTION_AVAILABLE" />
+                </div>
+                <h3 className="text-2xl font-bold font-serif text-[#101513] mb-3">
+                  Construction Takeoff & AI Estimator
+                </h3>
+                <p className="text-sm text-[#5B6761] leading-relaxed mb-6">
+                  Turn architectural drawings and CAD files into complete Bills of Quantities (BOQ)
+                  in Ethiopian Birr. Drastically reduce bidding cycles and eliminate structural
+                  cost estimation errors.
+                </p>
+                <div className="space-y-2 mb-8">
+                  <div className="flex items-center gap-2 text-xs text-[#101513]">
+                    <CheckCircle2 className="w-4 h-4 text-[#0D4634]" />
+                    <span>Automated concrete, rebar, and masonry takeoffs</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[#101513]">
+                    <CheckCircle2 className="w-4 h-4 text-[#0D4634]" />
+                    <span>Real-time Ethiopian supplier price index sync</span>
+                  </div>
+                </div>
+              </div>
+              <Link
+                href="/products/construction-estimator"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#0D4634] hover:underline"
+              >
+                <span>Explore Construction OS</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Platform 2: Hospital Management System */}
+            <div className="bg-white rounded-2xl border border-[#DEE6E0] p-8 sm:p-10 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+                    Healthcare Informatics
+                  </span>
+                  <MaturityBadge stage="PILOT_PRIVATE_BETA" />
+                </div>
+                <h3 className="text-2xl font-bold font-serif text-[#101513] mb-3">
+                  Hospital & Clinical Management System (HMS)
+                </h3>
+                <p className="text-sm text-[#5B6761] leading-relaxed mb-6">
+                  Complete outpatient queues, encrypted electronic medical records (EMR), laboratory
+                  results, pharmacy inventory, and ICD-11 coding with 100% sovereign data residency.
+                </p>
+                <div className="space-y-2 mb-8">
+                  <div className="flex items-center gap-2 text-xs text-[#101513]">
+                    <CheckCircle2 className="w-4 h-4 text-[#0D4634]" />
+                    <span>Zero foreign cloud dependency — on-premise encryption</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[#101513]">
+                    <CheckCircle2 className="w-4 h-4 text-[#0D4634]" />
+                    <span>Automated triage, billing, and pharmacy dispensing</span>
+                  </div>
+                </div>
+              </div>
+              <Link
+                href="/products/hospital-management-system"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#0D4634] hover:underline"
+              >
+                <span>Explore Hospital OS</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          4. WHY CHOOSE SERK GROUP? (Exact match of port 8000)
+          ======================================================== */}
+      <section className="py-20 bg-white border-b border-[#DEE6E0]">
+        <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
+          <div className="max-w-3xl mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-[#101513] mb-3">
+              Why Choose{' '}
+              <span className="text-[#E3AB72] underline decoration-2 underline-offset-4">
+                Serk Group
+              </span>
+              ?
+            </h2>
+            <p className="text-base text-[#5B6761] leading-relaxed">
+              At Serk, we pair real industry know-how with practical AI. The result is software that
+              feels made for you, because it is. Here&apos;s why teams choose us:
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* 4 Value Pillars */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-lg border border-[#DEE6E0] shadow-sm hover:border-[#0D4634] transition-colors">
-                <div className="w-10 h-10 rounded bg-[#F4F7F5] text-[#0D4634] flex items-center justify-center mb-4">
-                  <Cpu className="w-5 h-5" />
+            {/* Left 4 Clean Cards with Circular Checkmarks */}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="bg-[#F4F7F5] p-6 rounded-xl border border-[#DEE6E0] shadow-sm">
+                <div className="w-6 h-6 rounded-full bg-[#101513] text-white flex items-center justify-center mb-3">
+                  <Check className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
-                <h3 className="text-base font-bold text-[#101513] mb-2">AI at the Core</h3>
-                <p className="text-sm text-[#5B6761] leading-relaxed">
-                  Intelligence is built into every SERK product from day one — not bolted on
-                  afterwards as an afterthought.
+                <h3 className="text-base font-bold text-[#101513] mb-1.5">AI at the Core</h3>
+                <p className="text-xs sm:text-[13px] text-[#5B6761] leading-relaxed">
+                  Intelligence is built into every Serk product, not bolted on afterwards.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg border border-[#DEE6E0] shadow-sm hover:border-[#0D4634] transition-colors">
-                <div className="w-10 h-10 rounded bg-[#F4F7F5] text-[#0D4634] flex items-center justify-center mb-4">
-                  <Layers className="w-5 h-5" />
+              <div className="bg-[#F4F7F5] p-6 rounded-xl border border-[#DEE6E0] shadow-sm">
+                <div className="w-6 h-6 rounded-full bg-[#101513] text-white flex items-center justify-center mb-3">
+                  <Check className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
-                <h3 className="text-base font-bold text-[#101513] mb-2">Built for Your Industry</h3>
-                <p className="text-sm text-[#5B6761] leading-relaxed">
-                  Purpose-built for construction, healthcare, finance, logistics, and retail teams
-                  facing complex operational workflows.
+                <h3 className="text-base font-bold text-[#101513] mb-1.5">Built for Your Industry</h3>
+                <p className="text-xs sm:text-[13px] text-[#5B6761] leading-relaxed">
+                  Purpose-built for construction, healthcare, finance and retail teams.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg border border-[#DEE6E0] shadow-sm hover:border-[#0D4634] transition-colors">
-                <div className="w-10 h-10 rounded bg-[#F4F7F5] text-[#0D4634] flex items-center justify-center mb-4">
-                  <ShieldCheck className="w-5 h-5" />
+              <div className="bg-[#F4F7F5] p-6 rounded-xl border border-[#DEE6E0] shadow-sm">
+                <div className="w-6 h-6 rounded-full bg-[#101513] text-white flex items-center justify-center mb-3">
+                  <Check className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
-                <h3 className="text-base font-bold text-[#101513] mb-2">One Connected Family</h3>
-                <p className="text-sm text-[#5B6761] leading-relaxed">
-                  Unified systems that seamlessly share data, sync ledgers, and scale together as your
-                  enterprise expands.
+                <h3 className="text-base font-bold text-[#101513] mb-1.5">One Connected Family</h3>
+                <p className="text-xs sm:text-[13px] text-[#5B6761] leading-relaxed">
+                  Systems that share data and work together as your business grows.
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-lg border border-[#DEE6E0] shadow-sm hover:border-[#0D4634] transition-colors">
-                <div className="w-10 h-10 rounded bg-[#F4F7F5] text-[#0D4634] flex items-center justify-center mb-4">
-                  <Sliders className="w-5 h-5" />
+              <div className="bg-[#F4F7F5] p-6 rounded-xl border border-[#DEE6E0] shadow-sm">
+                <div className="w-6 h-6 rounded-full bg-[#101513] text-white flex items-center justify-center mb-3">
+                  <Check className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
-                <h3 className="text-base font-bold text-[#101513] mb-2">Tailored to You</h3>
-                <p className="text-sm text-[#5B6761] leading-relaxed">
-                  We configure, integrate, and automate around the way your staff already works,
-                  ensuring immediate adoption.
+                <h3 className="text-base font-bold text-[#101513] mb-1.5">Tailored to You</h3>
+                <p className="text-xs sm:text-[13px] text-[#5B6761] leading-relaxed">
+                  We configure, integrate and automate around the way you already work.
                 </p>
               </div>
             </div>
 
-            {/* Right Photo Preview */}
-            <div className="lg:col-span-5">
-              <div className="relative rounded-xl overflow-hidden border border-[#DEE6E0] shadow-md aspect-[4/3]">
+            {/* Right Photo Card with Gold Overlay Badge (The exact frame from port 8000) */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="w-full max-w-[480px] h-[420px] relative rounded-[20px] overflow-hidden shadow-2xl border border-black/10">
                 <Image
-                  src="/images/serk-photo-construction.jpg"
-                  alt="Construction and Enterprise Field Engineering"
+                  src="/images/serk-why-choose.jpg"
+                  alt="SERK Technologies Group Engineering Team"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                  <span className="text-xs uppercase tracking-widest font-bold text-[#E3AB72] mb-1">
-                    Industry In Action
-                  </span>
-                  <h4 className="text-lg font-bold text-white mb-2">
-                    Tested on Structural Sites, Clinics & Modern Retail
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101513]/90 via-[#101513]/40 to-transparent flex flex-col justify-end p-6 text-white">
+                  <div className="inline-flex items-center gap-2 bg-[#E3AB72]/20 border border-[#E3AB72]/40 px-3 py-1 rounded-full mb-2 w-max">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E3AB72]"></span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#E3AB72]">
+                      Engineering &amp; Innovation
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold font-serif text-white mb-1 leading-snug">
+                    Sovereign Digital Systems Built for Heavy Enterprise
                   </h4>
-                  <p className="text-xs text-white/80">
-                    Engineered to withstand bandwidth constraints, offline field operations, and
-                    rigorous auditing.
+                  <p className="text-xs text-[#DEE6E0] leading-relaxed">
+                    Pairing real African industry know-how with practical, mission-critical engineering.
                   </p>
                 </div>
               </div>
@@ -224,121 +316,234 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 3. FLAGSHIP PLATFORMS SHOWCASE */}
-      <section className="py-20 bg-white border-b border-[#DEE6E0]">
+      {/* ========================================================
+          5. MEET THE SERK FAMILY
+          ======================================================== */}
+      <section className="py-20 bg-[#F4F7F5] border-b border-[#DEE6E0]">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
-                Enterprise Portfolio
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#101513] mt-1">
-                Featured Software & Operating Ventures
-              </h2>
-            </div>
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0D4634] hover:text-[#2D735A]"
-            >
-              <span>View all 23 dossiers</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold font-serif text-[#101513] mb-3">
+              Meet the <span className="text-[#E3AB72]">Serk Family</span>
+            </h2>
+            <p className="text-base text-[#5B6761]">
+              one family of AI-integrated systems, built to work together
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayProjects.map((project) => (
-              <ProductCard key={project.id || project.slug} project={project} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {allProjects.slice(0, 8).map((project) => (
+              <div
+                key={project.slug}
+                className="bg-white rounded-xl border border-[#DEE6E0] p-6 shadow-sm hover:border-[#0D4634] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-bold text-[#5B6761] uppercase tracking-wider bg-[#F4F7F5] px-2 py-0.5 rounded">
+                      {project.category}
+                    </span>
+                    <MaturityBadge stage={project.maturity} />
+                  </div>
+                  <h3 className="text-base font-bold font-serif text-[#101513] mb-2">
+                    {project.name}
+                  </h3>
+                  <p className="text-xs text-[#5B6761] leading-relaxed mb-4 line-clamp-3">
+                    {project.summary}
+                  </p>
+                </div>
+
+                <Link
+                  href={`/products/${project.slug}`}
+                  className="text-xs font-bold text-[#0D4634] hover:underline inline-flex items-center gap-1 pt-3 border-t border-[#DEE6E0]"
+                >
+                  <span>View Details</span>
+                  <ChevronRight className="w-3 h-3" />
+                </Link>
+              </div>
             ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded text-xs font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors"
+            >
+              <span>Explore All 23 Platform Dossiers</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 4. PHILOSOPHY & INTEGRITY */}
-      <section className="py-20 bg-[#101513] text-white">
+      {/* ========================================================
+          6. SOME OF OUR CLIENTS
+          ======================================================== */}
+      <section className="py-16 bg-white border-b border-[#DEE6E0]">
+        <div className="max-w-[1240px] mx-auto px-6 sm:px-8 text-center">
+          <h2 className="text-2xl font-bold font-serif text-[#101513] mb-2">
+            Some of Our <span className="text-[#E3AB72]">Clients</span>
+          </h2>
+          <p className="text-xs uppercase tracking-widest text-[#5B6761] font-semibold mb-10">
+            we are honored to work with
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-14 opacity-80 grayscale hover:grayscale-0 transition-all">
+            <div className="h-10 relative w-32">
+              <Image src="/images/client-zoscales.png" alt="Zoscales" fill className="object-contain" />
+            </div>
+            <div className="h-10 relative w-32">
+              <Image src="/images/client-innobiz.png" alt="Innobiz" fill className="object-contain" />
+            </div>
+            <div className="h-10 relative w-36">
+              <Image src="/images/client-hibret-bank.png" alt="Hibret Bank" fill className="object-contain" />
+            </div>
+            <div className="h-10 relative w-28">
+              <Image src="/images/client-sequa.png" alt="Sequa" fill className="object-contain" />
+            </div>
+            <div className="h-10 relative w-28">
+              <Image src="/images/client-tebita.png" alt="Tebita" fill className="object-contain" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          7. INSIGHTS SECTION
+          ======================================================== */}
+      <section className="py-20 bg-[#F4F7F5] border-b border-[#DEE6E0]">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs uppercase tracking-widest font-bold text-[#E3AB72]">
-                Our Guiding Standard
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
-                Innovation with Integrity. <br />
-                <span className="text-[#9AB4A9]">Building Beyond Boundaries.</span>
-              </h2>
-              <p className="text-sm sm:text-base text-[#CDE5DC] leading-relaxed">
-                SERK Technologies Group was conceived for a world where technology is no longer an
-                optional department — it shapes how organizations serve people, manage resources, and
-                grow. We focus on the places where technology meets daily life: the patient record that
-                should never be lost, the business ledger that should not take a week to reconcile, and
-                the construction estimate that must withstand scrutiny.
-              </p>
-              <div className="pt-2">
+          <div className="max-w-2xl mb-12">
+            <h2 className="text-3xl font-bold font-serif text-[#101513] mb-3">Insights</h2>
+            <p className="text-sm text-[#5B6761] leading-relaxed">
+              Ideas, guides and product stories from the Serk Group team. See how AI and automation
+              are changing the way construction firms, hospitals, finance teams and retailers
+              operate in the real world.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl border border-[#DEE6E0] overflow-hidden shadow-sm flex flex-col justify-between">
+              <div className="relative aspect-[16/10] w-full bg-[#DEE6E0]">
+                <Image
+                  src="/images/serk-post-estimator.svg"
+                  alt="Inside the Serk AI Estimator"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0D4634] block mb-2">
+                  Construction AI
+                </span>
+                <h3 className="text-base font-bold font-serif text-[#101513] mb-2 leading-snug">
+                  From Drawing to Budget: Inside the Serk AI Estimator
+                </h3>
+                <p className="text-xs text-[#5B6761] leading-relaxed line-clamp-3">
+                  Estimating used to mean long nights with spreadsheets. See how an AI estimator
+                  turns drawings and quantities into a budget in minutes.
+                </p>
+              </div>
+              <div className="p-6 pt-0">
                 <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded text-sm font-semibold text-[#101513] bg-[#E3AB72] hover:bg-[#d69d63] transition-colors"
+                  href="/insights"
+                  className="text-xs font-bold text-[#0D4634] hover:underline inline-flex items-center gap-1"
                 >
-                  <span>Read About Our Principles</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Read Article</span>
+                  <ChevronRight className="w-3 h-3" />
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-white/5 border border-white/10 rounded-lg p-5">
-                <CheckCircle2 className="w-5 h-5 text-[#E3AB72] mb-3" />
-                <h4 className="text-sm font-bold text-white mb-1.5">Responsible AI</h4>
-                <p className="text-xs text-[#9AB4A9] leading-relaxed">
-                  AI that assists human decision-making and keeps transparency paramount.
+            <div className="bg-white rounded-xl border border-[#DEE6E0] overflow-hidden shadow-sm flex flex-col justify-between">
+              <div className="relative aspect-[16/10] w-full bg-[#DEE6E0]">
+                <Image
+                  src="/images/serk-post-hospital.svg"
+                  alt="AI Across the Patient Journey"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0D4634] block mb-2">
+                  Healthcare Systems
+                </span>
+                <h3 className="text-base font-bold font-serif text-[#101513] mb-2 leading-snug">
+                  The Hospital That Runs on Insight: AI Across the Patient Journey
+                </h3>
+                <p className="text-xs text-[#5B6761] leading-relaxed line-clamp-3">
+                  How modern clinics automate patient triage, ICD-11 coding, and lab orders while
+                  safeguarding medical privacy.
                 </p>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-5">
-                <CheckCircle2 className="w-5 h-5 text-[#E3AB72] mb-3" />
-                <h4 className="text-sm font-bold text-white mb-1.5">Local Resilience</h4>
-                <p className="text-xs text-[#9AB4A9] leading-relaxed">
-                  Offline-first sync capabilities designed for real African infrastructure.
+              <div className="p-6 pt-0">
+                <Link
+                  href="/insights"
+                  className="text-xs font-bold text-[#0D4634] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Read Article</span>
+                  <ChevronRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl border border-[#DEE6E0] overflow-hidden shadow-sm flex flex-col justify-between">
+              <div className="relative aspect-[16/10] w-full bg-[#DEE6E0]">
+                <Image
+                  src="/images/serk-post-finance.svg"
+                  alt="What AI Changes in Finance"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#0D4634] block mb-2">
+                  Enterprise Finance
+                </span>
+                <h3 className="text-base font-bold font-serif text-[#101513] mb-2 leading-snug">
+                  Close the Books Faster: What AI Really Changes in Finance
+                </h3>
+                <p className="text-xs text-[#5B6761] leading-relaxed line-clamp-3">
+                  How automated multi-branch reconciliation and tax audit synchronization replace
+                  weeks of manual paper reconciliation.
                 </p>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-5">
-                <CheckCircle2 className="w-5 h-5 text-[#E3AB72] mb-3" />
-                <h4 className="text-sm font-bold text-white mb-1.5">Strict Data Sovereignty</h4>
-                <p className="text-xs text-[#9AB4A9] leading-relaxed">
-                  Zero foreign lock-in; institutional data remains under client control.
-                </p>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-lg p-5">
-                <CheckCircle2 className="w-5 h-5 text-[#E3AB72] mb-3" />
-                <h4 className="text-sm font-bold text-white mb-1.5">Long-Term Maintenance</h4>
-                <p className="text-xs text-[#9AB4A9] leading-relaxed">
-                  Clean modular architectures designed to survive far beyond the initial demo.
-                </p>
+              <div className="p-6 pt-0">
+                <Link
+                  href="/insights"
+                  className="text-xs font-bold text-[#0D4634] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Read Article</span>
+                  <ChevronRight className="w-3 h-3" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. CALL TO ACTION BANNER */}
+      {/* ========================================================
+          8. CALL TO ACTION BANNER
+          ======================================================== */}
       <section className="py-20 bg-white">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
-          <div className="bg-[#F4F7F5] border border-[#DEE6E0] rounded-2xl p-8 sm:p-12 text-center max-w-3xl mx-auto shadow-sm">
-            <h2 className="text-3xl font-bold text-[#101513] mb-4">
+          <div className="bg-[#101513] text-white rounded-2xl p-10 sm:p-14 text-center max-w-3xl mx-auto shadow-2xl">
+            <h2 className="text-3xl font-bold font-serif mb-4">
               Ready to Upgrade Your Enterprise Workflows?
             </h2>
-            <p className="text-sm sm:text-base text-[#5B6761] mb-8 max-w-xl mx-auto">
+            <p className="text-sm text-[#CDE5DC] mb-8 max-w-xl mx-auto leading-relaxed">
               Schedule a technical discovery session with our engineering team to review system
               architecture, live software demos, and deployment timelines.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded text-sm font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded text-sm font-semibold text-[#101513] bg-[#E3AB72] hover:bg-[#d69d63] transition-colors shadow-sm"
               >
                 <span>Request a System Demo</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="mailto:serktechgroup@gmail.com"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded text-sm font-semibold text-[#101513] bg-white border border-[#DEE6E0] hover:bg-[#DEE6E0] transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded text-sm font-semibold text-white bg-white/10 border border-white/20 hover:bg-white/20 transition-colors"
               >
                 <span>Email serktechgroup@gmail.com</span>
               </a>
