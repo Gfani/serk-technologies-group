@@ -13,10 +13,10 @@ import sys
 SRC, OUT = sys.argv[1], sys.argv[2]
 os.makedirs(OUT, exist_ok=True)
 
-P, P2, PLUM, INK = '#0D4634', '#082E22', '#162B23', '#101513'
-TAN, TAN2, LAV, MINT, TEAL = '#2D735A', '#458B72', '#F4F7F5', '#CDE5DC', '#0D4634'
+P, P2, PLUM, INK = '#101513', '#000000', '#101513', '#101513'
+TAN, TAN2, LAV, MINT, TEAL = '#2A302D', '#444C47', '#F4F7F5', '#DEE6E0', '#101513'
 WHITE, GREY, LINE, NIGHT = '#FFFFFF', '#5B6761', '#DEE6E0', '#101513'
-GREEN, RED = '#2D735A', '#D9534F'
+GREEN, RED = '#101513', '#5B6761'
 
 FONT_FILES = {
     300: 'poppins-pxibyp8kv8jhgfvrldz8z1xlfq.woff2',

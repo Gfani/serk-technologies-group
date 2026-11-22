@@ -13,11 +13,11 @@ def get_header_html(active_page="home"):
     cls_serv = 'active' if is_serv else ''
     cls_vent = 'active' if is_vent else ''
 
-    style_home = 'color:#0D4634;font-weight:700;' if is_home else ''
-    style_prod = 'color:#0D4634;font-weight:700;' if is_prod else ''
-    style_ind = 'color:#0D4634;font-weight:700;' if is_ind else ''
-    style_serv = 'color:#0D4634;font-weight:700;' if is_serv else ''
-    style_vent = 'color:#0D4634;font-weight:700;' if is_vent else ''
+    style_home = 'color:#101513;font-weight:700;' if is_home else ''
+    style_prod = 'color:#101513;font-weight:700;' if is_prod else ''
+    style_ind = 'color:#101513;font-weight:700;' if is_ind else ''
+    style_serv = 'color:#101513;font-weight:700;' if is_serv else ''
+    style_vent = 'color:#101513;font-weight:700;' if is_vent else ''
 
     return f'''<!-- SERK Structured 2-Row Global Header -->
 <header class="serk-header" id="serk-global-header">
@@ -29,7 +29,7 @@ def get_header_html(active_page="home"):
     .serk-top-bar-inner {{ height: 100%; display: flex; align-items: center; justify-content: space-between; }}
     .serk-top-bar-left, .serk-top-bar-right {{ display: flex; align-items: center; gap: 12px; }}
     .serk-top-bar a {{ color: #5B6761; text-decoration: none; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; }}
-    .serk-top-bar a:hover {{ color: #0D4634; }}
+    .serk-top-bar a:hover {{ color: #101513; }}
     .serk-sep {{ color: #DEE6E0; font-size: 13px; user-select: none; }}
     .serk-main-nav {{ height: 68px; background-color: #FFFFFF; border-bottom: 1px solid #DEE6E0; }}
     .serk-main-nav-inner {{ height: 100%; display: flex; align-items: center; justify-content: space-between; }}
@@ -39,11 +39,11 @@ def get_header_html(active_page="home"):
     .serk-menu {{ display: flex; align-items: center; list-style: none !important; margin: 0 !important; padding: 0 !important; gap: 28px; }}
     .serk-menu li {{ list-style: none !important; margin: 0 !important; padding: 0 !important; display: inline-block; }}
     .serk-nav-link {{ font-size: 14.5px; font-weight: 600; color: #101513; text-decoration: none !important; padding: 8px 0; position: relative; transition: color 0.2s; }}
-    .serk-nav-link:hover, .serk-nav-link.active {{ color: #0D4634; }}
-    .serk-nav-link.active::after {{ content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #0D4634; border-radius: 2px; }}
+    .serk-nav-link:hover, .serk-nav-link.active {{ color: #101513; }}
+    .serk-nav-link.active::after {{ content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #101513; border-radius: 2px; }}
     .serk-header-cta-wrap {{ display: flex; align-items: center; gap: 16px; }}
-    .serk-btn-primary {{ background-color: #0D4634 !important; color: #FFFFFF !important; font-size: 13.5px; font-weight: 600; padding: 10px 20px; border-radius: 6px; text-decoration: none !important; display: inline-flex; align-items: center; border: 1px solid #0D4634; transition: all 0.2s; }}
-    .serk-btn-primary:hover {{ background-color: #2D735A !important; border-color: #2D735A; color: #FFFFFF !important; }}
+    .serk-btn-primary {{ background-color: #101513 !important; color: #FFFFFF !important; font-size: 13.5px; font-weight: 600; padding: 10px 20px; border-radius: 6px; text-decoration: none !important; display: inline-flex; align-items: center; border: 1px solid #101513; transition: all 0.2s; }}
+    .serk-btn-primary:hover {{ background-color: #333333 !important; border-color: #333333; color: #FFFFFF !important; }}
     .serk-mobile-menu-toggle {{ display: none; background: none; border: 1px solid #DEE6E0; border-radius: 6px; padding: 8px 10px; cursor: pointer; flex-direction: column; gap: 4px; }}
     .serk-hamburger-bar {{ width: 18px; height: 2px; background-color: #101513; border-radius: 2px; display: block; }}
     .serk-mobile-drawer {{ display: none; }}
@@ -147,8 +147,8 @@ def get_header_html(active_page="home"):
 '''
 
 def get_footer_html():
-    return '''<!-- SERK Enterprise Global Footer (#082E22) -->
-<footer class="serk-global-footer" id="serk-global-footer" style="background-color: #082E22; color: #FFFFFF; font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; padding: 64px 0 32px; border-top: 1px solid #144636;">
+    return '''<!-- SERK Enterprise Global Footer (#101513) -->
+<footer class="serk-global-footer" id="serk-global-footer" style="background-color: #101513; color: #FFFFFF; font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; padding: 64px 0 32px; border-top: 1px solid #222222;">
   <div class="serk-footer-container" style="max-width: 1240px; margin: 0 auto; padding: 0 24px;">
     <div class="serk-footer-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 48px;">
       
@@ -157,10 +157,10 @@ def get_footer_html():
         <a href="/" class="serk-footer-logo-link" aria-label="SERK Technologies Group">
           <img src="/wp-content/uploads/serk/serk-logo-wide-light.png?v=20261122-04" alt="SERK Technologies Group" class="serk-footer-logo" width="200" height="38" style="height: 38px; max-height: 38px; width: auto; max-width: 220px; display: block; object-fit: contain; margin-bottom: 16px;">
         </a>
-        <p style="color: #9EB5AB; font-size: 13.5px; line-height: 1.65; margin: 0 0 16px;">
+        <p style="color: #A0AAA5; font-size: 13.5px; line-height: 1.65; margin: 0 0 16px;">
           <strong>SERK Technologies Group</strong> ("Innovation with Integrity") engineers enterprise software, intelligent operating platforms, and practical applied AI for construction, healthcare, finance, and commerce across Ethiopia and the region.
         </p>
-        <div style="font-size: 12.5px; color: #7A968B;">
+        <div style="font-size: 12.5px; color: #77827D;">
           Registered in Mekelle, Tigray, Ethiopia
         </div>
       </div>
@@ -169,11 +169,11 @@ def get_footer_html():
       <div class="serk-footer-col">
         <h4 style="color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 18px;">Products</h4>
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; line-height: 2;">
-          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Construction OS</a></li>
-          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Hospital Management</a></li>
-          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Finance &amp; Audit Engine</a></li>
-          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Smart Retail &amp; POS</a></li>
-          <li><a href="/products/" style="color: #C0D3CA; text-decoration: none;">Platform Architecture</a></li>
+          <li><a href="/products/" style="color: #DEE6E0; text-decoration: none;">Construction OS</a></li>
+          <li><a href="/products/" style="color: #DEE6E0; text-decoration: none;">Hospital Management</a></li>
+          <li><a href="/products/" style="color: #DEE6E0; text-decoration: none;">Finance &amp; Audit Engine</a></li>
+          <li><a href="/products/" style="color: #DEE6E0; text-decoration: none;">Smart Retail &amp; POS</a></li>
+          <li><a href="/products/" style="color: #DEE6E0; text-decoration: none;">Platform Architecture</a></li>
         </ul>
       </div>
 
@@ -181,11 +181,11 @@ def get_footer_html():
       <div class="serk-footer-col">
         <h4 style="color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 18px;">Solutions</h4>
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; line-height: 2;">
-          <li><a href="/industries/" style="color: #C0D3CA; text-decoration: none;">Construction &amp; Real Estate</a></li>
-          <li><a href="/industries/" style="color: #C0D3CA; text-decoration: none;">Healthcare Delivery</a></li>
-          <li><a href="/industries/" style="color: #C0D3CA; text-decoration: none;">Banking &amp; Financial Services</a></li>
-          <li><a href="/services/" style="color: #C0D3CA; text-decoration: none;">System Architecture</a></li>
-          <li><a href="/services/" style="color: #C0D3CA; text-decoration: none;">Cloud &amp; Security Engineering</a></li>
+          <li><a href="/industries/" style="color: #DEE6E0; text-decoration: none;">Construction &amp; Real Estate</a></li>
+          <li><a href="/industries/" style="color: #DEE6E0; text-decoration: none;">Healthcare Delivery</a></li>
+          <li><a href="/industries/" style="color: #DEE6E0; text-decoration: none;">Banking &amp; Financial Services</a></li>
+          <li><a href="/services/" style="color: #DEE6E0; text-decoration: none;">System Architecture</a></li>
+          <li><a href="/services/" style="color: #DEE6E0; text-decoration: none;">Cloud &amp; Security Engineering</a></li>
         </ul>
       </div>
 
@@ -193,36 +193,36 @@ def get_footer_html():
       <div class="serk-footer-col">
         <h4 style="color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 18px;">Company</h4>
         <ul style="list-style: none; padding: 0; margin: 0; font-size: 13.5px; line-height: 2;">
-          <li><a href="/about_us/" style="color: #C0D3CA; text-decoration: none;">About Us</a></li>
-          <li><a href="/ventures/" style="color: #C0D3CA; text-decoration: none;">Ventures &amp; Family</a></li>
-          <li><a href="/partners/" style="color: #C0D3CA; text-decoration: none;">Partners</a></li>
-          <li><a href="/insight/" style="color: #C0D3CA; text-decoration: none;">Insights &amp; Articles</a></li>
-          <li><a href="/gallery/" style="color: #C0D3CA; text-decoration: none;">Corporate Gallery</a></li>
+          <li><a href="/about_us/" style="color: #DEE6E0; text-decoration: none;">About Us</a></li>
+          <li><a href="/ventures/" style="color: #DEE6E0; text-decoration: none;">Ventures &amp; Family</a></li>
+          <li><a href="/partners/" style="color: #DEE6E0; text-decoration: none;">Partners</a></li>
+          <li><a href="/insight/" style="color: #DEE6E0; text-decoration: none;">Insights &amp; Articles</a></li>
+          <li><a href="/gallery/" style="color: #DEE6E0; text-decoration: none;">Corporate Gallery</a></li>
         </ul>
       </div>
 
       <!-- Col 5: Contact & Location -->
       <div class="serk-footer-col">
         <h4 style="color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 18px;">Contact &amp; HQ</h4>
-        <div style="font-size: 13px; color: #C0D3CA; line-height: 1.8; margin-bottom: 16px;">
+        <div style="font-size: 13px; color: #DEE6E0; line-height: 1.8; margin-bottom: 16px;">
           <div><strong>Headquarters:</strong> Mekelle, Tigray, Ethiopia</div>
-          <div><strong>Email:</strong> <a href="mailto:serktechgroup@gmail.com" style="color: #5DF2B5; text-decoration: none;">serktechgroup@gmail.com</a></div>
-          <div><strong>Phone:</strong> <a href="tel:+251999911192" style="color: #5DF2B5; text-decoration: none;">+251 999 911 192</a></div>
+          <div><strong>Email:</strong> <a href="mailto:serktechgroup@gmail.com" style="color: #FFFFFF; text-decoration: underline;">serktechgroup@gmail.com</a></div>
+          <div><strong>Phone:</strong> <a href="tel:+251999911192" style="color: #FFFFFF; text-decoration: underline;">+251 999 911 192</a></div>
         </div>
-        <a href="/contact_us/" style="display: inline-block; background-color: #0D4634; border: 1px solid #2D735A; color: #FFFFFF; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 12.5px; font-weight: 600;">Contact Engineering Team &rarr;</a>
+        <a href="/contact_us/" style="display: inline-block; background-color: #222222; border: 1px solid #444444; color: #FFFFFF; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 12.5px; font-weight: 600;">Contact Engineering Team &rarr;</a>
       </div>
 
     </div>
 
     <!-- Bottom Bar: Legal & Copyright -->
-    <div class="serk-footer-bottom" style="border-top: 1px solid #144636; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #7A968B; flex-wrap: wrap; gap: 12px;">
+    <div class="serk-footer-bottom" style="border-top: 1px solid #222222; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #77827D; flex-wrap: wrap; gap: 12px;">
       <div>
         Copyright &copy; 2026 SERK Technologies Group. All rights reserved. &bull; <em>"Innovation with Integrity"</em>
       </div>
       <div style="display: flex; gap: 20px;">
-        <a href="/privacy/" style="color: #9EB5AB; text-decoration: none;">Privacy Policy</a>
-        <a href="/terms/" style="color: #9EB5AB; text-decoration: none;">Terms of Service</a>
-        <a href="/contact_us/" style="color: #9EB5AB; text-decoration: none;">Security &amp; Compliance</a>
+        <a href="/privacy/" style="color: #A0AAA5; text-decoration: none;">Privacy Policy</a>
+        <a href="/terms/" style="color: #A0AAA5; text-decoration: none;">Terms of Service</a>
+        <a href="/contact_us/" style="color: #A0AAA5; text-decoration: none;">Security &amp; Compliance</a>
       </div>
     </div>
   </div>

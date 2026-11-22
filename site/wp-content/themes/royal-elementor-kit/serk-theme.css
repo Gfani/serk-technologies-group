@@ -1,88 +1,168 @@
 /* ==========================================================================
    SERK TECHNOLOGIES GROUP - Master Design System
-   Visual Identity: Black & White Minimalism with Restrained Deep Green
+   Visual Identity: Pure Black & White Minimalism
+   Main surface: White (#FFFFFF) | Contrast/Accent: Black (#101513 / #000000)
+   Fonts & Texts: Preserved exactly as established
    ========================================================================== */
 
 :root {
-  /* Core Brand Tokens */
+  /* Core Black & White Brand Tokens */
   --serk-ink: #101513;
-  --serk-deep-forest: #0D4634;
-  --serk-light-green: #2D735A;
+  --serk-black: #000000;
+  --serk-charcoal: #2A302D;
   --serk-white: #FFFFFF;
   --serk-mist: #F4F7F5;
   --serk-hairline: #DEE6E0;
   --serk-muted: #5B6761;
-  --serk-warning: #9A5B20;
+  
+  /* Primary Action & Accent tokens (now strictly Black) */
+  --serk-deep-forest: #101513;
+  --serk-light-green: #2A302D;
+  --serk-warning: #5B6761;
 
-  /* Typography */
+  /* Typography (Preserved exactly) */
+  --serk-font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --serk-font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --serk-font-body: 'Lato', 'Poppins', sans-serif;
   --serk-font-ethiopic: 'Noto Sans Ethiopic', 'Abyssinica SIL', sans-serif;
 }
 
-/* Base & Typography */
+/* Base Body */
 body {
-  font-family: var(--serk-font-sans) !important;
+  font-family: var(--serk-font-body);
   color: var(--serk-ink);
   background-color: var(--serk-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6,
-.elementor-heading-title,
-.wpr-promo-box-title,
-.wpr-grid-item-title {
-  color: var(--serk-ink);
-  font-family: var(--serk-font-sans) !important;
-  letter-spacing: -0.015em;
-}
-
 /* ========================================================
-   HEADINGS ON GREEN OR DARK BACKGROUNDS (MUST BE WHITE)
+   TYPOGRAPHY - Preserve Headlines & Fonts
    ======================================================== */
+.elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
+.elementor-element-5f1264c .elementor-heading-title,
 .elementor-element-ec224c7 .elementor-heading-title,
 .elementor-element-c49bbe5 .elementor-heading-title,
-[data-id="ec224c7"] .elementor-heading-title,
-[data-id="c49bbe5"] .elementor-heading-title,
+.elementor-element-f383be9 .elementor-heading-title,
+.elementor-element-7dcfe24 .elementor-heading-title,
+.elementor-element-7eb5a1b4 .elementor-heading-title,
+.elementor-element-21de704 .elementor-heading-title,
+.wpr-post-title,
 .wpr-promo-box-title,
 .wpr-promo-box-title span,
 .wpr-promo-box-title a,
-.wpr-promo-box-description,
-[style*="0D4634"] h1, [style*="0D4634"] h2, [style*="0D4634"] h3, [style*="0D4634"] h4, [style*="0D4634"] h5, [style*="0D4634"] h6,
-[style*="082E22"] h1, [style*="082E22"] h2, [style*="082E22"] h3, [style*="082E22"] h4, [style*="082E22"] h5, [style*="082E22"] h6,
-[style*="2D735A"] h1, [style*="2D735A"] h2, [style*="2D735A"] h3, [style*="2D735A"] h4, [style*="2D735A"] h5, [style*="2D735A"] h6,
-[style*="deep-forest"] h1, [style*="deep-forest"] h2, [style*="deep-forest"] h3, [style*="deep-forest"] h4,
-.elementor-section[style*="0D4634"] .elementor-heading-title,
-.elementor-section[style*="082E22"] .elementor-heading-title,
-.elementor-section[style*="2D735A"] .elementor-heading-title,
-.elementor-section-boxed[style*="0D4634"] .elementor-heading-title,
-.elementor-section-boxed[style*="082E22"] .elementor-heading-title,
-.elementor-element[style*="0D4634"] .elementor-heading-title,
-.elementor-element[style*="082E22"] .elementor-heading-title,
-.serk-cta-banner h1, .serk-cta-banner h2, .serk-cta-banner h3, .serk-cta-banner h4,
-.serk-dark-sec h1, .serk-dark-sec h2, .serk-dark-sec h3, .serk-dark-sec h4 {
-  color: #FFFFFF !important;
+.wpr-grid-item-title,
+.wpr-grid-item-title a,
+.serk-font-serif {
+  font-family: var(--serk-font-serif) !important;
+  letter-spacing: -0.015em;
 }
 
+/* Headings Default */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--serk-ink);
+  letter-spacing: -0.015em;
+}
+
+/* Body Copy */
 p, .elementor-widget-text-editor, .elementor-icon-box-description, .wpr-grid-item-excerpt {
   color: var(--serk-muted);
   line-height: 1.65;
 }
 
-/* Primary CTAs & Buttons */
+/* ========================================================
+   HEADINGS & TEXT ON DARK SURFACES (CRISP WHITE #FFFFFF)
+   ======================================================== */
+.elementor-element-ec224c7 .elementor-heading-title,
+.elementor-element-c49bbe5 .elementor-heading-title,
+[data-id="ec224c7"] .elementor-heading-title,
+[data-id="c49bbe5"] .elementor-heading-title,
+.elementor-element-8ebc8a5 h2,
+.elementor-element-8ebc8a5 .elementor-heading-title,
+.wpr-promo-box-title,
+.wpr-promo-box-title span,
+.wpr-promo-box-title a,
+.wpr-promo-box-description,
+.wpr-promo-box-description p,
+.serk-dark-sec,
+.serk-dark-sec h1, .serk-dark-sec h2, .serk-dark-sec h3, .serk-dark-sec h4,
+.elementor-element-5b611c4 .elementor-heading-title,
+.elementor-location-footer .elementor-heading-title,
+.serk-global-footer h4 {
+  color: #FFFFFF !important;
+}
+
+.elementor-element-8ebc8a5 p,
+[data-id="2055672"] p,
+[data-id="3e5f206"] p {
+  color: #DEE6E0 !important;
+}
+
+/* ========================================================
+   LOGO STYLING - Anti-Blowout & Balanced Proportions
+   ======================================================== */
+.wpr-logo-image,
+.wpr-logo img,
+.elementor-widget-wpr-logo img,
+img[src*="serk-logo"] {
+  max-width: 160px !important;
+  max-height: 42px !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+/* ========================================================
+   NAVIGATION & ACTIVE STATES (Strict Black & White)
+   ======================================================== */
+.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item,
+.serk-nav-link {
+  color: var(--serk-ink) !important;
+  font-family: var(--serk-font-sans) !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  transition: color 0.2s ease !important;
+}
+
+/* Pointer Line Underline Animation - Crisp Black */
+.elementor-1174 .elementor-element.elementor-element-0eb8db5.wpr-pointer-line-fx .wpr-menu-item:before,
+.elementor-1174 .elementor-element.elementor-element-0eb8db5.wpr-pointer-line-fx .wpr-menu-item:after,
+.serk-nav-link.active::after {
+  background-color: #101513 !important;
+  height: 2px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item:hover,
+.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item.wpr-active-menu-item,
+.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu li.current-menu-item > a,
+.serk-nav-link:hover,
+.serk-nav-link.active,
+.wpr-mobile-menu-item:hover,
+.wpr-mobile-nav-menu li.current-menu-item a.wpr-mobile-menu-item {
+  color: #101513 !important;
+  font-weight: 700 !important;
+}
+
+/* ========================================================
+   PRIMARY & SECONDARY BUTTONS (Black & White)
+   ======================================================== */
+/* Solid Black Button */
 .elementor-button,
 .wpr-button a,
 .wpr-promo-box-btn,
 .wpforms-submit,
 button[type="submit"],
-.wpr-sub-button {
-  background-color: var(--serk-deep-forest) !important;
-  color: var(--serk-white) !important;
+.wpr-sub-button,
+.serk-btn-primary {
+  background-color: #101513 !important;
+  color: #FFFFFF !important;
   border-radius: 6px !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  border: 1px solid var(--serk-deep-forest) !important;
-  box-shadow: 0 2px 6px rgba(13, 70, 52, 0.15) !important;
+  border: 1px solid #101513 !important;
+  box-shadow: 0 2px 6px rgba(16, 21, 19, 0.15) !important;
 }
 
 .elementor-button:hover,
@@ -90,93 +170,48 @@ button[type="submit"],
 .wpr-button a:hover,
 .wpr-promo-box-btn:hover,
 .wpforms-submit:hover,
-button[type="submit"]:hover {
-  background-color: var(--serk-light-green) !important;
-  border-color: var(--serk-light-green) !important;
-  color: var(--serk-white) !important;
+button[type="submit"]:hover,
+.serk-btn-primary:hover {
+  background-color: #2D3230 !important;
+  border-color: #2D3230 !important;
+  color: #FFFFFF !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(13, 70, 52, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(16, 21, 19, 0.25) !important;
 }
 
-/* Secondary / Outline Buttons */
+/* Secondary Outline Button (Black on White) */
 .elementor-button.btn-secondary,
 .wpr-button-secondary a {
   background-color: transparent !important;
-  color: var(--serk-deep-forest) !important;
-  border: 1px solid var(--serk-hairline) !important;
+  color: #101513 !important;
+  border: 1px solid #101513 !important;
   box-shadow: none !important;
 }
 
 .elementor-button.btn-secondary:hover,
 .wpr-button-secondary a:hover {
-  background-color: var(--serk-mist) !important;
-  border-color: var(--serk-light-green) !important;
-  color: var(--serk-deep-forest) !important;
+  background-color: #101513 !important;
+  border-color: #101513 !important;
+  color: #FFFFFF !important;
 }
 
-/* Navigation & Header */
-.wpr-nav-menu a.wpr-menu-item:hover,
-.wpr-nav-menu li.current-menu-item > a,
-.wpr-mobile-menu-item:hover {
-  color: var(--serk-deep-forest) !important;
-}
-
-/* Floating Call & Back-To-Top Controls */
+/* Floating Controls (Solid Black) */
 .wpr-pc-btn,
 .wpr-stt-btn {
-  background-color: var(--serk-deep-forest) !important;
-  color: var(--serk-white) !important;
-  box-shadow: 0 4px 14px rgba(13, 70, 52, 0.3) !important;
+  background-color: #101513 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(16, 21, 19, 0.3) !important;
   transition: background-color 0.2s ease, transform 0.2s ease !important;
 }
 
 .wpr-pc-btn:hover,
 .wpr-stt-btn:hover {
-  background-color: var(--serk-light-green) !important;
+  background-color: #2D3230 !important;
   transform: scale(1.05) !important;
 }
 
-/* Cards, Grid Items & Dividers */
-.wpr-grid-item,
-.elementor-widget-icon-box,
-.wpr-feature-list-item {
-  border-color: var(--serk-hairline) !important;
-}
-
-.wpr-grid-item:hover {
-  border-color: var(--serk-light-green) !important;
-}
-
-.elementor-divider-separator {
-  border-top-color: var(--serk-hairline) !important;
-}
-
-/* Form Inputs & Controls */
-.wpforms-field input,
-.wpforms-field textarea,
-input[type="text"],
-input[type="email"],
-textarea {
-  border: 1px solid var(--serk-hairline) !important;
-  border-radius: 6px !important;
-  color: var(--serk-ink) !important;
-  background-color: var(--serk-white) !important;
-  padding: 10px 14px !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
-}
-
-.wpforms-field input:focus,
-.wpforms-field textarea:focus,
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-  border-color: var(--serk-light-green) !important;
-  box-shadow: 0 0 0 3px rgba(45, 115, 90, 0.15) !important;
-  outline: none !important;
-}
-
 /* ========================================================
-   PARALLELOGRAM CATEGORY & BADGE STYLING (SERK High-Tech)
+   CATEGORY PILLS & BADGES (Clean Monochrome)
    ======================================================== */
 .serk-badge,
 .serk-filter-btn,
@@ -188,20 +223,22 @@ textarea:focus {
   align-items: center !important;
   justify-content: center !important;
   gap: 6px !important;
-  padding: 4px 14px !important;
+  padding: 4px 12px !important;
   transform: skew(-14deg) !important;
   border-radius: 2px !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.05em !important;
   margin: 2px 4px 6px 0 !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   box-sizing: border-box !important;
   text-decoration: none !important;
+  background-color: rgba(16, 21, 19, 0.06) !important;
+  color: #101513 !important;
+  border: 1px solid rgba(16, 21, 19, 0.2) !important;
 }
 
-/* Counter-skew child text/icon so content remains upright and readable */
 .serk-badge > *,
 .serk-filter-btn > *,
 .serk-cat-parallelogram > *,
@@ -212,174 +249,86 @@ textarea:focus {
   display: inline-block !important;
 }
 
-.serk-badge-production {
-  background-color: rgba(13, 70, 52, 0.08) !important;
-  color: var(--serk-deep-forest) !important;
-  border: 1px solid rgba(13, 70, 52, 0.25) !important;
-}
-
-.serk-badge-pilot {
-  background-color: rgba(154, 91, 32, 0.08) !important;
-  color: var(--serk-warning) !important;
-  border: 1px solid rgba(154, 91, 32, 0.25) !important;
-}
-
-.serk-badge-alpha {
-  background-color: rgba(91, 103, 97, 0.08) !important;
-  color: var(--serk-muted) !important;
-  border: 1px solid rgba(91, 103, 97, 0.25) !important;
-}
-
-.wpr-grid-item-category a,
-.entry-categories a,
-.cat-links a {
-  background-color: rgba(13, 70, 52, 0.08) !important;
-  color: var(--serk-deep-forest) !important;
-  border: 1px solid rgba(13, 70, 52, 0.25) !important;
-}
-
 .wpr-grid-item-category a:hover,
 .entry-categories a:hover,
-.cat-links a:hover {
-  background-color: var(--serk-deep-forest) !important;
-  color: #FFFFFF !important;
-}
-
-/* Parallelogram Category Filter Buttons (Gallery & Interactive) */
-.serk-filter-btn {
-  padding: 8px 18px !important;
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  border: 1px solid #DEE6E0 !important;
-  background: #FFFFFF !important;
-  color: #5B6761 !important;
-}
-
+.cat-links a:hover,
 .serk-filter-btn.active,
 .serk-filter-btn:hover {
-  background: var(--serk-deep-forest, #0D4634) !important;
+  background-color: #101513 !important;
   color: #FFFFFF !important;
-  border-color: var(--serk-deep-forest, #0D4634) !important;
-}
-
-/* Accessible High-Contrast Focus Rings */
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--serk-light-green) !important;
-  outline-offset: 2px !important;
-}
-
-/* Header Navigation - Clean Single-Line Menu Layout matching Zuri Advisors */
-.elementor-element-0eb8db5 .wpr-nav-menu {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  justify-content: flex-end !important;
-  gap: 6px !important;
-}
-
-.elementor-element-0eb8db5 .wpr-nav-menu > li > a.wpr-menu-item {
-  padding: 10px 14px !important;
-  font-size: 15px !important;
-  font-weight: 500 !important;
-  white-space: nowrap !important;
-  letter-spacing: 0.01em !important;
-  color: var(--serk-ink) !important;
-  transition: color 0.2s ease !important;
-}
-
-.elementor-element-0eb8db5 .wpr-nav-menu > li > a.wpr-menu-item:hover,
-.elementor-element-0eb8db5 .wpr-nav-menu > li.current-menu-item > a.wpr-menu-item {
-  font-weight: 600 !important;
-  color: var(--serk-deep-forest) !important;
-}
-
-/* Mobile Navigation */
-.wpr-mobile-nav-menu li a.wpr-mobile-menu-item {
-  font-size: 15px !important;
-  font-weight: 500 !important;
-  padding: 10px 16px !important;
-  color: var(--serk-ink) !important;
-}
-
-.wpr-mobile-nav-menu li.current-menu-item a.wpr-mobile-menu-item {
-  font-weight: 600 !important;
-  color: var(--serk-deep-forest) !important;
+  border-color: #101513 !important;
 }
 
 /* ========================================================
-   COMPACT & HORIZONTAL FOOTER STYLING
+   PROMO BOXES (Monochrome Contrast)
    ======================================================== */
-.elementor-element-5b611c4 {
-  background-color: #082E22 !important; /* Deep rich forest green */
-  padding: 36px 20px 28px 20px !important;
+.wpr-promo-box {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--serk-hairline) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
 }
 
-.elementor-element-e959569 {
-  background-color: #051F17 !important;
-  padding: 16px 20px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+.wpr-promo-box:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px rgba(16, 21, 19, 0.16) !important;
+  border-color: #101513 !important;
+}
+
+.wpr-promo-box-title,
+.wpr-promo-box-title span {
+  color: #FFFFFF !important;
+  font-family: var(--serk-font-serif) !important;
+  font-weight: 600 !important;
+}
+
+.wpr-promo-box-description p {
+  color: #DEE6E0 !important;
+}
+
+/* ========================================================
+   FOOTER (Solid Pitch Black #101513 / #000000)
+   ======================================================== */
+.elementor-element-5b611c4,
+.serk-global-footer {
+  background-color: #101513 !important;
+  padding: 40px 20px 30px 20px !important;
+}
+
+.elementor-element-e959569,
+.serk-footer-bottom {
+  background-color: #000000 !important;
+  padding: 18px 20px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 .elementor-element-e959569 p,
-.elementor-element-e959569 a {
+.elementor-element-e959569 a,
+.serk-footer-bottom a {
   color: #8C9891 !important;
   font-size: 0.85rem !important;
 }
 
-.elementor-element-5b611c4 .elementor-heading-title,
-.elementor-element-c12ecba .elementor-heading-title,
-.elementor-element-8c3ad61 .elementor-heading-title,
-.elementor-element-e1f0665 .elementor-heading-title,
-.elementor-location-footer .elementor-heading-title {
-  color: #FFFFFF !important;
-  font-size: 1.08rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.04em !important;
-  text-transform: uppercase !important;
-  margin-bottom: 12px !important;
-}
-
-.serk-footer-links-horizontal {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 8px 18px !important;
-  align-items: center !important;
-  line-height: 1.8 !important;
-}
-
-.serk-footer-link {
-  color: #CDE5DC !important;
+.serk-footer-link,
+.elementor-element-3bf3c57 .elementor-heading-title a,
+.elementor-element-7e0acc4 .elementor-heading-title a {
+  color: #DEE6E0 !important;
   font-size: 0.92rem !important;
   font-weight: 500 !important;
   text-decoration: none !important;
   transition: all 0.2s ease !important;
-  display: inline-block !important;
-  white-space: nowrap !important;
 }
 
-.serk-footer-link:hover {
-  color: #FFFFFF !important;
-  text-decoration: underline !important;
-}
-
-.elementor-element-3bf3c57 .elementor-heading-title a,
-.elementor-element-7e0acc4 .elementor-heading-title a {
-  font-size: 0.92rem !important;
-  color: #CDE5DC !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-}
-
+.serk-footer-link:hover,
 .elementor-element-3bf3c57 .elementor-heading-title a:hover,
 .elementor-element-7e0acc4 .elementor-heading-title a:hover {
   color: #FFFFFF !important;
   text-decoration: underline !important;
 }
 
-/* ==========================================================================
-   Lead Capture & Contact Form System (Step 5)
-   ========================================================================== */
+/* ========================================================
+   FORM CONTROLS (Monochrome High Contrast)
+   ======================================================== */
 .serk-form input,
 .serk-form select,
 .serk-form textarea {
@@ -398,26 +347,47 @@ button:focus-visible {
 .serk-form input:focus,
 .serk-form select:focus,
 .serk-form textarea:focus {
-  border-color: var(--serk-light-green) !important;
-  box-shadow: 0 0 0 3px rgba(45, 115, 90, 0.15) !important;
+  border-color: #101513 !important;
+  box-shadow: 0 0 0 3px rgba(16, 21, 19, 0.15) !important;
   outline: none !important;
 }
 
-.serk-form select {
-  cursor: pointer !important;
-  appearance: auto !important;
+/* Accessible High-Contrast Focus Rings */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #101513 !important;
+  outline-offset: 2px !important;
 }
 
-.serk-form label {
-  display: block !important;
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  color: var(--serk-ink) !important;
-  margin-bottom: 6px !important;
+/* Status Badges */
+.serk-badge-production {
+  background-color: #101513 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #101513 !important;
+}
+.serk-badge-pilot {
+  background-color: #F4F7F5 !important;
+  color: #101513 !important;
+  border: 1px solid #DEE6E0 !important;
+}
+.serk-badge-alpha {
+  background-color: #FFFFFF !important;
+  color: #5B6761 !important;
+  border: 1px solid #DEE6E0 !important;
 }
 
-@media (max-width: 640px) {
-  .serk-form-grid-2 {
-    grid-template-columns: 1fr !important;
-  }
+/* Headings on any dark containers remain crisp white */
+.serk-cta-banner h1, .serk-cta-banner h2, .serk-cta-banner h3, .serk-cta-banner h4,
+.serk-dark-sec h1, .serk-dark-sec h2, .serk-dark-sec h3, .serk-dark-sec h4,
+.elementor-element[style*="082E22"] .elementor-heading-title,
+.elementor-element[style*="0D4634"] .elementor-heading-title,
+.elementor-element[style*="101513"] .elementor-heading-title,
+.elementor-element[style*="#101513"] .elementor-heading-title,
+.elementor-section[style*="082E22"] .elementor-heading-title,
+.elementor-section[style*="0D4634"] .elementor-heading-title,
+.elementor-section[style*="101513"] .elementor-heading-title,
+.elementor-section-boxed[style*="082E22"] .elementor-heading-title,
+.elementor-section-boxed[style*="0D4634"] .elementor-heading-title,
+.elementor-section-boxed[style*="101513"] .elementor-heading-title {
+  color: #FFFFFF !important;
 }
