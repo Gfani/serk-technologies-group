@@ -391,16 +391,16 @@ button:focus-visible {
 .elementor-section-boxed[style*="101513"] .elementor-heading-title {
   color: #FFFFFF !important;
 }
-
 /* ========================================================
-   SINGLE COMPACT PROFESSIONAL FOOTER (1175)
+   EXACT ZURI SIZE FOOTER (1175)
    ======================================================== */
 .elementor-1175,
 .elementor-element-5b611c4 {
   background-color: #101513 !important;
   color: #FFFFFF !important;
-  padding: 28px 20px 20px 20px !important;
+  padding: 22px 20px 16px 20px !important;
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .elementor-1175 .elementor-element-5384061 > .elementor-element-populated,
@@ -412,22 +412,22 @@ button:focus-visible {
 
 .elementor-element-e959569 {
   background-color: #000000 !important;
-  padding: 9px 20px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 7px 20px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 .serk-copyright-left {
-  font-size: 11.5px !important;
-  color: #8C9891 !important;
-  line-height: 1.4 !important;
+  font-size: 11px !important;
+  color: #7E8A84 !important;
+  line-height: 1.35 !important;
 }
 
 .serk-copyright-right {
-  font-size: 11.5px !important;
+  font-size: 11px !important;
 }
 
 .serk-footer-sublink {
-  color: #A0AAA5 !important;
+  color: #9AA6A0 !important;
   text-decoration: none !important;
   transition: color 0.2s ease !important;
 }
@@ -442,40 +442,40 @@ button:focus-visible {
 .elementor-element-8c3ad61 .elementor-heading-title {
   color: #FFFFFF !important;
   font-family: var(--serk-font-sans) !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0.04em !important;
   margin-bottom: 8px !important;
 }
 
 .serk-footer-col-vertical {
   display: flex !important;
   flex-direction: column !important;
-  gap: 6px !important;
+  gap: 4px !important;
 }
 
 .serk-footer-grid-split {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 6px 20px !important;
+  gap: 4px 18px !important;
 }
 
 @media (max-width: 767px) {
   .serk-footer-grid-split {
     grid-template-columns: 1fr !important;
-    gap: 6px !important;
+    gap: 4px !important;
   }
 }
 
 .serk-footer-link {
   color: #A0AAA5 !important;
   font-family: var(--serk-font-sans) !important;
-  font-size: 0.85rem !important;
-  font-weight: 500 !important;
+  font-size: 0.84rem !important;
+  font-weight: 400 !important;
   text-decoration: none !important;
   display: block !important;
-  line-height: 1.4 !important;
+  line-height: 1.35 !important;
   transition: color 0.2s ease, transform 0.2s ease !important;
 }
 

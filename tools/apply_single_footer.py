@@ -8,28 +8,34 @@ THEME_CSS_SITE = os.path.join(SITE, 'wp-content', 'themes', 'royal-elementor-kit
 THEME_CSS_ORIG = os.path.join(ORIGINAL, 'wp-content', 'themes', 'royal-elementor-kit', 'serk-theme.css')
 
 def update_css():
-    print("=== Updating serk-theme.css for sleek compact footer layout ===")
+    print("=== Updating serk-theme.css for exact Zuri size footer layout ===")
     with open(THEME_CSS_SITE, 'r', encoding='utf-8') as f:
         css = f.read()
 
-    # Replace any previous footer styles with the refined compact version
-    if '/* ========================================================\n   SINGLE PROFESSIONAL FOOTER' in css:
-        idx = css.find('/* ========================================================\n   SINGLE PROFESSIONAL FOOTER')
-        css = css[:idx]
-    elif '/* ========================================================\n   SINGLE COMPACT FOOTER' in css:
-        idx = css.find('/* ========================================================\n   SINGLE COMPACT FOOTER')
-        css = css[:idx]
+    # Locate and replace footer styles
+    markers = [
+        '/* ========================================================\n   SINGLE PROFESSIONAL FOOTER',
+        '/* ========================================================\n   SINGLE COMPACT FOOTER',
+        '/* ========================================================\n   SINGLE COMPACT PROFESSIONAL FOOTER',
+        '/* ========================================================\n   EXACT ZURI SIZE FOOTER'
+    ]
+    for m in markers:
+        if m in css:
+            idx = css.find(m)
+            css = css[:idx]
+            break
 
     compact_footer_css = """
 /* ========================================================
-   SINGLE COMPACT PROFESSIONAL FOOTER (1175)
+   EXACT ZURI SIZE FOOTER (1175)
    ======================================================== */
 .elementor-1175,
 .elementor-element-5b611c4 {
   background-color: #101513 !important;
   color: #FFFFFF !important;
-  padding: 28px 20px 20px 20px !important;
+  padding: 22px 20px 16px 20px !important;
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .elementor-1175 .elementor-element-5384061 > .elementor-element-populated,
@@ -41,22 +47,22 @@ def update_css():
 
 .elementor-element-e959569 {
   background-color: #000000 !important;
-  padding: 9px 20px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 7px 20px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 .serk-copyright-left {
-  font-size: 11.5px !important;
-  color: #8C9891 !important;
-  line-height: 1.4 !important;
+  font-size: 11px !important;
+  color: #7E8A84 !important;
+  line-height: 1.35 !important;
 }
 
 .serk-copyright-right {
-  font-size: 11.5px !important;
+  font-size: 11px !important;
 }
 
 .serk-footer-sublink {
-  color: #A0AAA5 !important;
+  color: #9AA6A0 !important;
   text-decoration: none !important;
   transition: color 0.2s ease !important;
 }
@@ -71,40 +77,40 @@ def update_css():
 .elementor-element-8c3ad61 .elementor-heading-title {
   color: #FFFFFF !important;
   font-family: var(--serk-font-sans) !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0.04em !important;
   margin-bottom: 8px !important;
 }
 
 .serk-footer-col-vertical {
   display: flex !important;
   flex-direction: column !important;
-  gap: 6px !important;
+  gap: 4px !important;
 }
 
 .serk-footer-grid-split {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 6px 20px !important;
+  gap: 4px 18px !important;
 }
 
 @media (max-width: 767px) {
   .serk-footer-grid-split {
     grid-template-columns: 1fr !important;
-    gap: 6px !important;
+    gap: 4px !important;
   }
 }
 
 .serk-footer-link {
   color: #A0AAA5 !important;
   font-family: var(--serk-font-sans) !important;
-  font-size: 0.85rem !important;
-  font-weight: 500 !important;
+  font-size: 0.84rem !important;
+  font-weight: 400 !important;
   text-decoration: none !important;
   display: block !important;
-  line-height: 1.4 !important;
+  line-height: 1.35 !important;
   transition: color 0.2s ease, transform 0.2s ease !important;
 }
 
@@ -114,13 +120,13 @@ def update_css():
   transform: translateX(3px) !important;
 }
 """
-    css += compact_footer_css.strip() + "\n"
+    css = css.strip() + "\n" + compact_footer_css.strip() + "\n"
 
     with open(THEME_CSS_SITE, 'w', encoding='utf-8') as f:
         f.write(css)
     with open(THEME_CSS_ORIG, 'w', encoding='utf-8') as f:
         f.write(css)
-    print("Updated serk-theme.css with compact styles!")
+    print("Updated serk-theme.css with Zuri-sized footer styles!")
 
 def update_page(path):
     rel = os.path.relpath(path, SITE).replace('\\', '/')
@@ -131,7 +137,7 @@ def update_page(path):
     content = re.sub(r'<!-- SERK Enterprise Global Footer.*?</footer>\s*', '', content, flags=re.S)
     content = re.sub(r'<footer class="serk-global-footer".*?</footer>\s*', '', content, flags=re.S)
 
-    # 2. Replace elementor-1175 footer with the new sleek compact footer
+    # 2. Replace elementor-1175 footer with the new Zuri-sized compact footer
     footer_html = get_footer_html()
     if 'data-elementor-id="1175"' in content:
         pattern = r'<div\s+data-elementor-type="wp-post"\s+data-elementor-id="1175"\s+class="elementor\s+elementor-1175">[\s\S]*?</div>\s*(?=<script|\s*</body>)'
@@ -145,7 +151,7 @@ def update_page(path):
             content = content[:div_start] + footer_html.strip() + '\n' + content[div_end:]
 
     # 3. Cache buster on serk-theme.css
-    content = re.sub(r'serk-theme\.css(?:\?[^"]*)?', 'serk-theme.css?v=20261122-footer03', content)
+    content = re.sub(r'serk-theme\.css(?:\?[^"]*)?', 'serk-theme.css?v=20261122-zurisize01', content)
 
     with open(path, 'w', encoding='utf-8') as f:
         f.write(content)
