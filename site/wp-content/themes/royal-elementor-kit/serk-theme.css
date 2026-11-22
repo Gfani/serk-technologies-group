@@ -67,9 +67,25 @@ p, .elementor-widget-text-editor, .elementor-icon-box-description, .wpr-grid-ite
 /* Headings on Dark / Deep Forest Backgrounds */
 .serk-dark-surface,
 .serk-global-footer,
+.elementor-element-ec224c7 .elementor-heading-title,
+.elementor-element-c49bbe5 .elementor-heading-title,
+.elementor-element-40cd1a7 h1,
+.elementor-element-40cd1a7 h2,
+.elementor-element-40cd1a7 h3,
+.elementor-element-40cd1a7 h4,
+.elementor-element-40cd1a7 .elementor-heading-title,
+[data-id="ec224c7"] .elementor-heading-title,
+[data-id="c49bbe5"] .elementor-heading-title,
 [style*="#0D4634"] h1, [style*="#0D4634"] h2, [style*="#0D4634"] h3, [style*="#0D4634"] h4,
 [style*="#082E22"] h1, [style*="#082E22"] h2, [style*="#082E22"] h3, [style*="#082E22"] h4 {
   color: #FFFFFF !important;
+}
+
+.elementor-element-40cd1a7 p,
+.elementor-element-40cd1a7 .elementor-widget-text-editor,
+.elementor-element-2055672 p,
+.elementor-element-3e5f206 p {
+  color: #DEE6E0 !important;
 }
 
 /* ==========================================================================
