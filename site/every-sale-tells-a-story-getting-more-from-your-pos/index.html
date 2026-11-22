@@ -171,62 +171,136 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='wpr-button-animations-css-css' href='/wp-content/plugins/royal-elementor-addons/assets/css/lib/animations/button-animations.min.css?ver=1.7.1012' media='all' />
 <link rel='stylesheet' id='wpr-loading-animations-css-css' href='/wp-content/plugins/royal-elementor-addons/assets/css/lib/animations/loading-animations.min.css?ver=1.7.1012' media='all' />
 
-	<link rel="stylesheet" id="serk-theme-css" href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-serk03">
+	<link rel="stylesheet" id="serk-theme-css" href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-serk05">
 </head>
 
 <body class="wp-singular post-template post-template-elementor_header_footer single single-post postid-1173 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-royal-elementor-kit elementor-default elementor-template-canvas elementor-kit-11 elementor-page elementor-page-1173">
-			<div data-elementor-type="wp-post" data-elementor-id="1174" class="elementor elementor-1174">
-						<section data-wpr-sticky-section="yes" data-wpr-position-type="sticky" data-wpr-position-offset="0" data-wpr-position-location="top" data-wpr-sticky-devices="mobile_sticky tablet_sticky laptop_sticky desktop_sticky" data-wpr-custom-breakpoints="" data-wpr-active-breakpoints="mobile_sticky tablet_sticky laptop_sticky desktop_sticky" data-wpr-z-index="10" data-wpr-sticky-hide="" data-wpr-replace-header="" data-wpr-animation-duration="" data-wpr-sticky-type="sticky" class="elementor-section elementor-top-section elementor-element elementor-element-246b9cb wpr-sticky-section-yes elementor-section-boxed elementor-section-height-default elementor-section-height-default wpr-particle-no wpr-jarallax-no wpr-parallax-no" data-id="246b9cb" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;position_offset&quot;:0,&quot;position_offset_laptop&quot;:0,&quot;position_offset_tablet&quot;:0,&quot;position_offset_mobile&quot;:0}">
-						<div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-ca0be77" data-id="ca0be77" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-d5e4067 wpr-logo-position-center elementor-widget elementor-widget-wpr-logo" data-id="d5e4067" data-element_type="widget" data-widget_type="wpr-logo.default">
-				<div class="elementor-widget-container">
-								
-			<div class="wpr-logo elementor-clearfix">
+			<!-- SERK Structured 2-Row Global Header -->
+<header class="serk-header" id="serk-global-header">
+  <style id="serk-critical-header-css">
+    .serk-header { position: sticky; top: 0; left: 0; width: 100%; z-index: 9999; background: #FFFFFF; box-shadow: 0 1px 3px rgba(16,21,19,0.06); font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .serk-header * { box-sizing: border-box; }
+    .serk-header-container { max-width: 1240px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .serk-top-bar { height: 36px; background-color: #F4F7F5; border-bottom: 1px solid #DEE6E0; font-size: 12.5px; color: #5B6761; line-height: 36px; }
+    .serk-top-bar-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .serk-top-bar-left, .serk-top-bar-right { display: flex; align-items: center; gap: 12px; }
+    .serk-top-bar a { color: #5B6761; text-decoration: none; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; }
+    .serk-top-bar a:hover { color: #0D4634; }
+    .serk-sep { color: #DEE6E0; font-size: 13px; user-select: none; }
+    .serk-main-nav { height: 68px; background-color: #FFFFFF; border-bottom: 1px solid #DEE6E0; }
+    .serk-main-nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .serk-brand-link { display: flex; align-items: center; text-decoration: none; }
+    .serk-header-logo { height: 38px; max-height: 38px; width: auto; max-width: 220px; display: block; object-fit: contain; }
+    .serk-nav-desktop { display: flex; align-items: center; }
+    .serk-menu { display: flex; align-items: center; list-style: none !important; margin: 0 !important; padding: 0 !important; gap: 28px; }
+    .serk-menu li { list-style: none !important; margin: 0 !important; padding: 0 !important; display: inline-block; }
+    .serk-nav-link { font-size: 14.5px; font-weight: 600; color: #101513; text-decoration: none !important; padding: 8px 0; position: relative; transition: color 0.2s; }
+    .serk-nav-link:hover, .serk-nav-link.active { color: #0D4634; }
+    .serk-nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: #0D4634; border-radius: 2px; }
+    .serk-header-cta-wrap { display: flex; align-items: center; gap: 16px; }
+    .serk-btn-primary { background-color: #0D4634 !important; color: #FFFFFF !important; font-size: 13.5px; font-weight: 600; padding: 10px 20px; border-radius: 6px; text-decoration: none !important; display: inline-flex; align-items: center; border: 1px solid #0D4634; transition: all 0.2s; }
+    .serk-btn-primary:hover { background-color: #2D735A !important; border-color: #2D735A; color: #FFFFFF !important; }
+    .serk-mobile-menu-toggle { display: none; background: none; border: 1px solid #DEE6E0; border-radius: 6px; padding: 8px 10px; cursor: pointer; flex-direction: column; gap: 4px; }
+    .serk-hamburger-bar { width: 18px; height: 2px; background-color: #101513; border-radius: 2px; display: block; }
+    .serk-mobile-drawer { display: none; }
+    @media (max-width: 900px) {
+      .serk-top-bar { display: none !important; }
+      .serk-nav-desktop { display: none !important; }
+      .serk-header-cta-wrap .serk-btn-primary { display: none !important; }
+      .serk-mobile-menu-toggle { display: flex !important; }
+      .serk-mobile-drawer { background-color: #FFFFFF; border-bottom: 1px solid #DEE6E0; padding: 16px 20px 24px; }
+      .serk-mobile-drawer.open { display: block !important; }
+      .serk-mobile-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5B6761; margin-bottom: 12px; }
+      .serk-mobile-list { list-style: none !important; margin: 0 0 16px !important; padding: 0 !important; }
+      .serk-mobile-list li { margin: 0 0 10px !important; padding: 0 !important; list-style: none !important; }
+      .serk-mobile-list a { color: #101513; text-decoration: none !important; font-size: 15px; font-weight: 500; display: block; padding: 4px 0; }
+      .serk-mobile-contact { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; font-size: 13px; color: #5B6761; }
+      .serk-mobile-contact a { color: #5B6761; text-decoration: none !important; }
+      .serk-btn-mobile { display: block !important; width: 100%; text-align: center; justify-content: center; margin-top: 12px; }
+    }
+  </style>
+  <!-- Row 1: Top Utility Bar (36px, #F4F7F5, 1px solid #DEE6E0) -->
+  <div class="serk-top-bar">
+    <div class="serk-header-container serk-top-bar-inner">
+      <div class="serk-top-bar-left">
+        <a href="/about_us/">About Us</a>
+        <span class="serk-sep">·</span>
+        <a href="/partners/">Partners</a>
+        <span class="serk-sep">·</span>
+        <a href="/gallery/">Gallery</a>
+        <span class="serk-sep">·</span>
+        <a href="/insight/">Insights</a>
+      </div>
+      <div class="serk-top-bar-right">
+        <a href="mailto:serktechgroup@gmail.com" class="serk-contact-link" aria-label="Email SERK Group">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;vertical-align:-1px"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          serktechgroup@gmail.com
+        </a>
+        <span class="serk-sep">·</span>
+        <a href="tel:+251999911192" class="serk-contact-link" aria-label="Call SERK Group">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px;vertical-align:-1px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +251 999 911 192
+        </a>
+        <span class="serk-sep">·</span>
+        <a href="/contact_us/">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <!-- Row 2: Main Navigation Bar (68px, #FFFFFF, 1px solid #DEE6E0) -->
+  <div class="serk-main-nav">
+    <div class="serk-header-container serk-main-nav-inner">
+      <a href="/" class="serk-brand-link" aria-label="SERK Technologies Group Home">
+        <img src="/wp-content/uploads/serk/serk-logo-wide.png?v=20261122-04" alt="SERK Technologies Group" class="serk-header-logo" width="200" height="38" style="height:38px;max-height:38px;width:auto;max-width:220px;display:block;object-fit:contain;">
+      </a>
+      <nav class="serk-nav-desktop" aria-label="Main Navigation">
+        <ul class="serk-menu">
+          <li><a href="/" class="serk-nav-link active">Home</a></li>
+          <li><a href="/products/" class="serk-nav-link ">Products</a></li>
+          <li><a href="/industries/" class="serk-nav-link ">Industries</a></li>
+          <li><a href="/services/" class="serk-nav-link ">Services</a></li>
+          <li><a href="/ventures/" class="serk-nav-link ">Ventures</a></li>
+        </ul>
+      </nav>
+      <div class="serk-header-cta-wrap">
+        <a href="/contact_us/" class="serk-btn-primary">Discuss Your Project</a>
+        <button class="serk-mobile-menu-toggle" id="serkMobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false" onclick="var d=document.getElementById('serkMobileDrawer');if(d){var isBlock=window.getComputedStyle(d).display==='block';d.style.display=isBlock?'none':'block';d.classList.toggle('open');}">
+          <span class="serk-hamburger-bar"></span>
+          <span class="serk-hamburger-bar"></span>
+          <span class="serk-hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Drawer: Collapses cleanly into a single accordion drawer containing both tiers -->
+  <div class="serk-mobile-drawer" id="serkMobileDrawer" style="display:none;">
+    <div class="serk-mobile-section">
+      <div class="serk-mobile-title">Core Navigation</div>
+      <ul class="serk-mobile-list">
+        <li><a href="/" style="color:#0D4634;font-weight:700;">Home</a></li>
+        <li><a href="/products/" style="">Products</a></li>
+        <li><a href="/industries/" style="">Industries</a></li>
+        <li><a href="/services/" style="">Services</a></li>
+        <li><a href="/ventures/" style="">Ventures</a></li>
+      </ul>
+    </div>
+    <div class="serk-mobile-section" style="border-top:1px solid #DEE6E0;padding-top:16px;">
+      <div class="serk-mobile-title">Company &amp; Resources</div>
+      <ul class="serk-mobile-list">
+        <li><a href="/about_us/">About Us</a></li>
+        <li><a href="/partners/">Partners</a></li>
+        <li><a href="/gallery/">Gallery</a></li>
+        <li><a href="/insight/">Insights</a></li>
+        <li><a href="/contact_us/">Contact Us</a></li>
+      </ul>
+      <div class="serk-mobile-contact">
+        <a href="mailto:serktechgroup@gmail.com">serktechgroup@gmail.com</a>
+        <a href="tel:+251999911192">+251 999 911 192</a>
+      </div>
+      <a href="/contact_us/" class="serk-btn-primary serk-btn-mobile">Discuss Your Project</a>
+    </div>
+  </div>
+</header>
 
-								<picture class="wpr-logo-image">
-										<source media="(max-width: 767px)" srcset="/wp-content/uploads/serk/serk-logo-wide.png">	
-					
-										<source srcset="/wp-content/uploads/serk/serk-logo-wide.png 1x, /wp-content/uploads/serk/serk-logo-wide.png 2x">	
-										
-					<img src="/wp-content/uploads/serk/serk-logo-wide.png" alt="" width="160" height="31" style="max-width: 160px; height: auto; display: block;" alt="SERK Technologies Group">
-
-											<a class="wpr-logo-url" rel="home" aria-label="" href="/"></a>
-									</picture>
-				
-				
-									<a class="wpr-logo-url" rel="home" aria-label="" href="/"></a>
-				
-			</div>
-				
-						</div>
-				</div>
-					</div>
-		</div>
-				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-3e4a204" data-id="3e4a204" data-element_type="column">
-			<div class="elementor-widget-wrap elementor-element-populated">
-						<div class="elementor-element elementor-element-0eb8db5 wpr-main-menu-align-center wpr-main-menu-align--laptopcenter wpr-main-menu-align--tabletleft wpr-main-menu-align--mobileleft wpr-pointer-underline wpr-pointer-line-fx wpr-pointer-fx-fade wpr-sub-icon-caret-down wpr-sub-menu-fx-fade wpr-nav-menu-bp-mobile wpr-mobile-menu-full-width wpr-mobile-menu-item-align-center wpr-mobile-toggle-v1 wpr-sub-divider-yes wpr-mobile-divider-yes elementor-widget elementor-widget-wpr-nav-menu" data-id="0eb8db5" data-element_type="widget" data-settings="{&quot;menu_layout&quot;:&quot;horizontal&quot;}" data-widget_type="wpr-nav-menu.default">
-				<div class="elementor-widget-container">
-					<nav class="wpr-nav-menu-container wpr-nav-menu-horizontal" data-trigger="hover"><ul id="menu-1-0eb8db5" class="wpr-nav-menu">
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/" class="wpr-menu-item wpr-pointer-item">Home</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/about_us/" class="wpr-menu-item wpr-pointer-item">About Us</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/services/" class="wpr-menu-item wpr-pointer-item">Services</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item"><a href="/insight/" aria-current="page" class="wpr-menu-item wpr-pointer-item">Insights</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/contact_us/" class="wpr-menu-item wpr-pointer-item">Contact Us</a></li>
-</ul></nav><nav class="wpr-mobile-nav-menu-container"><div class="wpr-mobile-toggle-wrap"><div class="wpr-mobile-toggle"><span class="wpr-mobile-toggle-line"></span><span class="wpr-mobile-toggle-line"></span><span class="wpr-mobile-toggle-line"></span></div></div><ul id="mobile-menu-2-0eb8db5" class="wpr-mobile-nav-menu">
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/" class="wpr-mobile-menu-item">Home</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/about_us/" class="wpr-mobile-menu-item">About Us</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/services/" class="wpr-mobile-menu-item">Services</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item current_page_item"><a href="/insight/" aria-current="page" class="wpr-mobile-menu-item">Insights</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/contact_us/" class="wpr-mobile-menu-item">Contact Us</a></li>
-</ul></nav>				</div>
-				</div>
-					</div>
-		</div>
-					</div>
-		</section>
-				</div>
 				<div data-elementor-type="wpr-theme-builder" data-elementor-id="1177" class="elementor elementor-1177 post-1173 post type-post status-publish format-standard has-post-thumbnail hentry category-latest">
 						<section class="elementor-section elementor-top-section elementor-element elementor-element-0a06a36 elementor-section-boxed elementor-section-height-default elementor-section-height-default wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no" data-id="0a06a36" data-element_type="section">
 						<div class="elementor-container elementor-column-gap-default">
