@@ -19,8 +19,8 @@ export default function Footer() {
                 className="object-contain"
               />
             </Link>
-            <h4 className="text-[15px] font-bold text-[#E3AB72] uppercase tracking-wider mb-3">
-              Visit Us
+            <h4 className="text-[14px] font-bold text-[#E3AB72] uppercase tracking-wider mb-2">
+              VISIT US
             </h4>
             <p className="text-[13px] text-[#9AB4A9] leading-relaxed mb-4">
               Mekelle, Tigray, Ethiopia
