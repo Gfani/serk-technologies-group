@@ -59,7 +59,7 @@ html, body {
 .elementor-element-5b611c4 {
   background-color: #101513 !important;
   color: #FFFFFF !important;
-  padding: 72px 0 64px 0 !important;
+  padding: 64px 0 !important;
   margin: 0 !important;
   width: 100% !important;
   box-sizing: border-box !important;
@@ -74,8 +74,8 @@ html, body {
 
 .serk-footer-container {
   display: grid !important;
-  grid-template-columns: 1.2fr 1fr 1.3fr !important;
-  gap: 64px !important;
+  grid-template-columns: 1fr 1fr 1fr 1.4fr !important;
+  gap: 48px !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
   padding: 0 32px !important;
@@ -171,7 +171,7 @@ html, body {
 .serk-footer-list {
   display: flex !important;
   flex-direction: column !important;
-  gap: 14px !important;
+  gap: 12px !important;
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -290,14 +290,25 @@ html, body {
   margin: 0 !important;
 }
 
-/* Mobile responsive */
-@media (max-width: 900px) {
+/* Responsive 4-Column Grid */
+@media (max-width: 960px) {
   .elementor-element-5b611c4 {
-    padding: 56px 0 48px 0 !important;
+    padding: 56px 0 !important;
+  }
+  .serk-footer-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 40px !important;
+    padding: 0 32px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .elementor-element-5b611c4 {
+    padding: 48px 0 !important;
   }
   .serk-footer-container {
     grid-template-columns: 1fr !important;
-    gap: 40px !important;
+    gap: 32px !important;
     padding: 0 24px !important;
   }
   .serk-copyright-inner {
@@ -343,7 +354,7 @@ def update_page(path):
         content = content.replace('</body>', footer_html.strip() + '\n</body>')
 
     # 3. Cache buster on serk-theme.css
-    content = re.sub(r'serk-theme\.css(?:\?[^"]*)?', 'serk-theme.css?v=20261122-footerblack01', content)
+    content = re.sub(r'serk-theme\.css(?:\?[^"]*)?', 'serk-theme.css?v=20261122-footer4col01', content)
 
     with open(path, 'w', encoding='utf-8') as f:
         f.write(content)
