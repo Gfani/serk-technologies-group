@@ -8,7 +8,7 @@ THEME_CSS_SITE = os.path.join(SITE, 'wp-content', 'themes', 'royal-elementor-kit
 THEME_CSS_ORIG = os.path.join(ORIGINAL, 'wp-content', 'themes', 'royal-elementor-kit', 'serk-theme.css')
 
 def update_css():
-    print("=== Updating serk-theme.css for exact Zuri size footer layout ===")
+    print("=== Updating serk-theme.css for spacious footer with 4-4-2 and 3-2 layout ===")
     with open(THEME_CSS_SITE, 'r', encoding='utf-8') as f:
         css = f.read()
 
@@ -17,7 +17,8 @@ def update_css():
         '/* ========================================================\n   SINGLE PROFESSIONAL FOOTER',
         '/* ========================================================\n   SINGLE COMPACT FOOTER',
         '/* ========================================================\n   SINGLE COMPACT PROFESSIONAL FOOTER',
-        '/* ========================================================\n   EXACT ZURI SIZE FOOTER'
+        '/* ========================================================\n   EXACT ZURI SIZE FOOTER',
+        '/* ========================================================\n   SPACIOUS PROFESSIONAL FOOTER'
     ]
     for m in markers:
         if m in css:
@@ -25,15 +26,15 @@ def update_css():
             css = css[:idx]
             break
 
-    compact_footer_css = """
+    spacious_footer_css = """
 /* ========================================================
-   EXACT ZURI SIZE FOOTER (1175)
+   SPACIOUS PROFESSIONAL FOOTER (1175) - 4-4-2 & 3-2
    ======================================================== */
 .elementor-1175,
 .elementor-element-5b611c4 {
   background-color: #101513 !important;
   color: #FFFFFF !important;
-  padding: 22px 20px 16px 20px !important;
+  padding: 42px 20px 34px 20px !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -47,18 +48,18 @@ def update_css():
 
 .elementor-element-e959569 {
   background-color: #000000 !important;
-  padding: 7px 20px !important;
+  padding: 10px 20px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 .serk-copyright-left {
-  font-size: 11px !important;
+  font-size: 11.5px !important;
   color: #7E8A84 !important;
-  line-height: 1.35 !important;
+  line-height: 1.4 !important;
 }
 
 .serk-copyright-right {
-  font-size: 11px !important;
+  font-size: 11.5px !important;
 }
 
 .serk-footer-sublink {
@@ -81,36 +82,44 @@ def update_css():
   font-weight: 600 !important;
   text-transform: none !important;
   letter-spacing: 0.04em !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 14px !important;
 }
 
 .serk-footer-col-vertical {
   display: flex !important;
   flex-direction: column !important;
-  gap: 4px !important;
+  gap: 8px !important;
 }
 
-.serk-footer-grid-split {
-  display: grid !important;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 4px 18px !important;
+.serk-footer-grid-442 {
+  display: flex !important;
+  gap: 32px !important;
+  flex-wrap: wrap !important;
 }
 
-@media (max-width: 767px) {
-  .serk-footer-grid-split {
-    grid-template-columns: 1fr !important;
-    gap: 4px !important;
+.serk-footer-grid-32 {
+  display: flex !important;
+  gap: 28px !important;
+  flex-wrap: wrap !important;
+}
+
+@media (max-width: 900px) {
+  .serk-footer-grid-442 {
+    gap: 20px !important;
+  }
+  .serk-footer-grid-32 {
+    gap: 20px !important;
   }
 }
 
 .serk-footer-link {
   color: #A0AAA5 !important;
   font-family: var(--serk-font-sans) !important;
-  font-size: 0.84rem !important;
+  font-size: 0.88rem !important;
   font-weight: 400 !important;
   text-decoration: none !important;
   display: block !important;
-  line-height: 1.35 !important;
+  line-height: 1.45 !important;
   transition: color 0.2s ease, transform 0.2s ease !important;
 }
 
@@ -120,13 +129,13 @@ def update_css():
   transform: translateX(3px) !important;
 }
 """
-    css = css.strip() + "\n" + compact_footer_css.strip() + "\n"
+    css = css.strip() + "\n" + spacious_footer_css.strip() + "\n"
 
     with open(THEME_CSS_SITE, 'w', encoding='utf-8') as f:
         f.write(css)
     with open(THEME_CSS_ORIG, 'w', encoding='utf-8') as f:
         f.write(css)
-    print("Updated serk-theme.css with Zuri-sized footer styles!")
+    print("Updated serk-theme.css with spacious footer styles!")
 
 def update_page(path):
     rel = os.path.relpath(path, SITE).replace('\\', '/')
@@ -137,7 +146,7 @@ def update_page(path):
     content = re.sub(r'<!-- SERK Enterprise Global Footer.*?</footer>\s*', '', content, flags=re.S)
     content = re.sub(r'<footer class="serk-global-footer".*?</footer>\s*', '', content, flags=re.S)
 
-    # 2. Replace elementor-1175 footer with the new Zuri-sized compact footer
+    # 2. Replace elementor-1175 footer with the new spacious footer
     footer_html = get_footer_html()
     if 'data-elementor-id="1175"' in content:
         pattern = r'<div\s+data-elementor-type="wp-post"\s+data-elementor-id="1175"\s+class="elementor\s+elementor-1175">[\s\S]*?</div>\s*(?=<script|\s*</body>)'
@@ -151,7 +160,7 @@ def update_page(path):
             content = content[:div_start] + footer_html.strip() + '\n' + content[div_end:]
 
     # 3. Cache buster on serk-theme.css
-    content = re.sub(r'serk-theme\.css(?:\?[^"]*)?', 'serk-theme.css?v=20261122-zurisize01', content)
+    content = re.sub(r'serk-theme\.css(?:\?[^"]*)?', 'serk-theme.css?v=20261122-footerspacious01', content)
 
     with open(path, 'w', encoding='utf-8') as f:
         f.write(content)
