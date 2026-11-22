@@ -14,14 +14,8 @@ export default function SolutionsPage() {
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">
       <AnimatedHeaderBanner title="Solutions & Services" />
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
-        <div className="max-w-3xl mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
-            Engineering Capabilities
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#101513] mt-2 mb-4">
-            Enterprise Solutions & Services
-          </h1>
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-8 lg:py-10">
+        <div className="max-w-3xl mb-8">
           <p className="text-base sm:text-lg text-[#5B6761] leading-relaxed">
             We partner with growing companies, healthcare providers, construction contractors, and
             financial institutions to replace fragile spreadsheets and disjointed tools with unified,

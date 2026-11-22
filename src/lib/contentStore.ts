@@ -234,7 +234,7 @@ export async function saveStoredProject(project: ProjectItem): Promise<ProjectIt
 
   const finalProject: ProjectItem = {
     ...project,
-    id: project.id || `proj-${projectsList.length + 1}`,
+    id: project.id || `proj - ${ projectsList.length + 1 }`,
   };
 
   if (existingIdx >= 0) {

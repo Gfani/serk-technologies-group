@@ -38,14 +38,8 @@ export default function PartnersPage() {
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">
       <AnimatedHeaderBanner title="Partners & Clients" />
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
-        <div className="max-w-3xl mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
-            Collaborative Ecosystem
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#101513] mt-2 mb-4">
-            Partners & Clients
-          </h1>
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-8 lg:py-10">
+        <div className="max-w-3xl mb-8">
           <p className="text-base sm:text-lg text-[#5B6761] leading-relaxed">
             We work shoulder-to-shoulder with progressive Ethiopian enterprises and institutions to
             co-design, stress-test, and deploy mission-critical software systems.

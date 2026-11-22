@@ -11,11 +11,7 @@ export default function TermsPage() {
   return (
     <div className="w-full bg-white">
       <AnimatedHeaderBanner title="Terms of Service" />
-      <div className="max-w-[840px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
-        <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
-          Legal & Governance
-        </span>
-        <h1 className="text-3xl sm:text-4xl font-bold text-[#101513] mt-2 mb-4">Terms of Service</h1>
+      <div className="max-w-[840px] mx-auto px-6 sm:px-8 py-8 lg:py-10">
         <p className="text-xs text-[#5B6761] mb-10 pb-4 border-b border-[#DEE6E0]">
           Last Updated: November 2026 · SERK Technologies Group
         </p>

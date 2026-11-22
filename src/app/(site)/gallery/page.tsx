@@ -17,14 +17,8 @@ export default async function GalleryPage() {
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">
       <AnimatedHeaderBanner title="Media Gallery" />
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
-        <div className="max-w-3xl mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
-            Visual Documentation
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#101513] mt-2 mb-4">
-            SERK Media Gallery
-          </h1>
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-8 lg:py-10">
+        <div className="max-w-3xl mb-8">
           <p className="text-base sm:text-lg text-[#5B6761] leading-relaxed">
             Photographs and screenshots documenting our engineering environments, field operations,
             and interface design systems in action across Ethiopia.

@@ -39,7 +39,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
 
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">
-      <AnimatedHeaderBanner title={project.name} />
+      <AnimatedHeaderBanner title="Products & Platforms" />
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         {/* Breadcrumb */}
         <div className="mb-8">

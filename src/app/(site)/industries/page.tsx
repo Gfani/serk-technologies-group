@@ -14,14 +14,8 @@ export default function IndustriesPage() {
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">
       <AnimatedHeaderBanner title="Industry Sectors" />
-      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
-        <div className="max-w-3xl mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
-            Specialized Verticals
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#101513] mt-2 mb-4">
-            Industries We Serve
-          </h1>
+      <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-8 lg:py-10">
+        <div className="max-w-3xl mb-8">
           <p className="text-base sm:text-lg text-[#5B6761] leading-relaxed">
             Generic software forces teams to twist their real operations to fit foreign workflows.
             SERK builds purpose-crafted software that natively mirrors how African industry works on

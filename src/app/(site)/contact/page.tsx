@@ -14,15 +14,9 @@ export default function ContactPage() {
     <div className="w-full">
       <AnimatedHeaderBanner title="Contact Us" />
       {/* 1. HERO */}
-      <section className="bg-white border-b border-[#DEE6E0] py-16 lg:py-20">
+      <section className="bg-white border-b border-[#DEE6E0] py-8 sm:py-10">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
-              Direct Enterprise Inquiries
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-bold text-[#101513] mt-2 mb-4">
-              Discuss Your Project
-            </h1>
             <p className="text-base sm:text-lg text-[#5B6761]">
               Whether you are an institution evaluating our Hospital OS, a contractor auditing BOQ
               estimates, or a founder seeking engineering partnership, our team is ready to assist.

@@ -25,7 +25,7 @@ export default function VentureDetailPage({ params }: { params: { slug: string }
 
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">
-      <AnimatedHeaderBanner title={v.name} />
+      <AnimatedHeaderBanner title="Digital Ventures" />
       <div className="max-w-[1240px] mx-auto px-6 sm:px-8 py-12 lg:py-16">
         <div className="mb-8">
           <Link

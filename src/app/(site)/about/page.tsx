@@ -15,12 +15,9 @@ export default function AboutPage() {
     <div className="w-full">
       <AnimatedHeaderBanner title="About Us" />
       {/* 1. HERO */}
-      <section className="bg-white border-b border-[#DEE6E0] py-16 lg:py-24">
+      <section className="bg-white border-b border-[#DEE6E0] py-10 lg:py-14">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
           <div className="max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0D4634]">
-              About SERK Technologies Group
-            </span>
             <h1 className="text-4xl sm:text-5xl font-bold text-[#101513] mt-2 mb-6 leading-tight">
               Innovation with Integrity. <br />
               <span className="text-[#0D4634]">Building Beyond Boundaries.</span>
