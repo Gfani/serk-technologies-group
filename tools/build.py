@@ -1005,6 +1005,14 @@ def main():
             cw = widget(h, '2nda6q4')
             if cw:
                 h = h[:cw[0]] + h[cw[3]:]
+            # Ensure Our Vision & Our Mission headings are crisp white on dark background
+            h = re.sub(r'(data-id="ec224c7"[\s\S]*?<h2 class="elementor-heading-title[^"]*)"([^>]*>)\s*Our Vision\s*</h2>',
+                       r'\1" style="color: #FFFFFF !important; font-family: \'Playfair Display\', Georgia, serif;"\2Our Vision</h2>', h)
+            h = re.sub(r'(data-id="c49bbe5"[\s\S]*?<h2 class="elementor-heading-title[^"]*)"([^>]*>)\s*Our Mission\s*</h2>',
+                       r'\1" style="color: #FFFFFF !important; font-family: \'Playfair Display\', Georgia, serif;"\2Our Mission</h2>', h)
+            # Ensure body text is clean readable mist
+            h = re.sub(r'(data-id="2055672"[\s\S]*?<p)>', r'\1 style="color: #DEE6E0 !important; font-size: 1.05rem; line-height: 1.7;">', h)
+            h = re.sub(r'(data-id="3e5f206"[\s\S]*?<p)>', r'\1 style="color: #DEE6E0 !important; font-size: 1.05rem; line-height: 1.7;">', h)
         if rel == 'contact_us/index.html':
             h = fix_contact_page(h)
 
@@ -1096,11 +1104,17 @@ def main():
         if '<meta name="description"' not in h:
             h = re.sub(r'(<meta charset="UTF-8">)', r'\1' + meta_block, h, count=1)
 
-        # Inject SERK Master Design System Stylesheet
+        # Inject SERK Master Design System Stylesheet with cache-busting version
         if 'serk-theme-css' not in h:
-            h = h.replace('</head>', '\t<link rel="stylesheet" id="serk-theme-css" href="/wp-content/themes/royal-elementor-kit/serk-theme.css">\n</head>')
+            h = h.replace('</head>', '\t<link rel="stylesheet" id="serk-theme-css" href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-serk02">\n</head>')
+        else:
+            h = re.sub(r'href="[^"]*serk-theme\.css[^"]*"', 'href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-serk02"', h)
 
         h = fix_images(h)
+
+        # Anti-blowout logo attributes: ensure wide logo has explicit dimensions
+        h = re.sub(r'(<img[^>]*src="[^"]*serk-logo-wide\.png"[^>]*)>',
+                   r'\1 width="160" height="31" style="max-width: 160px; height: auto; display: block;" alt="SERK Technologies Group">', h)
         # the footer LinkedIn icon and feed links pointed at the previous owner
         h = re.sub(r'<link rel="alternate"[^>]*(?:rss|oembed)[^>]*>\s*', '', h)
         h = h.replace(' &raquo; Feed', 'SERK Technologies Group Feed')

@@ -1,12 +1,11 @@
 /* ==========================================================================
    SERK TECHNOLOGIES GROUP - Master Design System
-   Visual Identity: Clean, Authoritative, Enterprise-Grade Software Engineering
-   Palette: Pure White (#FFFFFF), Mist (#F4F7F5), Off-Black Ink (#101513),
-            Muted Slate (#5B6761), Hairline (#DEE6E0), Deep Forest Green (#0D4634 / hover #2D735A)
+   UI Theme aligned with zuriadvisors.com layout, typography & motions
+   Color System: Black & White Minimalism with Restrained Deep Green
    ========================================================================== */
 
 :root {
-  /* Strict Core Brand Tokens */
+  /* Core Brand Tokens */
   --serk-ink: #101513;
   --serk-deep-forest: #0D4634;
   --serk-light-green: #2D735A;
@@ -15,816 +14,445 @@
   --serk-hairline: #DEE6E0;
   --serk-muted: #5B6761;
   --serk-warning: #9A5B20;
-  --serk-warning-bg: #FDF4EB;
-  --serk-success-bg: #EAF3EF;
 
-  /* Typography */
-  --serk-font-sans: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Typography matching Zuri Advisors */
+  --serk-font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --serk-font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --serk-font-body: 'Lato', 'Poppins', sans-serif;
   --serk-font-ethiopic: 'Noto Sans Ethiopic', 'Abyssinica SIL', sans-serif;
 }
 
-/* Base Reset & Core Surface */
-html, body {
-  font-family: var(--serk-font-sans) !important;
-  color: var(--serk-ink) !important;
-  background-color: var(--serk-white) !important;
+/* Base */
+body {
+  font-family: var(--serk-font-body);
+  color: var(--serk-ink);
+  background-color: var(--serk-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.65;
-  margin: 0;
-  padding: 0;
 }
 
-/* Headings: Tight letter-spacing (-0.02em), pure geometric sans-serif */
-h1, h2, h3, h4, h5, h6,
-.elementor-heading-title,
-.wpr-promo-box-title,
-.wpr-grid-item-title,
-.entry-title {
-  color: var(--serk-ink) !important;
-  font-family: var(--serk-font-sans) !important;
-  letter-spacing: -0.02em !important;
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-/* Remove all decorative serif overrides completely */
-[style*="Playfair"],
-[style*="Roboto Slab"],
-.elementor-kit-11 h1, .elementor-kit-11 h2, .elementor-kit-11 h3,
-.elementor-kit-11 h4, .elementor-kit-11 h5, .elementor-kit-11 h6 {
-  font-family: var(--serk-font-sans) !important;
-}
-
-/* Paragraphs & Body Copy */
-p, .elementor-widget-text-editor, .elementor-icon-box-description, .wpr-grid-item-excerpt {
-  color: var(--serk-muted) !important;
-  font-family: var(--serk-font-sans) !important;
-  line-height: 1.65 !important;
-  font-size: 15px;
-}
-
-/* Headings on Dark / Deep Forest Backgrounds */
-.serk-dark-surface,
-.serk-global-footer,
+/* ========================================================
+   TYPOGRAPHY - Preserve Elegant Serif Headlines of Zuri
+   ======================================================== */
+.elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
+.elementor-element-5f1264c .elementor-heading-title,
 .elementor-element-ec224c7 .elementor-heading-title,
 .elementor-element-c49bbe5 .elementor-heading-title,
-.elementor-element-40cd1a7 h1,
-.elementor-element-40cd1a7 h2,
-.elementor-element-40cd1a7 h3,
-.elementor-element-40cd1a7 h4,
-.elementor-element-40cd1a7 .elementor-heading-title,
+.elementor-element-f383be9 .elementor-heading-title,
+.elementor-element-7dcfe24 .elementor-heading-title,
+.elementor-element-7eb5a1b4 .elementor-heading-title,
+.elementor-element-21de704 .elementor-heading-title,
+.wpr-post-title,
+.wpr-promo-box-title,
+.wpr-promo-box-title span,
+.wpr-promo-box-title a,
+.wpr-grid-item-title,
+.wpr-grid-item-title a,
+.serk-font-serif {
+  font-family: var(--serk-font-serif) !important;
+  letter-spacing: -0.015em;
+}
+
+/* General Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--serk-ink);
+  letter-spacing: -0.015em;
+}
+
+/* Body Copy */
+p, .elementor-widget-text-editor, .elementor-icon-box-description, .wpr-grid-item-excerpt {
+  color: var(--serk-muted);
+  line-height: 1.65;
+}
+
+/* ========================================================
+   HEADINGS ON GREEN OR DARK BACKGROUNDS (CRISP WHITE #FFF)
+   ======================================================== */
+.elementor-element-ec224c7 .elementor-heading-title,
+.elementor-element-c49bbe5 .elementor-heading-title,
 [data-id="ec224c7"] .elementor-heading-title,
 [data-id="c49bbe5"] .elementor-heading-title,
-[style*="#0D4634"] h1, [style*="#0D4634"] h2, [style*="#0D4634"] h3, [style*="#0D4634"] h4,
-[style*="#082E22"] h1, [style*="#082E22"] h2, [style*="#082E22"] h3, [style*="#082E22"] h4 {
+.elementor-element-8ebc8a5 h2,
+.elementor-element-8ebc8a5 .elementor-heading-title,
+.wpr-promo-box-title,
+.wpr-promo-box-title span,
+.wpr-promo-box-title a,
+.wpr-promo-box-description,
+.wpr-promo-box-description p,
+[style*="0D4634"] h1, [style*="0D4634"] h2, [style*="0D4634"] h3, [style*="0D4634"] h4, [style*="0D4634"] h5, [style*="0D4634"] h6,
+[style*="082E22"] h1, [style*="082E22"] h2, [style*="082E22"] h3, [style*="082E22"] h4, [style*="082E22"] h5, [style*="082E22"] h6,
+[style*="2D735A"] h1, [style*="2D735A"] h2, [style*="2D735A"] h3, [style*="2D735A"] h4, [style*="2D735A"] h5, [style*="2D735A"] h6,
+.elementor-section[style*="0D4634"] .elementor-heading-title,
+.elementor-section[style*="082E22"] .elementor-heading-title,
+.elementor-section[style*="2D735A"] .elementor-heading-title,
+.elementor-section-boxed[style*="0D4634"] .elementor-heading-title,
+.elementor-section-boxed[style*="082E22"] .elementor-heading-title,
+.elementor-element[style*="0D4634"] .elementor-heading-title,
+.elementor-element[style*="082E22"] .elementor-heading-title,
+.serk-cta-banner h1, .serk-cta-banner h2, .serk-cta-banner h3, .serk-cta-banner h4,
+.serk-dark-sec,
+.serk-dark-sec h1, .serk-dark-sec h2, .serk-dark-sec h3, .serk-dark-sec h4,
+.elementor-element-5b611c4 .elementor-heading-title,
+.elementor-location-footer .elementor-heading-title {
   color: #FFFFFF !important;
 }
 
-.elementor-element-40cd1a7 p,
-.elementor-element-40cd1a7 .elementor-widget-text-editor,
-.elementor-element-2055672 p,
-.elementor-element-3e5f206 p {
+/* Light text on dark sections */
+.elementor-element-8ebc8a5 p,
+[data-id="2055672"] p,
+[data-id="3e5f206"] p {
   color: #DEE6E0 !important;
 }
 
-/* ==========================================================================
-   2. DUAL-TIER STICKY HEADER (REPLACES ZURI NAVBAR)
-   ========================================================================== */
-.serk-header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-  background: #FFFFFF;
-  box-shadow: 0 2px 10px rgba(16, 21, 19, 0.05);
-  font-family: var(--serk-font-sans);
+/* ========================================================
+   LOGO STYLING - Anti-Blowout & Balanced Proportions
+   ======================================================== */
+.wpr-logo-image,
+.wpr-logo img,
+.elementor-widget-wpr-logo img,
+img[src*="serk-logo-wide"] {
+  max-width: 160px !important;
+  max-height: 42px !important;
+  width: auto !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: contain !important;
 }
 
-.serk-header-container {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+/* ========================================================
+   NAVIGATION & MOTIONS (Matching Zuri Advisors)
+   ======================================================== */
+/* Header Navigation Items */
+.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item {
+  color: var(--serk-ink) !important;
+  font-family: var(--serk-font-sans) !important;
+  font-size: 14.5px !important;
+  font-weight: 500 !important;
+  transition: color 0.25s ease !important;
+  padding: 12px 14px !important;
 }
 
-/* Row 1: Top Utility Bar */
-.serk-top-bar {
-  height: 36px;
-  background-color: var(--serk-mist);
-  border-bottom: 1px solid var(--serk-hairline);
-  font-size: 12.5px;
-  color: var(--serk-muted);
-}
-
-.serk-top-bar-inner {
-  height: 100%;
-}
-
-.serk-top-bar-left,
-.serk-top-bar-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.serk-top-bar a {
-  color: var(--serk-muted);
-  text-decoration: none;
-  font-size: 12.5px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-}
-
-.serk-top-bar a:hover {
-  color: var(--serk-deep-forest);
-}
-
-.serk-sep {
-  color: var(--serk-hairline);
-  font-size: 14px;
-  user-select: none;
-}
-
-/* Row 2: Main Navigation Bar */
-.serk-main-nav {
-  height: 68px;
-  background-color: var(--serk-white);
-  border-bottom: 1px solid var(--serk-hairline);
-}
-
-.serk-main-nav-inner {
-  height: 100%;
-}
-
-.serk-brand-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.serk-header-logo {
-  height: 38px;
-  max-height: 38px;
-  width: auto;
-  max-width: 240px;
-  display: block;
-  object-fit: contain;
-}
-
-.serk-nav-desktop {
-  display: flex;
-  align-items: center;
-}
-
-.serk-menu {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 28px;
-}
-
-.serk-nav-link {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--serk-ink);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  padding: 8px 0;
-  position: relative;
-}
-
-.serk-nav-link:hover,
-.serk-nav-link.active {
-  color: var(--serk-deep-forest);
-}
-
-.serk-nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--serk-deep-forest);
-  border-radius: 2px;
-}
-
-.serk-header-cta-wrap {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* Buttons */
-.serk-btn-primary {
+/* Zuri Pointer Line Underline Animation - Themed to Deep Forest Green */
+.elementor-1174 .elementor-element.elementor-element-0eb8db5.wpr-pointer-line-fx .wpr-menu-item:before,
+.elementor-1174 .elementor-element.elementor-element-0eb8db5.wpr-pointer-line-fx .wpr-menu-item:after {
   background-color: var(--serk-deep-forest) !important;
-  color: #FFFFFF !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  padding: 10px 20px !important;
-  border-radius: 6px !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border: 1px solid var(--serk-deep-forest) !important;
-  transition: all 0.2s ease !important;
-  cursor: pointer !important;
-  white-space: nowrap !important;
-  box-shadow: 0 2px 4px rgba(13, 70, 52, 0.12) !important;
+  height: 2px !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.serk-btn-primary:hover {
+.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item:hover,
+.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item.wpr-active-menu-item,
+.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu li.current-menu-item > a,
+.wpr-mobile-menu-item:hover,
+.wpr-mobile-nav-menu li.current-menu-item a.wpr-mobile-menu-item {
+  color: var(--serk-deep-forest) !important;
+  font-weight: 600 !important;
+}
+
+/* Mobile Nav Drawer */
+.wpr-mobile-nav-menu li a.wpr-mobile-menu-item {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  padding: 12px 18px !important;
+  color: var(--serk-ink) !important;
+}
+
+/* ========================================================
+   PROMO BOXES (Zuri Hover Zoom & Transition Effects)
+   ======================================================== */
+.wpr-promo-box {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--serk-hairline) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+.wpr-promo-box:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px rgba(13, 70, 52, 0.16) !important;
+  border-color: var(--serk-light-green) !important;
+}
+
+.wpr-promo-box-title,
+.wpr-promo-box-title span {
+  color: #FFFFFF !important;
+  font-family: var(--serk-font-serif) !important;
+  font-weight: 600 !important;
+}
+
+.wpr-promo-box-description p {
+  color: #CDE5DC !important;
+}
+
+/* ========================================================
+   PRIMARY CTAs & BUTTONS
+   ======================================================== */
+.elementor-button,
+.wpr-button a,
+.wpr-promo-box-btn,
+.wpforms-submit,
+button[type="submit"],
+.wpr-sub-button {
+  background-color: var(--serk-deep-forest) !important;
+  color: var(--serk-white) !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid var(--serk-deep-forest) !important;
+  box-shadow: 0 2px 6px rgba(13, 70, 52, 0.15) !important;
+}
+
+.elementor-button:hover,
+.elementor-button:focus,
+.wpr-button a:hover,
+.wpr-promo-box-btn:hover,
+.wpforms-submit:hover,
+button[type="submit"]:hover {
   background-color: var(--serk-light-green) !important;
   border-color: var(--serk-light-green) !important;
-  color: #FFFFFF !important;
+  color: var(--serk-white) !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(13, 70, 52, 0.2) !important;
+  box-shadow: 0 4px 14px rgba(13, 70, 52, 0.25) !important;
 }
 
-.serk-btn-secondary {
+/* Secondary / Outline Buttons */
+.elementor-button.btn-secondary,
+.wpr-button-secondary a {
   background-color: transparent !important;
-  color: var(--serk-ink) !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  padding: 10px 20px !important;
-  border-radius: 6px !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  color: var(--serk-deep-forest) !important;
   border: 1px solid var(--serk-hairline) !important;
-  transition: all 0.2s ease !important;
-  cursor: pointer !important;
-  white-space: nowrap !important;
+  box-shadow: none !important;
 }
 
-.serk-btn-secondary:hover {
+.elementor-button.btn-secondary:hover,
+.wpr-button-secondary a:hover {
   background-color: var(--serk-mist) !important;
-  border-color: var(--serk-muted) !important;
-  color: var(--serk-ink) !important;
+  border-color: var(--serk-light-green) !important;
+  color: var(--serk-deep-forest) !important;
 }
 
-/* Mobile Hamburger Toggle */
-.serk-mobile-menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  flex-direction: column;
-  gap: 5px;
+/* Floating Call & Back-To-Top Controls */
+.wpr-pc-btn,
+.wpr-stt-btn {
+  background-color: var(--serk-deep-forest) !important;
+  color: var(--serk-white) !important;
+  box-shadow: 0 4px 14px rgba(13, 70, 52, 0.3) !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
 }
 
-.serk-hamburger-bar {
-  width: 22px;
-  height: 2px;
-  background-color: var(--serk-ink);
-  border-radius: 2px;
-  transition: all 0.25s ease;
+.wpr-pc-btn:hover,
+.wpr-stt-btn:hover {
+  background-color: var(--serk-light-green) !important;
+  transform: scale(1.05) !important;
 }
 
-/* Mobile Drawer */
-.serk-mobile-drawer {
-  display: none;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid var(--serk-hairline);
-  padding: 20px 24px;
+/* Cards, Grid Items & Dividers */
+.wpr-grid-item,
+.elementor-widget-icon-box,
+.wpr-feature-list-item {
+  border-color: var(--serk-hairline) !important;
 }
 
-.serk-mobile-drawer.open {
-  display: block;
+.wpr-grid-item:hover {
+  border-color: var(--serk-light-green) !important;
 }
 
-.serk-mobile-section {
-  margin-bottom: 20px;
+.elementor-divider-separator {
+  border-top-color: var(--serk-hairline) !important;
 }
 
-.serk-mobile-title {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--serk-muted);
-  margin-bottom: 10px;
-}
-
-.serk-mobile-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.serk-mobile-list a {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--serk-ink);
-  text-decoration: none;
-}
-
-.serk-mobile-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 16px 0;
-  font-size: 13px;
-}
-
-.serk-mobile-contact a {
-  color: var(--serk-muted);
-  text-decoration: none;
-}
-
-.serk-btn-mobile {
-  width: 100% !important;
-  box-sizing: border-box !important;
-  margin-top: 10px;
-}
-
-@media (max-width: 900px) {
-  .serk-top-bar {
-    display: none;
-  }
-  .serk-nav-desktop {
-    display: none;
-  }
-  .serk-mobile-menu-toggle {
-    display: flex;
-  }
-}
-
-/* ==========================================================================
-   3. FLATTENED UI BADGES & PILLS (REPLACES SKEWED PARALLELOGRAMS)
-   ========================================================================== */
+/* ========================================================
+   PILLS & CATEGORY BADGES (Flat & Crisp)
+   ======================================================== */
 .serk-badge,
 .serk-filter-btn,
-.serk-cat-pill,
 .wpr-grid-item-category a,
 .entry-categories a,
 .cat-links a {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 5px !important;
+  gap: 6px !important;
   padding: 4px 10px !important;
   border-radius: 4px !important;
   font-size: 11px !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.04em !important;
   margin: 2px 4px 6px 0 !important;
-  transform: none !important; /* FLATTENED */
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   box-sizing: border-box !important;
   text-decoration: none !important;
-  border: 1px solid var(--serk-hairline) !important;
-  line-height: 1.2 !important;
-}
-
-.serk-badge > *,
-.serk-filter-btn > *,
-.serk-cat-pill > *,
-.wpr-grid-item-category a > *,
-.entry-categories a > *,
-.cat-links a > * {
-  transform: none !important;
-  display: inline-block !important;
 }
 
 .serk-badge-production {
-  background-color: var(--serk-success-bg) !important;
+  background-color: rgba(13, 70, 52, 0.08) !important;
   color: var(--serk-deep-forest) !important;
-  border-color: #B8D5C8 !important;
+  border: 1px solid rgba(13, 70, 52, 0.25) !important;
 }
 
 .serk-badge-pilot {
-  background-color: var(--serk-warning-bg) !important;
+  background-color: rgba(154, 91, 32, 0.08) !important;
   color: var(--serk-warning) !important;
-  border-color: #F0D5BE !important;
+  border: 1px solid rgba(154, 91, 32, 0.25) !important;
 }
 
-.serk-badge-alpha,
-.serk-badge-dev {
-  background-color: var(--serk-mist) !important;
+.serk-badge-alpha {
+  background-color: rgba(91, 103, 97, 0.08) !important;
   color: var(--serk-muted) !important;
-  border-color: var(--serk-hairline) !important;
+  border: 1px solid rgba(91, 103, 97, 0.25) !important;
 }
 
-/* Filter Buttons */
+.wpr-grid-item-category a,
+.entry-categories a,
+.cat-links a {
+  background-color: rgba(13, 70, 52, 0.08) !important;
+  color: var(--serk-deep-forest) !important;
+  border: 1px solid rgba(13, 70, 52, 0.25) !important;
+}
+
+.wpr-grid-item-category a:hover,
+.entry-categories a:hover,
+.cat-links a:hover {
+  background-color: var(--serk-deep-forest) !important;
+  color: #FFFFFF !important;
+}
+
 .serk-filter-btn {
-  padding: 7px 16px !important;
-  font-size: 13px !important;
+  padding: 8px 18px !important;
+  font-size: 0.85rem !important;
   font-weight: 600 !important;
   cursor: pointer !important;
-  border: 1px solid var(--serk-hairline) !important;
+  border: 1px solid #DEE6E0 !important;
   background: #FFFFFF !important;
-  color: var(--serk-muted) !important;
-  border-radius: 4px !important;
-  transform: none !important;
-  transition: all 0.2s ease !important;
+  color: #5B6761 !important;
 }
 
 .serk-filter-btn.active,
 .serk-filter-btn:hover {
-  background: var(--serk-deep-forest) !important;
+  background: var(--serk-deep-forest, #0D4634) !important;
   color: #FFFFFF !important;
-  border-color: var(--serk-deep-forest) !important;
+  border-color: var(--serk-deep-forest, #0D4634) !important;
 }
 
-/* ==========================================================================
-   4. PRODUCT SOLUTIONS CARDS & HERO UI COMPONENTS
-   ========================================================================== */
-.serk-solutions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 28px;
-  margin-top: 36px;
+/* Focus Rings */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--serk-light-green) !important;
+  outline-offset: 2px !important;
 }
 
-.serk-solution-card {
-  background: var(--serk-white);
-  border: 1px solid var(--serk-hairline);
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.serk-solution-card:hover {
-  border-color: var(--serk-light-green);
-  box-shadow: 0 8px 24px rgba(16, 21, 19, 0.06);
-  transform: translateY(-2px);
-}
-
-.serk-card-preview {
-  background-color: var(--serk-mist);
-  border-bottom: 1px solid var(--serk-hairline);
-  padding: 20px;
-  height: 200px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.serk-card-preview img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 4px;
-}
-
-.serk-card-content {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
-}
-
-.serk-card-title {
-  font-size: 1.25rem !important;
-  font-weight: 700 !important;
-  color: var(--serk-ink) !important;
-  margin: 10px 0 8px 0 !important;
-}
-
-.serk-card-desc {
-  font-size: 14px !important;
-  color: var(--serk-muted) !important;
-  line-height: 1.6 !important;
-  margin: 0 0 16px 0 !important;
-}
-
-.serk-card-link {
-  color: var(--serk-deep-forest) !important;
-  font-weight: 600 !important;
-  font-size: 13.5px !important;
-  text-decoration: none !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  transition: gap 0.2s ease, color 0.2s ease !important;
-}
-
-.serk-card-link:hover {
-  color: var(--serk-light-green) !important;
-  gap: 10px !important;
-}
-
-/* 3 Sharp Architectural Pillars */
-.serk-pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
-  margin-top: 36px;
-}
-
-.serk-pillar-card {
-  background: #FFFFFF;
-  border: 1px solid var(--serk-hairline);
-  border-radius: 8px;
-  padding: 32px 28px;
-  box-sizing: border-box;
-  transition: border-color 0.2s ease;
-}
-
-.serk-pillar-card:hover {
-  border-color: var(--serk-deep-forest);
-}
-
-.serk-pillar-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 6px;
-  background-color: var(--serk-mist);
-  border: 1px solid var(--serk-hairline);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--serk-deep-forest);
-  margin-bottom: 20px;
-}
-
-.serk-pillar-title {
-  font-size: 1.25rem !important;
-  font-weight: 700 !important;
-  color: var(--serk-ink) !important;
-  margin: 0 0 10px 0 !important;
-}
-
-.serk-pillar-desc {
-  font-size: 14px !important;
-  color: var(--serk-muted) !important;
-  line-height: 1.65 !important;
-  margin: 0 !important;
-}
-
-/* ==========================================================================
-   5. GLOBAL ENTERPRISE FOOTER
-   ========================================================================== */
-.serk-global-footer {
+/* ========================================================
+   GLOBAL FOOTER STYLING (Dark Forest #082E22)
+   ======================================================== */
+.elementor-element-5b611c4 {
   background-color: #082E22 !important;
-  color: #FFFFFF !important;
-  padding: 64px 0 0 0 !important;
+  padding: 40px 20px 30px 20px !important;
+}
+
+.elementor-element-e959569 {
+  background-color: #051F17 !important;
+  padding: 18px 20px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  font-family: var(--serk-font-sans) !important;
 }
 
-.serk-footer-container {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 24px;
-  box-sizing: border-box;
+.elementor-element-e959569 p,
+.elementor-element-e959569 a {
+  color: #8C9891 !important;
+  font-size: 0.85rem !important;
 }
 
-.serk-footer-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 1.2fr 1.2fr 1.2fr;
-  gap: 48px;
-  padding-bottom: 56px;
-}
-
-.serk-footer-logo {
-  height: 40px;
-  width: auto;
-  margin-bottom: 14px;
-  display: block;
-}
-
-.serk-footer-tagline {
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  color: #CDE5DC !important;
-  margin: 0 0 12px 0 !important;
-  letter-spacing: 0.04em !important;
-}
-
-.serk-footer-desc {
-  font-size: 13.5px !important;
-  color: #9AB4A9 !important;
-  line-height: 1.6 !important;
-  margin: 0 0 20px 0 !important;
-}
-
-.serk-footer-contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.serk-footer-contact-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: #CDE5DC;
-}
-
-.serk-footer-contact-item a {
-  color: #CDE5DC !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease !important;
-}
-
-.serk-footer-contact-item a:hover {
+.elementor-element-5b611c4 .elementor-heading-title,
+.elementor-element-c12ecba .elementor-heading-title,
+.elementor-element-8c3ad61 .elementor-heading-title,
+.elementor-element-e1f0665 .elementor-heading-title,
+.elementor-location-footer .elementor-heading-title {
   color: #FFFFFF !important;
-  text-decoration: underline !important;
-}
-
-.serk-footer-heading {
-  font-size: 13.5px !important;
+  font-size: 1.08rem !important;
   font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  color: #FFFFFF !important;
-  margin: 0 0 20px 0 !important;
+  margin-bottom: 12px !important;
 }
 
-.serk-footer-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
+.serk-footer-links-horizontal {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px 18px !important;
+  align-items: center !important;
+  line-height: 1.8 !important;
 }
 
-.serk-footer-links a {
-  color: #9AB4A9 !important;
-  text-decoration: none !important;
-  font-size: 13.5px !important;
-  transition: color 0.2s ease !important;
-}
-
-.serk-footer-links a:hover {
-  color: #FFFFFF !important;
-}
-
-.serk-footer-cta-text {
-  font-size: 13px !important;
-  color: #9AB4A9 !important;
-  margin: 0 0 16px 0 !important;
-  line-height: 1.6 !important;
-}
-
-.serk-footer-btn {
-  margin-bottom: 20px;
-  display: inline-block !important;
-}
-
-.serk-footer-social {
-  display: flex;
-  gap: 12px;
-}
-
-.serk-social-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.serk-footer-link {
   color: #CDE5DC !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
   text-decoration: none !important;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
 }
 
-.serk-social-icon:hover {
-  background-color: var(--serk-light-green);
-  color: #FFFFFF !important;
-}
-
-/* Footer Bottom Bar */
-.serk-footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 20px 0;
-}
-
-.serk-footer-bottom-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12.5px;
-  color: #7D978C;
-}
-
-.serk-copyright {
-  margin: 0;
-  color: #7D978C;
-}
-
-.serk-footer-legal-links {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.serk-footer-legal-links a {
-  color: #7D978C !important;
-  text-decoration: none !important;
-  transition: color 0.2s ease;
-}
-
-.serk-footer-legal-links a:hover {
+.serk-footer-link:hover {
   color: #FFFFFF !important;
   text-decoration: underline !important;
 }
 
-@media (max-width: 960px) {
-  .serk-footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
-  }
+.elementor-element-3bf3c57 .elementor-heading-title a,
+.elementor-element-7e0acc4 .elementor-heading-title a {
+  font-size: 0.92rem !important;
+  color: #CDE5DC !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.elementor-element-3bf3c57 .elementor-heading-title a:hover,
+.elementor-element-7e0acc4 .elementor-heading-title a:hover {
+  color: #FFFFFF !important;
+  text-decoration: underline !important;
+}
+
+/* ========================================================
+   LEAD CAPTURE & CONTACT FORM SYSTEM
+   ======================================================== */
+.serk-form input,
+.serk-form select,
+.serk-form textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 12px 14px !important;
+  border: 1px solid var(--serk-hairline) !important;
+  border-radius: 6px !important;
+  font-size: 0.95rem !important;
+  font-family: var(--serk-font-sans) !important;
+  color: var(--serk-ink) !important;
+  background-color: var(--serk-white) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.serk-form input:focus,
+.serk-form select:focus,
+.serk-form textarea:focus {
+  border-color: var(--serk-light-green) !important;
+  box-shadow: 0 0 0 3px rgba(45, 115, 90, 0.15) !important;
+  outline: none !important;
+}
+
+.serk-form select {
+  cursor: pointer !important;
+  appearance: auto !important;
+}
+
+.serk-form label {
+  display: block !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  color: var(--serk-ink) !important;
+  margin-bottom: 6px !important;
 }
 
 @media (max-width: 640px) {
-  .serk-footer-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  .serk-form-grid-2 {
+    grid-template-columns: 1fr !important;
   }
-  .serk-footer-bottom-inner {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-}
-
-/* ==========================================================================
-   6. PURGE ZURI COLORS & UNWANTED RESIDUAL ELEMENTS
-   ========================================================================== */
-/* Hide floating telephone widget and back to top legacy overrides */
-.wpr-pc-btn,
-.wpr-pc-wrapper,
-.elementor-widget-wpr-phone-call,
-.elementor-element-c53e6ea,
-.elementor-element-b48140f,
-.pojo-a11y-toolbar,
-#pojo-a11y-toolbar {
-  display: none !important;
-}
-
-/* Back to top button styling */
-.wpr-stt-btn {
-  background-color: var(--serk-deep-forest) !important;
-  color: #FFFFFF !important;
-  border-radius: 4px !important;
-}
-
-/* Elementor button overrides */
-.elementor-button,
-.wpr-button a,
-.wpforms-submit,
-button[type="submit"] {
-  background-color: var(--serk-deep-forest) !important;
-  color: #FFFFFF !important;
-  border-radius: 6px !important;
-  font-weight: 600 !important;
-  letter-spacing: normal !important;
-}
-
-.elementor-button:hover,
-.wpr-button a:hover,
-.wpforms-submit:hover,
-button[type="submit"]:hover {
-  background-color: var(--serk-light-green) !important;
-  border-color: var(--serk-light-green) !important;
-}
-
-/* Clean Form Controls */
-.wpforms-field input,
-.wpforms-field textarea,
-input[type="text"],
-input[type="email"],
-textarea {
-  border: 1px solid var(--serk-hairline) !important;
-  border-radius: 6px !important;
-  color: var(--serk-ink) !important;
-  background-color: var(--serk-white) !important;
-  padding: 10px 14px !important;
-  font-family: var(--serk-font-sans) !important;
-}
-
-.wpforms-field input:focus,
-.wpforms-field textarea:focus,
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-  border-color: var(--serk-deep-forest) !important;
-  box-shadow: 0 0 0 3px rgba(13, 70, 52, 0.1) !important;
-  outline: none !important;
 }
