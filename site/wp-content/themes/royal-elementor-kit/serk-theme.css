@@ -762,9 +762,26 @@ html, body {
   border-radius: 20px !important;
 }
 
-@media (max-width: 1024px) {
+/* Tablet Responsive (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
   .elementor-element-5c127ac {
-    background-position: 85% center !important;
+    background-position: calc(100% + 60px) center !important;
+    background-size: cover !important;
+    padding: 60px 24px !important;
+    min-height: auto !important;
+  }
+  .elementor-element-6f91806 {
+    max-width: 48% !important;
+  }
+  .elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
+  .elementor-element-9d25fef .elementor-heading-title {
+    font-size: 38px !important;
+    line-height: 1.18 !important;
+  }
+  .elementor-element-c154a22 {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    max-width: 100% !important;
   }
   .elementor-element-291bfca .elementor-widget-wrap {
     padding: 20px 16px !important;
@@ -777,12 +794,60 @@ html, body {
   }
 }
 
+/* Mobile Responsive (<= 768px) */
 @media (max-width: 768px) {
   .elementor-element-5c127ac {
-    background-position: right center !important;
+    background-image: none !important;
+    background-color: #FFFFFF !important;
+    padding: 36px 16px 24px !important;
+    min-height: auto !important;
+    height: auto !important;
   }
   .elementor-element-6f91806 {
     max-width: 100% !important;
+    width: 100% !important;
+  }
+  .elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
+  .elementor-element-9d25fef .elementor-heading-title {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+    text-shadow: none !important;
+    margin: 0 0 16px 0 !important;
+  }
+  .elementor-element-c154a22 {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+    margin: 0 0 20px 0 !important;
+    color: #5B6761 !important;
+  }
+  .elementor-element-c154a22 > .elementor-widget-container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .elementor-element-efd0305 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    height: 350px !important;
+    margin: 16px auto 0 !important;
+    background-image: url("/wp-content/uploads/serk/serk-hero.svg") !important;
+    background-position: right center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 25px -5px rgba(16, 21, 19, 0.08) !important;
+    border: 1px solid #DEE6E0 !important;
+  }
+  .elementor-element-291bfca .elementor-widget-wrap {
+    padding: 16px 12px !important;
+  }
+  .serk-why-img-frame {
+    max-width: 100% !important;
+    height: 300px !important;
+    min-height: 260px !important;
+    margin-top: 20px !important;
   }
 }
 

@@ -15,35 +15,31 @@ export default async function HomePage() {
       {/* ========================================================
           1. HERO SECTION (Exact port 8000 design with SVG capsules)
           ======================================================== */}
-      <section className="relative w-full min-h-[85vh] serk-hero-bg flex items-center border-b border-[#DEE6E0] overflow-hidden">
-        <div className="max-w-[1240px] w-full mx-auto px-6 sm:px-8 py-16 lg:py-24">
+      <section className="relative w-full min-h-[85vh] serk-hero-bg flex flex-col lg:flex-row lg:items-center border-b border-[#DEE6E0] overflow-hidden">
+        <div className="max-w-[1240px] w-full mx-auto px-6 sm:px-8 py-14 sm:py-16 lg:py-24">
           <div className="max-w-2xl lg:max-w-xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(227,171,114,0.12)] border border-[#E3AB72]/40 text-xs font-semibold tracking-wider uppercase text-[#E3AB72]">
-              <span>Sovereign Digital Systems</span>
-              <span className="animate-pulse">|</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-[#101513] font-serif leading-[1.14] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold text-[#101513] font-serif leading-[1.18] sm:leading-[1.14] tracking-tight">
               We Engineer the Systems Behind Better Business.
             </h1>
 
-            <p className="text-base sm:text-[16.5px] text-[#5B6761] font-normal leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-[16.5px] text-[#5B6761] font-normal leading-relaxed">
               From your first website to intelligent enterprise operations, SERK Technologies
               Group designs and develops practical digital solutions for organizations ready to
               work smarter. We combine software engineering, thoughtful design, responsible AI and
               deep attention to real-world workflows — starting in Ethiopia, built for a wider world.
             </p>
 
-            <div className="pt-2 flex flex-wrap gap-4 items-center">
+            <div className="pt-2 flex flex-col sm:flex-row gap-4 sm:items-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors shadow-sm"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors shadow-sm text-center"
               >
                 <span>Discuss Your Project</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-[#101513] bg-[#F4F7F5] hover:bg-[#DEE6E0] border border-[#DEE6E0] transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-[#101513] bg-[#F4F7F5] hover:bg-[#DEE6E0] border border-[#DEE6E0] transition-colors text-center"
               >
                 <span>Explore Platforms</span>
               </Link>
@@ -52,13 +48,14 @@ export default async function HomePage() {
         </div>
 
         {/* Mobile Fallback preview for smaller screens where SVG background shifts */}
-        <div className="lg:hidden w-full px-6 pb-12">
-          <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#DEE6E0] shadow-lg">
+        <div className="lg:hidden w-full px-6 pb-12 flex justify-center">
+          <div className="relative aspect-[16/11] w-full max-w-[440px] rounded-2xl overflow-hidden border border-[#DEE6E0] shadow-lg bg-[#FAFCFA]">
             <Image
               src="/images/serk-hero.svg"
               alt="SERK Enterprise Architecture and Platforms"
               fill
               className="object-cover"
+              priority
             />
           </div>
         </div>
@@ -203,7 +200,7 @@ export default async function HomePage() {
                 </h3>
                 <p className="text-sm text-[#5B6761] leading-relaxed mb-6">
                   Complete outpatient queues, encrypted electronic medical records (EMR), laboratory
-                  results, pharmacy inventory, and ICD-11 coding with 100% sovereign data residency.
+                  results, pharmacy inventory, and ICD-11 coding with 100% private enterprise data residency.
                 </p>
                 <div className="space-y-2 mb-8">
                   <div className="flex items-center gap-2 text-xs text-[#101513]">
@@ -308,7 +305,7 @@ export default async function HomePage() {
                     </span>
                   </div>
                   <h4 className="text-lg font-bold font-serif text-white mb-1 leading-snug">
-                    Sovereign Digital Systems Built for Heavy Enterprise
+                    Enterprise Digital Systems Built for Heavy Enterprise
                   </h4>
                   <p className="text-xs text-[#DEE6E0] leading-relaxed">
                     Pairing real African industry know-how with practical, mission-critical engineering.

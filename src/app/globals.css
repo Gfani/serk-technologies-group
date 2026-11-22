@@ -42,16 +42,16 @@ h1, h2, h3, h4 {
   background-repeat: no-repeat;
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .serk-hero-bg {
-    background-position: 85% center;
+    background-position: calc(100% + 60px) center;
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .serk-hero-bg {
-    background-image: none;
-    background-color: #FCFCFE;
+    background-image: none !important;
+    background-color: #FFFFFF !important;
   }
 }
 

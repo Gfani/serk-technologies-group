@@ -14,7 +14,7 @@ export default function Header({ theme }: { theme?: ThemeConfig }) {
     <header className="sticky top-0 z-50 w-full font-sans shadow-sm">
       {/* ROW 1 (Utility bar) - Visible when two-row header is active */}
       {isTwoRow && (
-        <div className="bg-[#F4F7F5] border-b border-[#DEE6E0] h-[36px] text-[12.5px] text-[#5B6761] transition-all">
+        <div className="hidden md:block bg-[#F4F7F5] border-b border-[#DEE6E0] h-[36px] text-[12.5px] text-[#5B6761] transition-all">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
             {/* Left Nav */}
             <div className="hidden md:flex items-center space-x-6 font-medium">
