@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0D4634;
+  --color-secondary: #2D735A;
+  --color-accent: #E3B23C;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F4F7F5;
+  --color-border: #DEE6E0;
+  --color-text: #101513;
+  --color-text-muted: #5B6761;
+  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --border-radius: 6px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Custom utility for hairline borders */
+.border-hairline {
+  border-color: var(--color-border);
+}
+
+/* Custom subtle badge styles */
+.badge-clean {
+  border-radius: var(--border-radius);
+}

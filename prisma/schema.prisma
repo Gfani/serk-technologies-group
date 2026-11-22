@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ThemeSettings {
+  id              String   @id @default("default")
+  primaryColor    String   @default("#0D4634")
+  secondaryColor  String   @default("#2D735A")
+  accentColor     String   @default("#E3AB72")
+  surfaceColor    String   @default("#FFFFFF")
+  surfaceAltColor String   @default("#F4F7F5")
+  borderColor     String   @default("#DEE6E0")
+  textColor       String   @default("#101513")
+  textMutedColor  String   @default("#5B6761")
+  fontHeading     String   @default("Inter")
+  fontBody        String   @default("Inter")
+  borderRadius    String   @default("8px")
+  headerLayout    String   @default("TWO_ROW")
+  updatedAt       DateTime @updatedAt
+}
+
+model Page {
+  id              String         @id @default(cuid())
+  slug            String         @unique
+  title           String
+  metaDescription String?
+  isPublished     Boolean        @default(true)
+  contentBlocks   ContentBlock[]
+  updatedAt       DateTime       @updatedAt
+}
+
+model ContentBlock {
+  id          String   @id @default(cuid())
+  pageId      String
+  page        Page     @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  sectionKey  String
+  heading     String?
+  subheading  String?
+  bodyText    String?  @db.Text
+  ctaLabel    String?
+  ctaUrl      String?
+  imageUrl    String?
+  imageAlt    String?
+  isVisible   Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  metadata    Json?
+  updatedAt   DateTime @updatedAt
+
+  @@index([pageId, sectionKey])
+}
+
+model Project {
+  id                  String   @id @default(cuid())
+  slug                String   @unique
+  name                String
+  category            String
+  maturity            String
+  summary             String   @db.Text
+  description         String?  @db.Text
+  audience            String?
+  capabilities        String?  @db.Text
+  plannedCapabilities String?  @db.Text
+  imageUrl            String?
+  publicCta           String?  @default("Request a Briefing")
+  ctaUrl              String?
+  isPublished         Boolean  @default(true)
+  sortOrder           Int      @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model GalleryItem {
+  id                 String   @id @default(cuid())
+  title              String
+  caption            String?
+  altText            String
+  imageUrl           String
+  cloudinaryPublicId String?
+  category           String   @default("General")
+  isVisible          Boolean  @default(true)
+  sortOrder          Int      @default(0)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String   @db.Text
+  content     String   @db.Text
+  coverImage  String?
+  author      String   @default("SERK Engineering Team")
+  category    String   @default("Engineering & Architecture")
+  isPublished Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Lead {
+  id           String   @id @default(cuid())
+  fullName     String
+  email        String
+  phone        String?
+  organization String?
+  industry     String?
+  service      String?
+  message      String   @db.Text
+  sourcePage   String?  @default("/")
+  status       String   @default("NEW")
+  ipAddress    String?
+  notes        String?  @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String   @default("SERK Administrator")
+  role         String   @default("SUPER_ADMIN")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

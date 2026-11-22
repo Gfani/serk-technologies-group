@@ -1,0 +1,200 @@
+'use client';
+
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Mail, Phone, Menu, X, ArrowRight } from 'lucide-react';
+import { ThemeConfig } from '@/lib/types';
+
+export default function Header({ theme }: { theme?: ThemeConfig }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isTwoRow = theme?.headerLayout !== 'ONE_ROW';
+
+  return (
+    <header className="sticky top-0 z-50 w-full font-sans shadow-sm">
+      {/* ROW 1 (Utility bar) - Visible when two-row header is active */}
+      {isTwoRow && (
+        <div className="bg-[#F4F7F5] border-b border-[#DEE6E0] h-[36px] text-[12.5px] text-[#5B6761] transition-all">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+            {/* Left Nav */}
+            <div className="hidden md:flex items-center space-x-6 font-medium">
+              <Link href="/about" className="hover:text-[#0D4634] transition-colors">
+                About Us
+              </Link>
+              <Link href="/partners" className="hover:text-[#0D4634] transition-colors">
+                Partners
+              </Link>
+              <Link href="/gallery" className="hover:text-[#0D4634] transition-colors">
+                Gallery
+              </Link>
+              <Link href="/insights" className="hover:text-[#0D4634] transition-colors">
+                Insights
+              </Link>
+            </div>
+
+            {/* Right Contact Info */}
+            <div className="flex items-center space-x-5 ml-auto text-xs sm:text-[12.5px]">
+              <a
+                href="mailto:serktechgroup@gmail.com"
+                className="flex items-center space-x-1.5 hover:text-[#0D4634] transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-[#0D4634]" />
+                <span className="hidden sm:inline">serktechgroup@gmail.com</span>
+              </a>
+              <span className="text-[#DEE6E0] hidden sm:inline">|</span>
+              <a
+                href="tel:+251999911192"
+                className="flex items-center space-x-1.5 hover:text-[#0D4634] transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#0D4634]" />
+                <span>+251 999 911 192</span>
+              </a>
+              <span className="text-[#DEE6E0]">|</span>
+              <Link
+                href="/contact"
+                className="font-semibold text-[#101513] hover:text-[#0D4634] transition-colors"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ROW 2 (Main Navigation) */}
+      <div className="bg-[#FFFFFF] border-b border-[#DEE6E0] h-[68px]">
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 h-full flex items-center justify-between">
+          {/* Brand Logo */}
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="w-[38px] h-[38px] relative flex-shrink-0">
+              <Image
+                src="/images/serk-logo-mark.png"
+                alt="SERK Group Icon"
+                width={38}
+                height={38}
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-heading font-extrabold text-[17px] tracking-tight text-[#101513] group-hover:text-[#0D4634] transition-colors leading-none">
+                SERK GROUP
+              </span>
+              <span className="text-[10px] font-semibold text-[#5B6761] tracking-wider uppercase mt-1">
+                Deep Tech &amp; Sovereign Systems
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Primary Nav Links */}
+          <nav className="hidden lg:flex items-center space-x-8 text-[14.5px] font-medium text-[#101513]">
+            <Link href="/" className="hover:text-[#0D4634] transition-colors">
+              Home
+            </Link>
+            <Link href="/products" className="hover:text-[#0D4634] transition-colors">
+              Products
+            </Link>
+            <Link href="/industries" className="hover:text-[#0D4634] transition-colors">
+              Industries
+            </Link>
+            <Link href="/solutions" className="hover:text-[#0D4634] transition-colors">
+              Services
+            </Link>
+            <Link href="/ventures" className="hover:text-[#0D4634] transition-colors">
+              Ventures
+            </Link>
+          </nav>
+
+          {/* Desktop Right CTA */}
+          <div className="hidden sm:flex items-center space-x-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center bg-[#0D4634] hover:bg-[#2D735A] text-white px-5 py-2.5 rounded text-[13.5px] font-semibold tracking-wide transition-all shadow-sm"
+            >
+              <span>Discuss Your Project</span>
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-[#101513] hover:text-[#0D4634] focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-[#FFFFFF] border-b border-[#DEE6E0] px-6 py-6 shadow-xl animate-fadeIn">
+          <nav className="flex flex-col space-y-4 text-[15px] font-medium text-[#101513]">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#0D4634]"
+            >
+              Home
+            </Link>
+            <Link
+              href="/products"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#0D4634]"
+            >
+              Products &amp; Platforms
+            </Link>
+            <Link
+              href="/industries"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#0D4634]"
+            >
+              Industries
+            </Link>
+            <Link
+              href="/solutions"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#0D4634]"
+            >
+              Services &amp; Solutions
+            </Link>
+            <Link
+              href="/ventures"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-[#0D4634]"
+            >
+              Digital Ventures
+            </Link>
+            <div className="border-t border-[#DEE6E0] pt-4 flex flex-col space-y-2 text-[13.5px] text-[#5B6761]">
+              <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="py-1">
+                About Us
+              </Link>
+              <Link href="/partners" onClick={() => setMobileMenuOpen(false)} className="py-1">
+                Partners &amp; Clients
+              </Link>
+              <Link href="/gallery" onClick={() => setMobileMenuOpen(false)} className="py-1">
+                Media Gallery
+              </Link>
+              <Link href="/insights" onClick={() => setMobileMenuOpen(false)} className="py-1">
+                Insights
+              </Link>
+              <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="py-1">
+                Contact &amp; Inquiries
+              </Link>
+            </div>
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-2 w-full text-center bg-[#0D4634] hover:bg-[#2D735A] text-white py-3 rounded text-[14px] font-semibold tracking-wide"
+            >
+              Discuss Your Project
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}
