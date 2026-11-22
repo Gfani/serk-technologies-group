@@ -24,39 +24,60 @@ def crop_band(im, band):
     c = im.crop((0, band[0], w, band[1]))
     return c.crop(c.getchannel('A').getbbox())
 
+def recolor_alpha(im, rgb_color):
+    '''Re-color all non-transparent pixels to rgb_color while preserving the exact anti-aliased alpha channel.'''
+    r, g, b, a = im.split()
+    solid = Image.new('RGB', im.size, rgb_color)
+    sr, sg, sb = solid.split()
+    return Image.merge('RGBA', (sr, sg, sb, a))
+
 b_d = bands(dark)
-mark_d, name_d, tag_d = crop_band(dark, b_d[0]), crop_band(dark, b_d[1]), crop_band(dark, b_d[2])
+mark_d = crop_band(dark, b_d[0])
+name_d = crop_band(dark, b_d[1])
 
 b_l = bands(light)
-mark_l, name_l, tag_l = crop_band(light, b_l[0]), crop_band(light, b_l[1]), crop_band(light, b_l[2])
+mark_l = crop_band(light, b_l[0])
+name_l = crop_band(light, b_l[1])
 
-def make_lockup(mark, name):
-    # Balanced horizontal lockup
-    H = 140
-    # Mark height = 96px
-    mh = 96
+# Recolor dark artwork to #101513 (Off-Black Ink token) to harmonize with white background & website headings
+mark_d_themed = recolor_alpha(mark_d, (16, 21, 19))
+name_d_themed = recolor_alpha(name_d, (16, 21, 19))
+
+# Recolor light artwork to #FFFFFF (Pure White) for the dark forest footer
+mark_l_themed = recolor_alpha(mark_l, (255, 255, 255))
+name_l_themed = recolor_alpha(name_l, (255, 255, 255))
+
+def make_lockup(mark, name, nh=36):
+    # Master resolution height = 100px for the mark
+    mh = 100
     mw = int(mark.size[0] * mh / mark.size[1])
     m_res = mark.resize((mw, mh), Image.LANCZOS)
     
-    # Name height = 62px
-    nh = 62
+    # Refined smaller wordmark (36px high = 36% of mark height)
     nw = int(name.size[0] * nh / name.size[1])
     n_res = name.resize((nw, nh), Image.LANCZOS)
     
-    gap = 24
-    pad = 10
-    W = pad + mw + gap + nw + pad
+    gap = 22
+    pad_x = 8
+    pad_y = 6
+    W = pad_x + mw + gap + nw + pad_x
+    H = pad_y + mh + pad_y
+    
     canvas = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    canvas.alpha_composite(m_res, (pad, (H - mh) // 2))
-    canvas.alpha_composite(n_res, (pad + mw + gap, (H - nh) // 2))
+    # Place mark vertically centered
+    canvas.alpha_composite(m_res, (pad_x, pad_y))
+    # Place name vertically centered to the mark's optical center
+    canvas.alpha_composite(n_res, (pad_x + mw + gap, pad_y + (mh - nh) // 2))
     
     bbox = canvas.getbbox()
-    cropped = canvas.crop((max(0, bbox[0]-6), max(0, bbox[1]-6), min(W, bbox[2]+6), min(H, bbox[3]+6)))
+    # Add a clean 2px margin around tight bbox
+    cropped = canvas.crop((max(0, bbox[0]-2), max(0, bbox[1]-2), min(W, bbox[2]+2), min(H, bbox[3]+2)))
     return cropped
 
-lockup_dark = make_lockup(mark_d, name_d)
-lockup_light = make_lockup(mark_l, name_l)
+lockup_dark = make_lockup(mark_d_themed, name_d_themed, nh=36)
+lockup_light = make_lockup(mark_l_themed, name_l_themed, nh=36)
 
+# Save high-res PNG lockups
 lockup_dark.save(os.path.join(OUT, 'serk-logo-wide.png'), optimize=True)
 lockup_light.save(os.path.join(OUT, 'serk-logo-wide-light.png'), optimize=True)
 
@@ -79,4 +100,4 @@ make_svg(os.path.join(OUT, 'serk-logo-wide-light.png'), os.path.join(OUT, 'serk-
 dark.save(os.path.join(OUT, 'serk-logo-full-dark.png'), optimize=True)
 light.save(os.path.join(OUT, 'serk-logo-full-light.png'), optimize=True)
 
-print(f"Generated authentic company logos: dark {lockup_dark.size}, light {lockup_light.size}")
+print(f"Refined authentic company logos: dark {lockup_dark.size}, light {lockup_light.size}")
