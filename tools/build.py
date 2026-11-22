@@ -505,14 +505,9 @@ def fix_carousel(s):
 
 NAV_ITEMS = [
     ('Home', '/'),
-    ('Products', '/products/'),
-    ('Industries', '/industries/'),
-    ('Ventures', '/ventures/'),
-    ('Partners', '/partners/'),
-    ('Gallery', '/gallery/'),
+    ('About Us', '/about_us/'),
     ('Services', '/services/'),
     ('Insights', '/insight/'),
-    ('About Us', '/about_us/'),
     ('Contact Us', '/contact_us/'),
 ]
 
@@ -1106,9 +1101,9 @@ def main():
 
         # Inject SERK Master Design System Stylesheet with cache-busting version
         if 'serk-theme-css' not in h:
-            h = h.replace('</head>', '\t<link rel="stylesheet" id="serk-theme-css" href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-serk02">\n</head>')
+            h = h.replace('</head>', '\t<link rel="stylesheet" id="serk-theme-css" href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-serk03">\n</head>')
         else:
-            h = re.sub(r'href="[^"]*serk-theme\.css[^"]*"', 'href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-serk02"', h)
+            h = re.sub(r'href="[^"]*serk-theme\.css[^"]*"', 'href="/wp-content/themes/royal-elementor-kit/serk-theme.css?v=20261122-serk03"', h)
 
         h = fix_images(h)
 

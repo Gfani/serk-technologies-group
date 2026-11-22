@@ -76,7 +76,8 @@ def circ(cx, cy, r, fill, extra=''):
 
 
 def sparkle(cx, cy, s, fill=TAN):
-    return ""
+    # Diamond sparkles removed per user design instruction
+    return ''
 
 
 def bars(x, y, w, h, vals, c1=P, c2=TAN2, gap=0.35):
@@ -380,13 +381,24 @@ def scene(kind, x, y, w, h, dark=False):
 
 
 def backdrop(w, h, tone='light'):
-    """Clean neutral backdrop in the enterprise palette - no floating blobs or dot grids."""
+    """Soft decorative background in the site's palette."""
     if tone == 'light':
-        return '<rect width="%d" height="%d" fill="#FFFFFF"/><rect x="0.5" y="0.5" width="%d" height="%d" fill="none" stroke="#DEE6E0" stroke-width="1"/>' % (w, h, w - 1, h - 1)
-    elif tone == 'tan' or tone == 'mist':
-        return '<rect width="%d" height="%d" fill="#F4F7F5"/><rect x="0.5" y="0.5" width="%d" height="%d" fill="none" stroke="#DEE6E0" stroke-width="1"/>' % (w, h, w - 1, h - 1)
+        o = '<rect width="%d" height="%d" fill="url(#gl)"/>' % (w, h)
+        o += circ(w * 0.86, h * 0.14, min(w, h) * 0.3, MINT, 'fill-opacity=".45"')
+        o += circ(w * 0.1, h * 0.9, min(w, h) * 0.26, TAN2, 'fill-opacity=".35"')
+        o += circ(w * 0.92, h * 0.86, min(w, h) * 0.16, '#CDE5DC', 'fill-opacity=".5"')
+    elif tone == 'tan':
+        o = '<rect width="%d" height="%d" fill="#F4F7F5"/>' % (w, h)
+        o += circ(w * 0.14, h * 0.16, min(w, h) * 0.28, TAN2, 'fill-opacity=".5"')
+        o += circ(w * 0.9, h * 0.84, min(w, h) * 0.3, '#CDE5DC', 'fill-opacity=".5"')
     else:
-        return '<rect width="%d" height="%d" fill="#101513"/><rect x="0.5" y="0.5" width="%d" height="%d" fill="none" stroke="#1E2A24" stroke-width="1"/>' % (w, h, w - 1, h - 1)
+        o = '<rect width="%d" height="%d" fill="url(#gn)"/>' % (w, h)
+        o += circ(w * 0.84, h * 0.2, min(w, h) * 0.3, P, 'fill-opacity=".35"')
+        o += circ(w * 0.12, h * 0.86, min(w, h) * 0.26, TAN, 'fill-opacity=".22"')
+    for i in range(6):
+        for j in range(4):
+            o += circ(w * 0.05 + i * 22, h * 0.08 + j * 22, 2.4, P if tone != 'dark' else WHITE, 'fill-opacity=".25"')
+    return o
 
 
 def chip(x, y, label, kind, fill=WHITE, fg=INK, col=P):
@@ -414,88 +426,44 @@ def brand():
 
 # ================= hero =================
 def hero():
-    w, h = 1200, 720
-    o = '<rect width="1200" height="720" fill="#FFFFFF"/>'
-    
-    # Outer 1px solid #DEE6E0 Window Frame
-    wx, wy, ww, wh = 20.0, 20.0, 1160.0, 680.0
-    o += rr(wx, wy, ww, wh, 8, '#FFFFFF', 'stroke="#DEE6E0" stroke-width="1"')
-    
-    # Title Bar (38px, #F4F7F5)
-    o += '<path d="M%.1f %.1f h%.1f a8 8 0 0 1 8 8 v30 h-%.1f v-30 a8 8 0 0 1 8 -8 z" fill="#F4F7F5"/>' % (wx, wy, ww - 16, ww)
-    o += '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#DEE6E0" stroke-width="1"/>' % (wx, wy + 38, wx + ww, wy + 38)
-    
-    # Window traffic lights
-    o += circ(wx + 20, wy + 19, 5.5, '#E2E8F0') + circ(wx + 38, wy + 19, 5.5, '#E2E8F0') + circ(wx + 56, wy + 19, 5.5, '#E2E8F0')
-    o += tx(wx + 80, wy + 24, 'SERK Construction Intelligence OS v2.4 — Bole Tower Mixed-Use Project | BOQ &amp; Cost Control', 12.5, 600, INK)
-    o += rr(wx + ww - 165, wy + 8, 145, 22, 4, '#EAF3EF', 'stroke="#B8D5C8" stroke-width="1"')
-    o += circ(wx + ww - 153, wy + 19, 3.5, '#0D4634')
-    o += tx(wx + ww - 142, wy + 24, 'LIVE SYNC: ONLINE', 10.5, 700, '#0D4634')
-    
-    # KPI Stat Row (80px height)
-    ky = wy + 38
-    stats = [
-        ('Contract Baseline', 'ETB 142,850,000', 'Approved Tender Budget', '#101513'),
-        ('Committed Cost', 'ETB 89,420,150', '62.6% Expended', '#0D4634'),
-        ('Forecast Variance', '-3.2% Favorable', 'ETB 138.2M Projected', '#2D735A'),
-        ('Material Takeoff', '34 / 34 Cleared', 'Zero Open Discrepancies', '#101513'),
-    ]
-    sw = ww / 4.0
-    for i, (lab, val, sub, vc) in enumerate(stats):
-        sx = wx + i * sw
-        o += '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#DEE6E0" stroke-width="1"/>' % (sx, ky, sx, ky + 80)
-        o += tx(sx + 20, ky + 25, lab, 11.5, 600, '#5B6761')
-        o += tx(sx + 20, ky + 50, val, 16.5, 700, vc)
-        o += tx(sx + 20, ky + 68, sub, 10.5, 500, '#5B6761')
-    o += '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#DEE6E0" stroke-width="1"/>' % (wx, ky + 80, wx + ww, ky + 80)
-    
-    # Table Header (34px, #F4F7F5)
-    ty = ky + 80
-    o += rr(wx, ty, ww, 34, 0, '#F4F7F5')
-    o += '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#DEE6E0" stroke-width="1"/>' % (wx, ty + 34, wx + ww, ty + 34)
-    o += tx(wx + 24, ty + 22, 'ITEM / WBS', 11, 700, '#5B6761')
-    o += tx(wx + 130, ty + 22, 'WORK DESCRIPTION', 11, 700, '#5B6761')
-    o += tx(wx + 520, ty + 22, 'UNIT', 11, 700, '#5B6761')
-    o += tx(wx + 600, ty + 22, 'QTY', 11, 700, '#5B6761')
-    o += tx(wx + 720, ty + 22, 'UNIT RATE (ETB)', 11, 700, '#5B6761')
-    o += tx(wx + 890, ty + 22, 'TOTAL AMOUNT (ETB)', 11, 700, '#5B6761')
-    o += tx(wx + 1070, ty + 22, 'AUDIT STATE', 11, 700, '#5B6761')
-    
-    # Table Rows
-    rows = [
-        ('01.02', 'Substructure C-30 Cast-in-situ Concrete', 'm3', '1,450.00', '14,800.00', '21,460,000.00', 'Verified', '#EAF3EF', '#0D4634'),
-        ('02.04', 'High-Yield Deformed Steel Rebar Grade 60 (16-24mm)', 'Ton', '285.40', '165,000.00', '47,091,000.00', 'Rate Locked', '#EAF3EF', '#0D4634'),
-        ('03.01', 'Precast Hollow Concrete Block Wall Formwork (200mm)', 'm2', '4,820.00', '2,450.00', '11,809,000.00', 'In Progress', '#FDF4EB', '#9A5B20'),
-        ('04.12', 'Sub-distribution Board &amp; MEP Conduiting First Fix', 'Lot', '1.00', '8,240,000.00', '8,240,000.00', 'Verified', '#EAF3EF', '#0D4634'),
-        ('05.08', 'Internal Plastering &amp; Smooth Polymer Wall Finishes', 'm2', '9,640.00', '680.00', '6,555,200.00', 'Calculated', '#F4F7F5', '#5B6761'),
-        ('06.03', 'Roofing Waterproofing Membrane &amp; Insulation Layer', 'm2', '1,200.00', '3,400.00', '4,080,000.00', 'Verified', '#EAF3EF', '#0D4634'),
-    ]
-    
-    ry = ty + 34
-    for i, (code, desc, unit, qty, rate, total, status, bg, tc) in enumerate(rows):
-        row_bg = '#FFFFFF' if i % 2 == 0 else '#FAFCFA'
-        o += rr(wx + 1, ry, ww - 2, 54, 0, row_bg)
-        o += '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#F0F4F2" stroke-width="1"/>' % (wx, ry + 54, wx + ww, ry + 54)
-        o += tx(wx + 24, ry + 32, code, 12, 600, '#101513')
-        o += tx(wx + 130, ry + 32, desc, 12.5, 500, '#101513')
-        o += tx(wx + 520, ry + 32, unit, 12, 500, '#5B6761')
-        o += tx(wx + 600, ry + 32, qty, 12, 500, '#101513')
-        o += tx(wx + 720, ry + 32, rate, 12.5, 600, '#101513')
-        o += tx(wx + 890, ry + 32, total, 13, 700, '#0D4634')
-        o += rr(wx + 1055, ry + 16, 85, 22, 4, bg, 'stroke="#DEE6E0" stroke-width="1"')
-        o += tx(wx + 1097, ry + 31, status, 10.5, 600, tc, 'middle')
-        ry += 54
-        
-    # Bottom Audit & Operator Signoff Footer
-    fy = wy + wh - 48
-    o += rr(wx, fy, ww, 48, 0, '#F4F7F5')
-    o += '<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="#DEE6E0" stroke-width="1"/>' % (wx, fy, wx + ww, fy)
-    o += tx(wx + 24, fy + 29, 'Audit Signature: SHA256:7A2F-9C14-E8B2 · Human-in-the-Loop Signoff: Solomon G. (Lead QS) · Timestamp: 2026-11-20 09:42 EAT', 11.5, 500, '#5B6761')
-    o += tx(wx + ww - 24, fy + 29, 'Subtotal: ETB 99,235,200.00', 13, 700, '#101513', 'end')
-    
-    save('serk-hero.svg', w, h, o, (500, 600, 700))
+    w, h = 1920, 1080
+    o = '<rect width="1920" height="1080" fill="#FCFCFE"/>'
+    for i in range(-6, 16):
+        o += '<path d="M%d -40 l-760 1160" stroke="#F6F6FA" stroke-width="64"/>' % (i * 190)
+    clip = ''
+
+    def pill(i, x, y, pw, ph, fill):
+        return rr(x, y, pw, ph, pw / 2, fill)
+    o += '<g transform="translate(-90 0)">'
+    o += pill(0, 1392, 190, 368, 620, MINT) + pill(1, 1662, 360, 204, 424, PLUM)
+    o += pill(2, 1058, 544, 242, 452, '#E6ECEF') + pill(3, 1140, 632, 160, 370, TEAL) + pill(4, 1362, 396, 198, 700, TAN2)
+    # big pill: light dashboard
+    clip += '<clipPath id="c1"><rect x="1198" y="278" width="284" height="644" rx="142"/></clipPath>'
+    clip += '<clipPath id="c2"><rect x="1528" y="552" width="216" height="466" rx="108"/></clipPath>'
+    a = '<g clip-path="url(#c1)"><rect x="1198" y="278" width="284" height="644" fill="#FFFFFF"/>'
+    a += '<rect x="1198" y="278" width="284" height="150" fill="url(#gp)"/>'
+    a += sparkle(1262, 356, 16, TAN2) + tx(1286, 366, 'Serk AI', 26, 700, WHITE)
+    a += tx(1340, 400, 'one platform', 15, 500, '#DAD8FB', 'middle')
+    a += rr(1222, 448, 236, 74, 16, '#F7F7FB') + tx(1240, 478, 'Estimate ready', 15, 600, INK) + skel(1240, 494, 150, 8, '#C9CCD6') + circ(
+        1428, 484, 16, GREEN) + '<path d="M1420 484l6 6 10-12" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>'
+    a += rr(1222, 536, 236, 150, 16, '#F7F7FB') + tx(1240, 566, 'Performance', 15, 600, INK) + bars(1238, 580, 204, 92,
+                                                                                               [0.4, 0.62, 0.5, 0.8, 0.66, 0.95], P, TAN2)
+    a += rr(1222, 700, 236, 118, 16, '#F7F7FB') + tx(1240, 730, 'Patients today', 15, 600, INK) + line(
+        1238, 742, 204, 60, [0.2, 0.5, 0.36, 0.7, 0.55, 0.9], RED, None, 4)
+    a += rr(1222, 832, 236, 60, 16, '#F7F7FB') + skel(1240, 852, 120, 8, '#C9CCD6') + skel(1240, 868, 80, 7)
+    a += '</g>'
+    b = '<g clip-path="url(#c2)"><rect x="1528" y="552" width="216" height="466" fill="url(#gn)"/>'
+    b += tx(1636, 640, 'Live', 15, 600, '#B9AFC0', 'middle') + tx(1636, 682, '+18%', 40, 700, WHITE, 'middle')
+    b += line(1548, 706, 176, 96, [0.15, 0.3, 0.24, 0.5, 0.42, 0.72, 0.6, 0.94], TAN, '#E3AB7230', 4, True)
+    b += bars(1556, 826, 160, 96, [0.5, 0.74, 0.44, 0.9, 0.62], P, TAN2)
+    b += '</g>'
+    o += a + b
+    o += sparkle(1508, 250, 22, TAN) + sparkle(1810, 300, 12, P) + sparkle(1120, 500, 12, P)
+    o += '</g>'
+    save('serk-hero.svg', w, h, o, (500, 600, 700), None, clip)
 
 
+# ================= section artwork =================
 def portrait(name, kind, tone, chips, w=820, h=1024):
     o = backdrop(w, h, tone)
     o += scene(kind, 60, (h - 644) / 2, w - 120, 600, tone == 'dark')
@@ -570,12 +538,14 @@ def team():
              ('design', 'design', TEAL), ('quality', 'quality', PLUM), ('integrations', 'integrations', P),
              ('support', 'support', TAN)]
     for slug, kind, col in items:
-        o = '<rect width="500" height="500" fill="#FFFFFF"/><rect x="0.5" y="0.5" width="499" height="499" fill="none" stroke="#DEE6E0" stroke-width="1"/>'
-        o += rr(150, 150, 200, 200, 16, '#F4F7F5', 'stroke="#DEE6E0" stroke-width="1"')
-        o += glyph(kind, 175, 175, 150, col, TAN2 if col != TAN else col)
+        o = '<rect width="500" height="500" fill="#F4F7F5"/>'
+        o += circ(250, 250, 190, col, 'fill-opacity=".14"') + circ(250, 250, 132, col)
+        o += glyph(kind, 180, 180, 140, WHITE, TAN2 if col != TAN else WHITE)
+        o += sparkle(400, 108, 20, TAN if col != TAN else P) + circ(96, 396, 14, col, 'fill-opacity=".35"')
         save('serk-team-%s.svg' % slug, 500, 500, o, ())
 
 
+# ================= article covers =================
 def posts():
     items = [('estimator', 'construction', 'light', 'AI Estimator'), ('hospital', 'hospital', 'tan', 'Serk HMS'),
              ('finance', 'finance', 'light', 'Serk Finance'), ('pos', 'pos', 'tan', 'Serk POS'),

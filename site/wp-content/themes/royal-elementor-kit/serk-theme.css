@@ -1,7 +1,6 @@
 /* ==========================================================================
    SERK TECHNOLOGIES GROUP - Master Design System
-   UI Theme aligned with zuriadvisors.com layout, typography & motions
-   Color System: Black & White Minimalism with Restrained Deep Green
+   Visual Identity: Black & White Minimalism with Restrained Deep Green
    ========================================================================== */
 
 :root {
@@ -15,73 +14,44 @@
   --serk-muted: #5B6761;
   --serk-warning: #9A5B20;
 
-  /* Typography matching Zuri Advisors */
-  --serk-font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  /* Typography */
   --serk-font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --serk-font-body: 'Lato', 'Poppins', sans-serif;
   --serk-font-ethiopic: 'Noto Sans Ethiopic', 'Abyssinica SIL', sans-serif;
 }
 
-/* Base */
+/* Base & Typography */
 body {
-  font-family: var(--serk-font-body);
+  font-family: var(--serk-font-sans) !important;
   color: var(--serk-ink);
   background-color: var(--serk-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ========================================================
-   TYPOGRAPHY - Preserve Elegant Serif Headlines of Zuri
-   ======================================================== */
-.elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
-.elementor-element-5f1264c .elementor-heading-title,
-.elementor-element-ec224c7 .elementor-heading-title,
-.elementor-element-c49bbe5 .elementor-heading-title,
-.elementor-element-f383be9 .elementor-heading-title,
-.elementor-element-7dcfe24 .elementor-heading-title,
-.elementor-element-7eb5a1b4 .elementor-heading-title,
-.elementor-element-21de704 .elementor-heading-title,
-.wpr-post-title,
+h1, h2, h3, h4, h5, h6,
+.elementor-heading-title,
 .wpr-promo-box-title,
-.wpr-promo-box-title span,
-.wpr-promo-box-title a,
-.wpr-grid-item-title,
-.wpr-grid-item-title a,
-.serk-font-serif {
-  font-family: var(--serk-font-serif) !important;
-  letter-spacing: -0.015em;
-}
-
-/* General Headings */
-h1, h2, h3, h4, h5, h6 {
+.wpr-grid-item-title {
   color: var(--serk-ink);
+  font-family: var(--serk-font-sans) !important;
   letter-spacing: -0.015em;
-}
-
-/* Body Copy */
-p, .elementor-widget-text-editor, .elementor-icon-box-description, .wpr-grid-item-excerpt {
-  color: var(--serk-muted);
-  line-height: 1.65;
 }
 
 /* ========================================================
-   HEADINGS ON GREEN OR DARK BACKGROUNDS (CRISP WHITE #FFF)
+   HEADINGS ON GREEN OR DARK BACKGROUNDS (MUST BE WHITE)
    ======================================================== */
 .elementor-element-ec224c7 .elementor-heading-title,
 .elementor-element-c49bbe5 .elementor-heading-title,
 [data-id="ec224c7"] .elementor-heading-title,
 [data-id="c49bbe5"] .elementor-heading-title,
-.elementor-element-8ebc8a5 h2,
-.elementor-element-8ebc8a5 .elementor-heading-title,
 .wpr-promo-box-title,
 .wpr-promo-box-title span,
 .wpr-promo-box-title a,
 .wpr-promo-box-description,
-.wpr-promo-box-description p,
 [style*="0D4634"] h1, [style*="0D4634"] h2, [style*="0D4634"] h3, [style*="0D4634"] h4, [style*="0D4634"] h5, [style*="0D4634"] h6,
 [style*="082E22"] h1, [style*="082E22"] h2, [style*="082E22"] h3, [style*="082E22"] h4, [style*="082E22"] h5, [style*="082E22"] h6,
 [style*="2D735A"] h1, [style*="2D735A"] h2, [style*="2D735A"] h3, [style*="2D735A"] h4, [style*="2D735A"] h5, [style*="2D735A"] h6,
+[style*="deep-forest"] h1, [style*="deep-forest"] h2, [style*="deep-forest"] h3, [style*="deep-forest"] h4,
 .elementor-section[style*="0D4634"] .elementor-heading-title,
 .elementor-section[style*="082E22"] .elementor-heading-title,
 .elementor-section[style*="2D735A"] .elementor-heading-title,
@@ -90,103 +60,16 @@ p, .elementor-widget-text-editor, .elementor-icon-box-description, .wpr-grid-ite
 .elementor-element[style*="0D4634"] .elementor-heading-title,
 .elementor-element[style*="082E22"] .elementor-heading-title,
 .serk-cta-banner h1, .serk-cta-banner h2, .serk-cta-banner h3, .serk-cta-banner h4,
-.serk-dark-sec,
-.serk-dark-sec h1, .serk-dark-sec h2, .serk-dark-sec h3, .serk-dark-sec h4,
-.elementor-element-5b611c4 .elementor-heading-title,
-.elementor-location-footer .elementor-heading-title {
+.serk-dark-sec h1, .serk-dark-sec h2, .serk-dark-sec h3, .serk-dark-sec h4 {
   color: #FFFFFF !important;
 }
 
-/* Light text on dark sections */
-.elementor-element-8ebc8a5 p,
-[data-id="2055672"] p,
-[data-id="3e5f206"] p {
-  color: #DEE6E0 !important;
+p, .elementor-widget-text-editor, .elementor-icon-box-description, .wpr-grid-item-excerpt {
+  color: var(--serk-muted);
+  line-height: 1.65;
 }
 
-/* ========================================================
-   LOGO STYLING - Anti-Blowout & Balanced Proportions
-   ======================================================== */
-.wpr-logo-image,
-.wpr-logo img,
-.elementor-widget-wpr-logo img,
-img[src*="serk-logo-wide"] {
-  max-width: 160px !important;
-  max-height: 42px !important;
-  width: auto !important;
-  height: auto !important;
-  display: block !important;
-  object-fit: contain !important;
-}
-
-/* ========================================================
-   NAVIGATION & MOTIONS (Matching Zuri Advisors)
-   ======================================================== */
-/* Header Navigation Items */
-.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item {
-  color: var(--serk-ink) !important;
-  font-family: var(--serk-font-sans) !important;
-  font-size: 14.5px !important;
-  font-weight: 500 !important;
-  transition: color 0.25s ease !important;
-  padding: 12px 14px !important;
-}
-
-/* Zuri Pointer Line Underline Animation - Themed to Deep Forest Green */
-.elementor-1174 .elementor-element.elementor-element-0eb8db5.wpr-pointer-line-fx .wpr-menu-item:before,
-.elementor-1174 .elementor-element.elementor-element-0eb8db5.wpr-pointer-line-fx .wpr-menu-item:after {
-  background-color: var(--serk-deep-forest) !important;
-  height: 2px !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
-
-.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item:hover,
-.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu .wpr-menu-item.wpr-active-menu-item,
-.elementor-1174 .elementor-element.elementor-element-0eb8db5 .wpr-nav-menu li.current-menu-item > a,
-.wpr-mobile-menu-item:hover,
-.wpr-mobile-nav-menu li.current-menu-item a.wpr-mobile-menu-item {
-  color: var(--serk-deep-forest) !important;
-  font-weight: 600 !important;
-}
-
-/* Mobile Nav Drawer */
-.wpr-mobile-nav-menu li a.wpr-mobile-menu-item {
-  font-size: 15px !important;
-  font-weight: 500 !important;
-  padding: 12px 18px !important;
-  color: var(--serk-ink) !important;
-}
-
-/* ========================================================
-   PROMO BOXES (Zuri Hover Zoom & Transition Effects)
-   ======================================================== */
-.wpr-promo-box {
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  border: 1px solid var(--serk-hairline) !important;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
-}
-
-.wpr-promo-box:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 32px rgba(13, 70, 52, 0.16) !important;
-  border-color: var(--serk-light-green) !important;
-}
-
-.wpr-promo-box-title,
-.wpr-promo-box-title span {
-  color: #FFFFFF !important;
-  font-family: var(--serk-font-serif) !important;
-  font-weight: 600 !important;
-}
-
-.wpr-promo-box-description p {
-  color: #CDE5DC !important;
-}
-
-/* ========================================================
-   PRIMARY CTAs & BUTTONS
-   ======================================================== */
+/* Primary CTAs & Buttons */
 .elementor-button,
 .wpr-button a,
 .wpr-promo-box-btn,
@@ -196,7 +79,7 @@ button[type="submit"],
   background-color: var(--serk-deep-forest) !important;
   color: var(--serk-white) !important;
   border-radius: 6px !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   border: 1px solid var(--serk-deep-forest) !important;
   box-shadow: 0 2px 6px rgba(13, 70, 52, 0.15) !important;
@@ -212,7 +95,7 @@ button[type="submit"]:hover {
   border-color: var(--serk-light-green) !important;
   color: var(--serk-white) !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(13, 70, 52, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(13, 70, 52, 0.25) !important;
 }
 
 /* Secondary / Outline Buttons */
@@ -228,6 +111,13 @@ button[type="submit"]:hover {
 .wpr-button-secondary a:hover {
   background-color: var(--serk-mist) !important;
   border-color: var(--serk-light-green) !important;
+  color: var(--serk-deep-forest) !important;
+}
+
+/* Navigation & Header */
+.wpr-nav-menu a.wpr-menu-item:hover,
+.wpr-nav-menu li.current-menu-item > a,
+.wpr-mobile-menu-item:hover {
   color: var(--serk-deep-forest) !important;
 }
 
@@ -261,11 +151,36 @@ button[type="submit"]:hover {
   border-top-color: var(--serk-hairline) !important;
 }
 
+/* Form Inputs & Controls */
+.wpforms-field input,
+.wpforms-field textarea,
+input[type="text"],
+input[type="email"],
+textarea {
+  border: 1px solid var(--serk-hairline) !important;
+  border-radius: 6px !important;
+  color: var(--serk-ink) !important;
+  background-color: var(--serk-white) !important;
+  padding: 10px 14px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.wpforms-field input:focus,
+.wpforms-field textarea:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--serk-light-green) !important;
+  box-shadow: 0 0 0 3px rgba(45, 115, 90, 0.15) !important;
+  outline: none !important;
+}
+
 /* ========================================================
-   PILLS & CATEGORY BADGES (Flat & Crisp)
+   PARALLELOGRAM CATEGORY & BADGE STYLING (SERK High-Tech)
    ======================================================== */
 .serk-badge,
 .serk-filter-btn,
+.serk-cat-parallelogram,
 .wpr-grid-item-category a,
 .entry-categories a,
 .cat-links a {
@@ -273,16 +188,28 @@ button[type="submit"]:hover {
   align-items: center !important;
   justify-content: center !important;
   gap: 6px !important;
-  padding: 4px 10px !important;
-  border-radius: 4px !important;
-  font-size: 11px !important;
-  font-weight: 600 !important;
+  padding: 4px 14px !important;
+  transform: skew(-14deg) !important;
+  border-radius: 2px !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.04em !important;
+  letter-spacing: 0.06em !important;
   margin: 2px 4px 6px 0 !important;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
   box-sizing: border-box !important;
   text-decoration: none !important;
+}
+
+/* Counter-skew child text/icon so content remains upright and readable */
+.serk-badge > *,
+.serk-filter-btn > *,
+.serk-cat-parallelogram > *,
+.wpr-grid-item-category a > *,
+.entry-categories a > *,
+.cat-links a > * {
+  transform: skew(14deg) !important;
+  display: inline-block !important;
 }
 
 .serk-badge-production {
@@ -318,6 +245,7 @@ button[type="submit"]:hover {
   color: #FFFFFF !important;
 }
 
+/* Parallelogram Category Filter Buttons (Gallery & Interactive) */
 .serk-filter-btn {
   padding: 8px 18px !important;
   font-size: 0.85rem !important;
@@ -335,24 +263,61 @@ button[type="submit"]:hover {
   border-color: var(--serk-deep-forest, #0D4634) !important;
 }
 
-/* Focus Rings */
+/* Accessible High-Contrast Focus Rings */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--serk-light-green) !important;
   outline-offset: 2px !important;
 }
 
+/* Header Navigation - Clean Single-Line Menu Layout matching Zuri Advisors */
+.elementor-element-0eb8db5 .wpr-nav-menu {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: flex-end !important;
+  gap: 6px !important;
+}
+
+.elementor-element-0eb8db5 .wpr-nav-menu > li > a.wpr-menu-item {
+  padding: 10px 14px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.01em !important;
+  color: var(--serk-ink) !important;
+  transition: color 0.2s ease !important;
+}
+
+.elementor-element-0eb8db5 .wpr-nav-menu > li > a.wpr-menu-item:hover,
+.elementor-element-0eb8db5 .wpr-nav-menu > li.current-menu-item > a.wpr-menu-item {
+  font-weight: 600 !important;
+  color: var(--serk-deep-forest) !important;
+}
+
+/* Mobile Navigation */
+.wpr-mobile-nav-menu li a.wpr-mobile-menu-item {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  padding: 10px 16px !important;
+  color: var(--serk-ink) !important;
+}
+
+.wpr-mobile-nav-menu li.current-menu-item a.wpr-mobile-menu-item {
+  font-weight: 600 !important;
+  color: var(--serk-deep-forest) !important;
+}
+
 /* ========================================================
-   GLOBAL FOOTER STYLING (Dark Forest #082E22)
+   COMPACT & HORIZONTAL FOOTER STYLING
    ======================================================== */
 .elementor-element-5b611c4 {
-  background-color: #082E22 !important;
-  padding: 40px 20px 30px 20px !important;
+  background-color: #082E22 !important; /* Deep rich forest green */
+  padding: 36px 20px 28px 20px !important;
 }
 
 .elementor-element-e959569 {
   background-color: #051F17 !important;
-  padding: 18px 20px !important;
+  padding: 16px 20px !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
@@ -412,9 +377,9 @@ button:focus-visible {
   text-decoration: underline !important;
 }
 
-/* ========================================================
-   LEAD CAPTURE & CONTACT FORM SYSTEM
-   ======================================================== */
+/* ==========================================================================
+   Lead Capture & Contact Form System (Step 5)
+   ========================================================================== */
 .serk-form input,
 .serk-form select,
 .serk-form textarea {
