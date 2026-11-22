@@ -124,6 +124,7 @@ html, body {
 }
 
 .serk-footer-heading-visitus {
+  color: #E3AB72 !important;
   margin: 0 0 14px 0 !important;
 }
 
@@ -142,17 +143,17 @@ html, body {
   width: 34px !important;
   height: 34px !important;
   border-radius: 4px !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  color: #CDE5DC !important;
+  border: 1px solid rgba(227, 171, 114, 0.35) !important;
+  background-color: rgba(227, 171, 114, 0.08) !important;
+  color: #E3AB72 !important;
   transition: all 0.2s ease !important;
   text-decoration: none !important;
 }
 
 .serk-footer-social-btn:hover {
-  background-color: rgba(255, 255, 255, 0.15) !important;
-  color: #FFFFFF !important;
-  border-color: rgba(255, 255, 255, 0.35) !important;
+  background-color: #E3AB72 !important;
+  color: #101513 !important;
+  border-color: #E3AB72 !important;
   transform: translateY(-2px) !important;
 }
 
@@ -200,12 +201,12 @@ html, body {
   transform: translateX(4px) !important;
 }
 
-/* Full-Width Bottom Copyright Bar flush to very bottom */
+/* Full-Width Bottom Copyright Bar flush to very bottom (Pure Black) */
 .elementor-element-e959569 {
   width: 100% !important;
   margin: 0 !important;
   padding: 18px 0 !important;
-  background-color: #051F17 !important;
+  background-color: #000000 !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-sizing: border-box !important;
 }
@@ -225,7 +226,7 @@ html, body {
 .serk-copyright-left {
   font-family: var(--serk-font-sans, 'Poppins', sans-serif) !important;
   font-size: 13px !important;
-  color: #9AB4A9 !important;
+  color: #999999 !important;
   line-height: 1.4 !important;
   margin: 0 !important;
 }
@@ -235,12 +236,12 @@ html, body {
   align-items: center !important;
   gap: 10px !important;
   font-size: 11.5px !important;
-  color: #7D978C !important;
+  color: #888888 !important;
   margin: 0 !important;
 }
 
 .serk-copyright-link {
-  color: #7D978C !important;
+  color: #888888 !important;
   font-family: var(--serk-font-sans, 'Poppins', sans-serif) !important;
   font-size: 11.5px !important;
   text-decoration: none !important;
@@ -342,7 +343,7 @@ def update_page(path):
         content = content.replace('</body>', footer_html.strip() + '\n</body>')
 
     # 3. Cache buster on serk-theme.css
-    content = re.sub(r'serk-theme\.css(?:\?[^"]*)?', 'serk-theme.css?v=20261122-footerzuri01', content)
+    content = re.sub(r'serk-theme\.css(?:\?[^"]*)?', 'serk-theme.css?v=20261122-footerblack01', content)
 
     with open(path, 'w', encoding='utf-8') as f:
         f.write(content)
