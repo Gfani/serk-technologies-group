@@ -678,7 +678,7 @@ html, body {
 .elementor-1158 .elementor-element.elementor-element-5c127ac:not(.elementor-motion-effects-element-type-background),
 .elementor-1158 .elementor-element.elementor-element-5c127ac > .elementor-motion-effects-container > .elementor-motion-effects-layer,
 .elementor-element-5c127ac {
-  background-image: url("/wp-content/uploads/serk/serk-hero.svg?v=20261122-herofix01") !important;
+  background-image: url("/wp-content/uploads/serk/serk-hero.svg?v=20261122-herofix02") !important;
   background-position: right center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
@@ -710,29 +710,34 @@ html, body {
 .elementor-element.elementor-element-291bfca > .elementor-widget-wrap,
 .elementor-element-291bfca .elementor-widget-wrap {
   background-image: none !important;
-  padding: 0 !important;
+  padding: 20px 28px 24px 16px !important;
   margin: 0 !important;
   display: flex !important;
-  align-items: stretch !important;
+  align-items: center !important;
+  justify-content: center !important;
   width: 100% !important;
   box-sizing: border-box !important;
 }
 
 .elementor-element.elementor-element-291bfca {
   overflow: hidden !important;
-  border-radius: 20px !important;
   box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .serk-why-img-frame {
   width: 100% !important;
-  height: 100% !important;
-  min-height: 480px !important;
-  max-height: 560px !important;
+  max-width: 480px !important;
+  height: 420px !important;
+  min-height: 380px !important;
+  max-height: 450px !important;
   border-radius: 20px !important;
   overflow: hidden !important;
   position: relative !important;
   box-sizing: border-box !important;
+  margin: auto !important;
 }
 
 .serk-why-img-frame img {
@@ -747,9 +752,14 @@ html, body {
   .elementor-element-5c127ac {
     background-position: 85% center !important;
   }
+  .elementor-element-291bfca .elementor-widget-wrap {
+    padding: 20px 16px !important;
+  }
   .serk-why-img-frame {
-    min-height: 380px !important;
-    margin-top: 32px !important;
+    max-width: 100% !important;
+    height: 360px !important;
+    min-height: 320px !important;
+    margin-top: 24px !important;
   }
 }
 
