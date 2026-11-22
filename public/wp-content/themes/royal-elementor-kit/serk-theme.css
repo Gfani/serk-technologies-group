@@ -997,3 +997,126 @@ input:focus, textarea:focus, select:focus {
 .serk-cta-btn:hover {
   box-shadow: 0 0 0 2px #E3AB72, 0 4px 14px rgba(227, 171, 114, 0.28) !important;
 }
+
+
+/* ==========================================================================
+   SERK RESPONSIVE & MOBILE POLISH FIXES
+   ========================================================================== */
+
+/* 1. Prevent Horizontal Scroll / Overflow on Mobile */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+/* 2. Hero Section Mobile Responsiveness (Fix Overlapping Text & Floating Capsules) */
+@media (max-width: 991px) {
+  .elementor-element-5c127ac,
+  .elementor-element-5c127ac:not(.elementor-motion-effects-element-type-background),
+  .elementor-1158 .elementor-element.elementor-element-5c127ac > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+  .elementor-element.elementor-element-5c127ac {
+    background-image: none !important;
+    background-color: #FFFFFF !important;
+    min-height: auto !important;
+    padding: 32px 18px 40px 18px !important;
+  }
+
+  .elementor-element-5c127ac .elementor-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .elementor-element-5c127ac .elementor-column.elementor-col-50 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .elementor-element-5c127ac .elementor-heading-title {
+    font-size: 2.1rem !important;
+    line-height: 1.22 !important;
+    margin: 0 0 16px 0 !important;
+    word-break: break-word !important;
+  }
+
+  .elementor-element-5c127ac p {
+    font-size: 1.05rem !important;
+    line-height: 1.65 !important;
+    color: #5B6761 !important;
+  }
+
+  /* Dedicated clean mobile preview container */
+  .serk-hero-mobile-visual {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 28px !important;
+    border-radius: 12px !important;
+    border: 1px solid #DEE6E0 !important;
+    overflow: hidden !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06) !important;
+    background: #FAFCFA !important;
+  }
+
+  .serk-hero-mobile-visual img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .serk-hero-mobile-visual {
+    display: none !important;
+  }
+}
+
+/* 3. Global Mobile Typography & Container Scaling */
+@media (max-width: 767px) {
+  .elementor-section-boxed .elementor-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .serk-top-bar {
+    display: none !important;
+  }
+
+  .serk-main-header {
+    height: 60px !important;
+  }
+
+  .serk-header-logo-text {
+    font-size: 15px !important;
+  }
+
+  .serk-header-cta {
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+  }
+
+  .elementor-column.elementor-col-33,
+  .elementor-column.elementor-col-50,
+  .elementor-column.elementor-col-25 {
+    width: 100% !important;
+    margin-bottom: 24px !important;
+  }
+
+  .serk-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .serk-category-nav {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding: 10px 14px !important;
+    top: 60px !important;
+  }
+
+  .serk-category-pill {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+}

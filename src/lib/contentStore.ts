@@ -143,6 +143,33 @@ export function getSiteContent(): SiteContent {
   };
 }
 
+// Helper to sync content into static HTML snapshots if present
+function syncToStaticHtml(content: Partial<SiteContent>) {
+  const targets = ['public/index.html', 'site/index.html'];
+  for (const t of targets) {
+    const fpath = path.join(process.cwd(), t);
+    if (!fs.existsSync(fpath)) continue;
+    try {
+      let html = fs.readFileSync(fpath, 'utf-8');
+      if (content.pages?.home?.heroTitle) {
+        html = html.replace(
+          /<h1 class="elementor-heading-title elementor-size-default">.*?<\/h1>/,
+          `<h1 class="elementor-heading-title elementor-size-default">${content.pages.home.heroTitle}</h1>`
+        );
+      }
+      if (content.siteInfo?.email) {
+        html = html.replace(/serktechgroup@gmail\.com/g, content.siteInfo.email);
+      }
+      if (content.siteInfo?.phone) {
+        html = html.replace(/\+251\s*999\s*911\s*192/g, content.siteInfo.phone);
+      }
+      fs.writeFileSync(fpath, html, 'utf-8');
+    } catch (e) {
+      console.error(`Error syncing to ${t}:`, e);
+    }
+  }
+}
+
 // Save site content
 export function saveSiteContent(content: Partial<SiteContent>): boolean {
   try {
@@ -152,6 +179,7 @@ export function saveSiteContent(content: Partial<SiteContent>): boolean {
     const current = getSiteContent();
     const merged = { ...current, ...content };
     fs.writeFileSync(CONTENT_FILE, JSON.stringify(merged, null, 2), 'utf-8');
+    syncToStaticHtml(merged);
     return true;
   } catch (err) {
     console.error('Error writing site content:', err);

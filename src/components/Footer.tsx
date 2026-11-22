@@ -2,7 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Footer() {
+export default function Footer({ content }: { content?: any }) {
+  const visitUsHeading = content?.footer?.visitUsHeading || 'VISIT US';
+  const addressLine1 = content?.footer?.addressLine1 || content?.siteInfo?.address || 'Mekelle, Tigray, Ethiopia';
+  const addressLine2 = content?.footer?.addressLine2 || content?.siteInfo?.jurisdiction || 'Sovereign Digital Systems';
+  const copyrightText = content?.footer?.copyrightText || `Copyright © ${new Date().getFullYear()} SERK Technologies Group. All rights reserved.`;
+  const tagline = content?.footer?.tagline || 'Innovation with Integrity';
+
   return (
     <footer className="w-full bg-[#101513] text-white font-sans">
       {/* Main 4-Column Balanced Grid */}
@@ -20,12 +26,12 @@ export default function Footer() {
               />
             </Link>
             <h4 className="text-[14px] font-bold text-[#E3AB72] uppercase tracking-wider mb-2">
-              VISIT US
+              {visitUsHeading}
             </h4>
             <p className="text-[13px] text-[#9AB4A9] leading-relaxed mb-4">
-              Mekelle, Tigray, Ethiopia
+              {addressLine1}
               <br />
-              Sovereign Digital Systems
+              {addressLine2}
             </p>
             <a
               href="https://linkedin.com"
@@ -151,8 +157,7 @@ export default function Footer() {
       <div className="w-full bg-[#000000] border-t border-white/10 py-5">
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
           <p className="text-[#9AB4A9]">
-            Copyright &copy; {new Date().getFullYear()} SERK Technologies Group. All rights
-            reserved. <span className="text-[#E3AB72]">&middot; Innovation with Integrity</span>
+            {copyrightText} <span className="text-[#E3AB72]">&middot; {tagline}</span>
           </p>
           <div className="flex items-center space-x-4 text-[11.5px] text-[#7D978C]">
             <Link href="/privacy" className="hover:text-white transition-colors">

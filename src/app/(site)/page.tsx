@@ -3,12 +3,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle2, ChevronRight, Check } from 'lucide-react';
 import MaturityBadge from '@/components/MaturityBadge';
-import { getAllProjects } from '@/lib/db';
+import { getStoredProjects, getSiteContent } from '@/lib/contentStore';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function HomePage() {
-  const allProjects = await getAllProjects();
+  const allProjects = await getStoredProjects();
+  const content = getSiteContent();
 
   return (
     <div className="w-full font-sans bg-white text-[#101513]">
@@ -18,27 +20,21 @@ export default async function HomePage() {
       <section className="relative w-full min-h-[85vh] serk-hero-bg flex items-center border-b border-[#DEE6E0] overflow-hidden">
         <div className="max-w-[1240px] w-full mx-auto px-6 sm:px-8 py-16 lg:py-24">
           <div className="max-w-2xl lg:max-w-xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(227,171,114,0.12)] border border-[#E3AB72]/40 text-xs font-semibold tracking-wider uppercase text-[#E3AB72]">
-              <span>Sovereign Digital Systems</span>
-              <span className="animate-pulse">|</span>
-            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-[#101513] font-serif leading-[1.14] tracking-tight">
-              We Engineer the Systems Behind Better Business.
+              {content.pages?.home?.heroTitle || 'We Engineer the Systems Behind Better Business.'}
             </h1>
 
             <p className="text-base sm:text-[16.5px] text-[#5B6761] font-normal leading-relaxed">
-              From your first website to intelligent enterprise operations, SERK Technologies
-              Group designs and develops practical digital solutions for organizations ready to
-              work smarter. We combine software engineering, thoughtful design, responsible AI and
-              deep attention to real-world workflows — starting in Ethiopia, built for a wider world.
+              {content.pages?.home?.heroSubtitle ||
+                'From your first website to intelligent enterprise operations, SERK Technologies Group designs and develops practical digital solutions for organizations ready to work smarter. We combine software engineering, thoughtful design, responsible AI and deep attention to real-world workflows — starting in Ethiopia, built for a wider world.'}
             </p>
 
             <div className="pt-2 flex flex-wrap gap-4 items-center">
               <Link
-                href="/contact"
+                href={content.pages?.home?.heroCtaUrl || '/contact'}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors shadow-sm"
               >
-                <span>Discuss Your Project</span>
+                <span>{content.pages?.home?.heroCtaLabel || 'Discuss Your Project'}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
@@ -235,15 +231,11 @@ export default async function HomePage() {
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
           <div className="max-w-3xl mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold font-serif text-[#101513] mb-3">
-              Why Choose{' '}
-              <span className="text-[#E3AB72] underline decoration-2 underline-offset-4">
-                Serk Group
-              </span>
-              ?
+              {content.pages?.home?.whySerkHeading || 'Why Choose Serk Group?'}
             </h2>
             <p className="text-base text-[#5B6761] leading-relaxed">
-              At Serk, we pair real industry know-how with practical AI. The result is software that
-              feels made for you, because it is. Here&apos;s why teams choose us:
+              {content.pages?.home?.whySerkSubtitle ||
+                "At Serk, we pair real industry know-how with practical AI. The result is software that feels made for you, because it is. Here's why teams choose us:"}
             </p>
           </div>
 

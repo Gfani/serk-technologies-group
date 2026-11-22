@@ -10,7 +10,13 @@ export const metadata = {
     'Innovation with Integrity. Building Beyond Boundaries. Discover the mission, engineering philosophy, and values of SERK Technologies Group.',
 };
 
+import { getSiteContent } from '@/lib/contentStore';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function AboutPage() {
+  const content = getSiteContent();
   return (
     <div className="w-full">
       <AnimatedHeaderBanner title="About Us" />

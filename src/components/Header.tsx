@@ -6,9 +6,13 @@ import Image from 'next/image';
 import { Mail, Phone, Menu, X, ArrowRight } from 'lucide-react';
 import { ThemeConfig } from '@/lib/types';
 
-export default function Header({ theme }: { theme?: ThemeConfig }) {
+export default function Header({ theme, content }: { theme?: ThemeConfig; content?: any }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isTwoRow = theme?.headerLayout !== 'ONE_ROW';
+  const email = content?.siteInfo?.email || 'serktechgroup@gmail.com';
+  const phone = content?.siteInfo?.phone || '+251 999 911 192';
+  const ctaLabel = content?.header?.ctaLabel || 'Discuss Your Project';
+  const ctaUrl = content?.header?.ctaUrl || '/contact';
 
   return (
     <header className="sticky top-0 z-50 w-full font-sans shadow-sm">
@@ -35,19 +39,19 @@ export default function Header({ theme }: { theme?: ThemeConfig }) {
             {/* Right Contact Info */}
             <div className="flex items-center space-x-5 ml-auto text-xs sm:text-[12.5px]">
               <a
-                href="mailto:serktechgroup@gmail.com"
+                href={`mailto:${email}`}
                 className="flex items-center space-x-1.5 hover:text-[#E3AB72] transition-colors"
               >
                 <Mail className="w-3.5 h-3.5 text-[#E3AB72]" />
-                <span className="hidden sm:inline">serktechgroup@gmail.com</span>
+                <span className="hidden sm:inline">{email}</span>
               </a>
               <span className="text-[#DEE6E0] hidden sm:inline">|</span>
               <a
-                href="tel:+251999911192"
+                href={`tel:${phone.replace(/\s+/g, '')}`}
                 className="flex items-center space-x-1.5 hover:text-[#E3AB72] transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-[#E3AB72]" />
-                <span>+251 999 911 192</span>
+                <span>{phone}</span>
               </a>
               <span className="text-[#DEE6E0]">|</span>
               <Link
@@ -167,10 +171,10 @@ export default function Header({ theme }: { theme?: ThemeConfig }) {
           {/* Desktop Right CTA */}
           <div className="hidden sm:flex items-center space-x-4">
             <Link
-              href="/contact"
+              href={ctaUrl}
               className="inline-flex items-center justify-center bg-[#0D4634] hover:bg-[#2D735A] hover:shadow-[0_0_0_2px_#E3AB72] text-white px-5 py-2.5 rounded text-[13.5px] font-semibold tracking-wide transition-all shadow-sm"
             >
-              <span>Discuss Your Project</span>
+              <span>{ctaLabel}</span>
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>

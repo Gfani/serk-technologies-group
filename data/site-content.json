@@ -19,7 +19,7 @@
     "visitUsHeading": "VISIT US",
     "addressLine1": "Mekelle, Tigray, Ethiopia",
     "addressLine2": "Sovereign Digital Systems",
-    "copyrightText": "Copyright © 2026 SERK Technologies Group. All rights reserved.",
+    "copyrightText": "Copyright \u00a9 2026 SERK Technologies Group. All rights reserved.",
     "tagline": "Innovation with Integrity"
   },
   "categories": {
@@ -69,7 +69,7 @@
   "pages": {
     "home": {
       "heroTitle": "We Engineer the Systems Behind Better Business.",
-      "heroSubtitle": "From your first website to intelligent enterprise operations, SERK Technologies Group designs and develops practical digital solutions for organizations ready to work smarter. We combine software engineering, thoughtful design, responsible AI and deep attention to real-world workflows — starting in Ethiopia, built for a wider world.",
+      "heroSubtitle": "From your first website to intelligent enterprise operations, SERK Technologies Group designs and develops practical digital solutions for organizations ready to work smarter. We combine software engineering, thoughtful design, responsible AI and deep attention to real-world workflows \u2014 starting in Ethiopia, built for a wider world.",
       "heroCtaLabel": "Discuss Your Project",
       "heroCtaUrl": "/contact_us/",
       "whySerkHeading": "Why Choose Serk Group?",

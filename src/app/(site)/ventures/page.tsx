@@ -11,6 +11,9 @@ export const metadata = {
     'Sovereign commercial ventures incubated and engineered by SERK Technologies Group: Segar, Visit Tigray, LO Africa.',
 };
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function VenturesPage() {
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">

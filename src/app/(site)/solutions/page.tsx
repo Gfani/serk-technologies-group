@@ -10,6 +10,9 @@ export const metadata = {
     'Custom enterprise software engineering, AI-assisted operational workflows, sovereign cloud infrastructure, and systems integration.',
 };
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function SolutionsPage() {
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">
