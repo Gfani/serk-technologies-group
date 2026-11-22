@@ -10,9 +10,6 @@ export const metadata = {
     'Sovereign software solutions purpose-built for Construction, Healthcare, Financial Services, and Retail.',
 };
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 export default function IndustriesPage() {
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">

@@ -3,63 +3,63 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, CheckCircle2, ChevronRight, Check } from 'lucide-react';
 import MaturityBadge from '@/components/MaturityBadge';
-import { getStoredProjects, getSiteContent } from '@/lib/contentStore';
+import { getAllProjects } from '@/lib/db';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function HomePage() {
-  const allProjects = await getStoredProjects();
-  const content = getSiteContent();
+  const allProjects = await getAllProjects();
 
   return (
     <div className="w-full font-sans bg-white text-[#101513]">
       {/* ========================================================
-          1. HERO SECTION (Fully Responsive Dynamic Layout)
+          1. HERO SECTION (Exact port 8000 design with SVG capsules)
           ======================================================== */}
-      <section className="relative w-full bg-white border-b border-[#DEE6E0] overflow-hidden py-10 sm:py-16 lg:py-20">
-        <div className="max-w-[1240px] w-full mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Content Column */}
-            <div className="w-full lg:col-span-7 space-y-5 sm:space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-[#101513] font-serif leading-[1.18] sm:leading-[1.14] tracking-tight">
-                {content.pages?.home?.heroTitle || 'We Engineer the Systems Behind Better Business.'}
-              </h1>
-
-              <p className="text-sm sm:text-base lg:text-[16.5px] text-[#5B6761] font-normal leading-relaxed max-w-xl">
-                {content.pages?.home?.heroSubtitle ||
-                  'From your first website to intelligent enterprise operations, SERK Technologies Group designs and develops practical digital solutions for organizations ready to work smarter. We combine software engineering, thoughtful design, responsible AI and deep attention to real-world workflows — starting in Ethiopia, built for a wider world.'}
-              </p>
-
-              <div className="pt-2 flex flex-col sm:flex-row gap-3.5 sm:items-center">
-                <Link
-                  href={content.pages?.home?.heroCtaUrl || '/contact'}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors shadow-sm text-center"
-                >
-                  <span>{content.pages?.home?.heroCtaLabel || 'Discuss Your Project'}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/products"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-[#101513] bg-[#F4F7F5] hover:bg-[#DEE6E0] border border-[#DEE6E0] transition-colors text-center"
-                >
-                  <span>Explore Platforms</span>
-                </Link>
-              </div>
+      <section className="relative w-full min-h-[85vh] serk-hero-bg flex items-center border-b border-[#DEE6E0] overflow-hidden">
+        <div className="max-w-[1240px] w-full mx-auto px-6 sm:px-8 py-16 lg:py-24">
+          <div className="max-w-2xl lg:max-w-xl space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(227,171,114,0.12)] border border-[#E3AB72]/40 text-xs font-semibold tracking-wider uppercase text-[#E3AB72]">
+              <span>Sovereign Digital Systems</span>
+              <span className="animate-pulse">|</span>
             </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-[54px] font-bold text-[#101513] font-serif leading-[1.14] tracking-tight">
+              We Engineer the Systems Behind Better Business.
+            </h1>
 
-            {/* Right Visual Card Column (Mockup preview) */}
-            <div className="w-full lg:col-span-5 flex justify-center mt-6 lg:mt-0">
-              <div className="relative w-full max-w-[440px] aspect-[16/11] rounded-2xl overflow-hidden border border-[#DEE6E0] shadow-xl bg-[#FAFCFA]">
-                <Image
-                  src="/images/serk-hero.svg"
-                  alt="SERK Enterprise Architecture and Platforms"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+            <p className="text-base sm:text-[16.5px] text-[#5B6761] font-normal leading-relaxed">
+              From your first website to intelligent enterprise operations, SERK Technologies
+              Group designs and develops practical digital solutions for organizations ready to
+              work smarter. We combine software engineering, thoughtful design, responsible AI and
+              deep attention to real-world workflows — starting in Ethiopia, built for a wider world.
+            </p>
+
+            <div className="pt-2 flex flex-wrap gap-4 items-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors shadow-sm"
+              >
+                <span>Discuss Your Project</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded text-sm font-semibold text-[#101513] bg-[#F4F7F5] hover:bg-[#DEE6E0] border border-[#DEE6E0] transition-colors"
+              >
+                <span>Explore Platforms</span>
+              </Link>
             </div>
+          </div>
+        </div>
+
+        {/* Mobile Fallback preview for smaller screens where SVG background shifts */}
+        <div className="lg:hidden w-full px-6 pb-12">
+          <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden border border-[#DEE6E0] shadow-lg">
+            <Image
+              src="/images/serk-hero.svg"
+              alt="SERK Enterprise Architecture and Platforms"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
@@ -235,11 +235,15 @@ export default async function HomePage() {
         <div className="max-w-[1240px] mx-auto px-6 sm:px-8">
           <div className="max-w-3xl mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold font-serif text-[#101513] mb-3">
-              {content.pages?.home?.whySerkHeading || 'Why Choose Serk Group?'}
+              Why Choose{' '}
+              <span className="text-[#E3AB72] underline decoration-2 underline-offset-4">
+                Serk Group
+              </span>
+              ?
             </h2>
             <p className="text-base text-[#5B6761] leading-relaxed">
-              {content.pages?.home?.whySerkSubtitle ||
-                "At Serk, we pair real industry know-how with practical AI. The result is software that feels made for you, because it is. Here's why teams choose us:"}
+              At Serk, we pair real industry know-how with practical AI. The result is software that
+              feels made for you, because it is. Here&apos;s why teams choose us:
             </p>
           </div>
 

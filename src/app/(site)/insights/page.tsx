@@ -10,8 +10,7 @@ export const metadata = {
     'Technical case studies, software architecture essays, and industry perspectives from the SERK engineering team.',
 };
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function InsightsPage() {
   let posts: any[] = [];

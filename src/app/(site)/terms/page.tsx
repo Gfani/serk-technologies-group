@@ -7,9 +7,6 @@ export const metadata = {
   description: 'Enterprise engagement terms, intellectual property standards, and service agreements of SERK Technologies Group.',
 };
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 export default function TermsPage() {
   return (
     <div className="w-full bg-white">

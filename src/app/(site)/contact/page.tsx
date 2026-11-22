@@ -9,13 +9,7 @@ export const metadata = {
     'Get in touch with SERK Technologies Group. Inquire about enterprise platforms, request system demos, or discuss custom software engineering.',
 };
 
-import { getSiteContent } from '@/lib/contentStore';
-
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 export default function ContactPage() {
-  const content = getSiteContent();
   return (
     <div className="w-full">
       <AnimatedHeaderBanner title="Contact Us" />
@@ -61,10 +55,10 @@ export default function ContactPage() {
                       Email Inquiries
                     </div>
                     <a
-                      href={`mailto:${content.siteInfo?.email || 'serktechgroup@gmail.com'}`}
+                      href="mailto:serktechgroup@gmail.com"
                       className="text-sm font-bold text-[#101513] hover:text-[#0D4634] transition-colors"
                     >
-                      {content.siteInfo?.email || 'serktechgroup@gmail.com'}
+                      serktechgroup@gmail.com
                     </a>
                     <div className="text-xs text-[#5B6761] mt-0.5">
                       Direct inbox for pilots, bids, and technical requests
@@ -81,10 +75,10 @@ export default function ContactPage() {
                       Phone / WhatsApp / Telegram
                     </div>
                     <a
-                      href={`tel:${(content.siteInfo?.phone || '+251 999 911 192').replace(/\s+/g, '')}`}
+                      href="tel:+251999911192"
                       className="text-sm font-bold text-[#101513] hover:text-[#0D4634] transition-colors"
                     >
-                      {content.siteInfo?.phone || '+251 999 911 192'}
+                      +251 999 911 192
                     </a>
                     <div className="text-xs text-[#5B6761] mt-0.5">
                       Direct messaging available during business hours

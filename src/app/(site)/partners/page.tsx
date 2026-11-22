@@ -10,9 +10,6 @@ export const metadata = {
     'Institutional clients, engineering partners, and deployment ecosystems working with SERK Technologies Group.',
 };
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 export default function PartnersPage() {
   const partnerTypes = [
     {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductsCatalog from '@/components/ProductsCatalog';
-import { getStoredProjects } from '@/lib/contentStore';
+import { getAllProjects } from '@/lib/db';
 import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 
 export const metadata = {
@@ -9,11 +9,10 @@ export const metadata = {
     'Explore the 23 sovereign software platforms, clinical systems, and operating ventures engineered by SERK Technologies Group.',
 };
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function ProductsPage() {
-  const projects = await getStoredProjects();
+  const projects = await getAllProjects();
 
   return (
     <div className="w-full bg-[#F4F7F5] min-h-screen">

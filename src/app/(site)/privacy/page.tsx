@@ -7,9 +7,6 @@ export const metadata = {
   description: 'Data privacy principles, governance standards, and security commitments of SERK Technologies Group.',
 };
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 export default function PrivacyPage() {
   return (
     <div className="w-full bg-white">
