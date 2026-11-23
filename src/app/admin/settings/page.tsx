@@ -211,6 +211,60 @@ export default function AdminSettingsPage() {
         </div>
       </form>
 
+      {/* Render 24/7 Keep-Alive & Anti-Sleep Engine */}
+      <div className="bg-white rounded-xl border border-[#DEE6E0] p-6 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-[#DEE6E0] pb-3">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            <h3 className="text-base font-bold text-[#101513]">Render 24/7 Keep-Alive & Anti-Sleep Engine</h3>
+          </div>
+          <span className="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
+            Active • 10-Min Wake Cycle
+          </span>
+        </div>
+
+        <p className="text-xs text-[#5B6761] leading-relaxed">
+          Render's free tier spins down web instances after 15 minutes of inactivity. This system keeps your application warm 24/7 through dual-layer keep-alive mechanisms:
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+          <div className="p-4 rounded-lg bg-[#F4F7F5] border border-[#DEE6E0] space-y-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-[#101513]">1. In-App Auto-Pinger</span>
+              <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Enabled</span>
+            </div>
+            <p className="text-[11px] text-[#5B6761] leading-relaxed">
+              Internal timer automatically pings <code className="text-[#0D4634] font-semibold">/api/health</code> every 10 minutes to reset Render's 15-minute inactivity counter before sleep can trigger.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-lg bg-[#F4F7F5] border border-[#DEE6E0] space-y-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-[#101513]">2. GitHub Actions Scheduled Ping</span>
+              <span className="text-[10px] font-semibold text-blue-700 bg-blue-100 px-2 py-0.5 rounded">Scheduled</span>
+            </div>
+            <p className="text-[11px] text-[#5B6761] leading-relaxed">
+              External cloud worker curls your live domain every 12 minutes. If the instance ever spins down during maintenance, this external ping automatically wakes it up immediately.
+            </p>
+          </div>
+        </div>
+
+        <div className="p-3.5 rounded-lg border border-[#E3AB72]/40 bg-[#E3AB72]/10 text-xs text-[#101513] flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-[#B26A25] flex-shrink-0" />
+            <span>Target Endpoint: <strong>https://serk-technologies-group.onrender.com/api/health</strong></span>
+          </div>
+          <a
+            href="/api/health"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] font-bold text-[#0D4634] underline hover:text-[#2D735A]"
+          >
+            Test Health Endpoint &rarr;
+          </a>
+        </div>
+      </div>
+
       {/* Backup & Restore Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {/* Export Card */}

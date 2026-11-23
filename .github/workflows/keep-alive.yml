@@ -1,0 +1,24 @@
+name: Keep Render Instance Awake
+
+on:
+  schedule:
+    # Runs every 12 minutes to keep the Render free instance active before the 15 min sleep cutoff
+    - cron: '*/12 * * * *'
+  workflow_dispatch:
+    # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  ping-render:
+    name: Ping Render Health Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Wakeup Ping to Render
+        run: |
+          echo "Sending keep-alive ping to https://serk-technologies-group.onrender.com/api/health..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 60 https://serk-technologies-group.onrender.com/api/health || echo "FAILED")
+          echo "Render response status: $STATUS"
+          if [ "$STATUS" -eq 200 ] || [ "$STATUS" -eq 301 ] || [ "$STATUS" -eq 302 ]; then
+            echo "Render service is awake and healthy!"
+          else
+            echo "Notice: Status was $STATUS, but inbound HTTP traffic was registered by Render edge proxy to reset inactivity timer."
+          fi
