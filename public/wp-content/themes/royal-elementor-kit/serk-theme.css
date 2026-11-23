@@ -197,16 +197,11 @@ button[type="submit"]:hover,
 
 /* Floating Controls (Solid Black) */
 .wpr-pc-btn,
-.wpr-stt-btn,
-.wpr-pc-btn,
-.elementor-widget-wpr-back-to-top,
-.wpr-stt-wrapper,
-[data-widget_type="wpr-back-to-top.default"],
-.serk-hero-anim-eyebrow {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+.wpr-stt-btn {
+  background-color: #101513 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(16, 21, 19, 0.3) !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
 }
 
 .wpr-pc-btn:hover,

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ProjectItem } from '@/lib/types';
+import { ProjectItem, MaturityStage } from '@/lib/types';
 import ProductCard from './ProductCard';
 import { Search, Filter } from 'lucide-react';
 
@@ -11,11 +11,11 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const categories = [
-    { label: 'All', value: 'All' },
+    { label: 'All (23)', value: 'All' },
     { label: 'Sector Intelligence', value: 'sector-intelligence' },
-    { label: 'AI & Security Research', value: 'ai-security' },
+    { label: 'AI & Security', value: 'ai-security' },
     { label: 'Enterprise & Operations', value: 'enterprise-operations' },
-    { label: 'Core Solutions & Integrations', value: 'solutions' },
+    { label: 'Core Solutions', value: 'solutions' },
     { label: 'Digital Ventures', value: 'ventures' },
     { label: 'Affiliated Businesses', value: 'affiliated' },
     { label: 'Future Innovation', value: 'future-innovation' },
@@ -63,7 +63,7 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search platforms by name, capability, or industry (e.g., BOQ, Clinic, Tax)..."
-              className="w-full pl-10 pr-4 py-2.5 border border-[#DEE6E0] rounded text-sm text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#0D4634] focus:border-[#0D4634]"
+              className="w-full pl-10 pr-4 py-2.5 border border-[#DEE6E0] rounded text-sm text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#E3AB72] focus:border-[#E3AB72]"
             />
           </div>
 
@@ -72,7 +72,7 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
             <select
               value={selectedMaturity}
               onChange={(e) => setSelectedMaturity(e.target.value)}
-              className="w-full px-3.5 py-2.5 border border-[#DEE6E0] rounded text-sm text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#0D4634] focus:border-[#0D4634]"
+              className="w-full px-3.5 py-2.5 border border-[#DEE6E0] rounded text-sm text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#E3AB72] focus:border-[#E3AB72]"
             >
               {maturityOptions.map((opt) => (
                 <option key={opt.value} value={opt.value}>
@@ -86,7 +86,7 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
         {/* Category Pills */}
         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#DEE6E0]">
           <span className="text-xs font-semibold text-[#5B6761] mr-1 flex items-center gap-1">
-            <Filter className="w-3 h-3 text-[#0D4634]" /> Sector:
+            <Filter className="w-3 h-3 text-[#E3AB72]" /> Sector:
           </span>
           {categories.map((cat) => (
             <button
@@ -94,8 +94,8 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
               onClick={() => setSelectedCategory(cat.value)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors border ${
                 selectedCategory === cat.value
-                  ? 'bg-[#0D4634] text-white border-[#0D4634] font-semibold shadow-xs'
-                  : 'bg-[#F4F7F5] text-[#5B6761] border-transparent hover:border-[#0D4634] hover:text-[#101513]'
+                  ? 'bg-[rgba(227,171,114,0.15)] text-[#101513] border-[#E3AB72] font-semibold shadow-xs'
+                  : 'bg-[#F4F7F5] text-[#5B6761] border-transparent hover:border-[#E3AB72] hover:text-[#101513]'
               }`}
             >
               {cat.label}
@@ -124,15 +124,9 @@ export default function ProductsCatalog({ projects }: { projects: ProjectItem[] 
         )}
       </div>
 
-      {/* Uniform Grid: repeat(auto-fill, minmax(340px, 1fr)) */}
+      {/* Grid */}
       {filtered.length > 0 ? (
-        <div
-          className="grid gap-8"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((project) => (
             <ProductCard key={project.id || project.slug} project={project} />
           ))}

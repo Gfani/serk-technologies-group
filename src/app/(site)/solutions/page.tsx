@@ -7,12 +7,8 @@ import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 export const metadata = {
   title: 'Enterprise Solutions & Services | SERK Technologies Group',
   description:
-    'Custom enterprise software engineering, AI-assisted operational workflows, secure cloud infrastructure, and systems integration.',
+    'Custom enterprise software engineering, AI-assisted operational workflows, sovereign cloud infrastructure, and systems integration.',
 };
-
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
 
 export default function SolutionsPage() {
   return (

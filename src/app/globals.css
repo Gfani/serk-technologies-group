@@ -84,7 +84,7 @@ h1, h2, h3, h4 {
 .wpr-anim-text,
 .wpr-anim-text b,
 .serk-page-header-banner .wpr-anim-text b {
-  color: #101513 !important;
+  color: #E3AB72 !important;
   font-family: var(--font-heading) !important;
   font-size: 52px !important;
   font-weight: 700 !important;
@@ -93,23 +93,9 @@ h1, h2, h3, h4 {
 }
 
 .wpr-anim-text-cursor {
-  color: #0D4634 !important;
+  color: #E3AB72 !important;
   font-size: 52px !important;
   animation: serkCursorPulse 0.8s infinite !important;
-}
-
-/* Hide floating bottom-right widgets and unwanted sovereign banner */
-.wpr-stt-btn,
-.elementor-widget-wpr-back-to-top,
-.wpr-stt-wrapper,
-.wpr-pc-btn,
-.elementor-widget-wpr-promo-box,
-[data-widget_type="wpr-back-to-top.default"],
-.serk-hero-anim-eyebrow {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
 }
 
 @keyframes serkCursorPulse {

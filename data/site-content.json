@@ -5,20 +5,20 @@
     "email": "serktechgroup@gmail.com",
     "phone": "+251 999 911 192",
     "address": "Mekelle, Tigray, Ethiopia",
-    "jurisdiction": "Enterprise Technology & Systems",
+    "jurisdiction": "Sovereign Digital Systems",
     "workingHours": "Mon - Sat: 8:30 AM - 6:00 PM (EAT)",
     "linkedinUrl": "https://linkedin.com",
     "telegramUrl": "https://t.me/serktech"
   },
   "header": {
-    "tagline": "Deep Tech & Enterprise Systems",
+    "tagline": "Deep Tech & Sovereign Systems",
     "ctaLabel": "Discuss Your Project",
     "ctaUrl": "/contact_us/"
   },
   "footer": {
     "visitUsHeading": "VISIT US",
     "addressLine1": "Mekelle, Tigray, Ethiopia",
-    "addressLine2": "Enterprise Technology & Systems",
+    "addressLine2": "Sovereign Digital Systems",
     "copyrightText": "Copyright © 2026 SERK Technologies Group. All rights reserved.",
     "tagline": "Innovation with Integrity"
   },
@@ -60,9 +60,9 @@
       "badge": "Operational Proving Grounds"
     },
     "future-innovation": {
-      "title": "Future Innovation",
+      "title": "Future Innovation & Sovereign Tech",
       "subtitle": "Long-term industrial research, vehicle assembly concepts, clean energy accessories, and African developer talent development.",
-      "description": "Building sustainable African manufacturing capability, high-performance compute infrastructure, and youth engineering apprenticeships.",
+      "description": "Building sustainable African manufacturing capability, sovereign compute infrastructure, and youth engineering apprenticeships.",
       "badge": "Long-Term Horizons"
     }
   },
@@ -79,10 +79,10 @@
       "statsTwoValue": "4",
       "statsTwoLabel": "Key Industry Sectors",
       "statsThreeValue": "100%",
-      "statsThreeLabel": "Independent Engineering Ownership"
+      "statsThreeLabel": "Sovereign Engineering Ownership"
     },
     "about": {
-      "title": "Engineering Advanced Technology for Heavy Enterprise",
+      "title": "Engineering Sovereign Technology for Heavy Enterprise",
       "subtitle": "SERK Technologies Group pairs real African industry know-how with practical software engineering, cloud architecture, and responsible AI.",
       "mission": "To engineer trustworthy, high-performing software systems that elevate African industry and empower organizations to operate autonomously.",
       "vision": "A self-reliant technological ecosystem where Ethiopian and African enterprises run on software built for their exact workflows."

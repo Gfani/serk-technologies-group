@@ -6,12 +6,10 @@ import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 export const metadata = {
   title: 'Products & Platforms Directory | SERK Technologies Group',
   description:
-    'Explore the 23 verified software platforms, clinical systems, and operating ventures engineered by SERK Technologies Group.',
+    'Explore the 23 sovereign software platforms, clinical systems, and operating ventures engineered by SERK Technologies Group.',
 };
 
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function ProductsPage() {
   const projects = await getAllProjects();

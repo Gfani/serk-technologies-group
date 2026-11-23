@@ -7,12 +7,8 @@ import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 export const metadata = {
   title: 'Industry Verticals | SERK Technologies Group',
   description:
-    'Software solutions purpose-built for Construction, Healthcare, Financial Services, and Retail.',
+    'Sovereign software solutions purpose-built for Construction, Healthcare, Financial Services, and Retail.',
 };
-
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
 
 export default function IndustriesPage() {
   return (

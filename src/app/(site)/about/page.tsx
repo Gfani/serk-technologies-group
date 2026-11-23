@@ -10,10 +10,6 @@ export const metadata = {
     'Innovation with Integrity. Building Beyond Boundaries. Discover the mission, engineering philosophy, and values of SERK Technologies Group.',
 };
 
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
-
 export default function AboutPage() {
   return (
     <div className="w-full">
@@ -77,7 +73,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
                   <div>
-                    <span className="text-xs font-semibold text-[#A1D9C5] uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-[#E3AB72] uppercase tracking-wider">
                       Engineering Hub
                     </span>
                     <h4 className="text-lg font-bold text-white">Mekelle, Tigray, Ethiopia</h4>
@@ -129,10 +125,10 @@ export default function AboutPage() {
 
             <div className="p-6 rounded-lg border border-[#DEE6E0] bg-[#F4F7F5]">
               <Users className="w-8 h-8 text-[#0D4634] mb-4" />
-              <h3 className="text-lg font-bold text-[#101513] mb-2">Domestic &amp; Regional Capability</h3>
+              <h3 className="text-lg font-bold text-[#101513] mb-2">Sovereign Knowledge</h3>
               <p className="text-sm text-[#5B6761] leading-relaxed">
                 We build long-term domestic engineering capabilities, training African engineers and
-                advancing technological self-reliance within the continent.
+                keeping digital sovereignty within the continent.
               </p>
             </div>
           </div>

@@ -44,9 +44,9 @@ export default function AnimatedHeaderBanner({ title }: Props) {
   return (
     <div className="w-full bg-white border-b border-[#DEE6E0] py-9 px-4 text-center">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl md:text-5xl font-bold font-serif text-[#101513] tracking-tight inline-flex items-center justify-center">
+        <h1 className="text-3xl md:text-5xl font-bold font-serif text-[#E3AB72] tracking-tight inline-flex items-center justify-center">
           <span>{displayedText}</span>
-          <span className="text-[#0D4634] font-light ml-1 animate-pulse">|</span>
+          <span className="text-[#E3AB72] font-light ml-1 animate-pulse">|</span>
         </h1>
       </div>
     </div>

@@ -5,9 +5,7 @@ import { ArrowRight, CheckCircle2, ChevronRight, Check } from 'lucide-react';
 import MaturityBadge from '@/components/MaturityBadge';
 import { getAllProjects } from '@/lib/db';
 
-export const dynamic = 'force-dynamic';
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
+export const revalidate = 60;
 
 export default async function HomePage() {
   const allProjects = await getAllProjects();
