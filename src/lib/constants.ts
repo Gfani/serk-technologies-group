@@ -1,5 +1,136 @@
 import { ProjectItem, ThemeConfig, MaturityStage } from './types';
 
+export interface ThemePreset {
+  id: string;
+  name: string;
+  badge: string;
+  description: string;
+  theme: Omit<ThemeConfig, 'id'>;
+}
+
+export const THEME_PRESETS: ThemePreset[] = [
+  {
+    id: 'clean-light',
+    name: 'Clean White & Forest',
+    badge: 'Brand Official',
+    description: 'Crisp white canvas, ink typography, deep forest green actions, and signature brand amber accents.',
+    theme: {
+      primaryColor: '#0D4634',
+      secondaryColor: '#2D735A',
+      accentColor: '#E3AB72',
+      surfaceColor: '#FFFFFF',
+      surfaceAltColor: '#F4F7F5',
+      borderColor: '#DEE6E0',
+      textColor: '#101513',
+      textMutedColor: '#5B6761',
+      fontHeading: 'Inter',
+      fontBody: 'Inter',
+      borderRadius: '8px',
+      headerLayout: 'TWO_ROW',
+    },
+  },
+  {
+    id: 'sovereign-dark',
+    name: 'Sovereign High-Tech Dark',
+    badge: 'High-Tech Dark',
+    description: 'Deep carbon & obsidian background, high-contrast crisp text, emerald highlights, and warm amber topics.',
+    theme: {
+      primaryColor: '#2D735A',
+      secondaryColor: '#3FA380',
+      accentColor: '#E3AB72',
+      surfaceColor: '#0B0F0D',
+      surfaceAltColor: '#151D19',
+      borderColor: '#23332A',
+      textColor: '#F0F4F2',
+      textMutedColor: '#9AB4A9',
+      fontHeading: 'Inter',
+      fontBody: 'Inter',
+      borderRadius: '8px',
+      headerLayout: 'TWO_ROW',
+    },
+  },
+  {
+    id: 'minimalist-mist',
+    name: 'Minimalist Mist & Slate',
+    badge: 'Nordic Clean',
+    description: 'Soft cool grey-mist canvas, pure white card containers, stark ink headers, and understated hairline borders.',
+    theme: {
+      primaryColor: '#101513',
+      secondaryColor: '#2D735A',
+      accentColor: '#E3AB72',
+      surfaceColor: '#F4F7F5',
+      surfaceAltColor: '#FFFFFF',
+      borderColor: '#DEE6E0',
+      textColor: '#101513',
+      textMutedColor: '#5B6761',
+      fontHeading: 'Inter',
+      fontBody: 'Inter',
+      borderRadius: '8px',
+      headerLayout: 'TWO_ROW',
+    },
+  },
+  {
+    id: 'executive-navy',
+    name: 'Executive Midnight Navy',
+    badge: 'Corporate Blue',
+    description: 'Deep oceanic navy background with sharp slate cards, cobalt actions, and warm gold highlights.',
+    theme: {
+      primaryColor: '#2563EB',
+      secondaryColor: '#3B82F6',
+      accentColor: '#F59E0B',
+      surfaceColor: '#0A0F1D',
+      surfaceAltColor: '#131C31',
+      borderColor: '#1E293B',
+      textColor: '#F8FAFC',
+      textMutedColor: '#94A3B8',
+      fontHeading: 'Inter',
+      fontBody: 'Inter',
+      borderRadius: '8px',
+      headerLayout: 'TWO_ROW',
+    },
+  },
+  {
+    id: 'warm-amber',
+    name: 'Warm Amber & Sand',
+    badge: 'Earthy Warm',
+    description: 'Earthy warm paper canvas with deep roasted umber buttons, rich charcoal text, and radiant amber accents.',
+    theme: {
+      primaryColor: '#8B5A2B',
+      secondaryColor: '#B26A25',
+      accentColor: '#E3AB72',
+      surfaceColor: '#FAF8F5',
+      surfaceAltColor: '#FFFFFF',
+      borderColor: '#E7E5E4',
+      textColor: '#1C1917',
+      textMutedColor: '#78716C',
+      fontHeading: 'Inter',
+      fontBody: 'Inter',
+      borderRadius: '8px',
+      headerLayout: 'TWO_ROW',
+    },
+  },
+  {
+    id: 'deep-emerald',
+    name: 'Deep Emerald Forest',
+    badge: 'Lush Forest',
+    description: 'Rich dark spruce background with bright mint buttons, crisp off-white text, and warm golden badge accents.',
+    theme: {
+      primaryColor: '#10B981',
+      secondaryColor: '#059669',
+      accentColor: '#FBBF24',
+      surfaceColor: '#051811',
+      surfaceAltColor: '#0C2B20',
+      borderColor: '#134E39',
+      textColor: '#ECFDF5',
+      textMutedColor: '#A7F3D0',
+      fontHeading: 'Inter',
+      fontBody: 'Inter',
+      borderRadius: '8px',
+      headerLayout: 'TWO_ROW',
+    },
+  },
+];
+
 export const DEFAULT_THEME: ThemeConfig = {
   id: 'default',
   primaryColor: '#0D4634',

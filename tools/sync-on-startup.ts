@@ -1,6 +1,7 @@
 import { getStoredProjects, getStoredSiteContent } from '../src/lib/contentStore';
-import { syncProjectsToHtml, syncGalleryToHtml, syncSiteContentToHtml } from '../src/lib/htmlSync';
+import { syncProjectsToHtml, syncGalleryToHtml, syncSiteContentToHtml, syncThemeToHtml } from '../src/lib/htmlSync';
 import { prisma } from '../src/lib/prisma';
+import { DEFAULT_THEME } from '../src/lib/constants';
 
 async function syncOnStartup() {
   console.log('[STARTUP-SYNC] Starting database-to-HTML synchronization...');
@@ -16,7 +17,23 @@ async function syncOnStartup() {
     syncSiteContentToHtml(content);
     console.log('[STARTUP-SYNC] Synced headers, contact info, and site settings to HTML pages.');
 
-    // 3. Gallery items sync
+    // 3. Theme & Background tokens sync
+    try {
+      let activeTheme = await prisma.themeSettings.findUnique({ where: { id: 'default' } });
+      if (!activeTheme) {
+        const setting = await prisma.siteSetting.findUnique({ where: { key: 'theme-settings' } });
+        if (setting && setting.value) {
+          activeTheme = JSON.parse(setting.value);
+        }
+      }
+      syncThemeToHtml((activeTheme as any) || DEFAULT_THEME);
+      console.log('[STARTUP-SYNC] Synced active theme & background colors to HTML pages.');
+    } catch (tErr) {
+      console.warn('[STARTUP-SYNC] Theme sync notice:', tErr);
+      syncThemeToHtml(DEFAULT_THEME);
+    }
+
+    // 4. Gallery items sync
     try {
       const gallery = await prisma.galleryItem.findMany({
         where: { isVisible: true },

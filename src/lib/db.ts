@@ -13,6 +13,18 @@ export async function getThemeSettings(): Promise<ThemeConfig> {
         headerLayout: (settings.headerLayout as 'ONE_ROW' | 'TWO_ROW') || 'TWO_ROW',
       };
     }
+
+    const siteSetting = await prisma.siteSetting.findUnique({
+      where: { key: 'theme-settings' },
+    });
+    if (siteSetting && siteSetting.value) {
+      const parsed = JSON.parse(siteSetting.value);
+      return {
+        ...DEFAULT_THEME,
+        ...parsed,
+        headerLayout: (parsed.headerLayout as 'ONE_ROW' | 'TWO_ROW') || 'TWO_ROW',
+      };
+    }
   } catch (err) {
     // Fallback to default theme if DB is uninitialized or uncontactable
   }

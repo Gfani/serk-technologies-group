@@ -1,0 +1,50 @@
+/* ==========================================================================
+   SERK TECHNOLOGIES GROUP - Active Dynamic Theme Tokens
+   Auto-synced from Admin Design Studio
+   ========================================================================== */
+
+:root {
+  --serk-theme-bg: #FFFFFF;
+  --serk-theme-card-bg: #F4F7F5;
+  --serk-theme-primary: #0D4634;
+  --serk-theme-secondary: #2D735A;
+  --serk-theme-accent: #E3AB72;
+  --serk-theme-text: #101513;
+  --serk-theme-text-muted: #5B6761;
+  --serk-theme-border: #DEE6E0;
+  --serk-theme-radius: 8px;
+}
+
+/* Base Body & Global Background */
+html, body {
+  background-color: var(--serk-theme-bg) !important;
+  color: var(--serk-theme-text) !important;
+}
+
+/* Elementor Section Canvas (preserves dedicated black footers/sections) */
+.elementor:not(.serk-keep-orig),
+.elementor-section:not(.serk-dark-sec):not([data-serk-keep-dark]):not(.elementor-element-8ebc8a5):not(.elementor-location-footer) {
+  background-color: var(--serk-theme-bg) !important;
+}
+
+/* Primary Action Buttons */
+.elementor-button, .serk-btn-primary, button.primary {
+  background-color: var(--serk-theme-primary) !important;
+  border-radius: var(--serk-theme-radius) !important;
+  transition: background-color 0.2s ease;
+}
+.elementor-button:hover, .serk-btn-primary:hover {
+  background-color: var(--serk-theme-secondary) !important;
+}
+
+/* Category Filter Pills & Maturity Badges */
+.serk-cat-pill.active {
+  background-color: rgba(227, 171, 114, 0.15) !important;
+  border-color: var(--serk-theme-accent) !important;
+  color: var(--serk-theme-text) !important;
+}
+.serk-cat-pill:hover {
+  border-color: var(--serk-theme-accent) !important;
+}
+
+

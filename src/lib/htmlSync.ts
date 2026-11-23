@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { ProjectItem } from './types';
+import { ProjectItem, ThemeConfig } from './types';
 
 const CATEGORIES_ORDER = [
   {
@@ -333,6 +333,173 @@ export function syncSiteContentToHtml(content: any): boolean {
     return true;
   } catch (err) {
     console.error('Error syncing site content to HTML:', err);
+    return false;
+  }
+}
+
+export function isDarkColor(hexColor: string): boolean {
+  if (!hexColor || !hexColor.startsWith('#')) return false;
+  let hex = hexColor.replace('#', '');
+  if (hex.length === 3) hex = hex.split('').map((c) => c + c).join('');
+  if (hex.length !== 6) return false;
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 < 128;
+}
+
+export function syncThemeToHtml(theme: ThemeConfig): boolean {
+  try {
+    if (!theme) return false;
+
+    const isDark = isDarkColor(theme.surfaceColor || '#FFFFFF');
+
+    const css = `/* ==========================================================================
+   SERK TECHNOLOGIES GROUP - Active Dynamic Theme Tokens
+   Auto-synced from Admin Design Studio
+   ========================================================================== */
+
+:root {
+  --serk-theme-bg: ${theme.surfaceColor || '#FFFFFF'};
+  --serk-theme-card-bg: ${theme.surfaceAltColor || '#FFFFFF'};
+  --serk-theme-primary: ${theme.primaryColor || '#0D4634'};
+  --serk-theme-secondary: ${theme.secondaryColor || '#2D735A'};
+  --serk-theme-accent: ${theme.accentColor || '#E3AB72'};
+  --serk-theme-text: ${theme.textColor || '#101513'};
+  --serk-theme-text-muted: ${theme.textMutedColor || '#5B6761'};
+  --serk-theme-border: ${theme.borderColor || '#DEE6E0'};
+  --serk-theme-radius: ${theme.borderRadius || '8px'};
+}
+
+/* Base Body & Global Background */
+html, body {
+  background-color: var(--serk-theme-bg) !important;
+  color: var(--serk-theme-text) !important;
+}
+
+/* Elementor Section Canvas (preserves dedicated black footers/sections) */
+.elementor:not(.serk-keep-orig),
+.elementor-section:not(.serk-dark-sec):not([data-serk-keep-dark]):not(.elementor-element-8ebc8a5):not(.elementor-location-footer) {
+  background-color: var(--serk-theme-bg) !important;
+}
+
+/* Primary Action Buttons */
+.elementor-button, .serk-btn-primary, button.primary {
+  background-color: var(--serk-theme-primary) !important;
+  border-radius: var(--serk-theme-radius) !important;
+  transition: background-color 0.2s ease;
+}
+.elementor-button:hover, .serk-btn-primary:hover {
+  background-color: var(--serk-theme-secondary) !important;
+}
+
+/* Category Filter Pills & Maturity Badges */
+.serk-cat-pill.active {
+  background-color: rgba(227, 171, 114, 0.15) !important;
+  border-color: var(--serk-theme-accent) !important;
+  color: var(--serk-theme-text) !important;
+}
+.serk-cat-pill:hover {
+  border-color: var(--serk-theme-accent) !important;
+}
+
+${
+  isDark
+    ? `/* ========================================================
+   HIGH-TECH DARK MODE ADAPTATIONS
+   ======================================================== */
+.elementor-heading-title, h1, h2, h3, h4, h5, h6 {
+  color: var(--serk-theme-text) !important;
+}
+p, .elementor-widget-text-editor, .elementor-icon-box-description {
+  color: var(--serk-theme-text-muted) !important;
+}
+div[style*="background: #FFFFFF"], div[style*="background:#FFFFFF"],
+div[style*="background: #ffffff"], div[style*="background:#ffffff"] {
+  background-color: var(--serk-theme-card-bg) !important;
+  border-color: var(--serk-theme-border) !important;
+}
+div[style*="border: 1px solid #DEE6E0"] {
+  border-color: var(--serk-theme-border) !important;
+}
+.serk-cat-pill {
+  background-color: var(--serk-theme-card-bg) !important;
+  color: var(--serk-theme-text) !important;
+  border-color: var(--serk-theme-border) !important;
+}
+`
+    : ''
+}
+`;
+
+    // Write CSS files
+    const tokenCssPaths = [
+      path.join(process.cwd(), 'public', 'wp-content', 'themes', 'royal-elementor-kit', 'serk-theme-tokens.css'),
+      path.join(process.cwd(), 'site', 'wp-content', 'themes', 'royal-elementor-kit', 'serk-theme-tokens.css'),
+    ];
+
+    for (const cssPath of tokenCssPaths) {
+      const dir = path.dirname(cssPath);
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+      fs.writeFileSync(cssPath, css, 'utf-8');
+    }
+
+    // Ensure link and script are injected in all HTML files
+    const htmlDirs = [
+      path.join(process.cwd(), 'public'),
+      path.join(process.cwd(), 'site'),
+    ];
+
+    function getAllHtmlFiles(dir: string): string[] {
+      let results: string[] = [];
+      if (!fs.existsSync(dir)) return results;
+      const list = fs.readdirSync(dir);
+      for (const file of list) {
+        const fullPath = path.join(dir, file);
+        const stat = fs.statSync(fullPath);
+        if (stat.isDirectory()) {
+          results = results.concat(getAllHtmlFiles(fullPath));
+        } else if (file.endsWith('.html')) {
+          results.push(fullPath);
+        }
+      }
+      return results;
+    }
+
+    const allHtml = [...getAllHtmlFiles(htmlDirs[0]), ...getAllHtmlFiles(htmlDirs[1])];
+
+    const linkTag = '<link rel="stylesheet" id="serk-theme-tokens-css" href="/wp-content/themes/royal-elementor-kit/serk-theme-tokens.css">';
+    const scriptTag = '<script src="/wp-content/themes/royal-elementor-kit/serk-theme-sync.js"></script>';
+
+    for (const filePath of allHtml) {
+      let html = fs.readFileSync(filePath, 'utf-8');
+      let changed = false;
+
+      if (!html.includes('serk-theme-tokens.css')) {
+        if (html.includes('</head>')) {
+          html = html.replace('</head>', `\t${linkTag}\n</head>`);
+          changed = true;
+        }
+      }
+
+      if (!html.includes('serk-theme-sync.js')) {
+        if (html.includes('</head>')) {
+          html = html.replace('</head>', `\t${scriptTag}\n</head>`);
+          changed = true;
+        } else if (html.includes('</body>')) {
+          html = html.replace('</body>', `\t${scriptTag}\n</body>`);
+          changed = true;
+        }
+      }
+
+      if (changed) {
+        fs.writeFileSync(filePath, html, 'utf-8');
+      }
+    }
+
+    return true;
+  } catch (err) {
+    console.error('Error syncing theme to HTML:', err);
     return false;
   }
 }

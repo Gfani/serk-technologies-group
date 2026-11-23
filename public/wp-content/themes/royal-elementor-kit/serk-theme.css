@@ -6,18 +6,30 @@
    ========================================================================== */
 
 :root {
-  /* Core Black & White Brand Tokens */
-  --serk-ink: #101513;
+  /* Dynamic Active Theme Tokens */
+  --serk-theme-bg: #FFFFFF;
+  --serk-theme-card-bg: #FFFFFF;
+  --serk-theme-primary: #0D4634;
+  --serk-theme-secondary: #2D735A;
+  --serk-theme-accent: #E3AB72;
+  --serk-theme-text: #101513;
+  --serk-theme-text-muted: #5B6761;
+  --serk-theme-border: #DEE6E0;
+  --serk-theme-radius: 8px;
+
+  /* Core Brand Tokens mapped to theme tokens */
+  --serk-ink: var(--serk-theme-text, #101513);
   --serk-black: #000000;
   --serk-charcoal: #2A302D;
-  --serk-white: #FFFFFF;
-  --serk-mist: #F4F7F5;
-  --serk-hairline: #DEE6E0;
-  --serk-muted: #5B6761;
+  --serk-white: var(--serk-theme-card-bg, #FFFFFF);
+  --serk-mist: var(--serk-theme-bg, #F4F7F5);
+  --serk-hairline: var(--serk-theme-border, #DEE6E0);
+  --serk-muted: var(--serk-theme-text-muted, #5B6761);
   
-  /* Primary Action & Accent tokens (now strictly Black) */
-  --serk-deep-forest: #101513;
-  --serk-light-green: #2A302D;
+  /* Primary Action & Accent tokens */
+  --serk-deep-forest: var(--serk-theme-primary, #0D4634);
+  --serk-light-green: var(--serk-theme-secondary, #2D735A);
+  --serk-accent: var(--serk-theme-accent, #E3AB72);
   --serk-warning: #5B6761;
 
   /* Typography (Preserved exactly) */
@@ -30,8 +42,8 @@
 /* Base Body */
 body {
   font-family: var(--serk-font-body);
-  color: var(--serk-ink);
-  background-color: var(--serk-white);
+  color: var(--serk-theme-text, #101513);
+  background-color: var(--serk-theme-bg, #FFFFFF);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
