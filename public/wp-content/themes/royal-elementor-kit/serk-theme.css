@@ -858,23 +858,14 @@ html, body {
     display: block !important;
   }
 
-  /* Signature Brand Orange Eyebrow Banner (Zero overlap on mobile) */
-  .serk-hero-anim-eyebrow {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    margin-bottom: 14px !important;
-    position: relative !important;
-    z-index: 5 !important;
-  }
-  .serk-hero-anim-eyebrow span.wpr-anim-text {
-    padding: 5px 14px !important;
-    display: inline-flex !important;
-  }
-  .serk-hero-anim-eyebrow b {
-    font-size: 11.5px !important;
-    letter-spacing: 0.1em !important;
-  }
+/* Hide hero eyebrow banner completely */
+.serk-hero-anim-eyebrow {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
   /* Title: Normal readable size, wraps into 2-3 clean lines */
   .elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
@@ -1061,11 +1052,10 @@ html, body {
   text-align: center !important;
 }
 
-/* Master Animated Text in Brand Orange (#E3AB72) */
-.wpr-anim-text,
-.wpr-anim-text b,
-.wpr-anim-text-inner b,
+/* Master Animated Text in Brand Orange (#E3AB72) for Page Headers */
+.serk-page-header-banner .wpr-anim-text,
 .serk-page-header-banner .wpr-anim-text b,
+.serk-page-header-banner .wpr-anim-text-inner b,
 .serk-page-header-banner h2,
 .serk-page-header-banner h3 {
   color: #E3AB72 !important;
@@ -1078,7 +1068,7 @@ html, body {
 }
 
 /* Blinking Cursor in Brand Orange */
-.wpr-anim-text-cursor {
+.serk-page-header-banner .wpr-anim-text-cursor {
   color: #E3AB72 !important;
   font-family: var(--serk-font-serif, 'Playfair Display', Georgia, serif) !important;
   font-size: 52px !important;
@@ -1095,13 +1085,12 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  .wpr-anim-text,
-  .wpr-anim-text b,
-  .wpr-anim-text-inner b,
+  .serk-page-header-banner .wpr-anim-text,
   .serk-page-header-banner .wpr-anim-text b,
+  .serk-page-header-banner .wpr-anim-text-inner b,
   .serk-page-header-banner h2,
   .serk-page-header-banner h3,
-  .wpr-anim-text-cursor {
+  .serk-page-header-banner .wpr-anim-text-cursor {
     font-size: 32px !important;
   }
   .serk-page-header-banner {
