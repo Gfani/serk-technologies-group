@@ -256,3 +256,83 @@ export function syncGalleryToHtml(
     return false;
   }
 }
+
+export function syncSiteContentToHtml(content: any): boolean {
+  try {
+    if (!content) return true;
+
+    const htmlDirs = [
+      path.join(process.cwd(), 'public'),
+      path.join(process.cwd(), 'site'),
+    ];
+
+    function getAllHtmlFiles(dir: string): string[] {
+      let results: string[] = [];
+      if (!fs.existsSync(dir)) return results;
+      const list = fs.readdirSync(dir);
+      for (const file of list) {
+        const fullPath = path.join(dir, file);
+        const stat = fs.statSync(fullPath);
+        if (stat.isDirectory()) {
+          results = results.concat(getAllHtmlFiles(fullPath));
+        } else if (file.endsWith('.html')) {
+          results.push(fullPath);
+        }
+      }
+      return results;
+    }
+
+    const allHtml = [...getAllHtmlFiles(htmlDirs[0]), ...getAllHtmlFiles(htmlDirs[1])];
+
+    const phone = content.siteInfo?.phone;
+    const email = content.siteInfo?.email;
+    const heroTitle = content.pages?.home?.heroTitle;
+    const heroSubtitle = content.pages?.home?.heroSubtitle;
+
+    for (const filePath of allHtml) {
+      let html = fs.readFileSync(filePath, 'utf-8');
+      let changed = false;
+
+      // Update phone if present
+      if (phone) {
+        const cleanPhone = phone.replace(/[^\d+]/g, '');
+        html = html.replace(/href="tel:[^"]*"/g, `href="tel:${cleanPhone}"`);
+        html = html.replace(/\+251\s*\d{3}\s*\d{3}\s*\d{3}/g, phone);
+        changed = true;
+      }
+
+      // Update email if present
+      if (email) {
+        html = html.replace(/href="mailto:[^"]*"/g, `href="mailto:${email}"`);
+        html = html.replace(/[a-zA-Z0-9._%+-]+@gmail\.com/g, email);
+        changed = true;
+      }
+
+      // If homepage, update hero title and subtitle
+      if (filePath.endsWith('public\\index.html') || filePath.endsWith('public/index.html') || filePath.endsWith('site\\index.html') || filePath.endsWith('site/index.html')) {
+        if (heroTitle) {
+          html = html.replace(
+            /<h1 class="elementor-heading-title elementor-size-default">[^<]*<\/h1>/g,
+            `<h1 class="elementor-heading-title elementor-size-default">${heroTitle}</h1>`
+          );
+          changed = true;
+        }
+        if (heroSubtitle) {
+          html = html.replace(
+            /(<div class="elementor-widget-container"><p>)From your first website to intelligent enterprise operations[^<]*(<\/p><\/div>)/g,
+            `$1${heroSubtitle}$2`
+          );
+          changed = true;
+        }
+      }
+
+      if (changed) {
+        fs.writeFileSync(filePath, html, 'utf-8');
+      }
+    }
+    return true;
+  } catch (err) {
+    console.error('Error syncing site content to HTML:', err);
+    return false;
+  }
+}

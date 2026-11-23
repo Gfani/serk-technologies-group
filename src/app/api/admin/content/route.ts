@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth';
-import { getSiteContent, saveSiteContent } from '@/lib/contentStore';
+import { getStoredSiteContent, saveStoredSiteContent } from '@/lib/contentStore';
 import { revalidatePath } from 'next/cache';
 
 export async function GET() {
-  const content = getSiteContent();
+  const content = await getStoredSiteContent();
   return NextResponse.json(content, {
     headers: {
       'Cache-Control': 'no-store, max-age=0',
@@ -20,16 +20,13 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const success = saveSiteContent(body);
-    if (!success) {
-      return NextResponse.json({ error: 'Failed to write content' }, { status: 500 });
-    }
+    const saved = await saveStoredSiteContent(body);
 
     try {
       revalidatePath('/', 'layout');
     } catch (e) {}
 
-    return NextResponse.json({ success: true, content: getSiteContent() });
+    return NextResponse.json({ success: true, content: saved });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
