@@ -187,9 +187,10 @@ export async function getStoredProjects(): Promise<ProjectItem[]> {
 // Save projects
 export async function saveStoredProject(project: ProjectItem): Promise<ProjectItem> {
   // 1. Try saving to Prisma if DB is up
+  let dbProject: any = null;
   try {
     if (project.id && !project.id.startsWith('proj-')) {
-      const updated = await prisma.project.update({
+      dbProject = await prisma.project.update({
         where: { id: project.id },
         data: {
           slug: project.slug,
@@ -208,7 +209,41 @@ export async function saveStoredProject(project: ProjectItem): Promise<ProjectIt
           sortOrder: project.sortOrder,
         },
       });
-      return updated as unknown as ProjectItem;
+    } else {
+      dbProject = await prisma.project.upsert({
+        where: { slug: project.slug },
+        update: {
+          name: project.name,
+          category: project.category,
+          maturity: project.maturity,
+          summary: project.summary,
+          description: project.description,
+          audience: project.audience,
+          capabilities: project.capabilities,
+          plannedCapabilities: project.plannedCapabilities,
+          imageUrl: project.imageUrl,
+          publicCta: project.publicCta,
+          ctaUrl: project.ctaUrl,
+          isPublished: project.isPublished,
+          sortOrder: project.sortOrder,
+        },
+        create: {
+          slug: project.slug,
+          name: project.name,
+          category: project.category,
+          maturity: project.maturity,
+          summary: project.summary,
+          description: project.description,
+          audience: project.audience,
+          capabilities: project.capabilities,
+          plannedCapabilities: project.plannedCapabilities,
+          imageUrl: project.imageUrl,
+          publicCta: project.publicCta,
+          ctaUrl: project.ctaUrl,
+          isPublished: project.isPublished ?? true,
+          sortOrder: project.sortOrder ?? 0,
+        },
+      });
     }
   } catch (err) {
     // DB fallback
@@ -234,7 +269,7 @@ export async function saveStoredProject(project: ProjectItem): Promise<ProjectIt
 
   const finalProject: ProjectItem = {
     ...project,
-    id: project.id || `proj - ${ projectsList.length + 1 }`,
+    id: dbProject?.id || project.id || `proj-${projectsList.length + 1}`,
   };
 
   if (existingIdx >= 0) {
@@ -250,7 +285,11 @@ export async function saveStoredProject(project: ProjectItem): Promise<ProjectIt
 // Delete project
 export async function deleteStoredProject(id: string): Promise<boolean> {
   try {
-    await prisma.project.delete({ where: { id } });
+    await prisma.project.deleteMany({
+      where: {
+        OR: [{ id: id }, { slug: id }],
+      },
+    });
   } catch (err) {
     // DB fallback
   }

@@ -1,9 +1,21 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ProjectItem, MaturityStage } from '@/lib/types';
 import MaturityBadge from '@/components/MaturityBadge';
-import { Boxes, Plus, Edit2, Trash2, CheckCircle2, XCircle, Search, ExternalLink } from 'lucide-react';
+import {
+  Boxes,
+  Plus,
+  Edit2,
+  Trash2,
+  CheckCircle2,
+  XCircle,
+  Search,
+  ExternalLink,
+  Upload,
+  Image as ImageIcon,
+  X,
+} from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminProjectsPage() {
@@ -13,13 +25,18 @@ export default function AdminProjectsPage() {
   const [categoryFilter, setCategoryFilter] = useState('ALL');
   const [editingProject, setEditingProject] = useState<ProjectItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fetchProjects = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/admin/projects');
+      const res = await fetch('/api/admin/projects', { cache: 'no-store' });
       const data = await res.json();
-      setProjects(data);
+      if (Array.isArray(data)) {
+        setProjects(data);
+      }
     } catch (err) {
       console.error(err);
     } finally {
@@ -33,6 +50,7 @@ export default function AdminProjectsPage() {
 
   const handleOpenEdit = (project: ProjectItem) => {
     setEditingProject({ ...project });
+    setImagePreview(project.imageUrl || null);
     setIsModalOpen(true);
   };
 
@@ -41,51 +59,88 @@ export default function AdminProjectsPage() {
       id: '',
       slug: '',
       name: '',
-      category: 'Enterprise Software & AI',
-      maturity: 'RESEARCH_PROTOTYPE',
+      category: 'sector-intelligence',
+      maturity: 'PILOT_PRIVATE_BETA',
       summary: '',
       description: '',
       audience: '',
       capabilities: '',
       plannedCapabilities: '',
       imageUrl: null,
-      publicCta: 'Request Platform Demo',
-      ctaUrl: '/contact',
+      publicCta: 'Request an Engineering Demo',
+      ctaUrl: '/contact_us',
       isPublished: true,
       sortOrder: projects.length + 1,
     });
+    setImagePreview(null);
     setIsModalOpen(true);
+  };
+
+  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64 = reader.result as string;
+        setImagePreview(base64);
+        if (editingProject) {
+          setEditingProject({ ...editingProject, imageUrl: base64 });
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleNameChange = (name: string) => {
+    if (!editingProject) return;
+    const generatedSlug = name
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    setEditingProject({
+      ...editingProject,
+      name,
+      slug: editingProject.id ? editingProject.slug : generatedSlug,
+    });
   };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingProject) return;
 
+    setSaving(true);
     try {
-      const method = editingProject.id && !editingProject.id.startsWith('proj-') ? 'PUT' : 'POST';
+      const isUpdate = Boolean(editingProject.id);
+      const method = isUpdate ? 'PUT' : 'POST';
       const res = await fetch('/api/admin/projects', {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editingProject),
       });
+
       if (res.ok) {
         setIsModalOpen(false);
-        fetchProjects();
+        await fetchProjects();
       } else {
         const data = await res.json();
-        alert(`Error: ${data.error}`);
+        alert(`Error: ${data.error || 'Failed to save item'}`);
       }
     } catch (err: any) {
       alert(`Save error: ${err.message}`);
+    } finally {
+      setSaving(false);
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this project dossier?')) return;
+    if (!confirm('Are you sure you want to delete this project / venture?')) return;
     try {
       const res = await fetch(`/api/admin/projects?id=${id}`, { method: 'DELETE' });
       if (res.ok) {
-        fetchProjects();
+        await fetchProjects();
       }
     } catch (err) {
       alert('Delete failed');
@@ -107,9 +162,9 @@ export default function AdminProjectsPage() {
     <div className="space-y-6 max-w-6xl">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#101513]">Projects & Ventures Dossiers</h1>
+          <h1 className="text-2xl font-bold text-[#101513]">Products, Ventures &amp; AI Creator</h1>
           <p className="text-xs text-[#5B6761] mt-1">
-            Manage the 23 verified software platforms, maturity stages, and capabilities.
+            Add or manage all 23 platforms and custom ventures. Changes sync immediately to the live public site.
           </p>
         </div>
         <button
@@ -117,7 +172,7 @@ export default function AdminProjectsPage() {
           className="px-4 py-2 rounded text-xs font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors flex items-center gap-1.5"
         >
           <Plus className="w-4 h-4" />
-          <span>Add New Platform</span>
+          <span>Add New Platform / Venture</span>
         </button>
       </div>
 
@@ -136,13 +191,13 @@ export default function AdminProjectsPage() {
         <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#DEE6E0]">
           <span className="text-[11px] font-semibold text-[#5B6761] mr-1">Filter Sector:</span>
           {[
-            { label: 'All (23)', value: 'ALL' },
+            { label: 'All', value: 'ALL' },
             { label: 'Sector Intelligence', value: 'sector-intelligence' },
-            { label: 'AI & Security', value: 'ai-security' },
+            { label: 'AI & Security Research', value: 'ai-security' },
             { label: 'Enterprise & Operations', value: 'enterprise-operations' },
-            { label: 'Solutions', value: 'solutions' },
-            { label: 'Ventures', value: 'ventures' },
-            { label: 'Affiliated', value: 'affiliated' },
+            { label: 'Core Solutions & Integrations', value: 'solutions' },
+            { label: 'Digital Ventures', value: 'ventures' },
+            { label: 'Affiliated Businesses', value: 'affiliated' },
             { label: 'Future Innovation', value: 'future-innovation' },
           ].map((cat) => (
             <button
@@ -180,7 +235,9 @@ export default function AdminProjectsPage() {
                     <div className="font-bold text-[#101513]">{project.name}</div>
                     <div className="text-[11px] text-[#5B6761] truncate max-w-xs">{project.slug}</div>
                   </td>
-                  <td className="py-3.5 px-4 text-[#5B6761]">{project.category}</td>
+                  <td className="py-3.5 px-4 text-[#5B6761] capitalize">
+                    {project.category.replace(/-/g, ' ')}
+                  </td>
                   <td className="py-3.5 px-4">
                     <MaturityBadge stage={project.maturity} />
                   </td>
@@ -225,29 +282,36 @@ export default function AdminProjectsPage() {
       {/* Edit / Create Modal */}
       {isModalOpen && editingProject && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 border border-[#DEE6E0] my-8">
-            <h2 className="text-lg font-bold text-[#101513] mb-4">
-              {editingProject.id ? 'Edit Platform Dossier' : 'New Platform Dossier'}
-            </h2>
+          <div className="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-6 sm:p-8 border border-[#DEE6E0] my-8 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between pb-3 border-b border-[#DEE6E0] mb-5">
+              <h2 className="text-lg font-bold text-[#101513]">
+                {editingProject.id ? 'Edit Platform / Venture Dossier' : 'New Platform / Venture Dossier'}
+              </h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-[#5B6761] hover:text-[#101513] p-1"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
 
             <form onSubmit={handleSave} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-[#101513] mb-1">
-                    Platform Name
+                    Platform / Venture Title *
                   </label>
                   <input
                     type="text"
                     required
                     value={editingProject.name}
-                    onChange={(e) =>
-                      setEditingProject({ ...editingProject, name: e.target.value })
-                    }
-                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
+                    onChange={(e) => handleNameChange(e.target.value)}
+                    placeholder="e.g. SERK Health OS"
+                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-[#101513] mb-1">Slug</label>
+                  <label className="block text-xs font-semibold text-[#101513] mb-1">Slug *</label>
                   <input
                     type="text"
                     required
@@ -255,21 +319,24 @@ export default function AdminProjectsPage() {
                     onChange={(e) =>
                       setEditingProject({ ...editingProject, slug: e.target.value })
                     }
-                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
+                    placeholder="e.g. health-os"
+                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#101513] mb-1">Category</label>
+                  <label className="block text-xs font-semibold text-[#101513] mb-1">
+                    Classification / Category *
+                  </label>
                   <select
                     required
                     value={editingProject.category}
                     onChange={(e) =>
                       setEditingProject({ ...editingProject, category: e.target.value })
                     }
-                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs bg-white text-[#101513]"
+                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs bg-white text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
                   >
                     <option value="sector-intelligence">Sector Intelligence</option>
                     <option value="ai-security">AI &amp; Security Research</option>
@@ -277,12 +344,12 @@ export default function AdminProjectsPage() {
                     <option value="solutions">Core Solutions &amp; Integrations</option>
                     <option value="ventures">Digital Ventures</option>
                     <option value="affiliated">Affiliated Businesses</option>
-                    <option value="future-innovation">Future Innovation &amp; Sovereign Tech</option>
+                    <option value="future-innovation">Future Innovation</option>
                   </select>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-[#101513] mb-1">
-                    Maturity Stage
+                    Maturity Stage Badge *
                   </label>
                   <select
                     value={editingProject.maturity}
@@ -292,20 +359,82 @@ export default function AdminProjectsPage() {
                         maturity: e.target.value as MaturityStage,
                       })
                     }
-                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
+                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs bg-white text-[#101513] focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
                   >
-                    <option value="CONCEPT">Concept</option>
-                    <option value="RESEARCH_PROTOTYPE">Research / Prototype</option>
-                    <option value="INTERNAL_ALPHA">Internal Alpha</option>
-                    <option value="PILOT_PRIVATE_BETA">Pilot / Private Beta</option>
                     <option value="PRODUCTION_AVAILABLE">Production Available</option>
+                    <option value="PILOT_PRIVATE_BETA">Pilot / Private Beta</option>
+                    <option value="INTERNAL_ALPHA">Internal Alpha</option>
+                    <option value="RESEARCH_PROTOTYPE">Research / Prototype</option>
+                    <option value="CONCEPT">Concept</option>
                     <option value="OPERATING_VENTURE">Operating Venture</option>
                   </select>
                 </div>
               </div>
 
+              {/* Media Upload with 16:10 aspect preview */}
               <div>
-                <label className="block text-xs font-semibold text-[#101513] mb-1">Summary</label>
+                <label className="block text-xs font-semibold text-[#101513] mb-1">
+                  Card Screenshot / Media Image
+                </label>
+                <div className="flex flex-col sm:flex-row gap-4 items-start">
+                  <div
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full sm:w-1/2 aspect-[16/10] bg-[#F8FAFC] border-2 border-dashed border-[#DEE6E0] hover:border-[#E3AB72] rounded-lg flex flex-col items-center justify-center p-4 cursor-pointer transition-colors relative overflow-hidden"
+                  >
+                    {imagePreview ? (
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="w-full h-full object-cover rounded"
+                      />
+                    ) : (
+                      <div className="text-center space-y-1 text-[#5B6761]">
+                        <Upload className="w-6 h-6 mx-auto text-[#E3AB72]" />
+                        <span className="text-xs font-medium block">Click or drop image</span>
+                        <span className="text-[10px] text-gray-400 block">PNG, JPG, WebP (16:10 framed)</span>
+                      </div>
+                    )}
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageSelect}
+                      className="hidden"
+                    />
+                  </div>
+
+                  <div className="w-full sm:w-1/2 space-y-2">
+                    <input
+                      type="text"
+                      placeholder="Or enter existing image URL (e.g. /images/serk-photo.jpg)"
+                      value={editingProject.imageUrl || ''}
+                      onChange={(e) => {
+                        setEditingProject({ ...editingProject, imageUrl: e.target.value });
+                        setImagePreview(e.target.value);
+                      }}
+                      className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Image Alt Text (e.g. Construction Takeoff Dashboard)"
+                      value={editingProject.audience || ''}
+                      onChange={(e) =>
+                        setEditingProject({ ...editingProject, audience: e.target.value })
+                      }
+                      className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
+                    />
+                    <p className="text-[11px] text-[#5B6761] leading-tight">
+                      Uploaded images are stored persistently in cloud storage and formatted into SERK's 160px card frame.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Short Card Summary */}
+              <div>
+                <label className="block text-xs font-semibold text-[#101513] mb-1">
+                  Short Card Summary (Displayed on grid cards) *
+                </label>
                 <textarea
                   rows={2}
                   required
@@ -313,37 +442,87 @@ export default function AdminProjectsPage() {
                   onChange={(e) =>
                     setEditingProject({ ...editingProject, summary: e.target.value })
                   }
-                  className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
+                  placeholder="Clear 1-2 sentence description for the public directory card..."
+                  className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
                 />
               </div>
 
+              {/* Full Detailed Description */}
               <div>
                 <label className="block text-xs font-semibold text-[#101513] mb-1">
-                  Target Audience
-                </label>
-                <input
-                  type="text"
-                  value={editingProject.audience || ''}
-                  onChange={(e) =>
-                    setEditingProject({ ...editingProject, audience: e.target.value })
-                  }
-                  className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-[#101513] mb-1">
-                  Capabilities (Comma-separated)
+                  Full Detailed Description (Dossier &amp; modal view)
                 </label>
                 <textarea
-                  rows={2}
+                  rows={3}
+                  value={editingProject.description || ''}
+                  onChange={(e) =>
+                    setEditingProject({ ...editingProject, description: e.target.value })
+                  }
+                  placeholder="In-depth technical architecture, problem statement, and engineering scope..."
+                  className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
+                />
+              </div>
+
+              {/* Key Capabilities */}
+              <div>
+                <label className="block text-xs font-semibold text-[#101513] mb-1">
+                  Key Capabilities / Feature Bullet Points (One per line)
+                </label>
+                <textarea
+                  rows={3}
                   value={editingProject.capabilities || ''}
                   onChange={(e) =>
                     setEditingProject({ ...editingProject, capabilities: e.target.value })
                   }
-                  placeholder="BOQ export, Real-time sync, Multi-currency"
-                  className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
+                  placeholder="BOQ takeoff from 2D &amp; 3D IFC models&#10;Interim payment certificates (IPC)&#10;Offline-first field synchronization"
+                  className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs font-mono text-[11px] focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
                 />
+              </div>
+
+              {/* CTA Customization */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-[#101513] mb-1">
+                    Custom CTA Button Label
+                  </label>
+                  <input
+                    type="text"
+                    value={editingProject.publicCta || ''}
+                    onChange={(e) =>
+                      setEditingProject({ ...editingProject, publicCta: e.target.value })
+                    }
+                    placeholder="e.g. Request an Engineering Demo"
+                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[#101513] mb-1">
+                    Custom CTA Link URL
+                  </label>
+                  <input
+                    type="text"
+                    value={editingProject.ctaUrl || ''}
+                    onChange={(e) =>
+                      setEditingProject({ ...editingProject, ctaUrl: e.target.value })
+                    }
+                    placeholder="e.g. /products/health-os/ or /contact_us/?interest=health-os"
+                    className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs focus:outline-none focus:ring-1 focus:ring-[#E3AB72]"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <label className="inline-flex items-center gap-2 text-xs font-semibold text-[#101513] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={editingProject.isPublished !== false}
+                    onChange={(e) =>
+                      setEditingProject({ ...editingProject, isPublished: e.target.checked })
+                    }
+                    className="rounded border-[#DEE6E0] text-[#0D4634] focus:ring-[#E3AB72]"
+                  />
+                  <span>Published on live site</span>
+                </label>
               </div>
 
               <div className="flex justify-end gap-3 pt-4 border-t border-[#DEE6E0]">
@@ -356,9 +535,10 @@ export default function AdminProjectsPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded text-xs font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A]"
+                  disabled={saving}
+                  className="px-6 py-2 rounded text-xs font-semibold text-white bg-[#0D4634] hover:bg-[#2D735A] transition-colors disabled:opacity-50"
                 >
-                  Save Dossier
+                  {saving ? 'Publishing...' : 'Save & Publish Live'}
                 </button>
               </div>
             </form>

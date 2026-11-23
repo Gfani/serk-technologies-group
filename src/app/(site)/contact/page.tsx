@@ -2,6 +2,7 @@ import React from 'react';
 import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
+import SmartContactLink from '@/components/SmartContactLink';
 
 export const metadata = {
   title: 'Contact Us & Request a Demo | SERK Technologies Group',
@@ -54,12 +55,13 @@ export default function ContactPage() {
                     <div className="text-xs font-semibold text-[#5B6761] uppercase tracking-wider">
                       Email Inquiries
                     </div>
-                    <a
-                      href="mailto:serktechgroup@gmail.com"
+                    <SmartContactLink
+                      type="mailto"
+                      value="serktechgroup@gmail.com"
                       className="text-sm font-bold text-[#101513] hover:text-[#0D4634] transition-colors"
                     >
                       serktechgroup@gmail.com
-                    </a>
+                    </SmartContactLink>
                     <div className="text-xs text-[#5B6761] mt-0.5">
                       Direct inbox for pilots, bids, and technical requests
                     </div>
@@ -74,12 +76,14 @@ export default function ContactPage() {
                     <div className="text-xs font-semibold text-[#5B6761] uppercase tracking-wider">
                       Phone / WhatsApp / Telegram
                     </div>
-                    <a
-                      href="tel:+251999911192"
+                    <SmartContactLink
+                      type="tel"
+                      value="+251999911192"
+                      displayValue="+251 999 911 192"
                       className="text-sm font-bold text-[#101513] hover:text-[#0D4634] transition-colors"
                     >
                       +251 999 911 192
-                    </a>
+                    </SmartContactLink>
                     <div className="text-xs text-[#5B6761] mt-0.5">
                       Direct messaging available during business hours
                     </div>

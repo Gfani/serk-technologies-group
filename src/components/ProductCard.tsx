@@ -1,81 +1,120 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { ProjectItem } from '@/lib/types';
-import MaturityBadge from './MaturityBadge';
 
 export default function ProductCard({ project }: { project: ProjectItem }) {
-  const capabilitiesList = project.capabilities
-    ? project.capabilities.split('\n').filter(Boolean).slice(0, 3)
-    : [];
+  const badgeMap: Record<string, { cls: string; text: string }> = {
+    PRODUCTION_AVAILABLE: { cls: 'serk-badge-production', text: 'Production Available' },
+    PILOT_PRIVATE_BETA: { cls: 'serk-badge-pilot', text: 'Pilot / Private Beta' },
+    INTERNAL_ALPHA: { cls: 'serk-badge-alpha', text: 'Internal Alpha / Development' },
+    RESEARCH_PROTOTYPE: { cls: 'serk-badge-alpha', text: 'Research & Prototype' },
+    OPERATING_VENTURE: { cls: 'serk-badge-production', text: 'Operating Venture' },
+    CONCEPT: { cls: 'serk-badge-alpha', text: 'Concept / Feasibility' },
+  };
+
+  const badge = badgeMap[project.maturity] || {
+    cls: 'serk-badge-alpha',
+    text: project.maturity.replace(/_/g, ' '),
+  };
+
+  const img = project.imageUrl || '/images/serk-photo-engineering.jpg';
+  const ctaUrl = project.ctaUrl || `/products/${project.slug}/`;
+  const ctaText = project.publicCta || 'Learn More';
 
   return (
-    <div className="bg-white border border-[#DEE6E0] rounded-[8px] overflow-hidden flex flex-col hover:border-[#E3AB72] hover:shadow-lg transition-all duration-200">
-      {/* Visual Header / Screenshot Frame */}
-      {project.imageUrl && (
-        <div className="w-full h-[200px] relative bg-[#F4F7F5] overflow-hidden border-b border-[#DEE6E0]">
-          <Image
-            src={project.imageUrl}
+    <div
+      style={{
+        background: '#FFFFFF',
+        border: '1px solid #DEE6E0',
+        borderRadius: '8px',
+        padding: '26px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.02)',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      }}
+    >
+      <div>
+        <div
+          style={{
+            height: '160px',
+            overflow: 'hidden',
+            borderRadius: '6px',
+            marginBottom: '16px',
+            background: '#F8FAFC',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            border: '1px solid #E2E8F0',
+          }}
+        >
+          <img
+            src={img}
             alt={project.name}
-            fill
-            className="object-cover transition-transform duration-300 hover:scale-105"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
-      )}
-
-      {/* Content Area */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
-        <div>
-          {/* Header Row: Maturity Badge */}
-          <div className="flex items-center justify-between mb-3">
-            <MaturityBadge stage={project.maturity} />
-            <span className="text-[11px] font-medium text-[#5B6761] uppercase tracking-wider">
-              {project.category.replace('-', ' ')}
-            </span>
-          </div>
-
-          {/* Title */}
-          <h3 className="text-[18px] font-heading font-bold text-[#101513] mb-2 leading-snug">
-            {project.name}
-          </h3>
-
-          {/* Summary */}
-          <p className="text-[13.5px] text-[#5B6761] leading-relaxed mb-4 line-clamp-3">
-            {project.summary}
-          </p>
-
-          {/* Key Capabilities Preview */}
-          {capabilitiesList.length > 0 && (
-            <div className="space-y-1.5 mb-5 pt-3 border-t border-[#DEE6E0]/60">
-              {capabilitiesList.map((cap, i) => (
-                <div key={i} className="flex items-start text-[12.5px] text-[#101513]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#E3AB72] mr-2 flex-shrink-0 mt-0.5" />
-                  <span>{cap}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Action Button */}
-        <div className="pt-4 border-t border-[#DEE6E0] flex items-center justify-between">
-          <Link
-            href={`/products/${project.slug}`}
-            className="text-[13px] font-semibold text-[#101513] hover:text-[#E3AB72] inline-flex items-center group transition-colors"
-          >
-            <span>Learn More &amp; Architecture</span>
-            <ArrowRight className="w-3.5 h-3.5 ml-1.5 transform group-hover:translate-x-1 transition-transform text-[#E3AB72]" />
-          </Link>
-          {project.publicCta && (
-            <Link
-              href={project.ctaUrl || '/contact'}
-              className="text-xs bg-[#F4F7F5] hover:bg-[rgba(227,171,114,0.15)] hover:text-[#101513] hover:border-[#E3AB72] border border-transparent text-[#101513] px-3 py-1.5 rounded font-medium transition-colors"
-            >
-              {project.publicCta}
-            </Link>
-          )}
-        </div>
+        <span className={`serk-badge ${badge.cls}`}>
+          <span>{badge.text}</span>
+        </span>
+        <h3
+          style={{
+            fontSize: '1.28rem',
+            fontWeight: 600,
+            color: '#101513',
+            margin: '12px 0 8px 0',
+            lineHeight: 1.3,
+          }}
+        >
+          {project.name}
+        </h3>
+        <p
+          style={{
+            fontSize: '0.92rem',
+            color: '#5B6761',
+            lineHeight: 1.6,
+            margin: '0 0 16px 0',
+          }}
+        >
+          {project.summary}
+        </p>
+      </div>
+      <div
+        style={{
+          marginTop: '16px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '10px',
+          alignItems: 'center',
+        }}
+      >
+        <Link
+          href={ctaUrl}
+          className="elementor-button"
+          style={{
+            padding: '9px 16px',
+            fontSize: '0.88rem',
+            textDecoration: 'none',
+            display: 'inline-block',
+          }}
+        >
+          {ctaText}
+        </Link>
+        <Link
+          href={`/contact_us/?interest=${project.slug}`}
+          style={{
+            color: '#0D4634',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            textDecoration: 'none',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '4px',
+          }}
+        >
+          Inquire &rarr;
+        </Link>
       </div>
     </div>
   );

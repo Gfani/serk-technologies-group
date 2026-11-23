@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { uploadImageToCloudinary } from '@/lib/cloudinary';
+import { revalidatePath } from 'next/cache';
+import { syncGalleryToHtml } from '@/lib/htmlSync';
 
 export async function GET() {
   try {
@@ -44,6 +46,19 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    try {
+      const allItems = await prisma.galleryItem.findMany({
+        where: { isVisible: true },
+        orderBy: { sortOrder: 'asc' },
+      });
+      syncGalleryToHtml(allItems);
+    } catch (syncErr) {}
+
+    try {
+      revalidatePath('/', 'layout');
+      revalidatePath('/gallery');
+    } catch (e) {}
+
     return NextResponse.json({ success: true, item }, { status: 201 });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
@@ -60,6 +75,20 @@ export async function DELETE(req: NextRequest) {
     if (!id) return NextResponse.json({ error: 'Missing ID' }, { status: 400 });
 
     await prisma.galleryItem.delete({ where: { id } });
+
+    try {
+      const allItems = await prisma.galleryItem.findMany({
+        where: { isVisible: true },
+        orderBy: { sortOrder: 'asc' },
+      });
+      syncGalleryToHtml(allItems);
+    } catch (syncErr) {}
+
+    try {
+      revalidatePath('/', 'layout');
+      revalidatePath('/gallery');
+    } catch (e) {}
+
     return NextResponse.json({ success: true });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });

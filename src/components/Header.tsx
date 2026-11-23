@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, Menu, X, ArrowRight } from 'lucide-react';
 import { ThemeConfig } from '@/lib/types';
+import SmartContactLink from './SmartContactLink';
 
 export default function Header({ theme }: { theme?: ThemeConfig }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,21 +35,24 @@ export default function Header({ theme }: { theme?: ThemeConfig }) {
 
             {/* Right Contact Info */}
             <div className="flex items-center space-x-5 ml-auto text-xs sm:text-[12.5px]">
-              <a
-                href="mailto:serktechgroup@gmail.com"
+              <SmartContactLink
+                type="mailto"
+                value="serktechgroup@gmail.com"
                 className="flex items-center space-x-1.5 hover:text-[#E3AB72] transition-colors"
               >
                 <Mail className="w-3.5 h-3.5 text-[#E3AB72]" />
                 <span className="hidden sm:inline">serktechgroup@gmail.com</span>
-              </a>
+              </SmartContactLink>
               <span className="text-[#DEE6E0] hidden sm:inline">|</span>
-              <a
-                href="tel:+251999911192"
+              <SmartContactLink
+                type="tel"
+                value="+251999911192"
+                displayValue="+251 999 911 192"
                 className="flex items-center space-x-1.5 hover:text-[#E3AB72] transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-[#E3AB72]" />
                 <span>+251 999 911 192</span>
-              </a>
+              </SmartContactLink>
               <span className="text-[#DEE6E0]">|</span>
               <Link
                 href="/contact"
