@@ -15,7 +15,7 @@ export default function AdminSettingsPage() {
     email: 'serktechgroup@gmail.com',
     phone: '+251 999 911 192',
     address: 'Mekelle, Tigray, Ethiopia',
-    jurisdiction: 'Sovereign Digital Systems',
+    jurisdiction: 'Enterprise Technology & Systems',
     workingHours: 'Mon - Sat: 8:30 AM - 6:00 PM (EAT)',
     linkedinUrl: 'https://linkedin.com',
     telegramUrl: 'https://t.me/serktech',

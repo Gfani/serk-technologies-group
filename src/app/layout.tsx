@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import ThemeInjector from '@/components/ThemeInjector';
 import { getThemeSettings } from '@/lib/db';
+import { SmartContactToast } from '@/components/SmartContactLink';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://serktechgroup.com'),
@@ -59,6 +60,7 @@ export default async function RootLayout({
       <body className="min-h-screen bg-white text-[#101513] antialiased selection:bg-[#0D4634] selection:text-white">
         <ThemeInjector theme={theme} />
         {children}
+        <SmartContactToast />
       </body>
     </html>
   );

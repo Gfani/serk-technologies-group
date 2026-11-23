@@ -1,6 +1,7 @@
 import { prisma } from './prisma';
 import { DEFAULT_THEME, ALL_PROJECTS } from './constants';
 import { ThemeConfig, ProjectItem, PageItem } from './types';
+import { getStoredProjects } from './contentStore';
 
 export async function getThemeSettings(): Promise<ThemeConfig> {
   try {
@@ -29,9 +30,10 @@ export async function getAllProjects(): Promise<ProjectItem[]> {
       return dbProjects as unknown as ProjectItem[];
     }
   } catch (err) {
-    // Fallback to constants
+    // Fallback to stored projects
   }
-  return ALL_PROJECTS.map((p, idx) => ({ ...p, id: `proj-${idx}` })) as ProjectItem[];
+  const stored = await getStoredProjects();
+  return stored.filter((p) => p.isPublished !== false);
 }
 
 export async function getProjectBySlug(slug: string): Promise<ProjectItem | null> {
@@ -41,10 +43,11 @@ export async function getProjectBySlug(slug: string): Promise<ProjectItem | null
     });
     if (project) return project as unknown as ProjectItem;
   } catch (err) {
-    // Fallback
+    // Fallback to stored projects
   }
-  const found = ALL_PROJECTS.find((p) => p.slug === slug);
-  return found ? ({ ...found, id: `fallback-${slug}` } as ProjectItem) : null;
+  const stored = await getStoredProjects();
+  const found = stored.find((p) => p.slug === slug);
+  return found || null;
 }
 
 export async function getPageWithBlocks(slug: string): Promise<PageItem | null> {

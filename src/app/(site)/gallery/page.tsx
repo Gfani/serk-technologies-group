@@ -9,7 +9,9 @@ export const metadata = {
     'Visual documentation of SERK engineering studios, structural field deployments, and software interface designs.',
 };
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 export default async function GalleryPage() {
   const items = await getGalleryMedia();

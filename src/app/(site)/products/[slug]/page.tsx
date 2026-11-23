@@ -7,8 +7,6 @@ import MaturityBadge from '@/components/MaturityBadge';
 import AnimatedHeaderBanner from '@/components/AnimatedHeaderBanner';
 import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck, Cpu, ArrowUpRight } from 'lucide-react';
 
-export const revalidate = 60;
-
 export async function generateStaticParams() {
   const projects = await getAllProjects();
   return projects.map((p) => ({ slug: p.slug }));
@@ -22,6 +20,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description: project.summary,
   };
 }
+
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 export default async function ProductDetailPage({ params }: { params: { slug: string } }) {
   const project = await getProjectBySlug(params.slug);
@@ -159,7 +161,7 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
           <div className="lg:col-span-4 space-y-6">
             <div className="bg-white rounded-xl border border-[#DEE6E0] p-6 shadow-sm space-y-4">
               <h3 className="text-sm font-bold text-[#101513] border-b border-[#DEE6E0] pb-3">
-                Governance & Sovereignty
+                Governance &amp; Compliance
               </h3>
 
               <div className="space-y-3 text-xs">
@@ -179,21 +181,21 @@ export default async function ProductDetailPage({ params }: { params: { slug: st
                 </div>
                 <div>
                   <span className="text-[#5B6761] block">Codebase Ownership:</span>
-                  <span className="font-bold text-[#101513]">100% SERK Sovereign IP</span>
+                  <span className="font-bold text-[#101513]">100% SERK Enterprise IP</span>
                 </div>
               </div>
             </div>
 
             <div className="bg-[#0D4634] text-white rounded-xl p-6 space-y-3">
-              <ShieldCheck className="w-6 h-6 text-[#E3AB72]" />
-              <h4 className="text-sm font-bold">Audit & Compliance Support</h4>
+              <ShieldCheck className="w-6 h-6 text-[#A1D9C5]" />
+              <h4 className="text-sm font-bold">Audit &amp; Compliance Support</h4>
               <p className="text-xs text-[#CDE5DC] leading-relaxed">
                 Full documentation, data migration utilities, and staff onboarding workshops are
                 provided for all pilot enterprise deployments.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#E3AB72] hover:underline pt-2"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-white hover:underline pt-2"
               >
                 <span>Inquire about pilot terms</span>
                 <ArrowRight className="w-3.5 h-3.5" />
