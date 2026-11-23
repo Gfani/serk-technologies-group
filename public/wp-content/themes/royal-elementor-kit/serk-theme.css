@@ -300,42 +300,108 @@ button[type="submit"]:hover,
 
 /* ========================================================
    FOOTER (Solid Pitch Black #101513 / #000000)
+   Protected across all themes and custom palettes
    ======================================================== */
+.elementor-1175,
+div[data-elementor-id="1175"],
 .elementor-element-5b611c4,
+section[data-id="5b611c4"],
 .serk-global-footer {
   background-color: #101513 !important;
-  padding: 40px 20px 30px 20px !important;
+  background: #101513 !important;
+  color: #DEE6E0 !important;
 }
 
 .elementor-element-e959569,
+section[data-id="e959569"],
 .serk-footer-bottom {
   background-color: #000000 !important;
-  padding: 18px 20px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: #000000 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-.elementor-element-e959569 p,
-.elementor-element-e959569 a,
-.serk-footer-bottom a {
-  color: #8C9891 !important;
-  font-size: 0.85rem !important;
+.elementor-1175 h4,
+.elementor-1175 .serk-footer-heading,
+.elementor-element-5b611c4 h4,
+.elementor-element-5b611c4 .elementor-heading-title,
+.serk-global-footer h4 {
+  color: #FFFFFF !important;
+  font-family: var(--serk-font-sans, 'Poppins', sans-serif) !important;
 }
 
+.elementor-1175 .serk-footer-heading-visitus,
+.elementor-element-5b611c4 .serk-footer-heading-visitus {
+  color: #E3AB72 !important;
+}
+
+.elementor-1175 .serk-footer-address,
+.elementor-element-5b611c4 .serk-footer-address,
+.elementor-1175 p,
+.elementor-element-5b611c4 p {
+  color: #9AB4A9 !important;
+}
+
+.elementor-1175 .serk-footer-link,
+.elementor-element-5b611c4 .serk-footer-link,
+.elementor-1175 a:not(.serk-footer-social-btn),
+.elementor-element-5b611c4 a:not(.serk-footer-social-btn),
 .serk-footer-link,
 .elementor-element-3bf3c57 .elementor-heading-title a,
 .elementor-element-7e0acc4 .elementor-heading-title a {
-  color: #DEE6E0 !important;
+  color: #CDE5DC !important;
   font-size: 0.92rem !important;
   font-weight: 500 !important;
   text-decoration: none !important;
   transition: all 0.2s ease !important;
 }
 
+.elementor-1175 .serk-footer-link:hover,
+.elementor-element-5b611c4 .serk-footer-link:hover,
+.elementor-1175 a:not(.serk-footer-social-btn):hover,
+.elementor-element-5b611c4 a:not(.serk-footer-social-btn):hover,
 .serk-footer-link:hover,
 .elementor-element-3bf3c57 .elementor-heading-title a:hover,
 .elementor-element-7e0acc4 .elementor-heading-title a:hover {
   color: #FFFFFF !important;
-  text-decoration: underline !important;
+}
+
+.serk-footer-social-btn {
+  background-color: rgba(227, 171, 114, 0.08) !important;
+  border: 1px solid #E3AB72 !important;
+  color: #E3AB72 !important;
+}
+.serk-footer-social-btn:hover {
+  background-color: #E3AB72 !important;
+  color: #101513 !important;
+}
+
+.serk-copyright-left,
+.elementor-element-e959569 p,
+.serk-footer-bottom p {
+  color: #9AB4A9 !important;
+}
+
+.serk-copyright-tagline {
+  color: #E3AB72 !important;
+}
+
+.serk-copyright-link,
+.elementor-element-e959569 a,
+.serk-footer-bottom a {
+  color: #7D978C !important;
+  font-size: 0.85rem !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.serk-copyright-link:hover,
+.elementor-element-e959569 a:hover,
+.serk-footer-bottom a:hover {
+  color: #FFFFFF !important;
+}
+
+.serk-copyright-sep {
+  color: rgba(255, 255, 255, 0.2) !important;
 }
 
 /* ========================================================

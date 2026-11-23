@@ -637,11 +637,36 @@ export default function DesignStudioPage() {
               </div>
             </div>
 
-            {/* Footer simulation */}
+            {/* Authentic Enterprise Dark Footer Preview */}
             <div
-              className="pt-3 border-t text-[10px] flex items-center justify-between"
+              className="p-3.5 rounded-lg border text-[11px] space-y-1.5 shadow-inner"
               style={{
-                borderColor: theme.borderColor,
+                backgroundColor: '#101513',
+                borderColor: 'rgba(255,255,255,0.1)',
+                color: '#9AB4A9',
+              }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-white text-[11px] tracking-wide">
+                  SERK GROUP
+                </span>
+                <span className="text-[10px] font-semibold text-[#E3AB72] uppercase tracking-wider">
+                  VISIT US
+                </span>
+              </div>
+              <p className="text-[10px] leading-relaxed text-[#9AB4A9]">
+                Enterprise Technology & Systems • Mekelle, Tigray, Ethiopia
+              </p>
+              <div className="flex items-center justify-between pt-1 border-t border-white/10 text-[9px]">
+                <span className="text-[#CDE5DC]">Permanent Enterprise Dark Footer</span>
+                <span className="text-white font-semibold">Always #101513</span>
+              </div>
+            </div>
+
+            {/* Token details bar */}
+            <div
+              className="pt-2 text-[10px] flex items-center justify-between"
+              style={{
                 color: theme.textMutedColor,
               }}
             >
