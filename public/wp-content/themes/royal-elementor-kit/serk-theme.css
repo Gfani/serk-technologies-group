@@ -858,6 +858,24 @@ html, body {
     display: block !important;
   }
 
+  /* Signature Brand Orange Eyebrow Banner (Zero overlap on mobile) */
+  .serk-hero-anim-eyebrow {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin-bottom: 14px !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+  .serk-hero-anim-eyebrow span.wpr-anim-text {
+    padding: 5px 14px !important;
+    display: inline-flex !important;
+  }
+  .serk-hero-anim-eyebrow b {
+    font-size: 11.5px !important;
+    letter-spacing: 0.1em !important;
+  }
+
   /* Title: Normal readable size, wraps into 2-3 clean lines */
   .elementor-1158 .elementor-element.elementor-element-9d25fef .elementor-heading-title,
   .elementor-element-9d25fef .elementor-heading-title {
