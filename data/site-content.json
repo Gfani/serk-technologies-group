@@ -1,4 +1,11 @@
 {
+  "branding": {
+    "headerLogoUrl": "/wp-content/uploads/serk/serk-logo-wide.png?v=20261122-04",
+    "footerMarkUrl": "/wp-content/uploads/serk/serk-logo-mark.png",
+    "brandAltText": "SERK Technologies Group",
+    "companyName": "SERK Technologies Group",
+    "tagline": "Innovation with Integrity"
+  },
   "siteInfo": {
     "name": "SERK Technologies Group",
     "tagline": "Innovation with Integrity",
@@ -85,7 +92,10 @@
       "title": "Engineering Sovereign Technology for Heavy Enterprise",
       "subtitle": "SERK Technologies Group pairs real African industry know-how with practical software engineering, cloud architecture, and responsible AI.",
       "mission": "To engineer trustworthy, high-performing software systems that elevate African industry and empower organizations to operate autonomously.",
-      "vision": "A self-reliant technological ecosystem where Ethiopian and African enterprises run on software built for their exact workflows."
+      "vision": "A self-reliant technological ecosystem where Ethiopian and African enterprises run on software built for their exact workflows.",
+      "storyTitle": "Engineering with Purpose",
+      "storyParagraph1": "Serk Group is a software company building AI-integrated systems for the industries that keep the world running. We design, build and support products for construction, healthcare, retail and finance — starting from practical problems on the ground and turning them into software that teams actually enjoy using.",
+      "storyParagraph2": "We believe the most valuable technology is not the loudest, but the most reliable. That is why our products pair modern AI capabilities with rock-solid, production-tested software engineering and honest disclosures about maturity."
     },
     "products": {
       "title": "SERK Products & Platforms",
@@ -99,14 +109,289 @@
       "title": "Turning Technology Into Possibilities",
       "subtitle": "Through separate platforms and venture initiatives, our teams explore better mobility, connected delivery, digital tourism, and future industrial technology."
     },
+    "industries": {
+      "title": "Industry Sectors",
+      "subtitle": "Specialized software solutions engineered for the specific operational demands of key economic sectors."
+    },
+    "partners": {
+      "title": "Some of Our Clients & Partners",
+      "subtitle": "We are honored to work with leading institutions, enterprises, and regional innovators across Africa and Europe."
+    },
+    "insights": {
+      "title": "Insights & Technical Perspectives",
+      "subtitle": "In-depth perspectives from our engineering leadership on artificial intelligence, software architecture, and industry transformation."
+    },
     "contact": {
       "title": "Let's Build Something That Works",
       "subtitle": "Tell us about your organization's goals, existing bottlenecks, or platform needs. Our engineering leadership responds within 24 business hours.",
       "officeAddress": "Mekelle, Tigray, Ethiopia",
       "email": "serktechgroup@gmail.com",
-      "phone": "+251 999 911 192"
+      "phone": "+251 999 911 192",
+      "workingHours": "Mon - Sat: 8:30 AM - 6:00 PM (EAT)",
+      "responseGuarantee": "Direct engineering response within 24 business hours"
     }
   },
+  "partners": [
+    {
+      "id": "partner-zoscales",
+      "name": "Zoscales Partners",
+      "category": "PRIVATE EQUITY & GROWTH",
+      "logoUrl": "/wp-content/uploads/serk/client-zoscales.png",
+      "alt": "Zoscales Partners",
+      "description": "Institutional private equity firm backing scalable, impactful enterprises across East Africa with robust governance.",
+      "websiteUrl": "https://zoscales.com",
+      "collabText": "Active Portfolio Collaboration • Verified Partner",
+      "isPublished": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "partner-innobizk",
+      "name": "innobiz-K Ethiopia",
+      "category": "INCUBATION & INNOVATION",
+      "logoUrl": "/wp-content/uploads/serk/client-innobizk.png",
+      "alt": "innobiz-K Ethiopia",
+      "description": "Incubation and business growth accelerator empowering Ethiopian tech entrepreneurs and high-impact software startups.",
+      "websiteUrl": "https://innobizk.et",
+      "collabText": "Innovation Ecosystem Partner • Verified Partner",
+      "isPublished": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "partner-hibret",
+      "name": "Hibret Bank (ሕብረት ባንክ)",
+      "category": "FINANCIAL INSTITUTION",
+      "logoUrl": "/wp-content/uploads/serk/client-hibret.png",
+      "alt": "Hibret Bank",
+      "description": "Leading commercial bank in Ethiopia, collaborating on secure enterprise systems, POS integration, and institutional workflows.",
+      "websiteUrl": "https://www.hibretbank.com.et",
+      "collabText": "Enterprise Systems & POS Client • Verified Partner",
+      "isPublished": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "partner-sequa",
+      "name": "sequa gGmbH",
+      "category": "INTERNATIONAL DEVELOPMENT",
+      "logoUrl": "/wp-content/uploads/serk/client-sequa.png",
+      "alt": "sequa gGmbH",
+      "description": "German development organization fostering private sector development, vocational training, and sustainable enterprise partnerships.",
+      "websiteUrl": "https://www.sequa.de",
+      "collabText": "Development Collaboration • Verified Partner",
+      "isPublished": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "partner-tebita",
+      "name": "Tebita Ambulance (ቴቢታ)",
+      "category": "EMERGENCY HEALTHCARE",
+      "logoUrl": "/wp-content/uploads/serk/client-tebita.png",
+      "alt": "Tebita Ambulance",
+      "description": "Pioneering private emergency medical services and pre-hospital care provider in Ethiopia, operating 24/7 across the nation.",
+      "websiteUrl": "https://tebitapremdr.com",
+      "collabText": "Healthcare Systems Collaboration • Verified Partner",
+      "isPublished": true,
+      "sortOrder": 5
+    }
+  ],
+  "industriesList": [
+    {
+      "id": "ind-hospitality",
+      "name": "Hotels, Resorts & Guesthouses",
+      "category": "Hospitality",
+      "description": "Better guest journeys. Better control behind the scenes. From online room reservation and front desk check-in to restaurant billing and automated daily summaries.",
+      "imageUrl": "/wp-content/uploads/serk/serk-photo-hospitality.jpg",
+      "bullets": [
+        "Direct booking engines and front-desk reservation management",
+        "Restaurant & bar POS linked directly to room folio",
+        "Housekeeping dispatch and maintenance status tracking"
+      ],
+      "ctaLabel": "Consult Hotel Specialist",
+      "ctaUrl": "/contact_us/?interest=hospitality",
+      "isPublished": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "ind-healthcare",
+      "name": "Hospitals & Multi-Specialty Clinics",
+      "category": "Healthcare",
+      "description": "Streamlined care workflows and operational transparency. Digital patient registration, triage, laboratory ordering, and multi-department billing.",
+      "imageUrl": "/wp-content/uploads/serk/serk-photo-health.jpg",
+      "bullets": [
+        "Patient electronic medical records & triage flow",
+        "Integrated pharmacy stock & prescription control",
+        "Daily revenue reconciliation and doctor fee splits"
+      ],
+      "ctaLabel": "Discuss Hospital Systems",
+      "ctaUrl": "/contact_us/?interest=hospital",
+      "isPublished": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "ind-fnb",
+      "name": "Cafés, Restaurants & Bakeries",
+      "category": "Food & Beverage",
+      "description": "Rapid order taking, seamless kitchen communication, and waste-tight inventory control. Built for high-volume service environments.",
+      "imageUrl": "/wp-content/uploads/serk/serk-photo-fnb.jpg",
+      "bullets": [
+        "Touch-optimized ordering and kitchen display routing",
+        "Recipe-level inventory deduction and low-stock alerts",
+        "Shift-end cash count, waiter audit, and daily sales summaries"
+      ],
+      "ctaLabel": "Explore POS Hardware & Setup",
+      "ctaUrl": "/contact_us/?interest=pos",
+      "isPublished": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "ind-construction",
+      "name": "Contractors & Engineering Firms",
+      "category": "Construction",
+      "description": "Automate quantity takeoffs, project budget tracking, and subcontractor coordination without messy spreadsheets.",
+      "imageUrl": "/wp-content/uploads/serk/serk-photo-construction.jpg",
+      "bullets": [
+        "AI-powered Bill of Quantities extraction from PDF drawings",
+        "Site progress log, labor tracking, and equipment allocation",
+        "Client valuation reports and milestone invoice tracking"
+      ],
+      "ctaLabel": "Request Construction Demo",
+      "ctaUrl": "/contact_us/?interest=estimator",
+      "isPublished": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "ind-materials",
+      "name": "Building Material Suppliers & Yards",
+      "category": "Wholesale & Supply Chain",
+      "description": "Manage large yards, multi-truck dispatches, credit accounts, and supplier reconciliations with speed and precision.",
+      "imageUrl": "/wp-content/uploads/serk/serk-photo-warehouse.jpg",
+      "bullets": [
+        "Weight-scale integration and multi-truck dispatch management",
+        "Contractor credit limits, aging balances, and statement exports",
+        "Real-time rebar, cement, and bulk material stock sync"
+      ],
+      "ctaLabel": "Modernize Supply Chain",
+      "ctaUrl": "/contact_us/?interest=supply-chain",
+      "isPublished": true,
+      "sortOrder": 5
+    }
+  ],
+  "servicesList": [
+    {
+      "id": "srv-estimator",
+      "title": "AI Estimator & Quantity Extraction",
+      "category": "Construction AI",
+      "description": "Turn drawings and quantities into clear, priced estimates in a fraction of the usual time, with rates and assumptions you can trace.",
+      "imageUrl": "/wp-content/uploads/serk/serk-post-estimator.svg",
+      "bullets": [
+        "Automated drawing analysis and material takeoff",
+        "Localized Ethiopian Birr pricing and custom rate databases",
+        "Instant export to standard BOQ formats"
+      ],
+      "ctaLabel": "Learn More",
+      "ctaUrl": "/contact_us/?interest=estimator",
+      "isPublished": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "srv-site-control",
+      "title": "Project & Site Control Systems",
+      "category": "Operational Software",
+      "description": "Keep job sites, deliveries, and subcontractor progress aligned with central budgets and timeline milestones.",
+      "imageUrl": "/wp-content/uploads/serk/serk-photo-construction.jpg",
+      "bullets": [
+        "Real-time mobile progress reports from the field",
+        "Subcontractor task tracking and quality milestones",
+        "Discrepancy alerts between plan and actual delivery"
+      ],
+      "ctaLabel": "Learn More",
+      "ctaUrl": "/contact_us/?interest=site-control",
+      "isPublished": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "srv-procurement",
+      "title": "Cost, Procurement & Real-Time Reporting",
+      "category": "Enterprise Finance",
+      "description": "Gain complete visibility into project cash flow, purchase approvals, and supplier statements with zero manual data entry.",
+      "imageUrl": "/wp-content/uploads/serk/serk-post-finance.svg",
+      "bullets": [
+        "Automated invoice capture and 3-way matching",
+        "Granular budget vs. actual variance analysis",
+        "Executive financial summaries ready in seconds"
+      ],
+      "ctaLabel": "Learn More",
+      "ctaUrl": "/contact_us/?interest=procurement",
+      "isPublished": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "srv-hms",
+      "title": "Serk Hospital Management System (HMS)",
+      "category": "Clinical Informatics",
+      "description": "Comprehensive clinical, administrative, and inventory platform purpose-built for modern regional hospitals and clinics.",
+      "imageUrl": "/wp-content/uploads/serk/serk-photo-health.jpg",
+      "bullets": [
+        "Integrated outpatient and inpatient workflows",
+        "Secure medical records and pharmacy dispensary sync",
+        "Multi-payer billing and cashier reconciliation"
+      ],
+      "ctaLabel": "Learn More",
+      "ctaUrl": "/contact_us/?interest=hms",
+      "isPublished": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "srv-pos",
+      "title": "Enterprise POS & Multi-Branch Inventory",
+      "category": "Retail & Hospitality",
+      "description": "Reliable offline-first point-of-sale systems with live cloud sync across branches, warehouses, and accounting.",
+      "imageUrl": "/wp-content/uploads/serk/serk-photo-fnb.jpg",
+      "bullets": [
+        "Offline-resilient checkout with automatic sync on reconnect",
+        "Centralized catalog and dynamic promotion engine",
+        "Cross-branch inventory transfers and stock audit logs"
+      ],
+      "ctaLabel": "Learn More",
+      "ctaUrl": "/contact_us/?interest=pos",
+      "isPublished": true,
+      "sortOrder": 5
+    }
+  ],
+  "insightsList": [
+    {
+      "id": "insight-estimator",
+      "slug": "from-drawing-to-budget-inside-the-serk-ai-estimator",
+      "title": "From Drawing to Budget: Inside the Serk AI Estimator",
+      "excerpt": "Estimating used to mean long nights with spreadsheets. See how an AI estimator turns drawing PDFs into reliable BOQ drafts in minutes.",
+      "coverImage": "/wp-content/uploads/serk/serk-post-estimator.svg",
+      "category": "Construction Tech",
+      "date": "November 19, 2026",
+      "isPublished": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "insight-health",
+      "slug": "the-hospital-that-runs-on-insight-ai-across-the-patient-journey",
+      "title": "The Hospital That Runs on Insight: AI Across the Patient Journey",
+      "excerpt": "How regional hospitals use connected digital records and clinical scheduling to cut wait times, protect pharmacy stock, and speed care.",
+      "coverImage": "/wp-content/uploads/serk/serk-post-health.svg",
+      "category": "Healthcare Systems",
+      "date": "November 18, 2026",
+      "isPublished": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "insight-finance",
+      "slug": "close-the-books-faster-what-ai-changes-in-finance",
+      "title": "Close the Books Faster: What AI Really Changes in Finance",
+      "excerpt": "From invoice OCR to automated bank reconciliation: practical automation patterns that give leadership instant daily financial visibility.",
+      "coverImage": "/wp-content/uploads/serk/serk-post-finance.svg",
+      "category": "Enterprise Finance",
+      "date": "November 17, 2026",
+      "isPublished": true,
+      "sortOrder": 3
+    }
+  ],
   "type": "category",
   "data": {
     "id": "sector-intelligence",

@@ -49,6 +49,22 @@ const MATURITY_BADGES: Record<string, { cls: string; text: string }> = {
   CONCEPT: { cls: 'serk-badge-alpha', text: 'Concept / Feasibility' },
 };
 
+function getAllHtmlFiles(dir: string): string[] {
+  let results: string[] = [];
+  if (!fs.existsSync(dir)) return results;
+  const list = fs.readdirSync(dir);
+  for (const file of list) {
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
+    if (stat.isDirectory()) {
+      results = results.concat(getAllHtmlFiles(fullPath));
+    } else if (file.endsWith('.html')) {
+      results.push(fullPath);
+    }
+  }
+  return results;
+}
+
 export function syncProjectsToHtml(projects: ProjectItem[]): boolean {
   try {
     const published = projects.filter((p) => p.isPublished !== false);
@@ -266,61 +282,264 @@ export function syncSiteContentToHtml(content: any): boolean {
       path.join(process.cwd(), 'site'),
     ];
 
-    function getAllHtmlFiles(dir: string): string[] {
-      let results: string[] = [];
-      if (!fs.existsSync(dir)) return results;
-      const list = fs.readdirSync(dir);
-      for (const file of list) {
-        const fullPath = path.join(dir, file);
-        const stat = fs.statSync(fullPath);
-        if (stat.isDirectory()) {
-          results = results.concat(getAllHtmlFiles(fullPath));
-        } else if (file.endsWith('.html')) {
-          results.push(fullPath);
-        }
-      }
-      return results;
-    }
-
     const allHtml = [...getAllHtmlFiles(htmlDirs[0]), ...getAllHtmlFiles(htmlDirs[1])];
 
     const phone = content.siteInfo?.phone;
     const email = content.siteInfo?.email;
     const heroTitle = content.pages?.home?.heroTitle;
     const heroSubtitle = content.pages?.home?.heroSubtitle;
+    const headerLogoUrl = content.branding?.headerLogoUrl;
+    const footerMarkUrl = content.branding?.footerMarkUrl;
+    const brandAlt = content.branding?.brandAltText || content.branding?.companyName || 'SERK Technologies Group';
 
     for (const filePath of allHtml) {
       let html = fs.readFileSync(filePath, 'utf-8');
       let changed = false;
 
-      // Update phone if present
+      // 1. Sync Header Logo across all pages
+      if (headerLogoUrl) {
+        // Pattern 1: class="serk-header-logo"
+        if (html.includes('class="serk-header-logo"')) {
+          const updated = html.replace(
+            /<img[^>]*class="serk-header-logo"[^>]*>/i,
+            `<img src="${headerLogoUrl}" alt="${brandAlt}" class="serk-header-logo" width="200" height="38" style="height:38px;max-height:38px;width:auto;max-width:220px;display:block;object-fit:contain;">`
+          );
+          if (updated !== html) {
+            html = updated;
+            changed = true;
+          }
+        } else if (html.includes('serk-logo-wide.png')) {
+          const updated = html.replace(
+            /\/wp-content\/uploads\/serk\/serk-logo-wide\.png[^\"]*/g,
+            headerLogoUrl
+          );
+          if (updated !== html) {
+            html = updated;
+            changed = true;
+          }
+        }
+      }
+
+      // 2. Sync Footer Mark across all pages
+      if (footerMarkUrl) {
+        if (html.includes('class="serk-footer-mark-img"')) {
+          const updated = html.replace(
+            /<img[^>]*class="serk-footer-mark-img"[^>]*>/i,
+            `<img src="${footerMarkUrl}" alt="${brandAlt}" class="serk-footer-mark-img" width="160" height="30" style="height:30px;max-height:30px;width:auto;display:block;object-fit:contain;margin-bottom:16px;">`
+          );
+          if (updated !== html) {
+            html = updated;
+            changed = true;
+          }
+        } else if (html.includes('serk-logo-mark.png')) {
+          const updated = html.replace(
+            /\/wp-content\/uploads\/serk\/serk-logo-mark\.png[^\"]*/g,
+            footerMarkUrl
+          );
+          if (updated !== html) {
+            html = updated;
+            changed = true;
+          }
+        }
+      }
+
+      // 3. Update Phone if present
       if (phone) {
         const cleanPhone = phone.replace(/[^\d+]/g, '');
-        html = html.replace(/href="tel:[^"]*"/g, `href="tel:${cleanPhone}"`);
-        html = html.replace(/\+251\s*\d{3}\s*\d{3}\s*\d{3}/g, phone);
-        changed = true;
+        const updatedPhone = html
+          .replace(/href="tel:[^"]*"/g, `href="tel:${cleanPhone}"`)
+          .replace(/\+251\s*\d{3}\s*\d{3}\s*\d{3}/g, phone);
+        if (updatedPhone !== html) {
+          html = updatedPhone;
+          changed = true;
+        }
       }
 
-      // Update email if present
+      // 4. Update Email if present
       if (email) {
-        html = html.replace(/href="mailto:[^"]*"/g, `href="mailto:${email}"`);
-        html = html.replace(/[a-zA-Z0-9._%+-]+@gmail\.com/g, email);
-        changed = true;
+        const updatedEmail = html
+          .replace(/href="mailto:[^"]*"/g, `href="mailto:${email}"`)
+          .replace(/[a-zA-Z0-9._%+-]+@gmail\.com/g, email);
+        if (updatedEmail !== html) {
+          html = updatedEmail;
+          changed = true;
+        }
       }
 
-      // If homepage, update hero title and subtitle
-      if (filePath.endsWith('public\\index.html') || filePath.endsWith('public/index.html') || filePath.endsWith('site\\index.html') || filePath.endsWith('site/index.html')) {
+      // 5. Homepage Specific Updates
+      const isHome =
+        filePath.endsWith('public\\index.html') ||
+        filePath.endsWith('public/index.html') ||
+        filePath.endsWith('site\\index.html') ||
+        filePath.endsWith('site/index.html');
+
+      if (isHome) {
         if (heroTitle) {
-          html = html.replace(
+          const updated = html.replace(
             /<h1 class="elementor-heading-title elementor-size-default">[^<]*<\/h1>/g,
             `<h1 class="elementor-heading-title elementor-size-default">${heroTitle}</h1>`
           );
-          changed = true;
+          if (updated !== html) {
+            html = updated;
+            changed = true;
+          }
         }
         if (heroSubtitle) {
-          html = html.replace(
+          const updated = html.replace(
             /(<div class="elementor-widget-container"><p>)From your first website to intelligent enterprise operations[^<]*(<\/p><\/div>)/g,
             `$1${heroSubtitle}$2`
+          );
+          if (updated !== html) {
+            html = updated;
+            changed = true;
+          }
+        }
+      }
+
+      // 6. About Us Page Updates
+      const isAbout = filePath.includes('about_us');
+      if (isAbout && content.pages?.about) {
+        const abt = content.pages.about;
+        if (abt.title) {
+          html = html.replace(
+            /<h1 class="elementor-heading-title elementor-size-default">Innovation with Integrity\. Building Beyond Boundaries\.<\/h1>/g,
+            `<h1 class="elementor-heading-title elementor-size-default">${abt.title}</h1>`
+          );
+          changed = true;
+        }
+        if (abt.storyParagraph1) {
+          html = html.replace(
+            /<div class="elementor-widget-container"><p>Serk Group is a software company building AI-integrated systems[^<]*<\/p><\/div>/g,
+            `<div class="elementor-widget-container"><p>${abt.storyParagraph1}</p></div>`
+          );
+          changed = true;
+        }
+        if (abt.mission) {
+          html = html.replace(
+            /(<h2[^>]*>Our Mission<\/h2>[\s\S]*?<div class="elementor-widget-container"><p[^>]*>)([\s\S]*?)(<\/p><\/div>)/i,
+            `$1${abt.mission}$3`
+          );
+          changed = true;
+        }
+        if (abt.vision) {
+          html = html.replace(
+            /(<h2[^>]*>Our Vision<\/h2>[\s\S]*?<div class="elementor-widget-container"><p[^>]*>)([\s\S]*?)(<\/p><\/div>)/i,
+            `$1${abt.vision}$3`
+          );
+          changed = true;
+        }
+      }
+
+      // 7. Contact Us Page Updates
+      const isContact = filePath.includes('contact_us');
+      if (isContact && content.pages?.contact) {
+        const cnt = content.pages.contact;
+        if (cnt.title) {
+          html = html.replace(
+            /<h1 class="elementor-heading-title elementor-size-default">Let’s Build Something That Works\.<\/h1>/g,
+            `<h1 class="elementor-heading-title elementor-size-default">${cnt.title}</h1>`
+          );
+          changed = true;
+        }
+        if (cnt.officeAddress) {
+          html = html.replace(
+            /(<h3 class="elementor-icon-box-title">[\s\S]*?Office Location[\s\S]*?<\/h3>[\s\S]*?<p class="elementor-icon-box-description">)[^<]*(<\/p>)/i,
+            `$1${cnt.officeAddress}$2`
+          );
+          changed = true;
+        }
+      }
+
+      // 8. Partners Page Updates
+      const isPartners = filePath.includes('partners');
+      if (isPartners && Array.isArray(content.partners) && content.partners.length > 0) {
+        const publishedPartners = content.partners.filter((p: any) => p.isPublished !== false);
+        const partnerCardsHtml = publishedPartners.map((p: any) => {
+          const logo = p.logoUrl || '/wp-content/uploads/serk/client-zoscales.png';
+          const cat = p.category || 'PARTNER';
+          const collab = p.collabText || 'Active Portfolio Collaboration • Verified Partner';
+          const website = p.websiteUrl && p.websiteUrl !== '#'
+            ? `<a href="${p.websiteUrl}" target="_blank" rel="noopener noreferrer" style="color: #0D4634; font-weight: 600; text-decoration: none;">Visit Website &rarr;</a>`
+            : '';
+
+          return `    <!-- Partner: ${p.name} -->
+    <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 12px; padding: 28px 24px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+        <div>
+            <div style="text-align: center; padding: 20px; background: #F8FAFC; border-radius: 8px; margin-bottom: 16px; min-height: 80px; display: flex; align-items: center; justify-content: center;">
+                <img src="${logo}" alt="${p.alt || p.name}" style="max-height: 44px; max-width: 100%; object-fit: contain;">
+            </div>
+            <div style="margin-bottom: 8px;"><span class="serk-badge serk-badge-production"><span>${cat}</span></span></div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #101513; margin: 0 0 8px 0;">${p.name}</h3>
+            <p style="font-size: 0.9rem; color: #5B6761; line-height: 1.6; margin: 0;">${p.description}</p>
+        </div>
+        <div style="margin-top: 16px; font-size: 0.82rem; color: #101513; font-weight: 600; border-top: 1px solid #F1F5F9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+            <span>${collab}</span>
+            ${website}
+        </div>
+    </div>`;
+        }).join('\n\n');
+
+        const gridTag = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 48px;">';
+        const gridStart = html.indexOf(gridTag);
+        if (gridStart !== -1) {
+          const gridEnd = html.indexOf('</div>\n\n</div>', gridStart);
+          const fallbackEnd = html.indexOf('</div>\n</div>', gridStart);
+          const actualEnd = gridEnd !== -1 ? gridEnd : fallbackEnd;
+
+          if (actualEnd !== -1) {
+            html = html.substring(0, gridStart + gridTag.length) + '\n' + partnerCardsHtml + '\n' + html.substring(actualEnd);
+            changed = true;
+          }
+        }
+      }
+
+      // 9. Industries Page Updates
+      const isIndustries = filePath.includes('industries');
+      if (isIndustries && Array.isArray(content.industriesList) && content.industriesList.length > 0) {
+        const publishedIndustries = content.industriesList.filter((ind: any) => ind.isPublished !== false);
+        const industryCardsHtml = publishedIndustries.map((ind: any) => {
+          const bulletsHtml = Array.isArray(ind.bullets) && ind.bullets.length > 0
+            ? `<ul style="color: #5B6761; font-size: 0.95rem; line-height: 1.7; padding-left: 20px; margin-bottom: 24px;">\n${ind.bullets.map((b: string) => `                <li>${b}</li>`).join('\n')}\n            </ul>`
+            : '';
+          const imgHtml = ind.imageUrl
+            ? `<div style="height: 180px; overflow: hidden; border-radius: 6px; margin-bottom: 20px;"><img src="${ind.imageUrl}" alt="${ind.name}" style="width: 100%; height: 100%; object-fit: cover;"></div>`
+            : '';
+
+          return `    <!-- Industry: ${ind.name} -->
+    <div style="background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+            ${imgHtml}
+            <span style="font-size: 0.8rem; font-weight: 700; color: #101513; text-transform: uppercase;">${ind.category}</span>
+            <h3 style="font-size: 1.45rem; font-weight: 700; color: #101513; margin: 8px 0 12px 0;">${ind.name}</h3>
+            <p style="font-size: 1rem; color: #5B6761; line-height: 1.6; margin-bottom: 16px;">${ind.description}</p>
+            ${bulletsHtml}
+        </div>
+        <div>
+            <a href="${ind.ctaUrl || '/contact_us/'}" class="elementor-button" style="padding: 10px 18px; text-decoration: none; display: inline-block;">${ind.ctaLabel || 'Discuss Your Project'}</a>
+        </div>
+    </div>`;
+        }).join('\n\n');
+
+        const indGridTag = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px;">';
+        const indGridStart = html.indexOf(indGridTag);
+        if (indGridStart !== -1) {
+          const mainClose = html.indexOf('</div>\n    </div>\n</main>', indGridStart);
+          const fallbackClose = html.indexOf('</div>\n</div>\n</main>', indGridStart);
+          const actualClose = mainClose !== -1 ? mainClose : fallbackClose;
+          if (actualClose !== -1) {
+            html = html.substring(0, indGridStart + indGridTag.length) + '\n' + industryCardsHtml + '\n    ' + html.substring(actualClose);
+            changed = true;
+          }
+        }
+      }
+
+      // 10. Services Page Updates
+      const isServices = filePath.includes('services');
+      if (isServices && content.pages?.services) {
+        if (content.pages.services.title) {
+          html = html.replace(
+            /<h1 class="elementor-heading-title elementor-size-default">Technology for Every Stage of Your Business<\/h1>/g,
+            `<h1 class="elementor-heading-title elementor-size-default">${content.pages.services.title}</h1>`
           );
           changed = true;
         }
@@ -449,229 +668,78 @@ ${
 .serk-nav-link:hover, .serk-nav-link.active {
   color: var(--serk-theme-accent) !important;
 }
-.serk-nav-link.active::after {
-  background-color: var(--serk-theme-accent) !important;
-}
-.serk-sub-menu {
-  background-color: var(--serk-theme-card-bg) !important;
-  border: 1px solid var(--serk-theme-border) !important;
-}
-.serk-sub-menu a {
+.elementor-heading-title, h1, h2, h3, h4, h5, h6 {
   color: var(--serk-theme-text) !important;
 }
-.serk-sub-menu a:hover {
-  background-color: rgba(227, 171, 114, 0.12) !important;
-  color: var(--serk-theme-accent) !important;
-}
-.serk-mobile-menu-toggle {
-  border-color: var(--serk-theme-border) !important;
-}
-.serk-hamburger-bar {
-  background-color: var(--serk-theme-text) !important;
-}
-.serk-mobile-drawer {
-  background-color: var(--serk-theme-card-bg) !important;
-  border-bottom: 1px solid var(--serk-theme-border) !important;
-}
-.serk-mobile-drawer a {
-  color: var(--serk-theme-text) !important;
-}
-
-/* Headings & Excerpts in Dark Theme */
-.elementor:not(.elementor-1175) .elementor-heading-title,
-.elementor:not(.elementor-1175) h1,
-.elementor:not(.elementor-1175) h2,
-.elementor:not(.elementor-1175) h3,
-.elementor:not(.elementor-1175) h4:not(.serk-footer-heading),
-.elementor:not(.elementor-1175) h5,
-.elementor:not(.elementor-1175) h6,
-.wpr-grid-item-title a {
-  color: var(--serk-theme-text) !important;
-}
-
-.elementor:not(.elementor-1175) p:not(.serk-footer-address):not(.serk-copyright-left),
-.elementor-widget-text-editor,
-.elementor-icon-box-description,
-.wpr-grid-item-excerpt p {
+p, span, li {
   color: var(--serk-theme-text-muted) !important;
 }
-
-/* Cards & Surfaces in Dark Theme */
-div[style*="background: #FFFFFF"],
-div[style*="background:#FFFFFF"],
-div[style*="background: #ffffff"],
-div[style*="background:#ffffff"],
-.wpr-grid-item-inner {
-  background-color: var(--serk-theme-card-bg) !important;
-  border-color: var(--serk-theme-border) !important;
-}
-div[style*="border: 1px solid #DEE6E0"] {
-  border-color: var(--serk-theme-border) !important;
+.wpr-advanced-text-preffix, .wpr-anim-text-inner {
+  color: var(--serk-theme-text) !important;
 }
 .serk-cat-pill {
-  background-color: var(--serk-theme-card-bg) !important;
-  color: var(--serk-theme-text) !important;
+  background: var(--serk-theme-card-bg) !important;
   border-color: var(--serk-theme-border) !important;
+  color: var(--serk-theme-text-muted) !important;
+}
+div[style*="background: #FFFFFF"], div[style*="background:#FFFFFF"], div[style*="background: #ffffff"] {
+  background-color: var(--serk-theme-card-bg) !important;
+  border-color: var(--serk-theme-border) !important;
+}
+main[style*="background: #FCFCFE"] {
+  background-color: var(--serk-theme-bg) !important;
 }
 `
     : `/* ========================================================
    LIGHT THEME CONTRAST HARMONIZATION
    ======================================================== */
 .serk-top-bar {
-  background-color: var(--serk-theme-card-bg, #F4F7F5) !important;
-  border-bottom: 1px solid var(--serk-theme-border, #DEE6E0) !important;
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid var(--serk-theme-border) !important;
 }
 .serk-top-bar a, .serk-top-bar .serk-sep, .serk-top-bar .serk-contact-link {
-  color: var(--serk-theme-text-muted, #5B6761) !important;
+  color: var(--serk-theme-text-muted) !important;
 }
 .serk-top-bar a:hover {
-  color: var(--serk-theme-text, #101513) !important;
+  color: var(--serk-theme-primary) !important;
 }
 .serk-main-nav {
-  background-color: var(--serk-theme-bg, #FFFFFF) !important;
-  border-bottom: 1px solid var(--serk-theme-border, #DEE6E0) !important;
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid var(--serk-theme-border) !important;
 }
 .serk-nav-link {
-  color: var(--serk-theme-text, #101513) !important;
+  color: var(--serk-theme-text) !important;
 }
 .serk-nav-link:hover, .serk-nav-link.active {
-  color: var(--serk-theme-primary, #0D4634) !important;
+  color: var(--serk-theme-primary) !important;
 }
-.serk-nav-link.active::after {
-  background-color: var(--serk-theme-primary, #0D4634) !important;
+.elementor-heading-title, h1, h2, h3, h4, h5, h6 {
+  color: var(--serk-theme-text) !important;
 }
-
-/* Light Theme Headings & Text */
-.elementor:not(.elementor-1175):not(.serk-dark-sec):not(.elementor-element-8ebc8a5) .elementor-heading-title,
-.elementor:not(.elementor-1175):not(.serk-dark-sec):not(.elementor-element-8ebc8a5) h1,
-.elementor:not(.elementor-1175):not(.serk-dark-sec):not(.elementor-element-8ebc8a5) h2,
-.elementor:not(.elementor-1175):not(.serk-dark-sec):not(.elementor-element-8ebc8a5) h3,
-.elementor:not(.elementor-1175):not(.serk-dark-sec):not(.elementor-element-8ebc8a5) h4:not(.serk-footer-heading),
-.wpr-grid-item-title a {
-  color: var(--serk-theme-text, #101513) !important;
-}
-
-.elementor:not(.elementor-1175):not(.serk-dark-sec):not(.elementor-element-8ebc8a5) p:not(.serk-footer-address):not(.serk-copyright-left),
-.wpr-grid-item-excerpt p {
-  color: var(--serk-theme-text-muted, #5B6761) !important;
+p, span:not(.serk-badge *), li {
+  color: var(--serk-theme-text-muted) !important;
 }
 `
 }
 
 /* ========================================================
-   DEDICATED DARK SECTIONS (Permanently Dark on ALL themes)
+   STRICT PERMANENT ENTERPRISE DARK FOOTER PROTECTION
+   Under NO circumstances may any theme alter the dark footer
    ======================================================== */
-.serk-dark-sec,
-.elementor-element-8ebc8a5,
-.elementor-element-ec224c7,
-.elementor-element-c49bbe5 {
-  background-color: #101513 !important;
-  background: #101513 !important;
-}
-.serk-dark-sec h1, .serk-dark-sec h2, .serk-dark-sec h3, .serk-dark-sec h4,
-.elementor-element-8ebc8a5 h2,
-.elementor-element-8ebc8a5 .elementor-heading-title,
-.elementor-element-ec224c7 .elementor-heading-title,
-.elementor-element-c49bbe5 .elementor-heading-title {
-  color: #FFFFFF !important;
-}
-.serk-dark-sec p,
-.elementor-element-8ebc8a5 p,
-.elementor-element-ec224c7 p,
-.elementor-element-c49bbe5 p,
-[data-id="2055672"] p,
-[data-id="3e5f206"] p {
-  color: #DEE6E0 !important;
-}
-
-/* ========================================================
-   ORIGINAL ENTERPRISE FOOTER (Strict Protection: Always Dark #101513 / #000000)
-   ======================================================== */
-.elementor-1175,
-div[data-elementor-id="1175"],
 .elementor-element-5b611c4,
-section[data-id="5b611c4"],
-.serk-global-footer {
-  background-color: #101513 !important;
-  background: #101513 !important;
-  color: #DEE6E0 !important;
-}
-
+[data-id="5b611c4"],
 .elementor-element-e959569,
-section[data-id="e959569"],
-.serk-footer-bottom {
-  background-color: #000000 !important;
-  background: #000000 !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Footer Headings */
-.elementor-1175 h4,
-.elementor-1175 .serk-footer-heading,
-.elementor-element-5b611c4 h4,
-.elementor-element-5b611c4 .elementor-heading-title,
-.serk-global-footer h4 {
-  color: #FFFFFF !important;
-  font-family: var(--serk-font-sans, 'Poppins', sans-serif) !important;
-}
-
-.elementor-1175 .serk-footer-heading-visitus,
-.elementor-element-5b611c4 .serk-footer-heading-visitus {
-  color: #E3AB72 !important;
-}
-
-/* Footer Body Copy */
-.elementor-1175 .serk-footer-address,
-.elementor-element-5b611c4 .serk-footer-address,
-.elementor-1175 p,
-.elementor-element-5b611c4 p {
-  color: #9AB4A9 !important;
-}
-
-/* Footer Links */
-.elementor-1175 .serk-footer-link,
-.elementor-element-5b611c4 .serk-footer-link,
-.elementor-1175 a:not(.serk-footer-social-btn),
-.elementor-element-5b611c4 a:not(.serk-footer-social-btn) {
-  color: #CDE5DC !important;
-  text-decoration: none !important;
-}
-.elementor-1175 .serk-footer-link:hover,
-.elementor-element-5b611c4 .serk-footer-link:hover,
-.elementor-1175 a:not(.serk-footer-social-btn):hover,
-.elementor-element-5b611c4 a:not(.serk-footer-social-btn):hover {
-  color: #FFFFFF !important;
-}
-
-/* Footer Social Icon */
-.serk-footer-social-btn {
-  background-color: rgba(227, 171, 114, 0.08) !important;
-  border: 1px solid #E3AB72 !important;
-  color: #E3AB72 !important;
-}
-.serk-footer-social-btn:hover {
-  background-color: #E3AB72 !important;
-  color: #101513 !important;
-}
-
-/* Copyright Bar Items */
-.serk-copyright-left,
-.elementor-element-e959569 p {
-  color: #9AB4A9 !important;
-}
-.serk-copyright-tagline {
-  color: #E3AB72 !important;
-}
-.serk-copyright-link,
-.elementor-element-e959569 a {
-  color: #7D978C !important;
-}
-.serk-copyright-link:hover,
-.elementor-element-e959569 a:hover {
-  color: #FFFFFF !important;
-}
-.serk-copyright-sep {
-  color: rgba(255, 255, 255, 0.2) !important;
+[data-id="e959569"],
+.serk-dark-sec,
+[data-serk-keep-dark],
+.elementor-element-8ebc8a5,
+.elementor-location-footer,
+.serk-footer-bottom,
+.elementor-element-ec224c7,
+.elementor-element-c49bbe5,
+.serk-footer-col,
+.serk-footer-col * {
+  /* Footer elements remain permanently dark enterprise styling */
 }
 `;
 }
@@ -679,10 +747,8 @@ section[data-id="e959569"],
 export function syncThemeToHtml(theme: ThemeConfig): boolean {
   try {
     if (!theme) return false;
-
     const css = generateThemeCss(theme);
 
-    // Write CSS files
     const tokenCssPaths = [
       path.join(process.cwd(), 'public', 'wp-content', 'themes', 'royal-elementor-kit', 'serk-theme-tokens.css'),
       path.join(process.cwd(), 'site', 'wp-content', 'themes', 'royal-elementor-kit', 'serk-theme-tokens.css'),
@@ -694,30 +760,12 @@ export function syncThemeToHtml(theme: ThemeConfig): boolean {
       fs.writeFileSync(cssPath, css, 'utf-8');
     }
 
-    // Ensure link and script are injected in all HTML files
     const htmlDirs = [
       path.join(process.cwd(), 'public'),
       path.join(process.cwd(), 'site'),
     ];
 
-    function getAllHtmlFiles(dir: string): string[] {
-      let results: string[] = [];
-      if (!fs.existsSync(dir)) return results;
-      const list = fs.readdirSync(dir);
-      for (const file of list) {
-        const fullPath = path.join(dir, file);
-        const stat = fs.statSync(fullPath);
-        if (stat.isDirectory()) {
-          results = results.concat(getAllHtmlFiles(fullPath));
-        } else if (file.endsWith('.html')) {
-          results.push(fullPath);
-        }
-      }
-      return results;
-    }
-
     const allHtml = [...getAllHtmlFiles(htmlDirs[0]), ...getAllHtmlFiles(htmlDirs[1])];
-
     const linkTag = '<link rel="stylesheet" id="serk-theme-tokens-css" href="/wp-content/themes/royal-elementor-kit/serk-theme-tokens.css">';
     const scriptTag = '<script src="/wp-content/themes/royal-elementor-kit/serk-theme-sync.js"></script>';
 
@@ -753,3 +801,4 @@ export function syncThemeToHtml(theme: ThemeConfig): boolean {
     return false;
   }
 }
+

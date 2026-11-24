@@ -108,3 +108,63 @@ export interface LeadItem {
   notes?: string | null;
   createdAt: string;
 }
+
+export interface PartnerItem {
+  id: string;
+  name: string;
+  category: string;
+  logoUrl: string;
+  alt?: string;
+  description: string;
+  websiteUrl?: string;
+  collabText?: string;
+  isPublished?: boolean;
+  sortOrder?: number;
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  category?: string;
+  description: string;
+  imageUrl?: string;
+  bullets?: string[];
+  ctaLabel?: string;
+  ctaUrl?: string;
+  isPublished?: boolean;
+  sortOrder?: number;
+}
+
+export interface IndustryItem {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  imageUrl?: string;
+  bullets: string[];
+  ctaLabel?: string;
+  ctaUrl?: string;
+  isPublished?: boolean;
+  sortOrder?: number;
+}
+
+export interface InsightItem {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content?: string;
+  coverImage?: string;
+  category?: string;
+  date?: string;
+  isPublished?: boolean;
+  sortOrder?: number;
+}
+
+export interface BrandingConfig {
+  headerLogoUrl: string;
+  footerMarkUrl: string;
+  brandAltText: string;
+  companyName: string;
+  tagline: string;
+}
