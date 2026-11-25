@@ -32,12 +32,22 @@ export default async function GalleryPage() {
               key={item.id}
               className="bg-white rounded-xl border border-[#DEE6E0] overflow-hidden shadow-sm hover:border-[#0D4634] transition-all group flex flex-col"
             >
-              <div className="relative aspect-[4/3] w-full bg-[#DEE6E0] overflow-hidden">
-                <Image
+              <div
+                style={{
+                  minHeight: '180px',
+                  maxHeight: '220px',
+                  padding: ((item as any).imageFit || 'contain') === 'contain' ? '18px 24px' : '0px',
+                }}
+                className="relative w-full bg-[#F7FAF8] flex items-center justify-center overflow-hidden"
+              >
+                <img
                   src={item.imageUrl}
                   alt={item.altText || item.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  style={
+                    ((item as any).imageFit || 'contain') === 'contain'
+                      ? { maxWidth: '100%', maxHeight: '184px', width: 'auto', height: 'auto', objectFit: 'contain' }
+                      : { width: '100%', height: '200px', objectFit: 'cover' }
+                  }
                 />
                 <div className="absolute top-3 right-3 bg-black/70 text-white text-[11px] font-semibold px-2.5 py-1 rounded">
                   {item.category}

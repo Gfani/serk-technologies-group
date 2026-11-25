@@ -100,7 +100,7 @@ export function getSiteContent(): SiteContent {
       const raw = fs.readFileSync(CONTENT_FILE, 'utf-8');
       return mergeWithDefaults(JSON.parse(raw));
     }
-  } catch (err) {}
+  } catch (err) { }
   return DEFAULT_SITE_CONTENT;
 }
 
@@ -185,7 +185,7 @@ export function saveSiteContent(content: Partial<SiteContent>): boolean {
         update: { value: JSON.stringify(merged) },
         create: { key: 'site-content', value: JSON.stringify(merged) },
       })
-      .catch(() => {});
+      .catch(() => { });
 
     return true;
   } catch (err) {
@@ -202,7 +202,7 @@ export async function getStoredProjects(): Promise<ProjectItem[]> {
       initSetting = await prisma.siteSetting.findUnique({
         where: { key: 'db_projects_initialized' },
       });
-    } catch (e) {}
+    } catch (e) { }
 
     if (initSetting) {
       // PostgreSQL is canonical: whatever is in DB is the truth (deleted stays deleted!)
@@ -221,7 +221,7 @@ export async function getStoredProjects(): Promise<ProjectItem[]> {
           update: { value: 'true' },
           create: { key: 'db_projects_initialized', value: 'true' },
         });
-      } catch (e) {}
+      } catch (e) { }
 
       const dbProjects = await prisma.project.findMany({
         orderBy: { sortOrder: 'asc' },
@@ -244,7 +244,7 @@ export async function getStoredProjects(): Promise<ProjectItem[]> {
         update: { value: 'true' },
         create: { key: 'db_projects_initialized', value: 'true' },
       });
-    } catch (e) {}
+    } catch (e) { }
 
     const seeded = await prisma.project.findMany({
       orderBy: { sortOrder: 'asc' },
@@ -303,6 +303,7 @@ export async function saveStoredProjects(projects: ProjectItem[]): Promise<Proje
           audience: p.audience,
           capabilities: p.capabilities,
           imageUrl: p.imageUrl,
+          imageFit: p.imageFit || 'contain',
           publicCta: p.publicCta,
           ctaUrl: p.ctaUrl,
           isPublished: p.isPublished,
@@ -319,6 +320,7 @@ export async function saveStoredProjects(projects: ProjectItem[]): Promise<Proje
           audience: p.audience,
           capabilities: p.capabilities,
           imageUrl: p.imageUrl,
+          imageFit: p.imageFit || 'contain',
           publicCta: p.publicCta,
           ctaUrl: p.ctaUrl,
           isPublished: p.isPublished,
@@ -387,6 +389,7 @@ export async function saveStoredProject(project: Partial<ProjectItem>): Promise<
       capabilities: project.capabilities || '',
       plannedCapabilities: project.plannedCapabilities || '',
       imageUrl: project.imageUrl || '/images/serk-photo-engineering.jpg',
+      imageFit: project.imageFit || 'contain',
       publicCta: project.publicCta || 'Learn More',
       ctaUrl: project.ctaUrl || `/products/${project.slug}/`,
       isPublished: project.isPublished !== false,

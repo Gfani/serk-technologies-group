@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { title, caption, altText, category, base64Image, sortOrder } = body;
+    const { title, caption, altText, category, base64Image, sortOrder, imageFit } = body;
 
     let imageUrl = '/images/serk-photo-engineering.jpg';
     let cloudinaryPublicId = null;
@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
         altText: altText || title,
         category: category || 'General',
         imageUrl,
+        imageFit: imageFit || 'contain',
         cloudinaryPublicId,
         sortOrder: sortOrder || 0,
         isVisible: true,

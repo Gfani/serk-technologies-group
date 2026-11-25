@@ -49,7 +49,7 @@ export default function AdminProjectsPage() {
   }, []);
 
   const handleOpenEdit = (project: ProjectItem) => {
-    setEditingProject({ ...project });
+    setEditingProject({ ...project, imageFit: project.imageFit || 'contain' });
     setImagePreview(project.imageUrl || null);
     setIsModalOpen(true);
   };
@@ -67,6 +67,7 @@ export default function AdminProjectsPage() {
       capabilities: '',
       plannedCapabilities: '',
       imageUrl: null,
+      imageFit: 'contain',
       publicCta: 'Request an Engineering Demo',
       ctaUrl: '/contact_us',
       isPublished: true,
@@ -371,27 +372,85 @@ export default function AdminProjectsPage() {
                 </div>
               </div>
 
-              {/* Media Upload with 16:10 aspect preview */}
-              <div>
-                <label className="block text-xs font-semibold text-[#101513] mb-1">
-                  Card Screenshot / Media Image
-                </label>
+              {/* Media Upload with Flexible Ratio & Display Mode */}
+              <div className="space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <label className="block text-xs font-semibold text-[#101513]">
+                    Card Logo / Screenshot Image (No Forced Crop)
+                  </label>
+                  <div className="inline-flex rounded-lg border border-[#DEE6E0] bg-[#F4F7F5] p-0.5">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setEditingProject({ ...editingProject, imageFit: 'contain' })
+                      }
+                      className={`px-3 py-1 rounded-md text-[11px] font-semibold transition-colors ${
+                        (editingProject.imageFit || 'contain') === 'contain'
+                          ? 'bg-[#0D4634] text-white shadow-xs'
+                          : 'text-[#5B6761] hover:text-[#101513]'
+                      }`}
+                    >
+                      Fit / Logo (No Crop)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setEditingProject({ ...editingProject, imageFit: 'cover' })
+                      }
+                      className={`px-3 py-1 rounded-md text-[11px] font-semibold transition-colors ${
+                        editingProject.imageFit === 'cover'
+                          ? 'bg-[#0D4634] text-white shadow-xs'
+                          : 'text-[#5B6761] hover:text-[#101513]'
+                      }`}
+                    >
+                      Fill / Photo (Edge-to-Edge)
+                    </button>
+                  </div>
+                </div>
+
                 <div className="flex flex-col sm:flex-row gap-4 items-start">
+                  {/* Flexible Live Card Preview */}
                   <div
                     onClick={() => fileInputRef.current?.click()}
-                    className="w-full sm:w-1/2 aspect-[16/10] bg-[#F8FAFC] border-2 border-dashed border-[#DEE6E0] hover:border-[#E3AB72] rounded-lg flex flex-col items-center justify-center p-4 cursor-pointer transition-colors relative overflow-hidden"
+                    style={{
+                      minHeight: '180px',
+                      maxHeight: '220px',
+                      padding:
+                        (editingProject.imageFit || 'contain') === 'contain'
+                          ? '18px 24px'
+                          : '0px',
+                    }}
+                    className="w-full sm:w-1/2 bg-[#F7FAF8] border-2 border-dashed border-[#DEE6E0] hover:border-[#E3AB72] rounded-lg flex flex-col items-center justify-center cursor-pointer transition-colors relative overflow-hidden"
                   >
                     {imagePreview ? (
                       <img
                         src={imagePreview}
-                        alt="Preview"
-                        className="w-full h-full object-cover rounded"
+                        alt="Live Card Preview"
+                        style={
+                          (editingProject.imageFit || 'contain') === 'contain'
+                            ? {
+                                maxWidth: '100%',
+                                maxHeight: '184px',
+                                width: 'auto',
+                                height: 'auto',
+                                objectFit: 'contain',
+                                display: 'block',
+                              }
+                            : {
+                                width: '100%',
+                                height: '200px',
+                                objectFit: 'cover',
+                                display: 'block',
+                              }
+                        }
                       />
                     ) : (
-                      <div className="text-center space-y-1 text-[#5B6761]">
+                      <div className="text-center space-y-1 text-[#5B6761] p-4">
                         <Upload className="w-6 h-6 mx-auto text-[#E3AB72]" />
                         <span className="text-xs font-medium block">Click or drop image</span>
-                        <span className="text-[10px] text-gray-400 block">PNG, JPG, WebP (16:10 framed)</span>
+                        <span className="text-[10px] text-gray-400 block">
+                          Any ratio: wide logo, square icon, or screenshot
+                        </span>
                       </div>
                     )}
                     <input
@@ -416,7 +475,7 @@ export default function AdminProjectsPage() {
                     />
                     <input
                       type="text"
-                      placeholder="Image Alt Text (e.g. Construction Takeoff Dashboard)"
+                      placeholder="Image Alt Text / Audience (e.g. Segar Ride Logo)"
                       value={editingProject.audience || ''}
                       onChange={(e) =>
                         setEditingProject({ ...editingProject, audience: e.target.value })
@@ -424,7 +483,8 @@ export default function AdminProjectsPage() {
                       className="w-full px-3 py-2 border border-[#DEE6E0] rounded text-xs"
                     />
                     <p className="text-[11px] text-[#5B6761] leading-tight">
-                      Uploaded images are stored persistently in cloud storage and formatted into SERK's 160px card frame.
+                      <strong>Fit / Logo</strong> keeps 100% of your logo visible without cropping.{' '}
+                      <strong>Fill / Photo</strong> fills edge-to-edge for photography.
                     </p>
                   </div>
                 </div>

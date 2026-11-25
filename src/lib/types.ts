@@ -22,6 +22,8 @@ export interface ThemeConfig {
   headerLayout: 'ONE_ROW' | 'TWO_ROW';
 }
 
+export type ImageFitMode = 'contain' | 'cover';
+
 export interface ProjectItem {
   id: string;
   slug: string;
@@ -34,6 +36,7 @@ export interface ProjectItem {
   capabilities?: string | null;
   plannedCapabilities?: string | null;
   imageUrl?: string | null;
+  imageFit?: ImageFitMode;
   publicCta?: string | null;
   ctaUrl?: string | null;
   isPublished: boolean;
@@ -71,6 +74,7 @@ export interface GalleryMediaItem {
   caption?: string | null;
   altText: string;
   imageUrl: string;
+  imageFit?: ImageFitMode;
   cloudinaryPublicId?: string | null;
   category: string;
   isVisible: boolean;
@@ -114,6 +118,7 @@ export interface PartnerItem {
   name: string;
   category: string;
   logoUrl: string;
+  imageFit?: ImageFitMode | null;
   alt?: string;
   description: string;
   websiteUrl?: string;

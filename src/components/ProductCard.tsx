@@ -20,6 +20,7 @@ export default function ProductCard({ project }: { project: ProjectItem }) {
   const img = project.imageUrl || '/images/serk-photo-engineering.jpg';
   const ctaUrl = project.ctaUrl || `/products/${project.slug}/`;
   const ctaText = project.publicCta || 'Learn More';
+  const isCover = project.imageFit === 'cover';
 
   return (
     <div
@@ -38,21 +39,36 @@ export default function ProductCard({ project }: { project: ProjectItem }) {
       <div>
         <div
           style={{
-            height: '160px',
+            minHeight: '180px',
+            maxHeight: '220px',
+            width: '100%',
             overflow: 'hidden',
             borderRadius: '6px',
             marginBottom: '16px',
-            background: '#F8FAFC',
+            background: '#F7FAF8',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             border: '1px solid #E2E8F0',
+            padding: isCover ? '0' : '18px 24px',
+            boxSizing: 'border-box',
           }}
         >
           <img
             src={img}
             alt={project.name}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            style={
+              isCover
+                ? { width: '100%', height: '200px', objectFit: 'cover', display: 'block' }
+                : {
+                    maxWidth: '100%',
+                    maxHeight: '184px',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'contain',
+                    display: 'block',
+                  }
+            }
           />
         </div>
         <span className={`serk-badge ${badge.cls}`}>

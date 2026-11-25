@@ -75,6 +75,13 @@
               var img = p.imageUrl || '/images/serk-photo-engineering.jpg';
               var ctaUrl = p.ctaUrl || ('/products/' + p.slug + '/');
               var ctaText = p.publicCta || 'Learn More';
+              var isCover = p.imageFit === 'cover';
+              var wrapStyle = isCover
+                ? 'min-height: 180px; max-height: 220px; width: 100%; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F7FAF8; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; padding: 0;'
+                : 'min-height: 180px; max-height: 220px; width: 100%; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F7FAF8; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0; padding: 18px 24px; box-sizing: border-box;';
+              var imgStyle = isCover
+                ? 'width: 100%; height: 200px; object-fit: cover; display: block;'
+                : 'max-width: 100%; max-height: 184px; width: auto; height: auto; object-fit: contain; display: block;';
 
               if (existingCard) {
                 var pDesc = existingCard.querySelector('p');
@@ -82,15 +89,21 @@
                   pDesc.textContent = p.summary;
                 }
                 var imgElem = existingCard.querySelector('img');
-                if (imgElem && p.imageUrl && imgElem.getAttribute('src') !== p.imageUrl) {
-                  imgElem.src = p.imageUrl;
+                if (imgElem) {
+                  if (p.imageUrl && imgElem.getAttribute('src') !== p.imageUrl) {
+                    imgElem.src = p.imageUrl;
+                  }
+                  imgElem.style.cssText = imgStyle;
+                  if (imgElem.parentElement) {
+                    imgElem.parentElement.style.cssText = wrapStyle;
+                  }
                 }
               } else {
                 var cardDiv = document.createElement('div');
                 cardDiv.style.cssText = 'background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 8px; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s ease, box-shadow 0.2s ease;';
                 cardDiv.innerHTML = '<div>' +
-                  '<div style="height: 160px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background: #F8FAFC; display: flex; align-items: center; justify-content: center; border: 1px solid #E2E8F0;">' +
-                    '<img src="' + img + '" alt="' + p.name + '" style="width: 100%; height: 100%; object-fit: cover;">' +
+                  '<div style="' + wrapStyle + '">' +
+                    '<img src="' + img + '" alt="' + p.name + '" style="' + imgStyle + '">' +
                   '</div>' +
                   '<span class="serk-badge ' + badge.cls + '"><span>' + badge.text + '</span></span>' +
                   '<h3 style="font-size: 1.28rem; font-weight: 600; color: #101513; margin: 12px 0 8px 0; line-height: 1.3;">' + p.name + '</h3>' +
@@ -159,11 +172,23 @@
               }
             });
 
+            var isPartnerCover = p.imageFit === 'cover';
+            var partnerWrapStyle = isPartnerCover
+              ? 'text-align: center; padding: 0; background: #F7FAF8; border-radius: 8px; margin-bottom: 16px; min-height: 120px; max-height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden;'
+              : 'text-align: center; padding: 18px 24px; background: #F7FAF8; border-radius: 8px; margin-bottom: 16px; min-height: 120px; max-height: 180px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-sizing: border-box;';
+            var partnerImgStyle = isPartnerCover
+              ? 'width: 100%; height: 160px; object-fit: cover; display: block;'
+              : 'max-height: 140px; max-width: 100%; width: auto; height: auto; object-fit: contain; display: block;';
+
             if (found) {
               var pDesc = found.querySelector('p');
               if (pDesc && p.description) pDesc.textContent = p.description;
               var imgEl = found.querySelector('img');
-              if (imgEl && p.logoUrl) imgEl.src = p.logoUrl;
+              if (imgEl) {
+                if (p.logoUrl) imgEl.src = p.logoUrl;
+                imgEl.style.cssText = partnerImgStyle;
+                if (imgEl.parentElement) imgEl.parentElement.style.cssText = partnerWrapStyle;
+              }
             } else {
               var newCard = document.createElement('div');
               newCard.style.cssText = 'background: #FFFFFF; border: 1px solid #DEE6E0; border-radius: 12px; padding: 28px 24px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 6px rgba(0,0,0,0.03);';
@@ -173,8 +198,8 @@
               var webLink = p.websiteUrl && p.websiteUrl !== '#' ? '<a href="' + p.websiteUrl + '" target="_blank" rel="noopener noreferrer" style="color: #0D4634; font-weight: 600; text-decoration: none;">Visit Website &rarr;</a>' : '';
 
               newCard.innerHTML = '<div>' +
-                '<div style="text-align: center; padding: 20px; background: #F8FAFC; border-radius: 8px; margin-bottom: 16px; min-height: 80px; display: flex; align-items: center; justify-content: center;">' +
-                  '<img src="' + logo + '" alt="' + p.name + '" style="max-height: 44px; max-width: 100%; object-fit: contain;">' +
+                '<div style="' + partnerWrapStyle + '">' +
+                  '<img src="' + logo + '" alt="' + p.name + '" style="' + partnerImgStyle + '">' +
                 '</div>' +
                 '<div style="margin-bottom: 8px;"><span class="serk-badge serk-badge-production"><span>' + cat + '</span></span></div>' +
                 '<h3 style="font-size: 1.15rem; font-weight: 700; color: #101513; margin: 0 0 8px 0;">' + p.name + '</h3>' +

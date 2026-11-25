@@ -11,6 +11,7 @@ export default function AdminGalleryPage() {
   const [title, setTitle] = useState('');
   const [caption, setCaption] = useState('');
   const [category, setCategory] = useState('Engineering');
+  const [imageFit, setImageFit] = useState<'contain' | 'cover'>('contain');
   const [fileBase64, setFileBase64] = useState<string | null>(null);
 
   const fetchGallery = async () => {
@@ -54,6 +55,7 @@ export default function AdminGalleryPage() {
           title,
           caption,
           category,
+          imageFit,
           base64Image: fileBase64,
         }),
       });
@@ -139,6 +141,46 @@ export default function AdminGalleryPage() {
             </select>
           </div>
 
+          <div className="md:col-span-3">
+            <label className="block text-xs font-semibold text-[#101513] mb-1">Display Mode</label>
+            <select
+              value={imageFit}
+              onChange={(e) => setImageFit(e.target.value as 'contain' | 'cover')}
+              className="w-full px-3 py-1.5 border border-[#DEE6E0] rounded text-xs bg-white"
+            >
+              <option value="contain">Fit / Logo (No Crop)</option>
+              <option value="cover">Fill / Photo (Edge-to-Edge)</option>
+            </select>
+          </div>
+
+          <div className="md:col-span-12">
+            {fileBase64 && (
+              <div className="mt-2">
+                <span className="block text-[11px] font-semibold text-[#5B6761] mb-1">
+                  Live Card Preview ({imageFit === 'contain' ? 'Fit / Logo' : 'Fill / Photo'}):
+                </span>
+                <div
+                  style={{
+                    minHeight: '180px',
+                    maxHeight: '220px',
+                    padding: imageFit === 'contain' ? '18px 24px' : '0px',
+                  }}
+                  className="w-full max-w-sm bg-[#F7FAF8] border border-[#DEE6E0] rounded-lg flex items-center justify-center overflow-hidden"
+                >
+                  <img
+                    src={fileBase64}
+                    alt="Preview"
+                    style={
+                      imageFit === 'contain'
+                        ? { maxWidth: '100%', maxHeight: '184px', width: 'auto', height: 'auto', objectFit: 'contain' }
+                        : { width: '100%', height: '200px', objectFit: 'cover' }
+                    }
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+
           <div className="md:col-span-2">
             <button
               type="submit"
@@ -165,8 +207,23 @@ export default function AdminGalleryPage() {
             key={item.id}
             className="bg-white rounded-xl border border-[#DEE6E0] overflow-hidden shadow-sm flex flex-col justify-between"
           >
-            <div className="relative aspect-[4/3] w-full bg-[#DEE6E0]">
-              <Image src={item.imageUrl} alt={item.title} fill className="object-cover" />
+            <div
+              style={{
+                minHeight: '180px',
+                maxHeight: '220px',
+                padding: (item.imageFit || 'contain') === 'contain' ? '18px 24px' : '0px',
+              }}
+              className="w-full bg-[#F7FAF8] flex items-center justify-center overflow-hidden"
+            >
+              <img
+                src={item.imageUrl}
+                alt={item.title}
+                style={
+                  (item.imageFit || 'contain') === 'contain'
+                    ? { maxWidth: '100%', maxHeight: '184px', width: 'auto', height: 'auto', objectFit: 'contain' }
+                    : { width: '100%', height: '200px', objectFit: 'cover' }
+                }
+              />
             </div>
             <div className="p-4 flex items-center justify-between">
               <div>

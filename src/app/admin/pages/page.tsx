@@ -52,6 +52,7 @@ export default function AdminUniversalContentEditor() {
     name: '',
     category: 'ENTERPRISE PARTNER',
     logoUrl: '/wp-content/uploads/serk/client-zoscales.png',
+    imageFit: 'contain',
     description: '',
     websiteUrl: 'https://',
     collabText: 'Active Portfolio Collaboration • Verified Partner',
@@ -574,7 +575,7 @@ export default function AdminUniversalContentEditor() {
                   <label className="block text-xs font-bold text-[#101513] uppercase tracking-wider mb-1">
                     Partner Logo URL or Upload
                   </label>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 mb-2">
                     <input
                       type="text"
                       value={newPartner.logoUrl || ''}
@@ -598,6 +599,53 @@ export default function AdminUniversalContentEditor() {
                       />
                     </label>
                   </div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-[11px] font-semibold text-[#5B6761]">Display Mode:</span>
+                    <div className="inline-flex rounded border border-[#DEE6E0] bg-[#F4F7F5] p-0.5">
+                      <button
+                        type="button"
+                        onClick={() => setNewPartner({ ...newPartner, imageFit: 'contain' })}
+                        className={`px-2 py-0.5 rounded text-[11px] font-semibold ${
+                          (newPartner.imageFit || 'contain') === 'contain'
+                            ? 'bg-[#0D4634] text-white'
+                            : 'text-[#5B6761]'
+                        }`}
+                      >
+                        Fit / Logo
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setNewPartner({ ...newPartner, imageFit: 'cover' })}
+                        className={`px-2 py-0.5 rounded text-[11px] font-semibold ${
+                          newPartner.imageFit === 'cover'
+                            ? 'bg-[#0D4634] text-white'
+                            : 'text-[#5B6761]'
+                        }`}
+                      >
+                        Fill / Photo
+                      </button>
+                    </div>
+                  </div>
+                  {newPartner.logoUrl && (
+                    <div
+                      style={{
+                        minHeight: '100px',
+                        maxHeight: '140px',
+                        padding: (newPartner.imageFit || 'contain') === 'contain' ? '14px 18px' : '0px',
+                      }}
+                      className="bg-[#F7FAF8] border border-[#DEE6E0] rounded-lg flex items-center justify-center overflow-hidden"
+                    >
+                      <img
+                        src={newPartner.logoUrl}
+                        alt="Partner Preview"
+                        style={
+                          (newPartner.imageFit || 'contain') === 'contain'
+                            ? { maxWidth: '100%', maxHeight: '112px', width: 'auto', height: 'auto', objectFit: 'contain' }
+                            : { width: '100%', height: '120px', objectFit: 'cover' }
+                        }
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div>

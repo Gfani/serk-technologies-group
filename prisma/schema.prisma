@@ -66,6 +66,7 @@ model Project {
   capabilities        String?  @db.Text
   plannedCapabilities String?  @db.Text
   imageUrl            String?
+  imageFit            String?  @default("contain")
   publicCta           String?  @default("Request a Briefing")
   ctaUrl              String?
   isPublished         Boolean  @default(true)
@@ -80,6 +81,7 @@ model GalleryItem {
   caption            String?
   altText            String
   imageUrl           String
+  imageFit           String?  @default("contain")
   cloudinaryPublicId String?
   category           String   @default("General")
   isVisible          Boolean  @default(true)
